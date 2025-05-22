@@ -1,0 +1,22 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+    <Script file="options\Defaults.lua" />
+
+    <Script file="Globals.lua" />
+    <Script file="Utils.lua" />
+
+    <Script file="options\Info.lua" />
+    <Script file="options\Options.lua" />
+    <Script file="options\EventAchievement.lua" />
+    <Script file="options\EventEncounter.lua" />
+    <Script file="options\EventPvP.lua" />
+    <Script file="options\EventLevelUp.lua" />
+    <Script file="options\EventDeath.lua" />
+    <Script file="options\EventLogin.lua" />
+    <Script file="options\Statistic.lua" />    
+
+    <Script file="Setup.lua" />
+    <Script file="Core.lua" />
+    <Script file="Print.lua" />
+    <Script file="EventHandler.lua" />
+</Ui>

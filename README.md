@@ -1,9 +1,11 @@
 # Memento
 
-[![GitHub Release](https://img.shields.io/github/v/release/diomsg-code/Memento?logo=github&cacheSeconds=600)](https://github.com/diomsg-code/Memento/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/diomsg-code/Memento?logo=github&cacheSeconds=600)](https://github.com/diomsg-code/Memento/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Memento?logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Memento?logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases)
 
-Memento is an addon that automatically takes screenshots of specific events. The following events are currently supported (more events are planned):
+*Capture the moments that matter.*
+
+Memento is an addon that automatically takes screenshots of meaningful gameplay events and personal milestones. The following events are currently supported (more events are planned):
 
 *   Achievements (personal achievements, reached achievement criteria & guild achievements)*
 *   Boss fight (victory & wipe)

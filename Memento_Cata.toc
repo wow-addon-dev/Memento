@@ -7,8 +7,8 @@
 ## X-BuildDate: @build-date@
 ## X-E-Mail: feedback@wow-addon.dev
 ## X-Github: https://github.com/diomsg-code/Memento
-## Notes: A World of Warcraft addon that automatically takes screenshots of specific events.
-## Notes-deDE: Ein World of Warcraft Addon, das automatisch Screenshots von bestimmten Ereignissen erstellt.
+## Notes: This addon automatically takes screenshots of meaningful gameplay events and personal milestones.
+## Notes-deDE: Dieses Addon macht automatisch Screenshots von bedeutenden Spielereignissen und persönlichen Meilensteinen.
 ## LoadOnDemand: 0
 ## DefaultState: enabled
 ## AllowLoadGameType: cata

@@ -94,9 +94,9 @@ fi
 
 if [[ -f CHANGELOG.md ]]; then
   if [[ "${LAST_RELEASE_VERSION}" == "None" ]]; then
-    link="https://github.com/wow-addo-dev/${REPO_NAME}/commits/${VERSION}"
+    link="https://github.com/wow-addon-dev/${REPO_NAME}/commits/${VERSION}"
   else
-    link="https://github.com/wow-addo-dev/${REPO_NAME}/compare/${LAST_RELEASE_VERSION}...${VERSION}"
+    link="https://github.com/wow-addon-dev/${REPO_NAME}/compare/${LAST_RELEASE_VERSION}...${VERSION}"
   fi
 
   sed -i "s|@full-changelog@|${link}|g" CHANGELOG.md

@@ -1,3 +1,9 @@
+**v1.44 (2025-05-25)**
+- Changed: New addon logo [all versions]
+- Changed: The version number scheme has been changed [all versions]
+- Updated: deDE, enUS, ruRU localization [all versions]
+- Minor code adjustments [all versions]
+
 **v1.44-alpha.2 (2025-05-25)**
 - Changed: New addon logo [all versions]
 - Changed: The version number scheme has been changed [all versions]

@@ -1,7 +1,3 @@
-**v1.19-alpha.1 (2025-05-25)**
-- Changed: New addon logo [all versions]
-- Changed: The version number scheme has been changed [all versions]
-
 **v43 (2025-05-11)**
 - Changed: The version number scheme has been changed [all versions]
 - Refactoring of the addon structure and source code [all versions]

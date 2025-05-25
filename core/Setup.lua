@@ -60,11 +60,7 @@ local function SetupOptions(self)
 	local profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 	profiles.confirm = true
 
-	if Memento.FLAVOR_IS_MAINLINE then
-		profiles.name = "|T" .. Memento.MEDIA_PATH .. "icon_options.blp:0:0:0:1|t  " .. addonName .. " - " .. L["profiles"]
-	else
-		profiles.name = "|T" .. Memento.MEDIA_PATH .. "icon_options.blp:0:0:0:2|t  " .. addonName .. " - " .. L["profiles"]
-	end
+	profiles.name = addonName .. " - " .. L["profiles"]
 
 	AceConfig:RegisterOptionsTable(addonName, info)
 	AceConfig:RegisterOptionsTable("Options", options)

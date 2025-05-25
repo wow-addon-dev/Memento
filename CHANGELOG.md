@@ -4,3 +4,5 @@
 
 - Changed: New addon logo [all versions]
 - Changed: The version number scheme has been changed [all versions]
+- Updated: deDE, enUS, ruRU localization [all versions]
+- Minor code adjustments [all versions]

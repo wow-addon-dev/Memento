@@ -9,6 +9,7 @@
 ## X-Github: https://github.com/wow-addon-dev/Memento
 ## Notes: This addon automatically takes screenshots of meaningful gameplay events and personal milestones.
 ## Notes-deDE: Dieses Addon macht automatisch Screenshots von bedeutenden Spielereignissen und persönlichen Meilensteinen.
+## Notes-ruRU: Аддон, который автоматически делает скриншоты значимых игровых событий и личных достижений.
 ## LoadOnDemand: 0
 ## DefaultState: enabled
 ## AllowLoadGameType: vanilla

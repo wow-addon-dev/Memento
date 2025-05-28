@@ -1,3 +1,6 @@
+**v1.45 (2025-05-28)**
+- Updated: ruRU localization (#1 - Thanks to Hollicsh) [all versions]
+
 **v1.44 (2025-05-25)**
 - Changed: New addon logo [all versions]
 - Changed: The version number scheme has been changed [all versions]

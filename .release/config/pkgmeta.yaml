@@ -6,3 +6,9 @@ ignore:
 manual-changelog:
   filename: CHANGELOG.md
   markup-type: markdown
+
+embedded-libraries:
+  - ace3
+  - callbackhandler
+  - libstub
+  - sfx-widgets

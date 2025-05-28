@@ -26,7 +26,7 @@
 - Fixed: If the user interface was hidden, the small success notification was not fully displayed
 
 **2.5.0 (2025-04-23)**
-- Added: ruRU localization (Thanks to ZamestoTV)
+- Added: ruRU localization (Thanks to Hubbotu)
 - Removed: TOC version for patch 11.1.0 (Retail)
 
 **2.4.2 (2025-04-17)**

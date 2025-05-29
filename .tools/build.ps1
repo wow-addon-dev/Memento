@@ -47,6 +47,7 @@ foreach ($line in $IniContent) {
     }
 }
 
+# Kopieren & Ersetzten
 $AddonName = Split-Path $SourceFolder -Leaf
 $FileExtensions = @("*.toc")
 

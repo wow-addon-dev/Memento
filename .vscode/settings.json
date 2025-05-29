@@ -1,5 +1,4 @@
 {
-    "Lua.workspace.ignoreDir": [
-      "lib"
-    ]
+	"files.encoding": "utf8",
+    "Lua.workspace.ignoreDir": ["lib"],
 }

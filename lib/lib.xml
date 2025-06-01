@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\..\FrameXML\UI.xsd">
     <Script file="LibStub\LibStub.lua"/>
-    <Include file="CallbackHandler-1.0\CallbackHandler-1.0.xml" />
+    <Include file="CallbackHandler-1.0\CallbackHandler-1.0.lua" />
 
     <Include file="Ace3\AceAddon-3.0\AceAddon-3.0.xml" />
     <Include file="Ace3\AceEvent-3.0\AceEvent-3.0.xml" />
@@ -15,5 +15,5 @@
 
     <Include file="AceGUI-3.0_SFX-Widgets\AceGUI-3.0_SFX-Widgets.xml" />
 
-    <Include file="Memento_PopupDialog-1.0\Memento_PopupDialog-1.0.xml" />
+    <Include file="Memento_PopupDialog-1.0\Memento_PopupDialog-1.0.lua" />
 </Ui>

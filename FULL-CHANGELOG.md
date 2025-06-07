@@ -6,7 +6,7 @@
 - Minor code adjustments [all versions]
 
 **v1.45 (2025-05-28)**
-- Updated: ruRU localization (#1 - Thanks to Hollicsh) [all versions]
+- Updated: ruRU localization (Thanks to Hollicsh) [all versions]
 
 **v1.44 (2025-05-25)**
 - Changed: New addon logo [all versions]
@@ -46,14 +46,14 @@
 - Minor code adjustments
 
 **2.4.0 (2025-04-11)**
-- Added: When a screenshot is taken, the current class and total time played can also be displayed in the chat (#4)
+- Added: When a screenshot is taken, the current class and total time played can also be displayed in the chat
 - Fixed: The time delay for the event 'Achievement criteria earned' was not taken into account
 
 **2.3.12 (2025-04-06)**
 - Added: TOC version for patch 1.15.7 (Classic)
 - Added: TOC version for patch 11.1.5 (Retail)
 
-**2.3.11 (2025-03-30))**
+**2.3.11 (2025-03-30)**
 - Updated: deDE localization
 
 **2.3.10 (2025-03-22)**
@@ -115,30 +115,30 @@
 
 **2.2.0 (2024-10-20)**
 - Added: New option category 'Player vs. Player'
-- Added: New event 'Arena completed' - An automatic screenshot can now be taken when you have completed an arena (#1)
-- Added: New event 'Battleground completed' - An automatic screenshot can now be taken when you have completed a battleground (#1)
+- Added: New event 'Arena completed' - An automatic screenshot can now be taken when you have completed an arena
+- Added: New event 'Battleground completed' - An automatic screenshot can now be taken when you have completed a battleground
 - Added: Options and statistics can be reseted
 - Updated: deDE, enUS localization
 - Minor code adjustments
 
 **2.2.0-3-alpha (2024-10-19)**
 - Added: New option category 'Player vs. Player'
-- Added: New event 'Arena completed' - An automatic screenshot can now be taken when you have completed an arena (#1)
-- Added: New event 'Battleground completed' - An automatic screenshot can now be taken when you have completed a battleground (#1)
+- Added: New event 'Arena completed' - An automatic screenshot can now be taken when you have completed an arena
+- Added: New event 'Battleground completed' - An automatic screenshot can now be taken when you have completed a battleground
 - Updated: deDE, enUS localization
 - Minor code adjustments
 
 **2.2.0-2-alpha (2024-10-19)**
 - Added: New option category 'Player vs. Player'
-- Added: New event 'Arena completed' - An automatic screenshot can now be taken when you have completed an arena (#1)
-- Added: New event 'Battleground completed' - An automatic screenshot can now be taken when you have completed a battleground (#1)
+- Added: New event 'Arena completed' - An automatic screenshot can now be taken when you have completed an arena
+- Added: New event 'Battleground completed' - An automatic screenshot can now be taken when you have completed a battleground
 - Updated: deDE, enUS localization
 - Minor code adjustments
 
 **2.2.0-1-alpha (2024-10-17)**
 - Added: New option category 'Player vs. Player'
-- Added: New event 'Arena completed' - An automatic screenshot can now be taken when you have completed an arena (#1)
-- Added: New event 'Battleground completed' - An automatic screenshot can now be taken when you have completed a battleground (#1)
+- Added: New event 'Arena completed' - An automatic screenshot can now be taken when you have completed an arena
+- Added: New event 'Battleground completed' - An automatic screenshot can now be taken when you have completed a battleground
 - Updated: deDE, enUS localization
 - Minor code adjustments
 

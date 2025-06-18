@@ -1,3 +1,7 @@
+**v1.49 (2025-06-18)**
+- Removed: TOC version for patch 11.1.5 (Retail)
+- Deprecated: The screenshot statistics [all versions]
+
 **v1.48 (2025-06-07)**
 - Deprecated: The screenshot statistics [all versions]
 - Minor code adjustments [all versions]

@@ -1,3 +1,7 @@
+**v1.50 (2025-06-22)**
+- Added: Support for Mists of Pandaria Classic [Mists]
+- Deprecated: The screenshot statistics [all versions]
+
 **v1.49 (2025-06-18)**
 - Removed: TOC version for patch 11.1.5 (Retail)
 - Deprecated: The screenshot statistics [all versions]

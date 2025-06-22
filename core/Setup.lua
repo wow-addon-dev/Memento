@@ -10,6 +10,9 @@ local function SetupDatabase(self)
 	if Memento.FLAVOR_IS_MAINLINE then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-mainline"], true)
 		self.dbStatstic = LibStub("AceDB-3.0"):New("Memento_Statistic_v2", Memento.defaults["statistic-mainline"], true)
+	elseif Memento.FLAVOR_IS_MISTS then
+		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-mists"], true)
+		self.dbStatstic = LibStub("AceDB-3.0"):New("Memento_Statistic_v2", Memento.defaults["statistic-mists"], true)
 	elseif Memento.FLAVOR_IS_CATA then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-cata"], true)
 		self.dbStatstic = LibStub("AceDB-3.0"):New("Memento_Statistic_v2", Memento.defaults["statistic-cata"], true)
@@ -32,6 +35,8 @@ local function SetupOptions(self)
 
 	if Memento.FLAVOR_IS_MAINLINE then
 		statistic = Memento.optionsTable["statistic-mainline"]
+	elseif Memento.FLAVOR_IS_MISTS then
+		statistic = Memento.optionsTable["statistic-mists"]
 	elseif Memento.FLAVOR_IS_CATA then
 		statistic = Memento.optionsTable["statistic-cata"]
 	elseif Memento.FLAVOR_IS_VANILLA then
@@ -44,6 +49,10 @@ local function SetupOptions(self)
 		options.args.achievement =  Memento.optionsTable["eventAchievement-mainline"]
 		options.args.encounter = Memento.optionsTable["eventEncounter-mainline"]
 		options.args.pvp = Memento.optionsTable["eventPvP-mainline"]
+	elseif Memento.FLAVOR_IS_MISTS then
+		options.args.achievement =  Memento.optionsTable["eventAchievement-mists"]
+		options.args.encounter = Memento.optionsTable["eventEncounter-mists"]
+		options.args.pvp = Memento.optionsTable["eventPvP-mists"]
 	elseif Memento.FLAVOR_IS_CATA then
 		options.args.achievement =  Memento.optionsTable["eventAchievement-cata"]
 		options.args.encounter = Memento.optionsTable["eventEncounter-cata"]

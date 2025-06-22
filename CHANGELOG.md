@@ -4,5 +4,5 @@
 
 **Important note: A completely revised version of the addon will be released in the next few weeks. Keep an eye out for the alpha version and feel free to help me with testing.**
 
-- Removed: TOC version for patch 11.1.5 (Retail)
+- Added: Support for Mists of Pandaria Classic [Mists]
 - Deprecated: The screenshot statistics [all versions]

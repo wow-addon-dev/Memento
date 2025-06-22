@@ -35,7 +35,7 @@ function Memento:PrintDebug(msg)
     if self.db.profile.options.debug then
         local notfound = true
 
-        for i = 1, NUM_CHAT_WINDOWS do 
+        for i = 1, NUM_CHAT_WINDOWS do
             local name, _, _, _, _, _, shown, locked, docked, uni = GetChatWindowInfo(i)
 
             if name == "Debug" and docked ~= nil then
@@ -57,7 +57,7 @@ function Memento:PrintStatistic()
     if self.db.profile.options.notification then
         local msg = Memento_MarkNormalFont("Memento: ") .. L["statistic.screenshots.description"] .. "\n"
 
-        if Memento.FLAVOR_IS_MAINLINE or Memento.FLAVOR_IS_CATA then
+        if Memento.FLAVOR_IS_MAINLINE or Memento.FLAVOR_IS_CATA or Memento.FLAVOR_IS_MISTS then
             msg = msg .. Memento_MarkGoldFont(L["statistic.screenshots.achievement.personal"] .. ": ") .. self.dbStatstic.global.events.achievement.personal.count .. " (" .. self.dbStatstic.char.events.achievement.personal.count .. ")\n"
         end
 
@@ -65,7 +65,7 @@ function Memento:PrintStatistic()
             msg = msg .. Memento_MarkGoldFont(L["statistic.screenshots.achievement.criteria"] .. ": ") .. self.dbStatstic.global.events.achievement.criteria.count .. " (" .. self.dbStatstic.char.events.achievement.criteria.count .. ")\n"
         end
 
-        if Memento.FLAVOR_IS_MAINLINE or Memento.FLAVOR_IS_CATA then
+        if Memento.FLAVOR_IS_MAINLINE or Memento.FLAVOR_IS_CATA or Memento.FLAVOR_IS_MISTS then
             msg = msg .. Memento_MarkGoldFont(L["statistic.screenshots.achievement.guild"] .. ": ") .. self.dbStatstic.global.events.achievement.guild.count .. " (" .. self.dbStatstic.char.events.achievement.guild.count .. ")\n"
         end
 

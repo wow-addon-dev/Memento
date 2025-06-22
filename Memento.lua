@@ -65,7 +65,7 @@ function Memento:OnInitialize()
 
     self:PrintDebug("Event 'TIME_PLAYED_MSG' registered.")
 
-    if Memento.FLAVOR_IS_MAINLINE or Memento.FLAVOR_IS_CATA then
+    if Memento.FLAVOR_IS_MAINLINE or Memento.FLAVOR_IS_CATA or Memento.FLAVOR_IS_MISTS then
         self:RegisterEvent(
             "ACHIEVEMENT_EARNED",
             function(_, achievementID, alreadyEarned)

@@ -4,5 +4,5 @@
 
 **Important note: A completely revised version of the addon will be released in the next few weeks. Keep an eye out for the alpha version and feel free to help me with testing.**
 
-- Added: Support for Mists of Pandaria Classic [Mists]
 - Deprecated: The screenshot statistics [all versions]
+- Minor code adjustments [all versions]

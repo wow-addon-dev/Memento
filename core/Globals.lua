@@ -2,10 +2,12 @@ local addonName, Memento = ...
 
 Memento.MEDIA_PATH = "Interface\\AddOns\\" .. addonName .. "\\media\\"
 
-Memento.FLAVOR_IS_MAINLINE = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE
-Memento.FLAVOR_IS_MISTS = WOW_PROJECT_ID == WOW_PROJECT_MISTS_CLASSIC
-Memento.FLAVOR_IS_CATA = WOW_PROJECT_ID == WOW_PROJECT_CATACLYSM_CLASSIC
-Memento.FLAVOR_IS_VANILLA = WOW_PROJECT_ID == WOW_PROJECT_CLASSIC
+local flavor = C_AddOns.GetAddOnMetadata(addonName, "X-Flavor")
+
+Memento.FLAVOR_IS_MAINLINE = flavor == "Retail"
+Memento.FLAVOR_IS_MISTS = flavor == "Mists"
+Memento.FLAVOR_IS_CATA = flavor == "Cata"
+Memento.FLAVOR_IS_VANILLA = flavor == "Classic"
 
 Memento.COLOR_NORMAL_FONT = "ffFFD200"
 Memento.COLOR_WHITE_FONT = "ffFFFFFF"

@@ -16,8 +16,8 @@ L["info.description.content_1"] = "Memento is an addon that automatically takes 
 L["info.description.content_2"] = "* Achievements are not available in 'Classic' and arena & battleground screenshots are currently only implemented for 'Retail'"
 
 L["info.about"] = "About"
-L["info.about.addon-version"] = "Addon version"
-L["info.about.game-version"] = "Game version"
+L["info.about.addon-version"] = "Addon Version"
+L["info.about.game-version"] = "Game Version"
 L["info.about.author"] = "Author"
 L["info.about.feedback"] = "To report bugs or give feedback on the addon, please use one of the following options."
 L["info.about.email.name"] = "E-Mail"

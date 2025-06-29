@@ -15,7 +15,6 @@
 ## AllowLoadGameType: cata
 ## SavedVariables: Memento_Options, Memento_Statistic_v2
 ## SavedVariablesPerCharacter: Memento_DataBossKill
-## OptionalDeps: Ace3, AceGUI-3.0_SFX-Widgets
 
 lib\lib.xml
 locale\locale.xml

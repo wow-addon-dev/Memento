@@ -1,3 +1,7 @@
+**v1.53 (2025-06-29)**
+- Deprecated: The screenshot statistics [all versions]
+- Minor code adjustments [all versions]
+
 **v1.52 (2025-06-26)**
 - Deprecated: The screenshot statistics [all versions]
 - Minor code adjustments [all versions]

@@ -15,7 +15,7 @@
 - Minor code adjustments [all versions]
 
 **v1.50 (2025-06-22)**
-- Added: Support for Mists of Pandaria Classic [Mists]
+- Added: Support for 'Mists of Pandaria - Classic'
 - Deprecated: The screenshot statistics [all versions]
 
 **v1.49 (2025-06-18)**

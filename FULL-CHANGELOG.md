@@ -1,3 +1,7 @@
+**v1.55 (2025-07-06)**
+- Removed: Support for 'Cataclysm - Classic'
+- Deprecated: The screenshot statistics [all versions]
+
 **v1.54 (2025-07-01)**
 - Deprecated: The screenshot statistics [all versions]
 - Minor code adjustments [all versions]

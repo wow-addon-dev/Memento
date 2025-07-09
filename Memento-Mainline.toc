@@ -1,4 +1,4 @@
-## Interface: 110107
+## Interface: 110200, 110107
 ## Title: Memento
 ## Author: diomsg (Diom-Antonidas EU)
 ## Version: @project-version@

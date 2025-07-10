@@ -1,3 +1,7 @@
+**v1.56 (2025-07-10)**
+- Added: TOC version for patch 11.2.0 [retail]
+- Deprecated: The screenshot statistics [all versions]
+
 **v1.55 (2025-07-06)**
 - Removed: Support for 'Cataclysm - Classic'
 - Deprecated: The screenshot statistics [all versions]

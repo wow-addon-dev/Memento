@@ -27,7 +27,7 @@
 - Deprecated: The screenshot statistics [all versions]
 
 **v1.49 (2025-06-18)**
-- Removed: TOC version for patch 11.1.5 (Retail)
+- Removed: TOC version for patch 11.1.5 [retail]
 - Deprecated: The screenshot statistics [all versions]
 
 **v1.48 (2025-06-07)**
@@ -35,7 +35,7 @@
 - Minor code adjustments [all versions]
 
 **v1.47 (2025-06-02)**
-- Added: TOC version for patch 11.1.7 (Retail)
+- Added: TOC version for patch 11.1.7 [retail]
 - Minor code adjustments [all versions]
 
 **v1.46 (2025-05-30)**

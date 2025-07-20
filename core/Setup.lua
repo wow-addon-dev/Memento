@@ -9,16 +9,12 @@ local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 local function SetupDatabase(self)
 	if Memento.FLAVOR_IS_MAINLINE then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-mainline"], true)
-		self.dbStatstic = LibStub("AceDB-3.0"):New("Memento_Statistic_v2", Memento.defaults["statistic-mainline"], true)
 	elseif Memento.FLAVOR_IS_MISTS then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-mists"], true)
-		self.dbStatstic = LibStub("AceDB-3.0"):New("Memento_Statistic_v2", Memento.defaults["statistic-mists"], true)
 	elseif Memento.FLAVOR_IS_CATA then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-cata"], true)
-		self.dbStatstic = LibStub("AceDB-3.0"):New("Memento_Statistic_v2", Memento.defaults["statistic-cata"], true)
 	elseif Memento.FLAVOR_IS_VANILLA then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-vanilla"], true)
-		self.dbStatstic = LibStub("AceDB-3.0"):New("Memento_Statistic_v2", Memento.defaults["statistic-vanilla"], true)
 	end
 
 	if (not Memento_DataBossKill) then
@@ -31,17 +27,6 @@ local function SetupOptions(self)
 	local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
 	local info = Memento.optionsTable["info"]
-	local statistic
-
-	if Memento.FLAVOR_IS_MAINLINE then
-		statistic = Memento.optionsTable["statistic-mainline"]
-	elseif Memento.FLAVOR_IS_MISTS then
-		statistic = Memento.optionsTable["statistic-mists"]
-	elseif Memento.FLAVOR_IS_CATA then
-		statistic = Memento.optionsTable["statistic-cata"]
-	elseif Memento.FLAVOR_IS_VANILLA then
-		statistic = Memento.optionsTable["statistic-vanilla"]
-	end
 
 	local options = Memento.optionsTable["options"]
 
@@ -73,12 +58,10 @@ local function SetupOptions(self)
 
 	AceConfig:RegisterOptionsTable(addonName, info)
 	AceConfig:RegisterOptionsTable("Options", options)
-	AceConfig:RegisterOptionsTable("Statistic", statistic)
     AceConfig:RegisterOptionsTable("Profiles", profiles)
 
 	AceConfigDialog:AddToBlizOptions(addonName, addonName)
 	AceConfigDialog:AddToBlizOptions("Options", L["options"], addonName)
-	AceConfigDialog:AddToBlizOptions("Statistic", L["statistic"], addonName)
     AceConfigDialog:AddToBlizOptions("Profiles", L["profiles"], addonName)
 end
 

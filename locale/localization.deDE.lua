@@ -30,7 +30,7 @@ L["info.about.github.desc"] = "Öffnet ein Popup-Fenster mit einem Link nach Git
 L["info.about.github.popup"] = "Um den Link zu kopieren drücke STRG + C."
 
 L["info.help"] = "Hilfe"
-L["info.help.description"] = "Bei Problemen nach einem Update oder wenn Du es möchtest, kannst Du hier die Einstellungen und Statistiken zurücksetzen."
+L["info.help.description"] = "Bei Problemen nach einem Update oder wenn Du es möchtest, kannst Du hier die Einstellungen zurücksetzen."
 L["info.help.options.name"] = "Einstellungen zurücksetzen"
 L["info.help.options.desc"] = "Setzt die Einstellungen auf die Standardwerte zurück. Dies gilt für alle Charaktere."
 L["info.help.options.confirmText"] = "Sollen die Einstellungen wirklich zurückgesetzt werden?"

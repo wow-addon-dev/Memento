@@ -28,7 +28,7 @@ L["info.about.github.desc"] = "Opens a popup window with a link to Github."
 L["info.about.github.popup"] = "To copy the link press CTRL + C."
 
 L["info.help"] = "Help"
-L["info.help.description"] = "In case of problems after an update or if you want to, you can reset the settings and statistics here."
+L["info.help.description"] = "In case of problems after an update or if you want to, you can reset the settings here."
 L["info.help.options.name"] = "Reset options"
 L["info.help.options.desc"] = "Resets the options to the default values. This applies to all characters."
 L["info.help.options.confirmText"] = "Do you really want to reset the options?"

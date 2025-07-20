@@ -10,7 +10,6 @@ Memento.defaults["options-mainline"] = {
                 class = false,
                 timePlayed = false
             },
-			statistic = false,
 			ui = false,
 			debug = false
 		},
@@ -82,101 +81,6 @@ Memento.defaults["options-mainline"] = {
     }
 }
 
-Memento.defaults["statistic-mainline"] = {
-	char = {
-		events = {
-            achievement = {
-                personal = {
-                    count = 0
-                },
-                criteria = {
-                    count = 0
-                },
-                guild = {
-                    count = 0
-                }
-            },
-			encounter = {
-				victory = {
-					count = 0
-				},
-				wipe = {
-					count = 0
-				}
-            },
-            pvp = {
-                duel = {
-                    count = 0
-                },
-                arena = {
-                    count = 0
-                },
-                battleground = {
-                    count = 0
-                },
-                brawl = {
-                    count = 0
-                }
-            },
-            levelUp = {
-				count = 0
-            },
-            death = {
-				count = 0
-            },
-			login = {
-				count = 0
-            }
-		}
-	},
-    global = {
-		events = {
-            achievement = {
-                personal = {
-                    count = 0
-                },
-                criteria = {
-                    count = 0
-                },
-                guild = {
-                    count = 0
-                }
-            },
-			encounter = {
-				victory = {
-					count = 0
-				},
-				wipe = {
-					count = 0
-				}
-            },
-            pvp = {
-                duel = {
-                    count = 0
-                },
-                arena = {
-                    count = 0
-                },
-                battleground = {
-                    count = 0
-                },
-                brawl = {
-                    count = 0
-                }
-            },
-            levelUp = {
-				count = 0
-            },
-            death = {
-				count = 0
-            },
-			login = {
-				count = 0
-            }
-		}
-    }
-}
-
 Memento.defaults["options-mists"] = {
     profile = {
         options = {
@@ -185,7 +89,6 @@ Memento.defaults["options-mists"] = {
                 class = false,
                 timePlayed = false
             },
-			statistic = false,
 			ui = false,
 			debug = false
 		},
@@ -233,77 +136,6 @@ Memento.defaults["options-mists"] = {
                 active = false,
                 timer = 5
 			}
-		}
-    }
-}
-
-Memento.defaults["statistic-mists"] = {
-	char = {
-		events = {
-			achievement = {
-                personal = {
-                    count = 0
-                },
-                guild = {
-                    count = 0
-                }
-            },
-			encounter = {
-				victory = {
-					count = 0
-				},
-				wipe = {
-					count = 0
-				}
-            },
-			pvp = {
-                duel = {
-                    count = 0
-                }
-            },
-            levelUp = {
-				count = 0
-            },
-            death = {
-				count = 0
-            },
-			login = {
-				count = 0
-            }
-		}
-	},
-    global = {
-		events = {
-			achievement = {
-                personal = {
-                    count = 0
-                },
-                guild = {
-                    count = 0
-                }
-            },
-			encounter = {
-				victory = {
-					count = 0
-				},
-				wipe = {
-					count = 0
-				}
-            },
-			pvp = {
-                duel = {
-                    count = 0
-                }
-            },
-            levelUp = {
-				count = 0
-            },
-            death = {
-				count = 0
-            },
-			login = {
-				count = 0
-            }
 		}
     }
 }
@@ -316,7 +148,6 @@ Memento.defaults["options-cata"] = {
                 class = false,
                 timePlayed = false
             },
-			statistic = false,
 			ui = false,
 			debug = false
 		},
@@ -368,77 +199,6 @@ Memento.defaults["options-cata"] = {
     }
 }
 
-Memento.defaults["statistic-cata"] = {
-	char = {
-		events = {
-			achievement = {
-                personal = {
-                    count = 0
-                },
-                guild = {
-                    count = 0
-                }
-            },
-			encounter = {
-				victory = {
-					count = 0
-				},
-				wipe = {
-					count = 0
-				}
-            },
-			pvp = {
-                duel = {
-                    count = 0
-                }
-            },
-            levelUp = {
-				count = 0
-            },
-            death = {
-				count = 0
-            },
-			login = {
-				count = 0
-            }
-		}
-	},
-    global = {
-		events = {
-			achievement = {
-                personal = {
-                    count = 0
-                },
-                guild = {
-                    count = 0
-                }
-            },
-			encounter = {
-				victory = {
-					count = 0
-				},
-				wipe = {
-					count = 0
-				}
-            },
-			pvp = {
-                duel = {
-                    count = 0
-                }
-            },
-            levelUp = {
-				count = 0
-            },
-            death = {
-				count = 0
-            },
-			login = {
-				count = 0
-            }
-		}
-    }
-}
-
 Memento.defaults["options-vanilla"] = {
     profile = {
         options = {
@@ -447,7 +207,6 @@ Memento.defaults["options-vanilla"] = {
                 class = false,
                 timePlayed = false
             },
-			statistic = false,
 			ui = false,
 			debug = false
 		},
@@ -484,61 +243,6 @@ Memento.defaults["options-vanilla"] = {
                 active = false,
                 timer = 5
 			}
-		}
-    }
-}
-
-Memento.defaults["statistic-vanilla"] = {
-	char = {
-		events = {
-			encounter = {
-				victory = {
-					count = 0
-				},
-				wipe = {
-					count = 0
-				}
-            },
-			pvp = {
-                duel = {
-                    count = 0
-                }
-            },
-            levelUp = {
-				count = 0
-            },
-            death = {
-				count = 0
-            },
-			login = {
-				count = 0
-            }
-		}
-	},
-    global = {
-		events = {
-			encounter = {
-				victory = {
-					count = 0
-				},
-				wipe = {
-					count = 0
-				}
-            },
-			pvp = {
-                duel = {
-                    count = 0
-                }
-            },
-            levelUp = {
-				count = 0
-            },
-            death = {
-				count = 0
-            },
-			login = {
-				count = 0
-            }
 		}
     }
 }

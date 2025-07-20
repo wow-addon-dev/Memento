@@ -58,26 +58,6 @@ Memento.optionsTable["info"] = {
 					end,
 					order = 0.13
 				},
-				SPACE_1 = {
-					name = "",
-					type = "description",
-					width = 0.2,
-					fontSize = "medium",
-					order = 0.14
-				},
-				statistic = {
-					name = L["info.help.statistic.name"],
-					type = "execute",
-					width = 1.2,
-					desc = L["info.help.statistic.desc"],
-					confirm = true,
-					confirmText = L["info.help.statistic.confirmText"],
-					func = function()
-						Memento.dbStatstic:ResetDB()
-						Memento:PrintMessage(L["chat.reset.statistic.success"])
-					end,
-					order = 0.15
-				},
 			},
 		},
 		about = {

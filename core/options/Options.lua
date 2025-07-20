@@ -63,19 +63,6 @@ Memento.optionsTable["options"] = {
 					order = 0.13
 				},
 				SEPARATOR_2 = Memento_GetStyleSeparator(0.14),
-				statistic = {
-					type = "toggle",
-					name = L["options.general.statistic.name"],
-					desc = L["options.general.statistic.desc"],
-					get = function()
-						return Memento.db.profile.options.statistic
-					end,
-					set = function(_, value)
-						Memento.db.profile.options.statistic = value
-					end,
-					width = "full",
-					order = 0.15
-				},
 				ui = {
 					type = "toggle",
 					name = L["options.general.ui.name"],

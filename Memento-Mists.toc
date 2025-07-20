@@ -13,7 +13,7 @@
 ## LoadOnDemand: 0
 ## DefaultState: enabled
 ## AllowLoadGameType: mists
-## SavedVariables: Memento_Options, Memento_Statistic_v2
+## SavedVariables: Memento_Options
 ## SavedVariablesPerCharacter: Memento_DataBossKill
 
 lib\lib.xml

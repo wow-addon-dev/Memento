@@ -298,10 +298,5 @@ function Memento:OnInitialize()
     )
 
     self:PrintDebug("Event 'PLAYER_LOGIN' registered.")
-
-    if self.db.profile.options.statistic then
-        self:PrintStatistic()
-    end
-
     self:PrintDebug("Addon fully loaded.")
 end

@@ -1,3 +1,6 @@
+**v1.59 (2025-08-02)**
+- Minor code adjustments [all versions]
+
 **v1.58 (2025-07-22)**
 - Updated: deDE, enUS, ruRU localization (#2 - Thanks to Hollicsh) [all versions]
 - Removed: The screenshot statistics [all versions]

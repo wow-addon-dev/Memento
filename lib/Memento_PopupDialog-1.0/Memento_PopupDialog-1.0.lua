@@ -14,8 +14,8 @@ StaticPopupDialogs.EXTERNAL_LINK = {
 	timeout = 0,
 	whileDead = true,
 	OnShow = function(self)
-		self.editBox:SetText(externalLink)
-		self.editBox:HighlightText()
+		self.EditBox:SetText(externalLink)
+		self.EditBox:HighlightText()
 	end,
 	EditBoxOnTextChanged = function(self)
 		self:SetText(externalLink)

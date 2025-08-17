@@ -4,4 +4,5 @@
 
 **Important note: A completely revised version of the addon will be released in the next few weeks. Keep an eye out for the alpha version and feel free to help me with testing.**
 
-- Removed: TOC version for patch 11.1.7 [retail]
+- Added: TOC version for patch 11.2.5 [retail]
+- Fixed: Error message when calling up the message box for the GitHub URL

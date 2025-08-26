@@ -1,6 +1,6 @@
 **v1.61 (2025-08-17)**
 - Added: TOC version for patch 11.2.5 [retail]
-- Fixed: Error message when calling up the message box for the GitHub URL
+- Fixed: Error message when calling up the message box for the GitHub URL [all versions]
 
 **v1.60 (2025-08-09)**
 - Removed: TOC version for patch 11.1.7 [retail]

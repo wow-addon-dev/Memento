@@ -1,3 +1,6 @@
+**v1.62 (2025-08-26)**
+- Minor code adjustments [all versions]
+
 **v1.61 (2025-08-17)**
 - Added: TOC version for patch 11.2.5 [retail]
 - Fixed: Error message when calling up the message box for the GitHub URL [all versions]

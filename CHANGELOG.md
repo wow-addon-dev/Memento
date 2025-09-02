@@ -4,4 +4,4 @@
 
 **Important note: A completely revised version of the addon will be released in the next few weeks. Keep an eye out for the alpha version and feel free to help me with testing.**
 
-- Minor code adjustments [all versions]
+- Added: TOC version for patch 5.5.1 [mists]

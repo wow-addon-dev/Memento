@@ -1,3 +1,6 @@
+**v1.64 (2025-09-07)**
+- Changed: Output of debug messages [all versions]
+
 **v1.63 (2025-09-02)**
 - Added: TOC version for patch 5.5.1 [mists]
 

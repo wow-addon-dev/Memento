@@ -1,7 +1,7 @@
 # Memento
 
-[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Expositum?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Expositum/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Expositum?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Expositum/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases)
 [![Static Badge](https://img.shields.io/badge/buy_me_a_coffe-donate-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/diomsg)
 
 *Capture the moments that matter.*

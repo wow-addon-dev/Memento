@@ -1,3 +1,6 @@
+**v1.65 (2025-09-21)**
+- Minor code adjustments [all versions]
+
 **v1.64 (2025-09-07)**
 - Changed: Output of debug messages [all versions]
 

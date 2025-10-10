@@ -1,3 +1,6 @@
+**v1.67 (2025-10-10)**
+- Removed: TOC version for patch 11.2.0 [retail]
+
 **v1.66 (2025-10-04)**
 - Removed: TOC version for patch 5.5.0 [mist of pandaria - classic]
 

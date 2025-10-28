@@ -11,7 +11,7 @@
 - Changed: Output of debug messages [all versions]
 
 **v1.63 (2025-09-02)**
-- Added: TOC version for patch 5.5.1 [mists]
+- Added: TOC version for patch 5.5.1 [mist of pandaria - classic]
 
 **v1.62 (2025-08-26)**
 - Minor code adjustments [all versions]

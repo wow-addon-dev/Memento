@@ -82,32 +82,4 @@ function Memento:TakeScreenshot(event)
 
         self:PrintDebug("Screenshot taken.")
     end
-
-    if event == Memento.EVENT_ACHIEVEMENT_EARNED_PERSONAL then
-        self:PrintDebug("Counter for 'ACHIEVEMENT_EARNED' (Personal) increased by one.")
-    elseif event == Memento.EVENT_ACHIEVEMENT_CRITERIA_EARNED then
-        self:PrintDebug("Counter for 'CRITERIA_EARNED' increased by one.")
-    elseif event == Memento.EVENT_ACHIEVEMENT_EARNED_GUILD then
-        self:PrintDebug("Counter for 'ACHIEVEMENT_EARNED' (Guild) increased by one.")
-    elseif event == Memento.EVENT_ENCOUNTER_END_VICTORY then
-        self:PrintDebug("Counter for 'ENCOUNTER_END' (Victory) increased by one.")
-    elseif event == Memento.EVENT_ENCOUNTER_END_WIPE then
-        self:PrintDebug("Counter for 'ENCOUNTER_END' (Wipe) increased by one.")
-    elseif event == Memento.EVENT_DUEL_FINISHED then
-        self:PrintDebug("Counter for 'DUEL_FINISHED' increased by one.")
-    elseif event == Memento.EVENT_PVP_MATCH_COMPLETE_ARENA then
-        self:PrintDebug("Counter for 'PVP_MATCH_COMPLETE' (Arena) increased by one.")
-    elseif event == Memento.EVENT_PVP_MATCH_COMPLETE_BATTLEGROUND then
-        self:PrintDebug("Counter for 'PVP_MATCH_COMPLETE' (Battleground) increased by one.")
-    elseif event == Memento.EVENT_PVP_MATCH_COMPLETE_BRAWL then
-        self:PrintDebug("Counter for 'PVP_MATCH_COMPLETE' (Brawl) increased by one.")
-    elseif event == Memento.EVENT_PLAYER_LEVEL_UP then
-        self:PrintDebug("Counter for 'PLAYER_LEVEL_UP' increased by one.")
-    elseif event == Memento.EVENT_PLAYER_DEAD then
-        self:PrintDebug("Counter for 'PLAYER_DEAD' increased by one.")
-    elseif event == Memento.EVENT_PLAYER_LOGIN then
-        self:PrintDebug("Counter for 'PLAYER_LOGIN' increased by one.")
-    else
-        self:PrintDebug("No counter was increased.")
-    end
 end

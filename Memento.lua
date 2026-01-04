@@ -182,6 +182,7 @@ function Memento:OnInitialize()
 
                 local isArena = C_PvP.IsArena()
                 local isBattleground = C_PvP.IsBattleground()
+				local isSoloRBG = C_PvP.IsSoloRBG()
                 local isInBrawl = C_PvP.IsInBrawl()
                 local playerFaction = UnitFactionGroup("player")
 
@@ -193,7 +194,7 @@ function Memento:OnInitialize()
                     else
                         self:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Arean) completed. No screenshot requested.")
                     end
-                elseif isBattleground then
+                elseif isBattleground or isSoloRBG then
                     if self.db.profile.events.pvp.battleground.active then
                         if self.db.profile.events.pvp.battleground.victory then
                             if (playerFaction == "Alliance" and winner == 1) or (playerFaction == "Horde" and winner == 0) then

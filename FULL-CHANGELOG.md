@@ -1,3 +1,6 @@
+**v1.71 (2026-01-04)**
+- Changed: A screenshot is now also taken if it is a 'Rated Battleground Blitz' (#4) [retail]
+
 **v1.70 (2025-12-18)**
 - Added: TOC version for patch 12.0.1 [retail]
 - Updated: Embedded library 'Ace3' (r1377)

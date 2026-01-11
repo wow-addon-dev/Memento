@@ -1,3 +1,7 @@
+**v1.72 (2026-01-11)**
+- Added: Support for 'Burning Crusade - Classic Anniversary Edition'
+- Minor code adjustments [all versions]
+
 **v1.71 (2026-01-04)**
 - Changed: A screenshot is now also taken if it is a 'Rated Battleground Blitz' (#4) [retail]
 

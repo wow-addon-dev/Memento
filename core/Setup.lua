@@ -85,7 +85,7 @@ end
 
 function Memento:SlashCommand(msg)
 	if not msg or msg:trim() == "" then
-        Settings.OpenToCategory(addonName)
+		--Settings.OpenToCategory(self.MAIN_CATEGORY_ID)
 	else
         self:PrintDebug("No arguments will be accepted.")
 	end

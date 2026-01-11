@@ -1,4 +1,4 @@
-## Interface: 50503
+## Interface: 20505
 ## Title: Memento
 ## Author: diomsg (Diom-Antonidas EU)
 
@@ -6,7 +6,7 @@
 ## IconTexture: Interface\AddOns\Memento\media\icon.blp
 ## LoadOnDemand: 0
 ## DefaultState: enabled
-## AllowLoadGameType: mists
+## AllowLoadGameType: tbc
 
 ## Notes: This addon automatically takes screenshots of meaningful gameplay events and personal milestones.
 ## Notes-deDE: Dieses Addon macht automatisch Screenshots von bedeutenden Spielereignissen und persönlichen Meilensteinen.
@@ -16,7 +16,7 @@
 ## SavedVariables: Memento_Options
 ## SavedVariablesPerCharacter: Memento_DataBossKill
 
-## X-Flavor: Mist of Pandaria - Classic
+## X-Flavor: Burning Crusade - Classic Anniversary Edition
 ## X-BuildDate: @build-date@
 ## X-E-Mail: feedback@wow-addon.dev
 ## X-Github: https://github.com/wow-addon-dev/memento
@@ -29,5 +29,3 @@ locale\locale.xml
 Memento.lua
 
 core\core.xml
-
-

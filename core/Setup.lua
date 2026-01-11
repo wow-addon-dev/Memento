@@ -7,13 +7,15 @@ local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 -----------------------
 
 local function SetupDatabase(self)
-	if Memento.FLAVOR_IS_MAINLINE then
+	if Memento.GAME_TYPE_MAINLINE then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-mainline"], true)
-	elseif Memento.FLAVOR_IS_MISTS then
+	elseif Memento.GAME_TYPE_MISTS then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-mists"], true)
-	elseif Memento.FLAVOR_IS_CATA then
+	elseif Memento.GAME_TYPE_CATA then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-cata"], true)
-	elseif Memento.FLAVOR_IS_VANILLA then
+	elseif Memento.GAME_TYPE_TBC then
+		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-tbc"], true)
+	elseif Memento.GAME_TYPE_VANILLA then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-vanilla"], true)
 	end
 
@@ -30,19 +32,22 @@ local function SetupOptions(self)
 
 	local options = Memento.optionsTable["options"]
 
-	if Memento.FLAVOR_IS_MAINLINE then
+	if Memento.GAME_TYPE_MAINLINE then
 		options.args.achievement =  Memento.optionsTable["eventAchievement-mainline"]
 		options.args.encounter = Memento.optionsTable["eventEncounter-mainline"]
 		options.args.pvp = Memento.optionsTable["eventPvP-mainline"]
-	elseif Memento.FLAVOR_IS_MISTS then
+	elseif Memento.GAME_TYPE_MISTS then
 		options.args.achievement =  Memento.optionsTable["eventAchievement-mists"]
 		options.args.encounter = Memento.optionsTable["eventEncounter-mists"]
 		options.args.pvp = Memento.optionsTable["eventPvP-mists"]
-	elseif Memento.FLAVOR_IS_CATA then
+	elseif Memento.GAME_TYPE_CATA then
 		options.args.achievement =  Memento.optionsTable["eventAchievement-cata"]
 		options.args.encounter = Memento.optionsTable["eventEncounter-cata"]
 		options.args.pvp = Memento.optionsTable["eventPvP-cata"]
-	elseif Memento.FLAVOR_IS_VANILLA then
+	elseif Memento.GAME_TYPE_TBC then
+		options.args.encounter = Memento.optionsTable["eventEncounter-tbc"]
+		options.args.pvp = Memento.optionsTable["eventPvP-tbc"]
+	elseif Memento.GAME_TYPE_VANILLA then
 		options.args.encounter = Memento.optionsTable["eventEncounter-vanilla"]
 		options.args.pvp = Memento.optionsTable["eventPvP-vanilla"]
 	end

@@ -199,6 +199,54 @@ Memento.defaults["options-cata"] = {
     }
 }
 
+Memento.defaults["options-tbc"] = {
+    profile = {
+        options = {
+            notification = {
+                active = true,
+                class = false,
+                timePlayed = false
+            },
+			ui = false,
+			debug = false
+		},
+		events = {
+			encounter = {
+				victory = {
+					party = true,
+					raid = true,
+					first = true,
+					timer = 2
+				},
+				wipe = {
+					party = true,
+					raid = true,
+					timer = 2
+				}
+			},
+			pvp = {
+                duel = {
+                    active = true,
+                    timer = 1
+                }
+            },
+            levelUp = {
+                active = true,
+                timer = 5
+            },
+            death = {
+                active = true,
+                instance = 0,
+                timer = 1
+            },
+			login = {
+                active = false,
+                timer = 5
+			}
+		}
+    }
+}
+
 Memento.defaults["options-vanilla"] = {
     profile = {
         options = {

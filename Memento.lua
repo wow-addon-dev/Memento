@@ -65,7 +65,7 @@ function Memento:OnInitialize()
 
     self:PrintDebug("Event 'TIME_PLAYED_MSG' registered.")
 
-    if Memento.FLAVOR_IS_MAINLINE or Memento.FLAVOR_IS_CATA or Memento.FLAVOR_IS_MISTS then
+    if Memento.GAME_TYPE_MAINLINE or Memento.GAME_TYPE_CATA or Memento.GAME_TYPE_MISTS then
         self:RegisterEvent(
             "ACHIEVEMENT_EARNED",
             function(_, achievementID, alreadyEarned)
@@ -96,7 +96,7 @@ function Memento:OnInitialize()
         self:PrintDebug("Event 'ACHIEVEMENT_EARNED' registered. (Retail / Cata)")
     end
 
-    if Memento.FLAVOR_IS_MAINLINE then
+    if Memento.GAME_TYPE_MAINLINE then
         self:RegisterEvent(
             "CRITERIA_EARNED",
             function(_, achievementID, description)
@@ -174,7 +174,7 @@ function Memento:OnInitialize()
 
     self:PrintDebug("Event 'DUEL_FINISHED' registered.")
 
-    if Memento.FLAVOR_IS_MAINLINE then
+    if Memento.GAME_TYPE_MAINLINE then
         self:RegisterEvent(
             "PVP_MATCH_COMPLETE",
             function(_, winner, duration)

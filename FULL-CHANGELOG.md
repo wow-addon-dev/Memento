@@ -1,3 +1,6 @@
+**v1.73 (2026-01-12)**
+- Minor code adjustments [all versions]
+
 **v1.72 (2026-01-11)**
 - Added: Support for 'Burning Crusade - Classic Anniversary Edition'
 - Minor code adjustments [all versions]

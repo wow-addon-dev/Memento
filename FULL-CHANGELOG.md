@@ -1,3 +1,6 @@
+**v1.77 (2026-02-03)**
+- Changed: The event for checking the login has been changed so that reloads are no longer detected as logins (#5) [all versions]
+
 **v1.76 (2026-01-24)**
 - Removed: TOC version for patch 11.2.7 [retail]
 

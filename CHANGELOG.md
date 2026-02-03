@@ -4,4 +4,4 @@
 
 **Important note: Due to a bug in patch 12.0.0 and higher, opening the option window via the command line is currently disabled.**
 
-- Removed: TOC version for patch 11.2.7 [retail]
+- Changed: The event for checking the login has been changed so that reloads are no longer detected as logins (#5) [all versions]

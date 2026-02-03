@@ -284,20 +284,20 @@ function Memento:OnInitialize()
     self:PrintDebug("Event 'PLAYER_DEAD' registered.")
 
     self:RegisterEvent(
-        "PLAYER_LOGIN",
-        function()
-            self:PrintDebug("Event 'PLAYER_LOGIN' fired. No payload.")
+        "PLAYER_ENTERING_WORLD",
+        function(_, isInitialLogin, isReloadingUi)
+            self:PrintDebug("Event 'PLAYER_ENTERING_WORLD' fired. Payload: isInitialLogin=" .. tostring(isInitialLogin) .. ", isReloadingUi=" .. tostring(isReloadingUi))
 
-            if self.db.profile.events.login.active then
+            if self.db.profile.events.login.active and isInitialLogin then
                 TimePlayed()
 
                 self:ScheduleTimer("LoginEventHandler", self.db.profile.events.login.timer + fixDelay)
             else
-                self:PrintDebug("Event 'PLAYER_LOGIN' completed. No screenshot requested.")
+                self:PrintDebug("Event 'PLAYER_ENTERING_WORLD' completed. No screenshot requested.")
             end
         end
     )
 
-    self:PrintDebug("Event 'PLAYER_LOGIN' registered.")
+    self:PrintDebug("Event 'PLAYER_ENTERING_WORLD' registered.")
     self:PrintDebug("Addon fully loaded.")
 end

@@ -76,3 +76,28 @@ function Memento:LoginEventHandler()
     self:PrintMessage(L["chat.event.login.new"])
     self:TakeScreenshot(Memento.EVENT_PLAYER_LOGIN)
 end
+
+function Memento:NewPetEventHandler()
+    self:PrintMessage(L["chat.event.warbandCollection.newPet.new"])
+    self:TakeScreenshot(Memento.EVENT_NEW_PET)
+end
+
+function Memento:NewMountEventHandler()
+    self:PrintMessage(L["chat.event.warbandCollection.newMount.new"])
+    self:TakeScreenshot(Memento.EVENT_NEW_MOUNT)
+end
+
+function Memento:NewToyEventHandler()
+    self:PrintMessage(L["chat.event.warbandCollection.newToy.new"])
+    self:TakeScreenshot(Memento.EVENT_NEW_TOY)
+end
+
+function Memento:NewRecipeEventHandler()
+    self:PrintMessage(L["chat.event.warbandCollection.newRecipe.new"])
+    self:TakeScreenshot(Memento.EVENT_NEW_RECIPE)
+end
+
+function Memento:IntervalEventHandler()
+    self:PrintMessage(L["chat.event.interval.new"])
+    self:TakeScreenshot(Memento.EVENT_INTERVAL)
+end

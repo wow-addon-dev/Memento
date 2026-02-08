@@ -18,16 +18,9 @@ Memento.timePlayedThisLevel = 0
 
 local fixDelay = 0.1
 local lastEventTime = 0
-local requestTimePlayed
-local orignalChatFrame = ChatFrame_DisplayTimePlayed
 
-ChatFrame_DisplayTimePlayed = function(...)
-	if requestTimePlayed then
-		requestTimePlayed = false
-	else
-		orignalChatFrame(...)
-	end
-end
+local minuteTicker
+local minutesPassed = 0
 
 -----------------------
 --- Local functions ---
@@ -38,9 +31,22 @@ local function TimePlayed()
 
     if currentTime - lastEventTime >= 5 and (Memento.db.profile.options.notification.class or Memento.db.profile.options.notification.timePlayed) then
         lastEventTime = currentTime
-        requestTimePlayed = true
 
         RequestTimePlayed()
+    end
+end
+
+local function CheckInterval()
+	Memento:PrintDebug("Timer triggered.")
+
+    minutesPassed = minutesPassed + 1
+
+    if minutesPassed >= Memento.db.profile.events.interval.timer and Memento.db.profile.events.interval.active then
+		TimePlayed()
+
+        Memento:ScheduleTimer("IntervalEventHandler", fixDelay)
+
+        minutesPassed = 0
     end
 end
 
@@ -284,12 +290,80 @@ function Memento:OnInitialize()
     self:PrintDebug("Event 'PLAYER_DEAD' registered.")
 
     self:RegisterEvent(
+        "NEW_PET_ADDED",
+        function(_, battlePetGUID)
+            self:PrintDebug("Event 'NEW_PET_ADDED' fired. Payload: battlePetGUID=" .. tostring(battlePetGUID))
+
+            if self.db.profile.events.warbandCollection.newPet.active then
+                TimePlayed()
+
+                self:ScheduleTimer("NewPetEventHandler", self.db.profile.events.warbandCollection.newPet.timer + fixDelay)
+            else
+                self:PrintDebug("Event 'NEW_PET_ADDED' completed. No screenshot requested.")
+            end
+        end
+    )
+
+	self:PrintDebug("Event 'NEW_PET_ADDED' registered.")
+
+    self:RegisterEvent(
+        "NEW_MOUNT_ADDED",
+        function(_, mountID)
+            self:PrintDebug("Event 'NEW_MOUNT_ADDED' fired. Payload: mountID=" .. tostring(mountID))
+
+            if self.db.profile.events.warbandCollection.newMount.active then
+                TimePlayed()
+
+                self:ScheduleTimer("NewMountEventHandler", self.db.profile.events.warbandCollection.newMount.timer + fixDelay)
+            else
+                self:PrintDebug("Event 'NEW_MOUNT_ADDED' completed. No screenshot requested.")
+            end
+        end
+    )
+
+	self:PrintDebug("Event 'NEW_MOUNT_ADDED' registered.")
+
+    self:RegisterEvent(
+        "NEW_TOY_ADDED",
+        function(_, itemID)
+            self:PrintDebug("Event 'NEW_TOY_ADDED' fired. Payload: itemID=" .. tostring(itemID))
+
+            if self.db.profile.events.warbandCollection.newToy.active then
+                TimePlayed()
+
+                self:ScheduleTimer("NewToyEventHandler", self.db.profile.events.warbandCollection.newToy.timer + fixDelay)
+            else
+                self:PrintDebug("Event 'NEW_TOY_ADDED' completed. No screenshot requested.")
+            end
+        end
+    )
+
+	self:PrintDebug("Event 'NEW_TOY_ADDED' registered.")
+
+    self:RegisterEvent(
+        "NEW_RECIPE_LEARNED",
+        function(_, recipeID, recipeLevel, baseRecipeID)
+            self:PrintDebug("Event 'NEW_RECIPE_LEARNED' fired. Payload: recipeID=" .. tostring(recipeID) .. ", recipeLevel=" .. tostring(recipeLevel) .. ", baseRecipeID=" .. tostring(baseRecipeID))
+
+            if self.db.profile.events.warbandCollection.newRecipe.active then
+                TimePlayed()
+
+                self:ScheduleTimer("NewRecipeEventHandler", self.db.profile.events.warbandCollection.newRecipe.timer + fixDelay)
+            else
+                self:PrintDebug("Event 'NEW_RECIPE_LEARNED' completed. No screenshot requested.")
+            end
+        end
+    )
+
+	self:PrintDebug("Event 'NEW_RECIPE_LEARNED' registered.")
+
+    self:RegisterEvent(
         "PLAYER_ENTERING_WORLD",
         function(_, isInitialLogin, isReloadingUi)
             self:PrintDebug("Event 'PLAYER_ENTERING_WORLD' fired. Payload: isInitialLogin=" .. tostring(isInitialLogin) .. ", isReloadingUi=" .. tostring(isReloadingUi))
 
             if self.db.profile.events.login.active and isInitialLogin then
-                TimePlayed()
+				TimePlayed()
 
                 self:ScheduleTimer("LoginEventHandler", self.db.profile.events.login.timer + fixDelay)
             else
@@ -299,5 +373,9 @@ function Memento:OnInitialize()
     )
 
     self:PrintDebug("Event 'PLAYER_ENTERING_WORLD' registered.")
+
+	minuteTicker = C_Timer.NewTicker(60, CheckInterval)
+	self:PrintDebug("Timer registered.")
+
     self:PrintDebug("Addon fully loaded.")
 end

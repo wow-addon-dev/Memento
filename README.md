@@ -14,6 +14,8 @@ Memento is an addon that automatically takes screenshots of meaningful gameplay 
 *   Level-up
 *   Player death
 *   Player login
+*   Warband Collections
+*	Regular Interval
 
 *\* Achievements are not available in 'Classic' and arena & battleground screenshots are currently only implemented for 'Retail'.*
 

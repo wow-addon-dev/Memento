@@ -13,6 +13,8 @@
     <Script file="options\EventLevelUp.lua" />
     <Script file="options\EventDeath.lua" />
     <Script file="options\EventLogin.lua" />
+	<Script file="options\EventWarbandCollection.lua" />
+	<Script file="options\EventInterval.lua" />
 
     <Script file="Setup.lua" />
     <Script file="Core.lua" />

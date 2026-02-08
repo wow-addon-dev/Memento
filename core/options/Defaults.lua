@@ -76,6 +76,28 @@ Memento.defaults["options-mainline"] = {
 			login = {
                 active = false,
                 timer = 5
+			},
+			warbandCollection = {
+			    newPet = {
+                    active = false,
+                    timer = 1
+                },
+                newMount = {
+                    active = false,
+                    timer = 1
+                },
+                newToy = {
+                    active = false,
+                    timer = 1
+                },
+                newRecipe = {
+                    active = false,
+                    timer = 1
+                }
+			},
+			interval = {
+                active = false,
+                timer = 5
 			}
 		}
     }
@@ -133,6 +155,28 @@ Memento.defaults["options-mists"] = {
                 timer = 1
             },
 			login = {
+                active = false,
+                timer = 5
+			},
+			warbandCollection = {
+			    newPet = {
+                    active = false,
+                    timer = 1
+                },
+                newMount = {
+                    active = false,
+                    timer = 1
+                },
+                newToy = {
+                    active = false,
+                    timer = 1
+                },
+                newRecipe = {
+                    active = false,
+                    timer = 1
+                }
+			},
+			interval = {
                 active = false,
                 timer = 5
 			}
@@ -194,6 +238,28 @@ Memento.defaults["options-cata"] = {
 			login = {
                 active = false,
                 timer = 5
+			},
+			warbandCollection = {
+			    newPet = {
+                    active = false,
+                    timer = 1
+                },
+                newMount = {
+                    active = false,
+                    timer = 1
+                },
+                newToy = {
+                    active = false,
+                    timer = 1
+                },
+                newRecipe = {
+                    active = false,
+                    timer = 1
+                }
+			},
+			interval = {
+                active = false,
+                timer = 5
 			}
 		}
     }
@@ -242,6 +308,28 @@ Memento.defaults["options-tbc"] = {
 			login = {
                 active = false,
                 timer = 5
+			},
+			warbandCollection = {
+			    newPet = {
+                    active = false,
+                    timer = 1
+                },
+                newMount = {
+                    active = false,
+                    timer = 1
+                },
+                newToy = {
+                    active = false,
+                    timer = 1
+                },
+                newRecipe = {
+                    active = false,
+                    timer = 1
+                }
+			},
+			interval = {
+                active = false,
+                timer = 5
 			}
 		}
     }
@@ -288,6 +376,28 @@ Memento.defaults["options-vanilla"] = {
                 timer = 1
             },
 			login = {
+                active = false,
+                timer = 5
+			},
+			warbandCollection = {
+			    newPet = {
+                    active = false,
+                    timer = 1
+                },
+                newMount = {
+                    active = false,
+                    timer = 1
+                },
+                newToy = {
+                    active = false,
+                    timer = 1
+                },
+                newRecipe = {
+                    active = false,
+                    timer = 1
+                }
+			},
+			interval = {
                 active = false,
                 timer = 5
 			}

@@ -55,6 +55,8 @@ local function SetupOptions(self)
 	options.args.levelUp = Memento.optionsTable["eventLevelUp"]
 	options.args.death = Memento.optionsTable["eventDeath"]
 	options.args.login = Memento.optionsTable["eventLogin"]
+	options.args.warbandCollection = Memento.optionsTable["eventWarbandCollection"]
+	options.args.interval = Memento.optionsTable["eventInterval"]
 
 	local profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 	profiles.confirm = true

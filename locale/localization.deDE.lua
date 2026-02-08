@@ -15,7 +15,8 @@ L["info.description.content_1"] = "Memento ist ein Addon, welches bei bestimmten
                                 .. "  • |c" .. eventColor .. "Stufenaufstieg|r\n"
                                 .. "  • |c" .. eventColor .. "Spielertod|r\n"
                                 .. "  • |c" .. eventColor .. "Spielerlogin|r\n"
-								.. "  • |c" .. eventColor .. "Kriegsmeutesammlungen|r\n\n"
+								.. "  • |c" .. eventColor .. "Kriegsmeutesammlungen|r\n"
+								.. "  • |c" .. eventColor .. "reguläres Intervall|r\n\n"
 L["info.description.content_2"] = "* Erfolge gibt es in 'Classic' nicht und Arena & Schlachtfeld Screenshots sind aktuell nur für 'Retail' umgesetzt"
 
 L["info.about"] = "Über"

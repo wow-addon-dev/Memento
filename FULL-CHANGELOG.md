@@ -1,3 +1,10 @@
+**v1.78 (2026-02-08)**
+- Added: New event 'New Pet' - A screenshot can now be taken automatically when you get a new or owned pet [all versions]
+- Added: New event 'New Mount' - A screenshot can now be taken automatically when you get a new mount [all versions]
+- Added: New event 'New Toy' - A screenshot can now be taken automatically when you get a new toy [all versions]
+- Added: New event 'New Recipe' - A screenshot can now be taken automatically when you get a new recipe [all versions]
+- Added: New event 'Regular Interval' - A screenshot can now be taken automatically after a specified time interval [all versions]
+
 **v1.77 (2026-02-03)**
 - Changed: The event for checking the login has been changed so that reloads are no longer detected as logins (#5) [all versions]
 

@@ -1,3 +1,6 @@
+**v1.79 (2026-02-09)**
+- Added: New event 'Completion Mythic+ Dungeons' - A screenshot can now be taken automatically when you complete a Mythic+ Dungeon [retail]
+
 **v1.78 (2026-02-08)**
 - Added: New event 'New Pet' - A screenshot can now be taken automatically when you get a new or owned pet [all versions]
 - Added: New event 'New Mount' - A screenshot can now be taken automatically when you get a new mount [all versions]

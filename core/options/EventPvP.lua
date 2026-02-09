@@ -2,7 +2,7 @@ local addonName, Memento = ...
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
-local orderID = 2.4
+local orderID = 2.14
 
 Memento.optionsTable = Memento.optionsTable or {}
 

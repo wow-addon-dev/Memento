@@ -15,6 +15,7 @@
     <Script file="options\EventLogin.lua" />
 	<Script file="options\EventWarbandCollection.lua" />
 	<Script file="options\EventInterval.lua" />
+	<Script file="options\EventMythic.lua" />
 
     <Script file="Setup.lua" />
     <Script file="Core.lua" />

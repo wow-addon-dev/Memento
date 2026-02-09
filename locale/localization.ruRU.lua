@@ -11,13 +11,14 @@ L["info.description"] = "Описание"
 L["info.description.content_1"] = "Memento — это аддон, который автоматически делает скриншоты при определенных событиях. На данный момент поддерживаются следующие события (планируется добавление новых):\n\n"
                                 .. "  • |c" .. eventColor .. "Достижения|r (личные достижения, выполненные критерии достижений и гильдейские достижения)*\n"
                                 .. "  • |c" .. eventColor .. "Бой с боссом|r (победа и поражение)\n"
-                                .. "  • |c" .. eventColor .. "Игрок против игрока|r (дуэль, арена, поле боя и потасовка)*\n"
+								.. "  • |c" .. eventColor .. "Completion Mythic+ Dungeons|r**\n"
+                                .. "  • |c" .. eventColor .. "Игрок против игрока|r (дуэль, арена, поле боя и потасовка)**\n"
                                 .. "  • |c" .. eventColor .. "Повышение уровня|r\n"
                                 .. "  • |c" .. eventColor .. "Смерть игрока|r\n"
                                 .. "  • |c" .. eventColor .. "Вход в игру|r\n"
 								.. "  • |c" .. eventColor .. "Warband Collections|r\n"
 								.. "  • |c" .. eventColor .. "Regular Interval|r\n\n"
-L["info.description.content_2"] = "* Достижения недоступны в 'Classic', а скриншоты арен и полей боя в данный момент реализованы только для 'Retail'."
+L["info.description.content_2"] = "* These events are not supported in 'Classic'. ** These events are only supported in 'Retail'."
 
 L["info.about"] = "Об аддоне"
 L["info.about.addon-version"] = "Версия аддона"
@@ -113,6 +114,8 @@ L["options.event.interval"] = "Regular Interval"
 L["options.event.interval.timer.name"] = "Interval"
 L["options.event.interval.timer.desc"] = "The time interval at which a screenshot is taken.\n\n|c" .. normalCoor .. "Default:|r 5 Minutes"
 
+L["options.event.mythic"] = "Mythic+ Dungeon"
+
 L["profiles"] = "Профили"
 
 L["chat.level.name"] = "Уровень"
@@ -138,5 +141,6 @@ L["chat.event.warbandCollection.newMount.new"] = "Screenshot taken - |c" .. even
 L["chat.event.warbandCollection.newToy.new"] = "Screenshot taken - |c" .. eventColor .. "New Toy|r"
 L["chat.event.warbandCollection.newRecipe.new"] = "Screenshot taken - |c" .. eventColor .. "New Recipe|r"
 L["chat.event.interval.new"] = "Screenshot taken - |c" .. eventColor .. "Regular Interval|r"
+L["chat.event.mythic.new"] = "Screenshot taken - |c" .. eventColor .. "Mythic+ Dungeon|r"
 
 L["screen.message"] = "Скриншот сделан"

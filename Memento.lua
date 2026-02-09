@@ -374,6 +374,25 @@ function Memento:OnInitialize()
 
     self:PrintDebug("Event 'PLAYER_ENTERING_WORLD' registered.")
 
+	if Memento.GAME_TYPE_MAINLINE then
+		self:RegisterEvent(
+			"CHALLENGE_MODE_COMPLETED",
+			function()
+				self:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' fired. No payload.")
+
+				if self.db.profile.events.mythic.active then
+					TimePlayed()
+
+					self:ScheduleTimer("MythicEventHandler", self.db.profile.events.mythic.timer + fixDelay)
+				else
+					self:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' completed. No screenshot requested.")
+				end
+			end
+		)
+
+		self:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' registered.")
+	end
+
 	minuteTicker = C_Timer.NewTicker(60, CheckInterval)
 	self:PrintDebug("Timer registered.")
 

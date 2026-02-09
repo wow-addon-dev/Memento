@@ -101,3 +101,8 @@ function Memento:IntervalEventHandler()
     self:PrintMessage(L["chat.event.interval.new"])
     self:TakeScreenshot(Memento.EVENT_INTERVAL)
 end
+
+function Memento:MythicEventHandler()
+    self:PrintMessage(L["chat.event.mythic.new"])
+    self:TakeScreenshot(Memento.EVENT_MYTHIC)
+end

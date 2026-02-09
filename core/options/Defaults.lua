@@ -98,6 +98,10 @@ Memento.defaults["options-mainline"] = {
 			interval = {
                 active = false,
                 timer = 5
+			},
+			mythic = {
+                active = false,
+                timer = 1
 			}
 		}
     }

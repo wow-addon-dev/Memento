@@ -36,6 +36,7 @@ local function SetupOptions(self)
 		options.args.achievement =  Memento.optionsTable["eventAchievement-mainline"]
 		options.args.encounter = Memento.optionsTable["eventEncounter-mainline"]
 		options.args.pvp = Memento.optionsTable["eventPvP-mainline"]
+		options.args.mythic = Memento.optionsTable["eventMythic-mainline"]
 	elseif Memento.GAME_TYPE_MISTS then
 		options.args.achievement =  Memento.optionsTable["eventAchievement-mists"]
 		options.args.encounter = Memento.optionsTable["eventEncounter-mists"]

@@ -11,13 +11,14 @@ L["info.description"] = "Beschreibung"
 L["info.description.content_1"] = "Memento ist ein Addon, welches bei bestimmten Events automatisch Screenshots erstellt. Die folgenden Events werden aktuell unterstützt (weitere sind geplant):\n\n"
                                 .. "  • |c" .. eventColor .. "Erfolge|r (persönliche Erfolge, erreichte Erfolgskriterien & Gildenerfolge)*\n"
                                 .. "  • |c" .. eventColor .. "Bosskampf|r (Sieg & Niederlage)\n"
-                                .. "  • |c" .. eventColor .. "Spieler vs. Spieler|r (Duell, Arena, Schlachtfeld & Rauferei)*\n"
+								.. "  • |c" .. eventColor .. "Abschluss Mythic+ Dungeons|r**\n"
+                                .. "  • |c" .. eventColor .. "Spieler vs. Spieler|r (Duell, Arena, Schlachtfeld & Rauferei)**\n"
                                 .. "  • |c" .. eventColor .. "Stufenaufstieg|r\n"
                                 .. "  • |c" .. eventColor .. "Spielertod|r\n"
                                 .. "  • |c" .. eventColor .. "Spielerlogin|r\n"
 								.. "  • |c" .. eventColor .. "Kriegsmeutesammlungen|r\n"
 								.. "  • |c" .. eventColor .. "reguläres Intervall|r\n\n"
-L["info.description.content_2"] = "* Erfolge gibt es in 'Classic' nicht und Arena & Schlachtfeld Screenshots sind aktuell nur für 'Retail' umgesetzt"
+L["info.description.content_2"] = "* Diese Events werden in 'Classic' nicht unterstützt. ** Diese Events werden nur in 'Retail' unterstützt."
 
 L["info.about"] = "Über"
 L["info.about.addon-version"] = "Addonversion"
@@ -113,6 +114,8 @@ L["options.event.interval"] = "reguläres Intervall"
 L["options.event.interval.timer.name"] = "Intervall"
 L["options.event.interval.timer.desc"] = "Das Zeitintervall, in dem ein Screenshot erstellt wird.\n\n|c" .. normalCoor .. "Standard:|r 5 Minuten"
 
+L["options.event.mythic"] = "Mythic+ Dungeon"
+
 L["profiles"] = "Profile"
 
 L["chat.level.name"] = "Stufe"
@@ -139,5 +142,6 @@ L["chat.event.warbandCollection.newMount.new"] = "Screenshot erstellt - |c" .. e
 L["chat.event.warbandCollection.newToy.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Spielzeug|r"
 L["chat.event.warbandCollection.newRecipe.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Rezept|r"
 L["chat.event.interval.new"] = "Screenshot erstellt - |c" .. eventColor .. "reguläres Intervall|r"
+L["chat.event.mythic.new"] = "Screenshot erstellt - |c" .. eventColor .. "Mythic+ Dungeon|r"
 
 L["screen.message"] = "Screenshot erstellt"

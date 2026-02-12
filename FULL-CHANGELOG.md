@@ -1,3 +1,6 @@
+**v1.80 (2026-02-12)**
+- Updated: deDE, enUS, ruRU localization [all versions]
+
 **v1.79 (2026-02-09)**
 - Added: New event 'Completion Mythic+ Dungeons' - A screenshot can now be taken automatically when you complete a Mythic+ Dungeon [retail]
 

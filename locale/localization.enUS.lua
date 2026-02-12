@@ -14,7 +14,7 @@ L["info.description.content_1"] = "Memento is an addon that automatically takes 
                                 .. "  • |c" .. eventColor .. "Level-Up|r\n"
                                 .. "  • |c" .. eventColor .. "Player Death|r\n"
                                 .. "  • |c" .. eventColor .. "Player Login|r\n"
-								.. "  • |c" .. eventColor .. "Warband Collections|r\n"
+								.. "  • |c" .. eventColor .. "Warband Collections|r (new pet, new mount, new toy or new recipe)\n"
 								.. "  • |c" .. eventColor .. "Regular Interval|r\n\n"
 L["info.description.content_2"] = "* These events are not supported in 'Classic'. ** These events are only supported in 'Retail'."
 

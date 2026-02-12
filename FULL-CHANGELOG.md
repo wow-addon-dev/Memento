@@ -35,8 +35,8 @@
 
 **v1.70 (2025-12-18)**
 - Added: TOC version for patch 12.0.1 [retail]
-- Updated: Embedded library 'Ace3' (r1377)
-- Updated: Embedded library 'AceGUI-3.0: SFX Widgets' (1.3.20)
+- Updated: Embedded library 'Ace3' (r1377) [all versions]
+- Updated: Embedded library 'AceGUI-3.0: SFX Widgets' (1.3.20) [all versions]
 - Removed: TOC version for patch 11.2.5 [retail]
 - Removed: TOC version for patch 5.5.2 [mist of pandaria - classic]
 

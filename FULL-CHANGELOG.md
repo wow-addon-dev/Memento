@@ -41,8 +41,8 @@
 - Removed: TOC version for patch 11.2.5 [retail]
 
 **v1.69 (2025-11-23)**
-- Added: TOC version for patch 12.0.0 [retail]
 - Added: TOC version for patch 5.5.3 [mist of pandaria - classic]
+- Added: TOC version for patch 12.0.0 [retail]
 - Removed: TOC version for patch 5.5.1 [mist of pandaria - classic]
 - Minor code adjustments [all versions]
 

@@ -1,3 +1,6 @@
+**v1.81 (2026-02-17)**
+- Removed: TOC version for patch 12.0.0 [retail]
+
 **v1.80 (2026-02-12)**
 - Updated: deDE, enUS, ruRU localization [all versions]
 

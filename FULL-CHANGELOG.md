@@ -1,3 +1,6 @@
+**v1.82 (2026-02-27)**
+- Updated: License
+
 **v1.81 (2026-02-17)**
 - Removed: TOC version for patch 12.0.0 [retail]
 

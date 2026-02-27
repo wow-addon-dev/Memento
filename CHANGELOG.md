@@ -4,4 +4,4 @@
 
 **Important note: Due to a bug in patch 12.0.0 and higher, opening the option window via the command line is currently disabled.**
 
-- Removed: TOC version for patch 12.0.0 [retail]
+- Updated: License

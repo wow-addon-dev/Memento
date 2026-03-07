@@ -1,3 +1,7 @@
+**v1.84 (2026-03-07)**
+- Updated: deDE localization [all versions]
+- Fixed: Opening the option window via the command line [all versions]
+
 **v1.83 (2026-03-07)**
 - Added: New event 'New Housing Item' - A screenshot can now be taken automatically when you get a new housing item [retail]
 - Updated: Embedded library 'Ace3' (r1390) [all versions]

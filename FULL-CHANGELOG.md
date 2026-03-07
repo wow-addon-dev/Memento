@@ -1,5 +1,6 @@
 **v1.83 (2026-03-07)**
-- Added: New event 'New Housing Item' - A screenshot can now be taken automatically when you get a new housing item [all versions]
+- Added: New event 'New Housing Item' - A screenshot can now be taken automatically when you get a new housing item [retail]
+- Updated: Embedded library 'Ace3' (r1390) [all versions]
 
 **v1.82 (2026-02-27)**
 - Updated: License

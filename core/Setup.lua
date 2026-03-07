@@ -65,7 +65,7 @@ local function SetupOptions(self)
 	AceConfig:RegisterOptionsTable("Options", options)
     AceConfig:RegisterOptionsTable("Profiles", profiles)
 
-	AceConfigDialog:AddToBlizOptions(addonName, addonName)
+	_, self.MAIN_CATEGORY_ID = AceConfigDialog:AddToBlizOptions(addonName, addonName)
 	AceConfigDialog:AddToBlizOptions("Options", L["options"], addonName)
     AceConfigDialog:AddToBlizOptions("Profiles", L["profiles"], addonName)
 end
@@ -85,7 +85,7 @@ end
 
 function Memento:SlashCommand(msg)
 	if not msg or msg:trim() == "" then
-
+		Settings.OpenToCategory(self.MAIN_CATEGORY_ID)
 	else
         self:PrintDebug("No arguments will be accepted.")
 	end

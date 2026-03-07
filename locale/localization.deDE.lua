@@ -16,7 +16,7 @@ L["info.description.content_1"] = "Memento ist ein Addon, welches bei bestimmten
                                 .. "  • |c" .. eventColor .. "Stufenaufstieg|r\n"
                                 .. "  • |c" .. eventColor .. "Spielertod|r\n"
                                 .. "  • |c" .. eventColor .. "Spielerlogin|r\n"
-								.. "  • |c" .. eventColor .. "Kriegsmeutesammlungen|r (neues Haustier, neues Reittier, neues Spielzeug oder neues Rezept)\n"
+								.. "  • |c" .. eventColor .. "Kriegsmeutesammlungen|r\n"
 								.. "  • |c" .. eventColor .. "reguläres Intervall|r\n\n"
 L["info.description.content_2"] = "* Diese Events werden in 'Classic' nicht unterstützt. ** Diese Events werden nur in 'Retail' unterstützt."
 
@@ -109,6 +109,7 @@ L["options.event.warbandCollection.newPet"] = "neues Haustier"
 L["options.event.warbandCollection.newMount"] = "neues Reittier"
 L["options.event.warbandCollection.newToy"] = "neues Spielzeug"
 L["options.event.warbandCollection.newRecipe"] = "neues Rezept"
+L["options.event.warbandCollection.newHousingItem"] = "New Housing Item"
 
 L["options.event.interval"] = "reguläres Intervall"
 L["options.event.interval.timer.name"] = "Intervall"
@@ -141,6 +142,7 @@ L["chat.event.warbandCollection.newPet.new"] = "Screenshot erstellt - |c" .. eve
 L["chat.event.warbandCollection.newMount.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Reittier|r"
 L["chat.event.warbandCollection.newToy.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Spielzeug|r"
 L["chat.event.warbandCollection.newRecipe.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Rezept|r"
+L["chat.event.warbandCollection.newHousingItem.new"] = "Screenshot erstellt - |c" .. eventColor .. "neuer Behausungsgegenstand|r"
 L["chat.event.interval.new"] = "Screenshot erstellt - |c" .. eventColor .. "reguläres Intervall|r"
 L["chat.event.mythic.new"] = "Screenshot erstellt - |c" .. eventColor .. "Mythic+ Dungeon|r"
 

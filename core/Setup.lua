@@ -11,8 +11,6 @@ local function SetupDatabase(self)
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-mainline"], true)
 	elseif Memento.GAME_TYPE_MISTS then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-mists"], true)
-	elseif Memento.GAME_TYPE_CATA then
-		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-cata"], true)
 	elseif Memento.GAME_TYPE_TBC then
 		self.db = LibStub("AceDB-3.0"):New("Memento_Options", Memento.defaults["options-tbc"], true)
 	elseif Memento.GAME_TYPE_VANILLA then
@@ -37,26 +35,25 @@ local function SetupOptions(self)
 		options.args.encounter = Memento.optionsTable["eventEncounter-mainline"]
 		options.args.pvp = Memento.optionsTable["eventPvP-mainline"]
 		options.args.mythic = Memento.optionsTable["eventMythic-mainline"]
+		options.args.warbandCollection = Memento.optionsTable["eventWarbandCollection-mainline"]
 	elseif Memento.GAME_TYPE_MISTS then
 		options.args.achievement =  Memento.optionsTable["eventAchievement-mists"]
 		options.args.encounter = Memento.optionsTable["eventEncounter-mists"]
 		options.args.pvp = Memento.optionsTable["eventPvP-mists"]
-	elseif Memento.GAME_TYPE_CATA then
-		options.args.achievement =  Memento.optionsTable["eventAchievement-cata"]
-		options.args.encounter = Memento.optionsTable["eventEncounter-cata"]
-		options.args.pvp = Memento.optionsTable["eventPvP-cata"]
+		options.args.warbandCollection = Memento.optionsTable["eventWarbandCollection-mists"]
 	elseif Memento.GAME_TYPE_TBC then
 		options.args.encounter = Memento.optionsTable["eventEncounter-tbc"]
 		options.args.pvp = Memento.optionsTable["eventPvP-tbc"]
+		options.args.warbandCollection = Memento.optionsTable["eventWarbandCollection-tbc"]
 	elseif Memento.GAME_TYPE_VANILLA then
 		options.args.encounter = Memento.optionsTable["eventEncounter-vanilla"]
 		options.args.pvp = Memento.optionsTable["eventPvP-vanilla"]
+		options.args.warbandCollection = Memento.optionsTable["eventWarbandCollection-vanilla"]
 	end
 
 	options.args.levelUp = Memento.optionsTable["eventLevelUp"]
 	options.args.death = Memento.optionsTable["eventDeath"]
 	options.args.login = Memento.optionsTable["eventLogin"]
-	options.args.warbandCollection = Memento.optionsTable["eventWarbandCollection"]
 	options.args.interval = Memento.optionsTable["eventInterval"]
 
 	local profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
@@ -88,7 +85,7 @@ end
 
 function Memento:SlashCommand(msg)
 	if not msg or msg:trim() == "" then
-		--Settings.OpenToCategory(self.MAIN_CATEGORY_ID)
+
 	else
         self:PrintDebug("No arguments will be accepted.")
 	end

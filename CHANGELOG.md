@@ -4,4 +4,4 @@
 
 **Important note: Due to a bug in patch 12.0.0 and higher, opening the option window via the command line is currently disabled.**
 
-- Updated: License
+- Added: New event 'New Housing Item' - A screenshot can now be taken automatically when you get a new housing item [all versions]

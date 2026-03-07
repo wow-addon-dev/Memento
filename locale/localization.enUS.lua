@@ -14,7 +14,7 @@ L["info.description.content_1"] = "Memento is an addon that automatically takes 
                                 .. "  • |c" .. eventColor .. "Level-Up|r\n"
                                 .. "  • |c" .. eventColor .. "Player Death|r\n"
                                 .. "  • |c" .. eventColor .. "Player Login|r\n"
-								.. "  • |c" .. eventColor .. "Warband Collections|r (new pet, new mount, new toy or new recipe)\n"
+								.. "  • |c" .. eventColor .. "Warband Collections|r\n"
 								.. "  • |c" .. eventColor .. "Regular Interval|r\n\n"
 L["info.description.content_2"] = "* These events are not supported in 'Classic'. ** These events are only supported in 'Retail'."
 
@@ -107,6 +107,7 @@ L["options.event.warbandCollection.newPet"] = "New Pet"
 L["options.event.warbandCollection.newMount"] = "New Mount"
 L["options.event.warbandCollection.newToy"] = "New Toy"
 L["options.event.warbandCollection.newRecipe"] = "New Recipe"
+L["options.event.warbandCollection.newHousingItem"] = "New Housing Item"
 
 L["options.event.interval"] = "Regular Interval"
 L["options.event.interval.timer.name"] = "Interval"
@@ -138,6 +139,7 @@ L["chat.event.warbandCollection.newPet.new"] = "Screenshot taken - |c" .. eventC
 L["chat.event.warbandCollection.newMount.new"] = "Screenshot taken - |c" .. eventColor .. "New Mount|r"
 L["chat.event.warbandCollection.newToy.new"] = "Screenshot taken - |c" .. eventColor .. "New Toy|r"
 L["chat.event.warbandCollection.newRecipe.new"] = "Screenshot taken - |c" .. eventColor .. "New Recipe|r"
+L["chat.event.warbandCollection.newHousingItem.new"] = "Screenshot taken - |c" .. eventColor .. "New Housing Item|r"
 L["chat.event.interval.new"] = "Screenshot taken - |c" .. eventColor .. "Regular Interval|r"
 L["chat.event.mythic.new"] = "Screenshot taken - |c" .. eventColor .. "Mythic+ Dungeon|r"
 

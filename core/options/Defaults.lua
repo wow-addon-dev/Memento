@@ -93,6 +93,10 @@ Memento.defaults["options-mainline"] = {
                 newRecipe = {
                     active = false,
                     timer = 1
+                },
+                newHousingItem = {
+                    active = false,
+                    timer = 1
                 }
 			},
 			interval = {

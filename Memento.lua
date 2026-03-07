@@ -357,6 +357,25 @@ function Memento:OnInitialize()
 
 	self:PrintDebug("Event 'NEW_RECIPE_LEARNED' registered.")
 
+	if Memento.GAME_TYPE_MAINLINE then
+		self:RegisterEvent(
+			"NEW_HOUSING_ITEM_ACQUIRED",
+			function(_, itemType, itemName, icon)
+				self:PrintDebug("Event 'NEW_HOUSING_ITEM_ACQUIRED' fired. Payload: itemType=" .. tostring(itemType) .. ", itemName=" .. tostring(itemName) .. ", icon=" .. tostring(icon))
+
+				if self.db.profile.events.warbandCollection.newHousingItem.active then
+					TimePlayed()
+
+					self:ScheduleTimer("NewHousingItemEventHandler", self.db.profile.events.warbandCollection.newHousingItem.timer + fixDelay)
+				else
+					self:PrintDebug("Event 'NEW_HOUSING_ITEM_ACQUIRED' completed. No screenshot requested.")
+				end
+			end
+		)
+
+		self:PrintDebug("Event 'NEW_HOUSING_ITEM_ACQUIRED' registered.")
+	end
+
     self:RegisterEvent(
         "PLAYER_ENTERING_WORLD",
         function(_, isInitialLogin, isReloadingUi)

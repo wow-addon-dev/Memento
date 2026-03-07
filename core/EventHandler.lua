@@ -97,6 +97,11 @@ function Memento:NewRecipeEventHandler()
     self:TakeScreenshot(Memento.EVENT_NEW_RECIPE)
 end
 
+function Memento:NewHousingItemEventHandler()
+    self:PrintMessage(L["chat.event.warbandCollection.newHousingItem.new"])
+    self:TakeScreenshot(Memento.EVENT_NEW_HOUSING_ITEM)
+end
+
 function Memento:IntervalEventHandler()
     self:PrintMessage(L["chat.event.interval.new"])
     self:TakeScreenshot(Memento.EVENT_INTERVAL)

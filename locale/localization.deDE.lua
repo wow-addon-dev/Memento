@@ -109,7 +109,7 @@ L["options.event.warbandCollection.newPet"] = "neues Haustier"
 L["options.event.warbandCollection.newMount"] = "neues Reittier"
 L["options.event.warbandCollection.newToy"] = "neues Spielzeug"
 L["options.event.warbandCollection.newRecipe"] = "neues Rezept"
-L["options.event.warbandCollection.newHousingItem"] = "New Housing Item"
+L["options.event.warbandCollection.newHousingItem"] = "neuer Behausungsgegenstand"
 
 L["options.event.interval"] = "reguläres Intervall"
 L["options.event.interval.timer.name"] = "Intervall"

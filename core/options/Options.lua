@@ -62,7 +62,23 @@ Memento.optionsTable["options"] = {
 					width = "full",
 					order = 0.13
 				},
-				SEPARATOR_2 = Memento_GetStyleSeparator(0.14),
+				timestamp = {
+					type = "toggle",
+					name = L["options.general.notification.timestamp.name"],
+					desc = L["options.general.notification.timestamp.desc"],
+					disabled = function()
+						return not Memento.db.profile.options.notification.active
+					end,
+					get = function()
+						return Memento.db.profile.options.notification.timestamp
+					end,
+					set = function(_, value)
+						Memento.db.profile.options.notification.timestamp = value
+					end,
+					width = "full",
+					order = 0.14
+				},
+				SEPARATOR_2 = Memento_GetStyleSeparator(0.15),
 				ui = {
 					type = "toggle",
 					name = L["options.general.ui.name"],

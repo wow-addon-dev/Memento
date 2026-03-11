@@ -8,7 +8,8 @@ Memento.defaults["options-mainline"] = {
             notification = {
                 active = true,
                 class = false,
-                timePlayed = false
+                timePlayed = false,
+				timestamp = false
             },
 			ui = false,
 			debug = false
@@ -117,7 +118,8 @@ Memento.defaults["options-mists"] = {
             notification = {
                 active = true,
                 class = false,
-                timePlayed = false
+                timePlayed = false,
+				timestamp = false
             },
 			ui = false,
 			debug = false
@@ -198,7 +200,8 @@ Memento.defaults["options-cata"] = {
             notification = {
                 active = true,
                 class = false,
-                timePlayed = false
+                timePlayed = false,
+				timestamp = false
             },
 			ui = false,
 			debug = false
@@ -279,7 +282,8 @@ Memento.defaults["options-tbc"] = {
             notification = {
                 active = true,
                 class = false,
-                timePlayed = false
+                timePlayed = false,
+				timestamp = false
             },
 			ui = false,
 			debug = false
@@ -349,7 +353,8 @@ Memento.defaults["options-vanilla"] = {
             notification = {
                 active = true,
                 class = false,
-                timePlayed = false
+                timePlayed = false,
+				timestamp = false
             },
 			ui = false,
 			debug = false

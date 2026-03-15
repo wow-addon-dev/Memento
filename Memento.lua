@@ -289,56 +289,58 @@ function Memento:OnInitialize()
 
     self:PrintDebug("Event 'PLAYER_DEAD' registered.")
 
-    self:RegisterEvent(
-        "NEW_PET_ADDED",
-        function(_, battlePetGUID)
-            self:PrintDebug("Event 'NEW_PET_ADDED' fired. Payload: battlePetGUID=" .. tostring(battlePetGUID))
+	if Memento.GAME_TYPE_MAINLINE or Memento.GAME_TYPE_MISTS then
+		self:RegisterEvent(
+			"NEW_PET_ADDED",
+			function(_, battlePetGUID)
+				self:PrintDebug("Event 'NEW_PET_ADDED' fired. Payload: battlePetGUID=" .. tostring(battlePetGUID))
 
-            if self.db.profile.events.warbandCollection.newPet.active then
-                TimePlayed()
+				if self.db.profile.events.warbandCollection.newPet.active then
+					TimePlayed()
 
-                self:ScheduleTimer("NewPetEventHandler", self.db.profile.events.warbandCollection.newPet.timer + fixDelay)
-            else
-                self:PrintDebug("Event 'NEW_PET_ADDED' completed. No screenshot requested.")
-            end
-        end
-    )
+					self:ScheduleTimer("NewPetEventHandler", self.db.profile.events.warbandCollection.newPet.timer + fixDelay)
+				else
+					self:PrintDebug("Event 'NEW_PET_ADDED' completed. No screenshot requested.")
+				end
+			end
+		)
 
-	self:PrintDebug("Event 'NEW_PET_ADDED' registered.")
+		self:PrintDebug("Event 'NEW_PET_ADDED' registered.")
 
-    self:RegisterEvent(
-        "NEW_MOUNT_ADDED",
-        function(_, mountID)
-            self:PrintDebug("Event 'NEW_MOUNT_ADDED' fired. Payload: mountID=" .. tostring(mountID))
+		self:RegisterEvent(
+			"NEW_MOUNT_ADDED",
+			function(_, mountID)
+				self:PrintDebug("Event 'NEW_MOUNT_ADDED' fired. Payload: mountID=" .. tostring(mountID))
 
-            if self.db.profile.events.warbandCollection.newMount.active then
-                TimePlayed()
+				if self.db.profile.events.warbandCollection.newMount.active then
+					TimePlayed()
 
-                self:ScheduleTimer("NewMountEventHandler", self.db.profile.events.warbandCollection.newMount.timer + fixDelay)
-            else
-                self:PrintDebug("Event 'NEW_MOUNT_ADDED' completed. No screenshot requested.")
-            end
-        end
-    )
+					self:ScheduleTimer("NewMountEventHandler", self.db.profile.events.warbandCollection.newMount.timer + fixDelay)
+				else
+					self:PrintDebug("Event 'NEW_MOUNT_ADDED' completed. No screenshot requested.")
+				end
+			end
+		)
 
-	self:PrintDebug("Event 'NEW_MOUNT_ADDED' registered.")
+		self:PrintDebug("Event 'NEW_MOUNT_ADDED' registered.")
 
-    self:RegisterEvent(
-        "NEW_TOY_ADDED",
-        function(_, itemID)
-            self:PrintDebug("Event 'NEW_TOY_ADDED' fired. Payload: itemID=" .. tostring(itemID))
+		self:RegisterEvent(
+			"NEW_TOY_ADDED",
+			function(_, itemID)
+				self:PrintDebug("Event 'NEW_TOY_ADDED' fired. Payload: itemID=" .. tostring(itemID))
 
-            if self.db.profile.events.warbandCollection.newToy.active then
-                TimePlayed()
+				if self.db.profile.events.warbandCollection.newToy.active then
+					TimePlayed()
 
-                self:ScheduleTimer("NewToyEventHandler", self.db.profile.events.warbandCollection.newToy.timer + fixDelay)
-            else
-                self:PrintDebug("Event 'NEW_TOY_ADDED' completed. No screenshot requested.")
-            end
-        end
-    )
+					self:ScheduleTimer("NewToyEventHandler", self.db.profile.events.warbandCollection.newToy.timer + fixDelay)
+				else
+					self:PrintDebug("Event 'NEW_TOY_ADDED' completed. No screenshot requested.")
+				end
+			end
+		)
 
-	self:PrintDebug("Event 'NEW_TOY_ADDED' registered.")
+		self:PrintDebug("Event 'NEW_TOY_ADDED' registered.")
+	end
 
     self:RegisterEvent(
         "NEW_RECIPE_LEARNED",

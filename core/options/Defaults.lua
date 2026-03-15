@@ -194,88 +194,6 @@ Memento.defaults["options-mists"] = {
     }
 }
 
-Memento.defaults["options-cata"] = {
-    profile = {
-        options = {
-            notification = {
-                active = true,
-                class = false,
-                timePlayed = false,
-				timestamp = false
-            },
-			ui = false,
-			debug = false
-		},
-		events = {
-			achievement = {
-                personal = {
-                    active = true,
-					exist = false,
-                    timer = 2
-                },
-                guild = {
-                    active = true,
-                    timer = 2
-                }
-            },
-			encounter = {
-				victory = {
-					party = true,
-					raid = true,
-					first = true,
-					timer = 2
-				},
-				wipe = {
-					party = true,
-					raid = true,
-					timer = 2
-				}
-			},
-			pvp = {
-                duel = {
-                    active = true,
-                    timer = 1
-                }
-            },
-            levelUp = {
-                active = true,
-                timer = 5
-            },
-            death = {
-                active = true,
-                instance = 0,
-                timer = 1
-            },
-			login = {
-                active = false,
-                timer = 5
-			},
-			warbandCollection = {
-			    newPet = {
-                    active = false,
-                    timer = 1
-                },
-                newMount = {
-                    active = false,
-                    timer = 1
-                },
-                newToy = {
-                    active = false,
-                    timer = 1
-                },
-                newRecipe = {
-                    active = false,
-                    timer = 1
-                }
-			},
-			interval = {
-                active = false,
-                timer = 5
-			}
-		}
-    }
-}
-
 Memento.defaults["options-tbc"] = {
     profile = {
         options = {
@@ -322,18 +240,6 @@ Memento.defaults["options-tbc"] = {
                 timer = 5
 			},
 			warbandCollection = {
-			    newPet = {
-                    active = false,
-                    timer = 1
-                },
-                newMount = {
-                    active = false,
-                    timer = 1
-                },
-                newToy = {
-                    active = false,
-                    timer = 1
-                },
                 newRecipe = {
                     active = false,
                     timer = 1
@@ -393,18 +299,6 @@ Memento.defaults["options-vanilla"] = {
                 timer = 5
 			},
 			warbandCollection = {
-			    newPet = {
-                    active = false,
-                    timer = 1
-                },
-                newMount = {
-                    active = false,
-                    timer = 1
-                },
-                newToy = {
-                    active = false,
-                    timer = 1
-                },
                 newRecipe = {
                     active = false,
                     timer = 1

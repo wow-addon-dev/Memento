@@ -9,8 +9,8 @@ local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 function Memento:PrintMessage(msg)
     if self.db.profile.options.notification.active then
 		if self.db.profile.options.notification.timestamp then
-			local formattedTime = date("%H:%M:%S - %d.%m.%y")
-			DEFAULT_CHAT_FRAME:AddMessage(Memento_MarkNormalFont("Memento: ") .. msg .. " (" .. formattedTime .. ")")
+			local formattedTime = date("%d.%m.%y - %H:%M:%S")
+			DEFAULT_CHAT_FRAME:AddMessage(Memento_MarkNormalFont("Memento: ") .. msg .. " [" .. formattedTime .. "]")
 		else
 			DEFAULT_CHAT_FRAME:AddMessage(Memento_MarkNormalFont("Memento: ") .. msg)
 		end

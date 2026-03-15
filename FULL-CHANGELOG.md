@@ -23,9 +23,9 @@
 - Added: New event 'Completion Mythic+ Dungeons' - A screenshot can now be taken automatically when you complete a Mythic+ Dungeon [retail]
 
 **v1.78 (2026-02-08)**
-- Added: New event 'New Pet' - A screenshot can now be taken automatically when you get a new or owned pet
-- Added: New event 'New Mount' - A screenshot can now be taken automatically when you get a new mount
-- Added: New event 'New Toy' - A screenshot can now be taken automatically when you get a new toy
+- Added: New event 'New Pet' - A screenshot can now be taken automatically when you get a new or owned pet [mist of pandaria - classic] [retail]
+- Added: New event 'New Mount' - A screenshot can now be taken automatically when you get a new mount [mist of pandaria - classic] [retail]
+- Added: New event 'New Toy' - A screenshot can now be taken automatically when you get a new toy [mist of pandaria - classic] [retail]
 - Added: New event 'New Recipe' - A screenshot can now be taken automatically when you get a new recipe
 - Added: New event 'Regular Interval' - A screenshot can now be taken automatically after a specified time interval
 

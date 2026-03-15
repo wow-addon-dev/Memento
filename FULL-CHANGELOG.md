@@ -1,3 +1,7 @@
+**v1.85 (2026-03-15)**
+- Added: TOC version for patch 12.0.5 [retail]
+- Added: When a screenshot is taken, the current timestamp can also be displayed in the chat
+
 **v1.84 (2026-03-07)**
 - Updated: deDE localization
 - Fixed: Opening the option window via the command line

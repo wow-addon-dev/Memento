@@ -1,3 +1,6 @@
+**v1.86 (2026-03-26)**
+- Fixed: The options for the boss fight were no longer displayed [classic] [burning crusade - classic anniversary edition] [mist of pandaria - classic]
+
 **v1.85 (2026-03-15)**
 - Added: TOC version for patch 12.0.5 [retail]
 - Added: When a screenshot is taken, the current timestamp can also be displayed in the chat

@@ -181,7 +181,7 @@ Memento.optionsTable["eventWarbandCollection-mainline"] = {
 }
 
 
-Memento.optionsTable["eventEncounter-mists"] = {
+Memento.optionsTable["eventWarbandCollection-mists"] = {
 	name = L["options.event.warbandCollection"],
 	type = "group",
 	order = orderID,
@@ -322,7 +322,7 @@ Memento.optionsTable["eventEncounter-mists"] = {
 	}
 }
 
-Memento.optionsTable["eventEncounter-tbc"] = {
+Memento.optionsTable["eventWarbandCollection-tbc"] = {
 	name = L["options.event.warbandCollection"],
 	type = "group",
 	order = orderID,
@@ -364,7 +364,7 @@ Memento.optionsTable["eventEncounter-tbc"] = {
 	}
 }
 
-Memento.optionsTable["eventEncounter-vanilla"] = {
+Memento.optionsTable["eventWarbandCollection-vanilla"] = {
 	name = L["options.event.warbandCollection"],
 	type = "group",
 	order = orderID,

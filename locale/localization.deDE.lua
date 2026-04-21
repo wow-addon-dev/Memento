@@ -1,6 +1,38 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("Memento", "deDE")
+local _, MEM = ...
 
-if not L then return end
+if GetLocale() ~= "deDE" then return end
+
+local L = MEM.Localization
+
+-- Options
+
+L["options.general"] = "Allgemeine Einstellungen"
+L["options.general.notification.name"] = "Chat Notification"
+L["options.general.notification.tooltip"] = "Activate or deactivate the notification in the chat after a combat."
+L["options.general.minimap-button.name"] = "Minimap Button"
+L["options.general.minimap-button.tooltip"] = "Bei Aktivierung wird der Minimap Button angezeigt."
+
+L["options.currency-overview"] = "screenhsots"
+
+L["options.other"] = "Sonstige Einstellungen"
+L["options.other.debug-mode.name"] = "Debugmodus"
+L["options.other.debug-mode.tooltip"] = "Die Aktivierung des Debugmodus zeigt zusätzliche Informationen im Chat an."
+
+L["options.about"] = "Über"
+L["options.about.game-version"] = "Spielversion"
+L["options.about.addon-version"] = "Addonversion"
+L["options.about.lib-version"] = "Bibliotheksversion"
+L["options.about.author"] = "Autor"
+
+L["options.about.button-github.name"] = "Feedback & Hilfe"
+L["options.about.button-github.tooltip"] = "Öffnet ein Popup-Fenster mit einem Link nach GitHub."
+L["options.about.button-github.button"] = "GitHub"
+
+-- General
+
+L["minimap-button.tooltip"] = "|cnLINK_FONT_COLOR:Linksklick|r zum Öffnen der Gold- und Währungsübersicht.\n|cnLINK_FONT_COLOR:Rechtsklick|r zum Öffnen der Einstellungen."
+
+--- OLD ENTRIES - CAN BE DELETED IN THE FUTURE
 
 local eventColor = "ffF2E699"
 local normalCoor = "ffFFD200"

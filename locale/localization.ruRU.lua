@@ -1,6 +1,38 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("Memento", "ruRU")
+local _, MEM = ...
 
-if not L then return end
+if GetLocale() ~= "ruRU" then return end
+
+local L = MEM.Localization
+
+-- Options
+
+L["options.general"] = "Общие параметры"
+L["options.general.notification.name"] = "Chat Notification"
+L["options.general.notification.tooltip"] = "Activate or deactivate the notification in the chat after a combat."
+L["options.general.minimap-button.name"] = "Кнопка миникарты"
+L["options.general.minimap-button.tooltip"] = "При включении этой функции отображается кнопка миникарты."
+
+L["options.screenshots"] = "screenshots"
+
+L["options.other"] = "Другие настройки"
+L["options.other.debug-mode.name"] = "Режим отладки"
+L["options.other.debug-mode.tooltip"] = "Включение режима отладки отображает дополнительную информацию в чате."
+
+L["options.about"] = "Об аддоне"
+L["options.about.game-version"] = "Версия игры"
+L["options.about.addon-version"] = "Версия аддона"
+L["options.about.lib-version"] = "Версия библиотеки"
+L["options.about.author"] = "Автор"
+
+L["options.about.button-github.name"] = "Обратная связь и помощь"
+L["options.about.button-github.tooltip"] = "Открывает всплывающее окно со ссылкой на GitHub."
+L["options.about.button-github.button"] = "GitHub"
+
+-- General
+
+L["minimap-button.tooltip"] = "|cnLINK_FONT_COLOR:ЛКМ|r - открыть обзор золота и валюты.\n|cnLINK_FONT_COLOR:ПКМ|r - открыть настройки."
+
+--- OLD ENTRIES - CAN BE DELETED IN THE FUTURE
 
 local eventColor = "ffF2E699"
 local normalCoor = "ffFFD200"

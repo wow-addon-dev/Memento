@@ -30,10 +30,21 @@ Memento is an addon that automatically takes screenshots of meaningful gameplay 
 *   Supported languages: English, German, Russian
 *   Supported versions: 'Classic', 'Burning Crusade - Classic Anniversary Edition', 'Mists of Pandaria - Classic' and 'Retail'
 
-### Quick Start
+## Supported Languages & Flavors
 
-To open the addon option window, type `/memento` into your chat and hit enter.
+* Languages: English, German, Russian
+* Flavors: Classic, Burning Crusade - Classic Anniversary Edition, Mists of Pandaria - Classic, Retail
 
-### Translation Support
+## Installation & Quick Start
 
-If you would like to help me with the translation, I would be very pleased.
+> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Aurarium via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
+
+To open the addon options menu, type `/mem` or `/memento` into your chat and press enter.
+
+## Bugs & Feedback
+
+If you find a bug or have a suggestion, please use the GitHub Issues or the CurseForge comments.
+
+## Translation Support
+
+If you would like to localize this addon into other languages, your contribution would be very welcome. You can submit your translations directly via GitHub or use the [CurseForge Localization Tool](https://legacy.curseforge.com/wow/addons/memento/localization).

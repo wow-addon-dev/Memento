@@ -18,7 +18,7 @@ function Utils:PrintMessage(msg)
 	if MEM.options.general["notification"] then
 		if MEM.options.general["notification-timestamp"] then
 			local formattedTime = date("%d.%m.%y - %H:%M:%S")
-			DEFAULT_CHAT_FRAME:AddMessage(NORMAL_FONT_COLOR:WrapTextInColorCode(addonName .. ": ") .. " [" .. formattedTime .. "]")
+			DEFAULT_CHAT_FRAME:AddMessage(NORMAL_FONT_COLOR:WrapTextInColorCode(addonName .. ": ") .. msg .. " [" .. formattedTime .. "]")
 		else
 			DEFAULT_CHAT_FRAME:AddMessage(NORMAL_FONT_COLOR:WrapTextInColorCode(addonName .. ": ") .. msg)
 		end
@@ -29,7 +29,7 @@ function Utils:PrintMessage(msg)
         end
 
         if MEM.options.general["notification-time-played"] then
-            local seconds = Memento.totalTimePlayed
+            local seconds = MEM.var.totalTimePlayed
             local days = math.floor(seconds / 86400)
             seconds = seconds % 86400
 
@@ -39,7 +39,7 @@ function Utils:PrintMessage(msg)
             local minutes = math.floor(seconds / 60)
             seconds = seconds % 60
 
-            DEFAULT_CHAT_FRAME:AddMessage(NORMAL_FONT_COLOR:WrapTextInColorCode(addonName .. ": ") .. L["chat.notification.timePlayed"]:format(days, hours, minutes, seconds))
+            DEFAULT_CHAT_FRAME:AddMessage(NORMAL_FONT_COLOR:WrapTextInColorCode(addonName .. ": ") .. L["chat.notification.time-played"]:format(days, hours, minutes, seconds))
         end
 	end
 end
@@ -52,7 +52,7 @@ function Utils:InitializeDatabase()
 					["hide"] = false
 				}
 			},
-			["screenshots"] = {},
+			["event"] = {},
 			["other"] = {}
 		}
     end
@@ -63,7 +63,7 @@ function Utils:InitializeDatabase()
 
     MEM.options = {}
 	MEM.options.general = Memento_Options_v2["general"]
-    MEM.options.events = Memento_Options_v2["events"]
+    MEM.options.event = Memento_Options_v2["event"]
 	MEM.options.other = Memento_Options_v2["other"]
 
 	MEM.data = {}

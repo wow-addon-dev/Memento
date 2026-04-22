@@ -9,4 +9,5 @@
 - Added: Required dependency 'Arcane Wizard: Library'
 - Changed: License
 - Updated: Addon description
+- Removed: ruRU localization
 - Refactoring of the addon structure and source code

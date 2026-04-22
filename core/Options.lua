@@ -34,8 +34,10 @@ function Options:Initialize()
     local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
 
 	local variableTableGeneral = MEM.options.general
-	local variableTableCombatTimeTracker = MEM.options.combatTimeTracker
+	local variableTableEvent = MEM.options.event
 	local variableTableOther = MEM.options.other
+
+	local parentCheckboxNotification
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
 
@@ -44,6 +46,49 @@ function Options:Initialize()
         local tooltip = L["options.general.notification.tooltip"]
         local variable = "notification"
         local defaultValue = true
+
+        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
+        parentCheckboxNotification = Settings.CreateCheckbox(category, setting, tooltip)
+    end
+
+	do
+        local name = L["options.general.notification-timestamp.name"]
+        local tooltip = L["options.general.notification-timestamp.tooltip"]
+        local variable = "notification-timestamp"
+        local defaultValue = false
+
+        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
+        local checkbox = Settings.CreateCheckbox(category, setting, tooltip)
+		checkbox:SetParentInitializer(parentCheckboxNotification, function() return MEM.options.general["notification"] end)
+    end
+
+	do
+        local name = L["options.general.notification-class.name"]
+        local tooltip = L["options.general.notification-class.tooltip"]
+        local variable = "notification-class"
+        local defaultValue = false
+
+        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
+        local checkbox = Settings.CreateCheckbox(category, setting, tooltip)
+		checkbox:SetParentInitializer(parentCheckboxNotification, function() return MEM.options.general["notification"] end)
+    end
+
+	do
+        local name = L["options.general.notification-time-played.name"]
+        local tooltip = L["options.general.notification-time-played.tooltip"]
+        local variable = "notification-time-played"
+        local defaultValue = false
+
+        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
+        local checkbox = Settings.CreateCheckbox(category, setting, tooltip)
+		checkbox:SetParentInitializer(parentCheckboxNotification, function() return MEM.options.general["notification"] end)
+    end
+
+	do
+        local name = L["options.general.hide-ui.name"]
+        local tooltip = L["options.general.hide-ui.tooltip"]
+        local variable = "hide-ui"
+        local defaultValue = false
 
         local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
         Settings.CreateCheckbox(category, setting, tooltip)
@@ -60,8 +105,67 @@ function Options:Initialize()
         Settings.CreateCheckbox(category, setting, tooltip)
     end
 
-    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.screenshots"]))
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.event"]))
 
+	do
+		local nameCheckbox = L["options.event.login"]
+        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.login"])
+        local variableCheckbox = "login-active"
+        local defaultValueCheckbox = false
+
+        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, not defaultValueCheckbox)
+
+        local nameSlider = L["options.event.general.delay.name"]
+        local tooltipSlider = L["options.event.general.delay.tooltip"]:format(L["options.event.login"], 3)
+        local variableSlider = "login-delay"
+        local defaultValueSlider = 3
+
+        local minValue = 1
+        local maxValue = 10
+        local step = 1
+
+        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
+
+		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
+        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.seconds-short"] end)
+
+        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
+
+        layout:AddInitializer(initializer)
+	end
+
+	do
+		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelDivider", {
+			title = "dsfaasdfasd"
+		}))
+	end
+
+	do
+		local nameCheckbox = L["options.event.interval"]
+        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.interval"])
+        local variableCheckbox = "interval-active"
+        local defaultValueCheckbox = false
+
+        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, not defaultValueCheckbox)
+
+        local nameSlider = L["options.event.interval-timer.name"]
+        local tooltipSlider = L["options.event.interval-timer.tooltip"]
+        local variableSlider = "interval-timer"
+        local defaultValueSlider = 5
+
+        local minValue = 1
+        local maxValue = 60
+        local step = 1
+
+        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
+
+		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
+        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.minutes-short"] end)
+
+        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
+
+        layout:AddInitializer(initializer)
+	end
 
     layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.other"]))
 

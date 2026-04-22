@@ -3,9 +3,8 @@ local addonName, MEM = ...
 local L = MEM.Localization
 
 local Utils = MEM.Utils
-local Options = MEM.Options
 
-local Screenshots = {}
+local Capture = {}
 
 -----------------------
 --- Local Functions ---
@@ -38,7 +37,7 @@ local function CreateMessageFrame()
 end
 
 local function TakeScreenshot()
-    if self.db.profile.options.ui then
+    if MEM.options.general["hide-ui"] then
         if not InCombatLockdown() then
             local frame
 
@@ -81,23 +80,33 @@ local function TakeScreenshot()
     end
 end
 
+local function LoginEventHandler()
+    Utils:PrintMessage(L["chat.event.login.new"])
+    TakeScreenshot()
+end
+
 local function IntervalEventHandler ()
     Utils:PrintMessage(L["chat.event.interval.new"])
     TakeScreenshot()
 end
 
+local HandlerTable = {
+    ["IntervalEventHandler"] = IntervalEventHandler,
+    ["LoginEventHandler"] = LoginEventHandler
+}
+
 ---------------------
 --- Main Funtions ---
 ---------------------
 
-function Screenshots:ScheduleTimer(handler, delay)
+function Capture:ScheduleTimer(handler, delay)
 	C_Timer.After(delay, function()
-		if type(handler) == "function" then
-			handler(self)
-		else
-			Utils:PrintDebug("Handler '" .. handler .. "' not found.")
-		end
+		if HandlerTable[handler] then
+            HandlerTable[handler]()
+        else
+            Utils:PrintDebug("Handler '" .. tostring(handler) .. "' not found.")
+        end
 	end)
 end
 
-MEM.Screenshots = Screenshots
+MEM.Capture = Capture

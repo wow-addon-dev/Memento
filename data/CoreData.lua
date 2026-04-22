@@ -1,5 +1,11 @@
 local addonName, MEM = ...
 
+MEM.var = {}
+MEM.var.totalTimePlayed = 0
+MEM.var.timePlayedThisLevel = 0
+
+MEM.obj = {}
+
 MEM.ADDON_AUTHOR = C_AddOns.GetAddOnMetadata(addonName, "Author")
 MEM.ADDON_VERSION = C_AddOns.GetAddOnMetadata(addonName, "Version")
 MEM.ADDON_BUILD_DATE = C_AddOns.GetAddOnMetadata(addonName, "X-BuildDate")

@@ -7,12 +7,29 @@ local L = MEM.Localization
 -- Options
 
 L["options.general"] = "Allgemeine Einstellungen"
-L["options.general.notification.name"] = "Chat Notification"
-L["options.general.notification.tooltip"] = "Activate or deactivate the notification in the chat after a combat."
+L["options.general.notification.name"] = "Chatbenachrichtigung"
+L["options.general.notification.tooltip"] = "Aktiviere oder deaktiviere die Benachrichtung im Chat, wenn ein Screenshot erstellt wurde."
+L["options.general.notification-timestamp.name"] = "Chatausgabe mit Zeitstempel"
+L["options.general.notification-timestamp.tooltip"] = "Aktiviere oder deaktiviere die Chatausgabe mit Zeitstempel, wenn ein Screenshot erstellt wurde."
+L["options.general.notification-class.name"] = "Chatausgabe der Klasse"
+L["options.general.notification-class.tooltip"] = "Aktiviere oder deaktiviere die Chatausgabe der Klasse, wenn ein Screenshot erstellt wurde."
+L["options.general.notification-time-played.name"] = "Chatausgabe der Gesamtspielzeit"
+L["options.general.notification.time-played.tooltip"] = "Aktiviere oder deaktiviere die Chatausgabe der Gesamtspielzeit, wenn ein Screenshot erstellt wurde."
+L["options.general.hide-ui.name"] = "Benutzeroberfläche für den Screenshot ausblenden"
+L["options.general.hide-ui.tooltip"] = "Aktiviere oder deaktiviere die Option, dass die Benutzeroberfläche für den Screenshot ausgeblendet wird. Eine kleine Erfolgsanzeige wird stattdessen angezeigt.\n\nHinweis: Während eines Kampfes kann die Benutzeroberfläche nicht automatisch ausgeblendet werden. In diesem Fall wird der Screenshot mit der Benutzeroberfläche erstellt."
 L["options.general.minimap-button.name"] = "Minimap Button"
 L["options.general.minimap-button.tooltip"] = "Bei Aktivierung wird der Minimap Button angezeigt."
 
-L["options.currency-overview"] = "screenhsots"
+L["options.event"] = "Events"
+L["options.event.general.active.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots für das Event %s."
+L["options.event.general.delay.name"] = "Verzögerung"
+L["options.event.general.delay.tooltip"] = "Die zeitliche Verzögerung des Screenshots, nachdem das Event %s ausgelöst wurde.\n\nStandard: %d Sekunde(n)"
+
+L["options.event.login"] = "Spielerlogin"
+
+L["options.event.interval"] = "Reguläres Intervall"
+L["options.event.interval-timer.name"] = "Intervall"
+L["options.event.interval-timer.tooltip"] = "Das Zeitintervall, in dem ein Screenshot erstellt wird.\n\nStandard: 5 Minuten"
 
 L["options.other"] = "Sonstige Einstellungen"
 L["options.other.debug-mode.name"] = "Debugmodus"
@@ -32,68 +49,32 @@ L["options.about.button-github.button"] = "GitHub"
 
 L["minimap-button.tooltip"] = "|cnLINK_FONT_COLOR:Linksklick|r zum Öffnen der Gold- und Währungsübersicht.\n|cnLINK_FONT_COLOR:Rechtsklick|r zum Öffnen der Einstellungen."
 
+L["general.seconds-short"] = "Sek."
+L["general.minutes-short"] = "Min."
+
+-- Chat
+
+L["chat.notification.class"] = "Klasse: %s"
+L["chat.notification.time-played"] = "Gesamtspielzeit: %d Tage, %d Stunden, %d Minuten, %d Sekunden"
+
+L["chat.event.login.new"] = "Screenshot erstellt - |cffF2E699Spielerlogin|r"
+L["chat.event.interval.new"] = "Screenshot erstellt - |cffF2E699Reguläres Intervall|r"
+
+-- Capture
+
+L["capture.message"] = "Screenshot erstellt"
+
 --- OLD ENTRIES - CAN BE DELETED IN THE FUTURE
 
 local eventColor = "ffF2E699"
-local normalCoor = "ffFFD200"
 
-L["info"] = "Info"
 
-L["info.description"] = "Beschreibung"
-L["info.description.content_1"] = "Memento ist ein Addon, welches bei bestimmten Events automatisch Screenshots erstellt. Die folgenden Events werden aktuell unterstützt (weitere sind geplant):\n\n"
-                                .. "  • |c" .. eventColor .. "Erfolge|r (persönliche Erfolge, erreichte Erfolgskriterien & Gildenerfolge)*\n"
-                                .. "  • |c" .. eventColor .. "Bosskampf|r (Sieg & Niederlage)\n"
-								.. "  • |c" .. eventColor .. "Abschluss Mythic+ Dungeons|r**\n"
-                                .. "  • |c" .. eventColor .. "Spieler vs. Spieler|r (Duell, Arena, Schlachtfeld & Rauferei)**\n"
-                                .. "  • |c" .. eventColor .. "Stufenaufstieg|r\n"
-                                .. "  • |c" .. eventColor .. "Spielertod|r\n"
-                                .. "  • |c" .. eventColor .. "Spielerlogin|r\n"
-								.. "  • |c" .. eventColor .. "Kriegsmeutesammlungen|r\n"
-								.. "  • |c" .. eventColor .. "reguläres Intervall|r\n\n"
-L["info.description.content_2"] = "* Diese Events werden in 'Classic' nicht unterstützt. ** Diese Events werden nur in 'Retail' unterstützt."
 
-L["info.about"] = "Über"
-L["info.about.addon-version"] = "Addonversion"
-L["info.about.game-version"] = "Spielversion"
-L["info.about.author"] = "Autor"
-L["info.about.feedback"] = "Um Fehler zu melden oder Feedback zum Addon zu geben, nutze bitte eine der folgenden Möglichkeiten."
-L["info.about.email.name"] = "E-Mail"
-L["info.about.email.desc"] = "Öffnet ein Popup-Fenster mit einer E-Mailadresse."
-L["info.about.email.popup"] = "Um die E-Mail zu kopieren drücke STRG + C."
-L["info.about.github.name"] = "Github"
-L["info.about.github.desc"] = "Öffnet ein Popup-Fenster mit einem Link nach Github."
-L["info.about.github.popup"] = "Um den Link zu kopieren drücke STRG + C."
 
-L["info.help"] = "Hilfe"
-L["info.help.description"] = "Bei Problemen nach einem Update oder wenn Du es möchtest, kannst Du hier die Einstellungen zurücksetzen."
-L["info.help.options.name"] = "Einstellungen zurücksetzen"
-L["info.help.options.desc"] = "Setzt die Einstellungen auf die Standardwerte zurück. Dies gilt für alle Charaktere."
-L["info.help.options.confirmText"] = "Sollen die Einstellungen wirklich zurückgesetzt werden?"
-L["info.help.statistic.name"] = "Statistiken löschen"
-L["info.help.statistic.desc"] = "Löscht die aktuellen Statistiken. Dies gilt für alle Charaktere."
-L["info.help.statistic.confirmText"] = "Sollen die Statistiken wirklich gelöscht werden?"
 
-L["options"] = "Einstellungen"
-L["options.general"] = "allgemeine Einstellungen"
-L["options.general.notification.name"] = "Chatbenachrichtigung"
-L["options.general.notification.desc"] = "Aktiviere oder deaktiviere die Benachrichtung im Chat, wenn ein Screenshot erstellt wurde."
-L["options.general.notification.class.name"] = "Chatausgabe der Klasse"
-L["options.general.notification.class.desc"] = "Aktiviere oder deaktiviere die Chatausgabe der Klasse, wenn ein Screenshot erstellt wurde."
-L["options.general.notification.timestamp.name"] = "Chatausgabe mit Zeitstempel"
-L["options.general.notification.timestamp.desc"] = "Aktiviere oder deaktiviere die Chatausgabe mit Zeitstempel, wenn ein Screenshot erstellt wurde."
-L["options.general.notification.timePlayed.name"] = "Chatausgabe der Gesamtspielzeit"
-L["options.general.notification.timePlayed.desc"] = "Aktiviere oder deaktiviere die Chatausgabe der Gesamtspielzeit, wenn ein Screenshot erstellt wurde."
-L["options.general.statistic.name"] = "Statistikausgabe"
-L["options.general.statistic.desc"] = "Aktiviere oder deaktiviere die Statistikausgabe im Chat, nach dem Login."
-L["options.general.ui.name"] = "Benutzeroberfläche für den Screenshot ausblenden |T132049:0|t"
-L["options.general.ui.desc"] = "Aktiviere oder deaktiviere die Option, dass die Benutzeroberfläche für den Screenshot ausgeblendet wird. Eine kleine Erfolgsanzeige wird stattdessen angezeigt.\n\n|c" .. normalCoor .. "Hinweis:|r Während eines Kampfes kann die Benutzeroberfläche nicht automatisch ausgeblendet werden. In diesem Fall wird der Screenshot mit der Benutzeroberfläche erstellt."
-L["options.general.debug.name"] = "Debugmodus"
-L["options.general.debug.desc"] = "Aktiviere oder deaktiviere den Debugmodus."
 
-L["options.event.general.active.name"] = "Screenshot für das Event |c" .. eventColor .. "%s|r erstellen"
-L["options.event.general.active.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots für das Event |c" .. eventColor .. "%s|r."
-L["options.event.general.delay.name"] = "Verzögerung"
-L["options.event.general.delay.desc"] = "Die zeitliche Verzögerung des Screenshots, nachdem das Event |c" .. eventColor .. "%s|r ausgelöst wurde.\n\n|c" .. normalCoor .. "Standard:|r %d Sekunde(n)"
+
+
 
 L["options.event.achievement"] = "Erfolge"
 L["options.event.achievement.personal"] = "persönlicher Erfolg"
@@ -136,7 +117,7 @@ L["options.event.death.instance.option.0"] = "in- und außerhalb von Instanzen"
 L["options.event.death.instance.option.1"] = "nur innerhalb von Instanzen"
 L["options.event.death.instance.option.2"] = "nur außerhalb von Instanzen"
 
-L["options.event.login"] = "Spielerlogin"
+
 
 L["options.event.warbandCollection"] = "Kriegsmeutesammlungen"
 L["options.event.warbandCollection.newPet"] = "neues Haustier"
@@ -145,20 +126,15 @@ L["options.event.warbandCollection.newToy"] = "neues Spielzeug"
 L["options.event.warbandCollection.newRecipe"] = "neues Rezept"
 L["options.event.warbandCollection.newHousingItem"] = "neuer Behausungsgegenstand"
 
-L["options.event.interval"] = "reguläres Intervall"
-L["options.event.interval.timer.name"] = "Intervall"
-L["options.event.interval.timer.desc"] = "Das Zeitintervall, in dem ein Screenshot erstellt wird.\n\n|c" .. normalCoor .. "Standard:|r 5 Minuten"
+
 
 L["options.event.mythic"] = "Mythic+ Dungeon"
 
-L["profiles"] = "Profile"
+
 
 L["chat.level.name"] = "Stufe"
-L["chat.reset.options.success"] = "Einstellungen erfolgreich zurückgesetzt."
-L["chat.reset.statistic.success"] = "Statistik erfolgreich gelöscht."
-L["chat.notification.class"] = "Klasse: %s"
-L["chat.notification.timePlayed"] = "Gesamtspielzeit: %d Tage, %d Stunden, %d Minuten, %d Sekunden"
-L["chat.general.notification.timePlayed.desc"] = "Chatbenachrichtigung"
+
+
 L["chat.event.achievement.personal.new"] = "Screenshot erstellt - |c" .. eventColor .. "persönlicher Erfolg|r - %s"
 L["chat.event.achievement.personal.exist"] = "Screenshot erstellt - |c" .. eventColor .. "persönlicher Erfolg|r - %s (wurde bereits von einem anderen Charakter erzielt)"
 L["chat.event.achievement.criteria.new"] = "Screenshot erstellt - |c" .. eventColor .. "persönliches Erfolgskriterium|r - %s - %s"
@@ -171,13 +147,13 @@ L["chat.event.pvp.battleground.new"] = "Screenshot erstellt - |c" .. eventColor 
 L["chat.event.pvp.brawl.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Rauferei abgeschlossen|r"
 L["chat.event.levelUp.new"] = "Screenshot erstellt - |c" .. eventColor .. "Stufenaufstieg|r - %s"
 L["chat.event.death.new"] = "Screenshot erstellt - |c" .. eventColor .. "Spielertod|r"
-L["chat.event.login.new"] = "Screenshot erstellt - |c" .. eventColor .. "Spielerlogin|r"
+
 L["chat.event.warbandCollection.newPet.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Haustier|r"
 L["chat.event.warbandCollection.newMount.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Reittier|r"
 L["chat.event.warbandCollection.newToy.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Spielzeug|r"
 L["chat.event.warbandCollection.newRecipe.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Rezept|r"
 L["chat.event.warbandCollection.newHousingItem.new"] = "Screenshot erstellt - |c" .. eventColor .. "neuer Behausungsgegenstand|r"
-L["chat.event.interval.new"] = "Screenshot erstellt - |c" .. eventColor .. "reguläres Intervall|r"
+
 L["chat.event.mythic.new"] = "Screenshot erstellt - |c" .. eventColor .. "Mythic+ Dungeon|r"
 
-L["screen.message"] = "Screenshot erstellt"
+

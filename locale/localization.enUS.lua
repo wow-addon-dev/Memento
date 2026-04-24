@@ -34,9 +34,23 @@ L["options.event.achievement.personal.exist.tooltip"] = "Activate or deactivate 
 L["options.event.achievement.criteria"] = "Personal Achievement Criteria"
 L["options.event.achievement.guild"] = "Guild Achievement"
 
+L["options.event.pvp"] = "Events - Player vs. Player"
+L["options.event.pvp.duel"] = "Duel finished"
+L["options.event.pvp.arena"] = "Arena completed"
+L["options.event.pvp.battleground"] = "Battleground completed"
+L["options.event.pvp.brawl"] = "Brawl completed"
+L["options.event.pvp.victory.name"] = "only in the event of a victory"
+L["options.event.pvp.victory.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have won the PVP match."
+
 L["options.event.other"] = "Events - Other"
 L["options.event.other.login"] = "Player Login"
 L["options.event.other.level-up"] = "Level-Up"
+L["options.event.other.death"] = "Player Death"
+L["options.event.other.death.instance.name"] = "Screenshot behavior in instances"
+L["options.event.other.death.instance.desc"] = "Screenshots are only created inside and / or outside an instance, depending on the following settings for player death.\n\nAn instance includes arenas, battlegrounds, raids or dungeons."
+L["options.event.other.death.instance.option.0"] = "inside and outside of instances"
+L["options.event.other.death.instance.option.1"] = "only inside of instances"
+L["options.event.other.death.instance.option.2"] = "only outside of instances"
 L["options.event.other.mythic"] = "Mythic+ Dungeon"
 L["options.event.other.interval"] = "Regular Interval"
 L["options.event.other.interval-timer.name"] = "Interval"
@@ -102,20 +116,9 @@ L["options.event.encounter.wipe.party.desc"] = "Activate or deactivate the autom
 L["options.event.encounter.wipe.raid.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have wiped at a raid boss."
 L["options.event.encounter.wipe.scenario.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have wiped at a scenario or delves boss."
 
-L["options.event.pvp"] = "Player vs. Player"
-L["options.event.pvp.duel"] = "PvP - Duel finished"
-L["options.event.pvp.arena"] = "PvP - Arena completed"
-L["options.event.pvp.battleground"] = "PvP - Battleground completed"
-L["options.event.pvp.brawl"] = "PvP - Brawl completed"
-L["options.event.pvp.victory.name"] = "only in the event of a victory"
-L["options.event.pvp.victory.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have won the PVP match."
 
-L["options.event.death"] = "Player Death"
-L["options.event.death.instance.name"] = "Screenshot behavior in instances"
-L["options.event.death.instance.desc"] = "Screenshots are only created inside and / or outside an instance, depending on the following settings for |c" .. eventColor .. "player death|r.\n\nAn instance includes arenas, battlegrounds, raids or dungeons."
-L["options.event.death.instance.option.0"] = "inside and outside of instances"
-L["options.event.death.instance.option.1"] = "only inside of instances"
-L["options.event.death.instance.option.2"] = "only outside of instances"
+
+
 
 L["options.event.warbandCollection"] = "Warband Collections"
 L["options.event.warbandCollection.newPet"] = "New Pet"
@@ -130,7 +133,9 @@ L["chat.event.pvp.duel.new"] = "Screenshot taken - |c" .. eventColor .. "PvP - D
 L["chat.event.pvp.arena.new"] = "Screenshot taken - |c" .. eventColor .. "PvP - Arena completed|r"
 L["chat.event.pvp.battleground.new"] = "Screenshot taken - |c" .. eventColor .. "PvP - Battleground completed|r"
 L["chat.event.pvp.brawl.new"] = "Screenshot taken - |c" .. eventColor .. "PvP - Brawl completed|r"
+
 L["chat.event.death.new"] = "Screenshot taken - |c" .. eventColor .. "Player Death|r"
+
 L["chat.event.warbandCollection.newPet.new"] = "Screenshot taken - |c" .. eventColor .. "New Pet|r"
 L["chat.event.warbandCollection.newMount.new"] = "Screenshot taken - |c" .. eventColor .. "New Mount|r"
 L["chat.event.warbandCollection.newToy.new"] = "Screenshot taken - |c" .. eventColor .. "New Toy|r"

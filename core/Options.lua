@@ -26,6 +26,9 @@ local minimapButtonProxy = setmetatable({}, {
     end,
 })
 
+local function FormatSeconds(value) return value .. " " .. L["general.seconds-short"] end
+local function FormatMinutes(value) return value .. " " .. L["general.minutes-short"] end
+
 ---------------------
 --- Main Funtions ---
 ---------------------
@@ -33,339 +36,539 @@ local minimapButtonProxy = setmetatable({}, {
 function Options:Initialize()
     local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
 
-	local variableTableGeneral = MEM.options.general
-	local variableTableEvent = MEM.options.event
-	local variableTableOther = MEM.options.other
-
-	local parentCheckboxNotification
-	local parentCheckboxAchievementPersonal
+-- Hilfsfunktion für die Sichtbarkeit (spart Platz)
+    local function GetVal(setting) return setting:GetValue() end
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
 
-    do
-        local name = L["options.general.notification.name"]
-        local tooltip = L["options.general.notification.tooltip"]
-        local variable = "notification"
-        local defaultValue = true
+	-- Notification
+    local parentCheckboxNotification = AWL.Settings:AddCheckbox(category, {
+        variableTable = MEM.options.general,
+        settingKey    = addonName .. "_notification",
+        variableName  = "notification",
+        name          = L["options.general.notification.name"],
+        tooltip       = L["options.general.notification.tooltip"],
+        default       = true
+    })
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
-        parentCheckboxNotification = Settings.CreateCheckbox(category, setting, tooltip)
+    local function IsNotificationEnabled()
+        return MEM.options.general["notification"]
     end
 
-	do
-        local name = L["options.general.notification-timestamp.name"]
-        local tooltip = L["options.general.notification-timestamp.tooltip"]
-        local variable = "notification-timestamp"
-        local defaultValue = false
+    -- Notification: Show Timestamp
+    AWL.Settings:AddCheckbox(category, {
+        variableTable   = MEM.options.general,
+        settingKey      = addonName .. "_notification-timestamp",
+        variableName    = "notification-timestamp",
+        name            = L["options.general.notification-timestamp.name"],
+        tooltip         = L["options.general.notification-timestamp.tooltip"],
+        default         = false,
+        parentInit      = parentCheckboxNotification,
+        parentCondition = IsNotificationEnabled
+    })
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
-        local checkbox = Settings.CreateCheckbox(category, setting, tooltip)
-		checkbox:SetParentInitializer(parentCheckboxNotification, function() return MEM.options.general["notification"] end)
-    end
+    -- Notification: Show Class Colors
+    AWL.Settings:AddCheckbox(category, {
+        variableTable   = MEM.options.general,
+        settingKey      = addonName .. "_notification-class",
+        variableName    = "notification-class",
+        name            = L["options.general.notification-class.name"],
+        tooltip         = L["options.general.notification-class.tooltip"],
+        default         = false,
+        parentInit      = parentCheckboxNotification,
+        parentCondition = IsNotificationEnabled
+    })
 
-	do
-        local name = L["options.general.notification-class.name"]
-        local tooltip = L["options.general.notification-class.tooltip"]
-        local variable = "notification-class"
-        local defaultValue = false
+    -- Notification: Show Time Played
+    AWL.Settings:AddCheckbox(category, {
+        variableTable   = MEM.options.general,
+        settingKey      = addonName .. "_notification-time-played",
+        variableName    = "notification-time-played",
+        name            = L["options.general.notification-time-played.name"],
+        tooltip         = L["options.general.notification-time-played.tooltip"],
+        default         = false,
+        parentInit      = parentCheckboxNotification,
+        parentCondition = IsNotificationEnabled
+    })
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
-        local checkbox = Settings.CreateCheckbox(category, setting, tooltip)
-		checkbox:SetParentInitializer(parentCheckboxNotification, function() return MEM.options.general["notification"] end)
-    end
+    -- Hide UI
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = MEM.options.general,
+        settingKey    = addonName .. "_hide-ui",
+        variableName  = "hide-ui",
+        name          = L["options.general.hide-ui.name"],
+        tooltip       = L["options.general.hide-ui.tooltip"],
+        default       = false
+    })
 
-	do
-        local name = L["options.general.notification-time-played.name"]
-        local tooltip = L["options.general.notification-time-played.tooltip"]
-        local variable = "notification-time-played"
-        local defaultValue = false
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
-        local checkbox = Settings.CreateCheckbox(category, setting, tooltip)
-		checkbox:SetParentInitializer(parentCheckboxNotification, function() return MEM.options.general["notification"] end)
-    end
-
-	do
-        local name = L["options.general.hide-ui.name"]
-        local tooltip = L["options.general.hide-ui.tooltip"]
-        local variable = "hide-ui"
-        local defaultValue = false
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableGeneral, Settings.VarType.Boolean, name, defaultValue)
-        Settings.CreateCheckbox(category, setting, tooltip)
-    end
-
-	do
-        local name = L["options.general.minimap-button.name"]
-        local tooltip = L["options.general.minimap-button.tooltip"]
-        local variable = "hide"
-        local defaultValue = false
-
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, minimapButtonProxy, Settings.VarType.Boolean, name, not defaultValue)
-
-        Settings.CreateCheckbox(category, setting, tooltip)
-    end
+    -- Minimap Button Visibility
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = minimapButtonProxy,
+        settingKey    = addonName .. "_hide",
+        variableName  = "hide",
+        name          = L["options.general.minimap-button.name"],
+        tooltip       = L["options.general.minimap-button.tooltip"],
+        default       = true
+    })
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.event.achievement"]))
-local ds
-	do
-		local nameCheckbox = L["options.event.achievement.personal"]
-        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.personal"])
-        local variableCheckbox = "achievement-personal-active"
-        local defaultValueCheckbox = true
 
-        ds = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
+    -- Personal Achievement
+    local initAchievPersonal, setAchievPersonal = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_achievement-personal-active",
+        checkboxVarName = "achievement-personal-active",
+        checkboxName = L["options.event.achievement.personal"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.personal"]),
+        checkboxDefault = true,
 
-        local nameSlider = L["options.event.general.delay.name"]
-        local tooltipSlider = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.personal"], 3)
-        local variableSlider = "achievement-personal-delay"
-        local defaultValueSlider = 3
+        sliderSettingKey = addonName .. "_achievement-personal-delay",
+        sliderVariableName = "achievement-personal-delay", -- Updated name
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.personal"], 3),
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
 
-        local minValue = 1
-        local maxValue = 10
-        local step = 1
+    -- Personal Achievement: Exist Check
+    AWL.Settings:AddCheckbox(category, {
+        settingKey = addonName .. "_achievement-personal-exist",
+        variableName = "achievement-personal-exist",
+        variableTable = MEM.options.event,
+        name = L["options.event.achievement.personal.exist.name"],
+        tooltip = L["options.event.achievement.personal.exist.tooltip"],
+        default = false,
+        parentInit = initAchievPersonal,
+        parentCondition = function() return setAchievPersonal:GetValue() end
+    })
 
-        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
+    -- Criteria Achievement
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_achievement-criteria-active",
+        checkboxVarName = "achievement-criteria-active",
+        checkboxName = L["options.event.achievement.criteria"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.criteria"]),
+        checkboxDefault = false,
 
-		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.seconds-short"] end)
+        sliderSettingKey = addonName .. "_achievement-criteria-delay",
+        sliderVariableName = "achievement-criteria-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.criteria"], 3),
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
 
-        parentCheckboxAchievementPersonal = CreateSettingsCheckboxSliderInitializer(ds, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
+    -- Guild Achievement
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_achievement-guild-active",
+        checkboxVarName = "achievement-guild-active",
+        checkboxName = L["options.event.achievement.guild"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.guild"]),
+        checkboxDefault = false,
 
-        layout:AddInitializer(parentCheckboxAchievementPersonal)
-	end
+        sliderSettingKey = addonName .. "_achievement-guild-delay",
+        sliderVariableName = "achievement-guild-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.guild"], 3),
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
 
-	do
-        local name = L["options.event.achievement.personal.exist.name"]
-        local tooltip = L["options.event.achievement.personal.exist.tooltip"]
-        local variable = "achievement-personal-exist"
-        local defaultValue = false
+	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.event.encounter"]))
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableEvent, Settings.VarType.Boolean, name, defaultValue)
-        local checkbox = Settings.CreateCheckbox(category, setting, tooltip)
+    -- Dungeon
+    local initVicParty, setVicParty = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_encounter-victory-party-active",
+        checkboxVarName = "encounter-victory-party-active",
+        checkboxName = L["options.event.encounter.victory"] .. " (" .. L["options.event.encounter.party.name"] .. ")",
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.encounter.party.name"]),
+        checkboxDefault = true,
+        sliderSettingKey = addonName .. "_encounter-victory-party-delay",
+        sliderVariableName = "encounter-victory-party-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.encounter.party.name"], 3),
+        sliderDefault = 3, slMin = 1, slMax = 10, slStep = 1,
+        sliderFormatter = FormatSeconds
+    })
 
-        parentCheckboxAchievementPersonal.GetSetting = function(self) return ds end
-        checkbox:SetParentInitializer(parentCheckboxAchievementPersonal, function() return ds:GetValue() end)
+    -- Nur erster Sieg (Dungeon)
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = MEM.options.event,
+        settingKey    = addonName .. "_encounter-victory-party-first",
+        variableName  = "encounter-victory-party-first",
+        name          = L["options.event.encounter.victory.first.name"],
+        tooltip       = L["options.event.encounter.victory.first.desc"],
+        parentInit    = initVicParty,
+        parentCondition = function() return GetVal(setVicParty) end
+    })
+
+    -- Niederlage (Dungeon) - Jetzt als Combo mit eigenem Delay!
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_encounter-wipe-party-active",
+        checkboxVarName = "encounter-wipe-party-active",
+        checkboxName = L["options.event.encounter.wipe"] .. " (" .. L["options.event.encounter.party.name"] .. ")",
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.encounter.wipe"]),
+        checkboxDefault = false,
+        sliderSettingKey = addonName .. "_encounter-wipe-party-delay",
+        sliderVariableName = "encounter-wipe-party-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = "Delay for dungeon wipes.",
+        sliderDefault = 3, slMin = 1, slMax = 10, slStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+    -- Raid
+    local initVicRaid, setVicRaid = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_encounter-victory-raid-active",
+        checkboxVarName = "encounter-victory-raid-active",
+        checkboxName = L["options.event.encounter.victory"] .. " (" .. L["options.event.encounter.raid.name"] .. ")",
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.encounter.raid.name"]),
+        checkboxDefault = true,
+        sliderSettingKey = addonName .. "_encounter-victory-raid-delay",
+        sliderVariableName = "encounter-victory-raid-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.encounter.raid.name"], 3),
+        sliderDefault = 3, slMin = 1, slMax = 10, slStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+    -- Nur erster Sieg (Raid)
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = MEM.options.event,
+        settingKey    = addonName .. "_encounter-victory-raid-first",
+        variableName  = "encounter-victory-raid-first",
+        name          = L["options.event.encounter.victory.first.name"],
+        tooltip       = L["options.event.encounter.victory.first.desc"],
+        parentInit    = initVicRaid,
+        parentCondition = function() return GetVal(setVicRaid) end
+    })
+
+    -- Niederlage (Raid) - Jetzt als Combo!
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_encounter-wipe-raid-active",
+        checkboxVarName = "encounter-wipe-raid-active",
+        checkboxName = L["options.event.encounter.wipe"] .. " (" .. L["options.event.encounter.raid.name"] .. ")",
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.encounter.wipe"]),
+        checkboxDefault = false,
+        sliderSettingKey = addonName .. "_encounter-wipe-raid-delay",
+        sliderVariableName = "encounter-wipe-raid-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderDefault = 3, slMin = 1, slMax = 10, slStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+    -- Scenario
+    local initVicScenario, setVicScenario = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_encounter-victory-scenario-active",
+        checkboxVarName = "encounter-victory-scenario-active",
+        checkboxName = L["options.event.encounter.victory"] .. " (" .. L["options.event.encounter.scenario.name"] .. ")",
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.encounter.raid.name"]),
+        checkboxDefault = true,
+        sliderSettingKey = addonName .. "_encounter-victory-scenario-delay",
+        sliderVariableName = "encounter-victory-scenario-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.encounter.scenario.name"], 3),
+        sliderDefault = 3, slMin = 1, slMax = 10, slStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+    -- Scenario: Only First Victory
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = MEM.options.event,
+        settingKey    = addonName .. "_encounter-victory-scenario-first",
+        variableName  = "encounter-victory-scenario-first",
+        name          = L["options.event.encounter.victory.first.name"],
+        tooltip       = L["options.event.encounter.victory.first.desc"],
+        parentInit    = initVicScenario,
+        parentCondition = function() return GetVal(setVicScenario) end
+    })
+
+    -- Niederlage (Raid) - Jetzt als Combo!
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_encounter-wipe-scenario-active",
+        checkboxVarName = "encounter-wipe-scenario-active",
+        checkboxName = L["options.event.encounter.wipe"] .. " (" .. L["options.event.encounter.scenario.name"] .. ")",
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.encounter.wipe"]),
+        checkboxDefault = false,
+        sliderSettingKey = addonName .. "_encounter-wipe-scenario-delay",
+        sliderVariableName = "encounter-wipe-scenario-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderDefault = 3, slMin = 1, slMax = 10, slStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.event.pvp"]))
+
+	-- Duel
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_pvp-duel-active",
+        checkboxVarName = "pvp-duel-active",
+        checkboxName = L["options.event.pvp.duel"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.pvp.duel"]),
+        checkboxDefault = true,
+        sliderSettingKey = addonName .. "_pvp-duel-delay",
+        sliderVariableName = "pvp-duel-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+	-- Arena
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_pvp-arena-active",
+        checkboxVarName = "pvp-arena-active",
+        checkboxName = L["options.event.pvp.arena"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.pvp.arena"]),
+        checkboxDefault = true,
+        sliderSettingKey = addonName .. "_pvp-arena-delay",
+        sliderVariableName = "pvp-arena-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+    -- Battleground
+    local initBG, setBG = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_pvp-battleground-active",
+        checkboxVarName = "pvp-battleground-active",
+        checkboxName = L["options.event.pvp.battleground"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.pvp.battleground"]),
+        checkboxDefault = true,
+        sliderSettingKey = addonName .. "_pvp-battleground-delay",
+        sliderVariableName = "pvp-battleground-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+    -- Battleground: Only Victory
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = MEM.options.event,
+        settingKey    = addonName .. "_pvp-battleground-victory-only",
+        variableName  = "pvp-battleground-victory-only",
+        name          = L["options.event.pvp.victory.name"],
+        tooltip       = L["options.event.pvp.victory.tooltip"],
+        parentInit    = initBG,
+        parentCondition = function() return GetVal(setBG) end,
+        default       = true
+    })
+
+    -- Brawl
+    local initBrawl, setBrawl = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_pvp-brawl-active",
+        checkboxVarName = "pvp-brawl-active",
+        checkboxName = L["options.event.pvp.brawl"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.pvp.brawl"]),
+        checkboxDefault = true,
+        sliderSettingKey = addonName .. "_pvp-brawl-delay",
+        sliderVariableName = "pvp-brawl-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
+
+    -- Brawl: Only Victory
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = MEM.options.event,
+        settingKey    = addonName .. "_pvp-brawl-victory-only",
+        variableName  = "pvp-brawl-victory-only",
+        name          = L["options.event.pvp.victory.name"],
+        tooltip       = L["options.event.pvp.victory.tooltip"],
+        parentInit    = initBrawl,
+        parentCondition = function() return GetVal(setBrawl) end,
+        default       = true
+    })
+
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.event.warbandCollection"]))
+
+    local function AddCollectionCombo(key, nameString)
+        AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+            variableTable = MEM.options.event,
+            checkboxSettingKey = addonName .. "_collection-" .. key .. "-active",
+            checkboxVarName = "collection-" .. key .. "-active",
+            checkboxName = nameString,
+            checkboxTooltip = L["options.event.general.active.tooltip"]:format(nameString),
+            checkboxDefault = false,
+
+            sliderSettingKey = addonName .. "_collection-" .. key .. "-delay",
+            sliderVariableName = "collection-" .. key .. "-delay",
+            sliderName = L["options.event.general.delay.name"],
+            sliderTooltip = L["options.event.general.delay.tooltip"]:format(nameString, 3),
+            sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+            sliderFormatter = FormatSeconds
+        })
     end
 
-	do
-		local nameCheckbox = L["options.event.achievement.criteria"]
-        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.criteria"])
-        local variableCheckbox = "achievement-criteria-active"
-        local defaultValueCheckbox = false
-
-        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
-
-        local nameSlider = L["options.event.general.delay.name"]
-        local tooltipSlider = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.criteria"], 3)
-        local variableSlider = "achievement-criteria-delay"
-        local defaultValueSlider = 3
-
-        local minValue = 1
-        local maxValue = 10
-        local step = 1
-
-        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
-
-		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.seconds-short"] end)
-
-        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
-
-        layout:AddInitializer(initializer)
-	end
-
-	do
-		local nameCheckbox = L["options.event.achievement.guild"]
-        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.guild"])
-        local variableCheckbox = "achievement-guild-active"
-        local defaultValueCheckbox = false
-
-        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
-
-        local nameSlider = L["options.event.general.delay.name"]
-        local tooltipSlider = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.guild"], 3)
-        local variableSlider = "achievement-guild-delay"
-        local defaultValueSlider = 3
-
-        local minValue = 1
-        local maxValue = 10
-        local step = 1
-
-        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
-
-		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.seconds-short"] end)
-
-        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
-
-        layout:AddInitializer(initializer)
-	end
+    AddCollectionCombo("pet", L["options.event.warbandCollection.newPet"])
+    AddCollectionCombo("mount", L["options.event.warbandCollection.newMount"])
+    AddCollectionCombo("toy", L["options.event.warbandCollection.newToy"])
+    AddCollectionCombo("recipe", L["options.event.warbandCollection.newRecipe"])
+    AddCollectionCombo("housing", L["options.event.warbandCollection.newHousingItem"])
 
     layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.event.other"]))
 
-	do
-		local nameCheckbox = L["options.event.other.login"]
-        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.other.login"])
-        local variableCheckbox = "login-active"
-        local defaultValueCheckbox = true
+    -- Login
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_login-active",
+        checkboxVarName = "login-active",
+        checkboxName = L["options.event.other.login"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.other.login"]),
+        checkboxDefault = true,
 
-        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
+        sliderSettingKey = addonName .. "_login-delay",
+        sliderVariableName = "login-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.other.login"], 3),
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
 
-        local nameSlider = L["options.event.general.delay.name"]
-        local tooltipSlider = L["options.event.general.delay.tooltip"]:format(L["options.event.other.login"], 3)
-        local variableSlider = "login-delay"
-        local defaultValueSlider = 3
+    -- Level-Up
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_level-up-active",
+        checkboxVarName = "level-up-active",
+        checkboxName = L["options.event.other.level-up"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.other.level-up"]),
+        checkboxDefault = true,
 
-        local minValue = 1
-        local maxValue = 10
-        local step = 1
+        sliderSettingKey = addonName .. "_level-up-delay",
+        sliderVariableName = "level-up-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.other.level-up"], 3),
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
 
-        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
+    -- Death
+    local initDeath, setDeath = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_death-active",
+        checkboxVarName = "death-active",
+        checkboxName = L["options.event.other.death"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.other.death"]),
+        checkboxDefault = true,
 
-		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.seconds-short"] end)
+        sliderSettingKey = addonName .. "_death-delay",
+        sliderVariableName = "death-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.other.death"], 3),
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
 
-        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
+    -- Death: Instance
+    AWL.Settings:AddDropdown(category, {
+        variableTable = MEM.options.event,
+        settingKey    = addonName .. "_death-instance",
+        variableName  = "death-instance",
+        name          = L["options.event.other.death.instance.name"],
+        tooltip       = L["options.event.other.death.instance.tooltip"],
+        default       = 0,
+        options       = {
+            {value = 0, label = L["options.event.other.death.instance.option.0"]},
+            {value = 1, label = L["options.event.other.death.instance.option.1"]},
+            {value = 2, label = L["options.event.other.death.instance.option.2"]}
+        },
+        parentInit      = initDeath,
+        parentCondition = function() return setDeath:GetValue() end
+    })
 
-        layout:AddInitializer(initializer)
-	end
+    -- Mythic+
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_mythic-active",
+        checkboxVarName = "mythic-active",
+        checkboxName = L["options.event.other.mythic"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.other.mythic"]),
+        checkboxDefault = false,
 
-	do
-		local nameCheckbox = L["options.event.other.level-up"]
-        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.other.level-up"])
-        local variableCheckbox = "level-up-active"
-        local defaultValueCheckbox = true
+        sliderSettingKey = addonName .. "_mythic-delay",
+        sliderVariableName = "mythic-delay",
+        sliderName = L["options.event.general.delay.name"],
+        sliderTooltip = L["options.event.general.delay.tooltip"]:format(L["options.event.other.mythic"], 3),
+        sliderDefault = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+        sliderFormatter = FormatSeconds
+    })
 
-        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
+    -- Interval
+    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+        variableTable = MEM.options.event,
+        checkboxSettingKey = addonName .. "_interval-active",
+        checkboxVarName = "interval-active",
+        checkboxName = L["options.event.other.interval"],
+        checkboxTooltip = L["options.event.general.active.tooltip"]:format(L["options.event.other.interval"]),
+        checkboxDefault = false,
 
-        local nameSlider = L["options.event.general.delay.name"]
-        local tooltipSlider = L["options.event.general.delay.tooltip"]:format(L["options.event.other.level-up"], 3)
-        local variableSlider = "level-up-delay"
-        local defaultValueSlider = 3
-
-        local minValue = 1
-        local maxValue = 10
-        local step = 1
-
-        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
-
-		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.seconds-short"] end)
-
-        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
-
-        layout:AddInitializer(initializer)
-	end
-
-	do
-		local nameCheckbox = L["options.event.other.mythic"]
-        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.other.mythic"])
-        local variableCheckbox = "mythic-active"
-        local defaultValueCheckbox = false
-
-        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
-
-        local nameSlider = L["options.event.general.delay.name"]
-        local tooltipSlider = L["options.event.general.delay.tooltip"]:format(L["options.event.other.mythic"], 3)
-        local variableSlider = "mythic-delay"
-        local defaultValueSlider = 3
-
-        local minValue = 1
-        local maxValue = 10
-        local step = 1
-
-        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
-
-		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.seconds-short"] end)
-
-        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
-
-        layout:AddInitializer(initializer)
-	end
-
-	do
-		local nameCheckbox = L["options.event.other.interval"]
-        local tooltipCheckbox = L["options.event.general.active.tooltip"]:format(L["options.event.other.interval"])
-        local variableCheckbox = "interval-active"
-        local defaultValueCheckbox = false
-
-        local settingCheckbox = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableCheckbox, variableCheckbox, variableTableEvent, Settings.VarType.Boolean, nameCheckbox, defaultValueCheckbox)
-
-        local nameSlider = L["options.event.other.interval-timer.name"]
-        local tooltipSlider = L["options.event.other.interval-timer.tooltip"]
-        local variableSlider = "interval-timer"
-        local defaultValueSlider = 5
-
-        local minValue = 1
-        local maxValue = 60
-        local step = 1
-
-        local settingSlider = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variableSlider, variableSlider, variableTableEvent, Settings.VarType.Number, nameSlider, defaultValueSlider)
-
-		local optionsSlider = Settings.CreateSliderOptions(minValue, maxValue, step)
-        optionsSlider:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return value .. " " .. L["general.minutes-short"] end)
-
-        local initializer = CreateSettingsCheckboxSliderInitializer(settingCheckbox, nameCheckbox, tooltipCheckbox, settingSlider, optionsSlider, nameSlider, tooltipSlider)
-
-        layout:AddInitializer(initializer)
-	end
+        sliderSettingKey = addonName .. "_interval-timer",
+        sliderVariableName = "interval-timer",
+        sliderName = L["options.event.other.interval-timer.name"],
+        sliderTooltip = L["options.event.other.interval-timer.tooltip"],
+        sliderDefault = 5, sliderMin = 1, sliderMax = 60, sliderStep = 1,
+        sliderFormatter = FormatMinutes
+    })
 
     layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.other"]))
 
-    do
-        local name = L["options.other.debug-mode.name"]
-        local tooltip = L["options.other.debug-mode.tooltip"]
-        local variable = "debug-mode"
-        local defaultValue = false
+	-- Debug Mode
+    AWL.Settings:AddCheckbox(category, {
+        variableTable = MEM.options.other,
+        settingKey    = addonName .. "_debug-mode",
+        variableName  = "debug-mode",
+        name          = L["options.other.debug-mode.name"],
+        tooltip       = L["options.other.debug-mode.tooltip"],
+        default       = false
+    })
 
-        local setting = Settings.RegisterAddOnSetting(category, addonName .. "_" .. variable, variable, variableTableOther, Settings.VarType.Boolean, name, defaultValue)
-        Settings.CreateCheckbox(category, setting, tooltip)
-    end
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.about"]))
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.about"]))
+    -- Game Version
+    AWL.Settings:AddInfoText(layout, {
+        leftText  = L["options.about.game-version"],
+        rightText = MEM.GAME_VERSION .. " (" .. MEM.GAME_FLAVOR .. ")"
+    })
 
-	do
-		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelTextNormal", {
-			leftText = L["options.about.game-version"],
-			rightText = MEM.GAME_VERSION .. " (" .. MEM.GAME_FLAVOR .. ")",
-		}))
-	end
+    -- Addon Version
+    AWL.Settings:AddInfoText(layout, {
+        leftText  = L["options.about.addon-version"],
+        rightText = MEM.ADDON_VERSION .. " (" .. MEM.ADDON_BUILD_DATE .. ")"
+    })
 
-	do
-		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelTextNormal", {
-			leftText = L["options.about.addon-version"],
-			rightText = MEM.ADDON_VERSION .. " (" .. MEM.ADDON_BUILD_DATE .. ")"
-		}))
-	end
+    -- Library Version
+    AWL.Settings:AddInfoText(layout, {
+        leftText  = L["options.about.lib-version"],
+        rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")"
+    })
 
-	do
-		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelTextNormal", {
-			leftText = L["options.about.lib-version"],
-			rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")"
-		}))
-	end
+    -- Author
+    AWL.Settings:AddInfoText(layout, {
+        leftText  = L["options.about.author"],
+        rightText = MEM.ADDON_AUTHOR,
+        height    = 30
+    })
 
-	do
-		layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_SettingsPanelTextLarge", {
-			leftText = L["options.about.author"],
-			rightText = MEM.ADDON_AUTHOR
-		}))
-	end
-
-	do
-        local name = L["options.about.button-github.name"]
-        local tooltip = L["options.about.button-github.tooltip"]
-		local buttonText = L["options.about.button-github.button"]
-
-        local function OnButtonClick()
+    -- GitHub Link
+    AWL.Settings:AddButton(layout, {
+        name       = L["options.about.button-github.name"],
+        buttonText = L["options.about.button-github.button"],
+        tooltip    = L["options.about.button-github.tooltip"],
+        onClick    = function()
             AWL.Dialogs:ShowLinkDialog(MEM.LINK_GITHUB)
         end
-
-        local buttonInitializer = CreateSettingsButtonInitializer(name, buttonText, OnButtonClick, tooltip, true)
-        layout:AddInitializer(buttonInitializer)
-    end
+    })
 
     Settings.RegisterAddOnCategory(category)
 

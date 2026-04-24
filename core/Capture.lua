@@ -80,8 +80,35 @@ local function TakeScreenshot()
     end
 end
 
+local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
+    if not alreadyEarned then
+        Utils:PrintMessage(L["chat.event.achievement.personal.new"]:format(GetAchievementLink(achievementID)))
+        TakeScreenshot()
+    elseif MEM.options.event["achievement-personal-exist"] then
+        Utils:PrintMessage(L["chat.event.achievement.personal.exist"]:format(GetAchievementLink(achievementID)))
+        TakeScreenshot()
+    else
+        Utils:PrintDebug("The achievement ".. GetAchievementLink(achievementID) .. " has already been reached by another character. No screenshot requested.")
+    end
+end
+
+local function CriteriaEventHandler(achievementID, description)
+    Utils:PrintMessage(L["chat.event.achievement.criteria.new"]:format(GetAchievementLink(achievementID), description))
+    TakeScreenshot()
+end
+
 local function LoginEventHandler()
     Utils:PrintMessage(L["chat.event.login.new"])
+    TakeScreenshot()
+end
+
+local function LevelUpEventHandler(level)
+	Utils:PrintMessage(L["chat.event.level-up.new"]:format(level))
+    TakeScreenshot()
+end
+
+local function MythicEventHandler()
+    Utils:PrintMessage(L["chat.event.mythic.new"])
     TakeScreenshot()
 end
 
@@ -91,22 +118,28 @@ local function IntervalEventHandler ()
 end
 
 local HandlerTable = {
-    ["IntervalEventHandler"] = IntervalEventHandler,
-    ["LoginEventHandler"] = LoginEventHandler
+	["AchievementPersonalEventHandler"] = AchievementPersonalEventHandler,
+	["CriteriaEventHandler"] = CriteriaEventHandler,
+    ["LoginEventHandler"] = LoginEventHandler,
+	["LevelUpEventHandler"] = LevelUpEventHandler,
+	["MythicEventHandler"] = MythicEventHandler,
+	["IntervalEventHandler"] = IntervalEventHandler
 }
 
 ---------------------
 --- Main Funtions ---
 ---------------------
 
-function Capture:ScheduleTimer(handler, delay)
-	C_Timer.After(delay, function()
-		if HandlerTable[handler] then
-            HandlerTable[handler]()
+function Capture:ScheduleTimer(handler, delay, ...)
+    local args = {...}
+
+    C_Timer.After(delay, function()
+        if HandlerTable[handler] then
+            HandlerTable[handler](unpack(args))
         else
             Utils:PrintDebug("Handler '" .. tostring(handler) .. "' not found.")
         end
-	end)
+    end)
 end
 
 MEM.Capture = Capture

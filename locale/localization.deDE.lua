@@ -20,16 +20,25 @@ L["options.general.hide-ui.tooltip"] = "Aktiviere oder deaktiviere die Option, d
 L["options.general.minimap-button.name"] = "Minimap Button"
 L["options.general.minimap-button.tooltip"] = "Bei Aktivierung wird der Minimap Button angezeigt."
 
-L["options.event"] = "Events"
+
 L["options.event.general.active.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots für das Event %s."
 L["options.event.general.delay.name"] = "Verzögerung"
 L["options.event.general.delay.tooltip"] = "Die zeitliche Verzögerung des Screenshots, nachdem das Event %s ausgelöst wurde.\n\nStandard: %d Sekunde(n)"
 
-L["options.event.login"] = "Spielerlogin"
+L["options.event.achievement"] = "Events - Erfolge"
+L["options.event.achievement.personal"] = "persönlicher Erfolg"
+L["options.event.achievement.personal.exist.name"] = "Screenshot bei bereits erzieltem Erfolg erstellen"
+L["options.event.achievement.personal.exist.tooltip"] = "Aktiviere oder deaktiviere die Erstellung eines Screenhots, wenn ein Erfolg bereits von einem anderen Charakter erlangt wurde."
+L["options.event.achievement.criteria"] = "persönliches Erfolgskriterium"
+L["options.event.achievement.guild"] = "Gildenerfolg"
 
-L["options.event.interval"] = "Reguläres Intervall"
-L["options.event.interval-timer.name"] = "Intervall"
-L["options.event.interval-timer.tooltip"] = "Das Zeitintervall, in dem ein Screenshot erstellt wird.\n\nStandard: 5 Minuten"
+L["options.event.other"] = "Events - sonstige"
+L["options.event.other.login"] = "Spielerlogin"
+L["options.event.other.level-up"] = "Stufenaufstieg"
+L["options.event.other.mythic"] = "Mythic+ Dungeon"
+L["options.event.other.interval"] = "Reguläres Intervall"
+L["options.event.other.interval-timer.name"] = "Intervall"
+L["options.event.other.interval-timer.tooltip"] = "Das Zeitintervall, in dem ein Screenshot erstellt wird.\n\nStandard: 5 Minuten"
 
 L["options.other"] = "Sonstige Einstellungen"
 L["options.other.debug-mode.name"] = "Debugmodus"
@@ -57,7 +66,14 @@ L["general.minutes-short"] = "Min."
 L["chat.notification.class"] = "Klasse: %s"
 L["chat.notification.time-played"] = "Gesamtspielzeit: %d Tage, %d Stunden, %d Minuten, %d Sekunden"
 
+L["chat.event.achievement.personal.new"] = "Screenshot erstellt - |cffF2E699persönlicher Erfolg|r - %s"
+L["chat.event.achievement.personal.exist"] = "Screenshot erstellt - |cffF2E699persönlicher Erfolg|r - %s (wurde bereits von einem anderen Charakter erzielt)"
+L["chat.event.achievement.criteria.new"] = "Screenshot erstellt - |cffF2E699persönliches Erfolgskriterium|r - %s - %s"
+L["chat.event.achievement.guild.new"] = "Screenshot erstellt - |cffF2E699Gildenerfolg|r: %s"
+
 L["chat.event.login.new"] = "Screenshot erstellt - |cffF2E699Spielerlogin|r"
+L["chat.event.level-up.new"] = "Screenshot erstellt - |cffF2E699Stufenaufstieg|r - |cffFF4E00|Hlevelup:%1$s:LEVEL_UP_TYPE_CHARACTER|h[Stufe %1$s]|h|r"
+L["chat.event.mythic.new"] = "Screenshot erstellt - |cffF2E699Mythic+ Dungeon|r"
 L["chat.event.interval.new"] = "Screenshot erstellt - |cffF2E699Reguläres Intervall|r"
 
 -- Capture
@@ -67,21 +83,6 @@ L["capture.message"] = "Screenshot erstellt"
 --- OLD ENTRIES - CAN BE DELETED IN THE FUTURE
 
 local eventColor = "ffF2E699"
-
-
-
-
-
-
-
-
-
-L["options.event.achievement"] = "Erfolge"
-L["options.event.achievement.personal"] = "persönlicher Erfolg"
-L["options.event.achievement.personal.exist.name"] = "Screenshot bei bereits erzieltem Erfolg erstellen"
-L["options.event.achievement.personal.exist.desc"] = "Aktiviere oder deaktiviere die Erstellung eines Screenhots, wenn ein Erfolg bereits von einem anderen Charakter erlangt wurde."
-L["options.event.achievement.criteria"] = "persönliches Erfolgskriterium"
-L["options.event.achievement.guild"] = "Gildenerfolg"
 
 L["options.event.encounter"] = "Bosskampf"
 L["options.event.encounter.victory"] = "Bosskampf - Sieg"
@@ -108,16 +109,12 @@ L["options.event.pvp.brawl"] = "PvP - Rauferei abgeschlossen"
 L["options.event.pvp.victory.name"] = "nur bei Sieg"
 L["options.event.pvp.victory.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenshots, wenn Du das PVP-Match gewonnen hast."
 
-L["options.event.levelUp"] = "Stufenaufstieg"
-
 L["options.event.death"] = "Spielertod"
 L["options.event.death.instance.name"] = "Screenshotverhalten in Instanzen"
 L["options.event.death.instance.desc"] = "Screenshots werden unter Berücksichtigung der folgenden Einstellungen für den |c" .. eventColor .. "Spielertod|r nur innerhalb und / oder außerhalb einer Instanz erstellt.\n\nZu einer Instanz zählen u.a. Arenen, Schlachtfelder, Raids oder Dungeons."
 L["options.event.death.instance.option.0"] = "in- und außerhalb von Instanzen"
 L["options.event.death.instance.option.1"] = "nur innerhalb von Instanzen"
 L["options.event.death.instance.option.2"] = "nur außerhalb von Instanzen"
-
-
 
 L["options.event.warbandCollection"] = "Kriegsmeutesammlungen"
 L["options.event.warbandCollection.newPet"] = "neues Haustier"
@@ -126,34 +123,16 @@ L["options.event.warbandCollection.newToy"] = "neues Spielzeug"
 L["options.event.warbandCollection.newRecipe"] = "neues Rezept"
 L["options.event.warbandCollection.newHousingItem"] = "neuer Behausungsgegenstand"
 
-
-
-L["options.event.mythic"] = "Mythic+ Dungeon"
-
-
-
-L["chat.level.name"] = "Stufe"
-
-
-L["chat.event.achievement.personal.new"] = "Screenshot erstellt - |c" .. eventColor .. "persönlicher Erfolg|r - %s"
-L["chat.event.achievement.personal.exist"] = "Screenshot erstellt - |c" .. eventColor .. "persönlicher Erfolg|r - %s (wurde bereits von einem anderen Charakter erzielt)"
-L["chat.event.achievement.criteria.new"] = "Screenshot erstellt - |c" .. eventColor .. "persönliches Erfolgskriterium|r - %s - %s"
-L["chat.event.achievement.guild.new"] = "Screenshot erstellt - |c" .. eventColor .. "Gildenerfolg|r: %s"
 L["chat.event.encounter.victory.new"] = "Screenshot erstellt - |c" .. eventColor .. "Bosskampf - Sieg|r - %s (%s)"
 L["chat.event.encounter.wipe.new"] = "Screenshot erstellt - |c" .. eventColor .. "Bosskampf - Niederlage|r - %s (%s)"
 L["chat.event.pvp.duel.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Duell beendet|r"
 L["chat.event.pvp.arena.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Arena abgeschlossen|r"
 L["chat.event.pvp.battleground.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Schlachtfeld abgeschlossen|r"
 L["chat.event.pvp.brawl.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Rauferei abgeschlossen|r"
-L["chat.event.levelUp.new"] = "Screenshot erstellt - |c" .. eventColor .. "Stufenaufstieg|r - %s"
-L["chat.event.death.new"] = "Screenshot erstellt - |c" .. eventColor .. "Spielertod|r"
 
+L["chat.event.death.new"] = "Screenshot erstellt - |c" .. eventColor .. "Spielertod|r"
 L["chat.event.warbandCollection.newPet.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Haustier|r"
 L["chat.event.warbandCollection.newMount.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Reittier|r"
 L["chat.event.warbandCollection.newToy.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Spielzeug|r"
 L["chat.event.warbandCollection.newRecipe.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Rezept|r"
 L["chat.event.warbandCollection.newHousingItem.new"] = "Screenshot erstellt - |c" .. eventColor .. "neuer Behausungsgegenstand|r"
-
-L["chat.event.mythic.new"] = "Screenshot erstellt - |c" .. eventColor .. "Mythic+ Dungeon|r"
-
-

@@ -25,7 +25,7 @@ local function CreateMessageFrame()
     frame.textTop:ClearAllPoints()
     frame.textTop:SetPoint("CENTER", 0, 5)
     frame.textTop:SetFont(tostring(frame.textTop:GetFont()), 7)
-    frame.textTop:SetText(L["screen.message"])
+    frame.textTop:SetText(L["capture.message"])
 
     frame.textBottom = frame:CreateFontString(nil, "OVERLAY", "GameFontWhiteTiny")
     frame.textBottom:ClearAllPoints()
@@ -92,8 +92,74 @@ local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
     end
 end
 
+local function AchievementGuildEventHandler(achievementID)
+    local name = select(2, GetAchievementInfo(achievementID))
+
+    Utils:PrintMessage(L["chat.event.achievement.guild.new"]:format(name))
+    TakeScreenshot()
+end
+
 local function CriteriaEventHandler(achievementID, description)
     Utils:PrintMessage(L["chat.event.achievement.criteria.new"]:format(GetAchievementLink(achievementID), description))
+    TakeScreenshot()
+end
+
+local function EncounterVictoryEventHandler(encounterName, difficultyName, difficulty, encounterID)
+    Utils:PrintMessage(L["chat.event.encounter.victory.new"]:format(encounterName, difficultyName))
+    TakeScreenshot()
+
+    if not MEM.data.bossKill[difficulty] then MEM.data.bossKill[difficulty] = {} end
+
+    MEM.data.bossKill[difficulty][encounterID] = true
+end
+
+local function EncounterWipeEventHandler(encounterName, difficultyName)
+    Utils:PrintMessage(L["chat.event.encounter.wipe.new"]:format(encounterName, difficultyName))
+    TakeScreenshot()
+end
+
+local function PvPDuelEventHandler()
+    Utils:PrintMessage(L["chat.event.pvp.duel.new"])
+    TakeScreenshot()
+end
+
+local function PvPArenaEventHandler()
+    Utils:PrintMessage(L["chat.event.pvp.arena.new"])
+    TakeScreenshot()
+end
+
+local function PvPBattlegroundEventHandler()
+    Utils:PrintMessage(L["chat.event.pvp.battleground.new"])
+    TakeScreenshot()
+end
+
+local function PvPBrawlEventHandler()
+    Utils:PrintMessage(L["chat.event.pvp.brawl.new"])
+    TakeScreenshot()
+end
+
+local function NewPetEventHandler()
+    Utils:PrintMessage(L["chat.event.warband-collection.new-pet.new"])
+    TakeScreenshot()
+end
+
+local function NewMountEventHandler()
+    Utils:PrintMessage(L["chat.event.warband-collection.new-mount.new"])
+    TakeScreenshot()
+end
+
+local function NewToyEventHandler()
+    Utils:PrintMessage(L["chat.event.warband-collection.new-toy.new"])
+    TakeScreenshot()
+end
+
+local function NewRecipeEventHandler()
+    Utils:PrintMessage(L["chat.event.warband-collection.new-recipe.new"])
+    TakeScreenshot()
+end
+
+local function NewHousingItemEventHandler()
+    Utils:PrintMessage(L["chat.event.warband-collection.new-housing-item.new"])
     TakeScreenshot()
 end
 
@@ -103,7 +169,12 @@ local function LoginEventHandler()
 end
 
 local function LevelUpEventHandler(level)
-	Utils:PrintMessage(L["chat.event.level-up.new"]:format(level))
+    Utils:PrintMessage(L["chat.event.level-up.new"]:format(level))
+    TakeScreenshot()
+end
+
+local function DeathEventHandler()
+    Utils:PrintMessage(L["chat.event.death.new"])
     TakeScreenshot()
 end
 
@@ -112,18 +183,31 @@ local function MythicEventHandler()
     TakeScreenshot()
 end
 
-local function IntervalEventHandler ()
+local function IntervalEventHandler()
     Utils:PrintMessage(L["chat.event.interval.new"])
     TakeScreenshot()
 end
 
 local HandlerTable = {
-	["AchievementPersonalEventHandler"] = AchievementPersonalEventHandler,
-	["CriteriaEventHandler"] = CriteriaEventHandler,
-    ["LoginEventHandler"] = LoginEventHandler,
-	["LevelUpEventHandler"] = LevelUpEventHandler,
-	["MythicEventHandler"] = MythicEventHandler,
-	["IntervalEventHandler"] = IntervalEventHandler
+    ["AchievementPersonalEventHandler"] = AchievementPersonalEventHandler,
+    ["AchievementGuildEventHandler"]    = AchievementGuildEventHandler,
+    ["CriteriaEventHandler"]            = CriteriaEventHandler,
+    ["EncounterVictoryEventHandler"]    = EncounterVictoryEventHandler,
+    ["EncounterWipeEventHandler"]       = EncounterWipeEventHandler,
+    ["PvPDuelEventHandler"]             = PvPDuelEventHandler,
+    ["PvPArenaEventHandler"]            = PvPArenaEventHandler,
+    ["PvPBattlegroundEventHandler"]     = PvPBattlegroundEventHandler,
+    ["PvPBrawlEventHandler"]            = PvPBrawlEventHandler,
+    ["NewPetEventHandler"]              = NewPetEventHandler,
+    ["NewMountEventHandler"]            = NewMountEventHandler,
+    ["NewToyEventHandler"]              = NewToyEventHandler,
+    ["NewRecipeEventHandler"]           = NewRecipeEventHandler,
+    ["NewHousingItemEventHandler"]      = NewHousingItemEventHandler,
+    ["LoginEventHandler"]               = LoginEventHandler,
+    ["LevelUpEventHandler"]             = LevelUpEventHandler,
+    ["DeathEventHandler"]               = DeathEventHandler,
+    ["MythicEventHandler"]              = MythicEventHandler,
+    ["IntervalEventHandler"]            = IntervalEventHandler
 }
 
 ---------------------

@@ -27,14 +27,31 @@ L["options.event.general.active.tooltip"] = "Activate or deactivate the automati
 L["options.event.general.delay.name"] = "Delay"
 L["options.event.general.delay.tooltip"] = "The time delay of the screenshot after the event %s was triggered.\n\nDefault: %d second(s)"
 
-L["options.event.achievement"] = "Events - Achievements"
+L["options.event"] = "Screenshots"
+
+L["options.event.achievement"] = "Achievements"
 L["options.event.achievement.personal"] = "Personal Achievement"
 L["options.event.achievement.personal.exist.name"] = "Take a screenshot if a personal achievement has already been reached"
 L["options.event.achievement.personal.exist.tooltip"] = "Activate or deactivate the creation of a screenshot if an personal achievement has already been reached by another character."
 L["options.event.achievement.criteria"] = "Personal Achievement Criteria"
 L["options.event.achievement.guild"] = "Guild Achievement"
 
-L["options.event.pvp"] = "Events - Player vs. Player"
+L["options.event.encounter"] = "Boss Fight"
+L["options.event.encounter.victory"] = "Victory"
+L["options.event.encounter.wipe"] = "Wipe"
+L["options.event.encounter.party"] = "Dungeon"
+L["options.event.encounter.raid"] = "Raid"
+L["options.event.encounter.scenario"] = "Scenario / Delve"
+L["options.event.encounter.victory.first.name"] = "first kill per difficulty"
+L["options.event.encounter.victory.first.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have already killed a boss. This option applies separately for each difficulty."
+L["options.event.encounter.victory.party.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have killed a dungeon boss."
+L["options.event.encounter.victory.raid.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have killed a raid boss."
+L["options.event.encounter.victory.scenario.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have killed a scenario or delves boss."
+L["options.event.encounter.wipe.party.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have wiped at a dungeon boss."
+L["options.event.encounter.wipe.raid.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have wiped at a raid boss."
+L["options.event.encounter.wipe.scenario.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have wiped at a scenario or delves boss."
+
+L["options.event.pvp"] = "Player vs. Player"
 L["options.event.pvp.duel"] = "Duel finished"
 L["options.event.pvp.arena"] = "Arena completed"
 L["options.event.pvp.battleground"] = "Battleground completed"
@@ -42,7 +59,14 @@ L["options.event.pvp.brawl"] = "Brawl completed"
 L["options.event.pvp.victory.name"] = "only in the event of a victory"
 L["options.event.pvp.victory.tooltip"] = "Activate or deactivate the automatic creation of a screenshot when you have won the PVP match."
 
-L["options.event.other"] = "Events - Other"
+L["options.event.warband-collection"] = "Warband Collections"
+L["options.event.warband-collection.new-pet"] = "New Pet"
+L["options.event.warband-collection.new-mount"] = "New Mount"
+L["options.event.warband-collection.new-toy"] = "New Toy"
+L["options.event.warband-collection.new-recipe"] = "New Recipe"
+L["options.event.warband-collection.new-housing-item"] = "New Housing Item"
+
+L["options.event.other"] = "Other"
 L["options.event.other.login"] = "Player Login"
 L["options.event.other.level-up"] = "Level-Up"
 L["options.event.other.death"] = "Player Death"
@@ -87,57 +111,26 @@ L["chat.event.achievement.personal.exist"] = "Screenshot taken - |cffF2E699Perso
 L["chat.event.achievement.criteria.new"] = "Screenshot taken - |cffF2E699Personal Achievement|r - %s - %s"
 L["chat.event.achievement.guild.new"] = "Screenshot taken - |cffF2E699Guild achievement|r - %s"
 
+L["chat.event.encounter.victory.new"] = "Screenshot taken - |cffF2E699Boss Fight - Victory|r - %s (%s)"
+L["chat.event.encounter.wipe.new"] = "Screenshot taken - |cffF2E699Boss Fight - Wipe|r - %s (%s)"
+
+L["chat.event.pvp.duel.new"] = "Screenshot taken - |cffF2E699PvP - Duel finished|r"
+L["chat.event.pvp.arena.new"] = "Screenshot taken - |cffF2E699PvP - Arena completed|r"
+L["chat.event.pvp.battleground.new"] = "Screenshot taken - |cffF2E699PvP - Battleground completed|r"
+L["chat.event.pvp.brawl.new"] = "Screenshot taken - |cffF2E699PvP - Brawl completed|r"
+
+L["chat.event.warband-collection.new-pet.new"] = "Screenshot taken - |cffF2E699New Pet|r"
+L["chat.event.warband-collection.new-mount.new"] = "Screenshot taken - |cffF2E699New Mount|r"
+L["chat.event.warband-collection.new-toy.new"] = "Screenshot taken - |cffF2E699New Toy|r"
+L["chat.event.warband-collection.new-recipe.new"] = "Screenshot taken - |cffF2E699New Recipe|r"
+L["chat.event.warband-collection.new-housing-item.new"] = "Screenshot taken - |cffF2E699New Housing Item|r"
+
 L["chat.event.login.new"] = "Screenshot taken - |cffF2E699Player Login|r"
 L["chat.event.level-up.new"] = "Screenshot taken - |cffF2E699Level-Up|r - |cffFF4E00|Hlevelup:%1$s:LEVEL_UP_TYPE_CHARACTER|h[Level %1$s]|h|r"
+L["chat.event.death.new"] = "Screenshot taken - |cffF2E699Player Death|r"
 L["chat.event.mythic.new"] = "Screenshot taken - |cffF2E699Mythic+ Dungeon|r"
 L["chat.event.interval.new"] = "Screenshot taken - |cffF2E699Regular Interval|r"
 
 -- Capture
 
 L["capture.message"] = "Screenshot taken"
-
---- OLD ENTRIES - CAN BE DELETED IN THE FUTURE
-
-local eventColor = "ffF2E699"
-
-L["options.event.encounter"] = "Boss Fight"
-L["options.event.encounter.victory"] = "Boss Fight - Victory"
-L["options.event.encounter.wipe"] = "Boss Fight - Wipe"
-L["options.event.encounter.party.name"] = "Dungeon"
-L["options.event.encounter.raid.name"] = "Raid"
-L["options.event.encounter.scenario.name"] = "Scenario / Delve"
-
-L["options.event.encounter.victory.party.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have killed a dungeon boss."
-L["options.event.encounter.victory.raid.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have killed a raid boss."
-L["options.event.encounter.victory.scenario.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have killed a scenario or delves boss."
-L["options.event.encounter.victory.first.name"] = "only on the first kill per difficulty"
-L["options.event.encounter.victory.first.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have already killed a boss. This option applies separately for each difficulty."
-L["options.event.encounter.wipe.party.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have wiped at a dungeon boss."
-L["options.event.encounter.wipe.raid.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have wiped at a raid boss."
-L["options.event.encounter.wipe.scenario.desc"] = "Activate or deactivate the automatic creation of a screenshot when you have wiped at a scenario or delves boss."
-
-
-
-
-
-L["options.event.warbandCollection"] = "Warband Collections"
-L["options.event.warbandCollection.newPet"] = "New Pet"
-L["options.event.warbandCollection.newMount"] = "New Mount"
-L["options.event.warbandCollection.newToy"] = "New Toy"
-L["options.event.warbandCollection.newRecipe"] = "New Recipe"
-L["options.event.warbandCollection.newHousingItem"] = "New Housing Item"
-
-L["chat.event.encounter.victory.new"] = "Screenshot taken - |c" .. eventColor .. "Boss Fight - Victory|r - %s (%s)"
-L["chat.event.encounter.wipe.new"] = "Screenshot taken - |c" .. eventColor .. "Boss Fight - Wipe|r - %s (%s)"
-L["chat.event.pvp.duel.new"] = "Screenshot taken - |c" .. eventColor .. "PvP - Duel finished|r"
-L["chat.event.pvp.arena.new"] = "Screenshot taken - |c" .. eventColor .. "PvP - Arena completed|r"
-L["chat.event.pvp.battleground.new"] = "Screenshot taken - |c" .. eventColor .. "PvP - Battleground completed|r"
-L["chat.event.pvp.brawl.new"] = "Screenshot taken - |c" .. eventColor .. "PvP - Brawl completed|r"
-
-L["chat.event.death.new"] = "Screenshot taken - |c" .. eventColor .. "Player Death|r"
-
-L["chat.event.warbandCollection.newPet.new"] = "Screenshot taken - |c" .. eventColor .. "New Pet|r"
-L["chat.event.warbandCollection.newMount.new"] = "Screenshot taken - |c" .. eventColor .. "New Mount|r"
-L["chat.event.warbandCollection.newToy.new"] = "Screenshot taken - |c" .. eventColor .. "New Toy|r"
-L["chat.event.warbandCollection.newRecipe.new"] = "Screenshot taken - |c" .. eventColor .. "New Recipe|r"
-L["chat.event.warbandCollection.newHousingItem.new"] = "Screenshot taken - |c" .. eventColor .. "New Housing Item|r"

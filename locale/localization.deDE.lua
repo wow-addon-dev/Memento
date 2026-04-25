@@ -20,19 +20,35 @@ L["options.general.hide-ui.tooltip"] = "Aktiviere oder deaktiviere die Option, d
 L["options.general.minimap-button.name"] = "Minimap Button"
 L["options.general.minimap-button.tooltip"] = "Bei Aktivierung wird der Minimap Button angezeigt."
 
-
 L["options.event.general.active.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots für das Event %s."
 L["options.event.general.delay.name"] = "Verzögerung"
 L["options.event.general.delay.tooltip"] = "Die zeitliche Verzögerung des Screenshots, nachdem das Event %s ausgelöst wurde.\n\nStandard: %d Sekunde(n)"
 
-L["options.event.achievement"] = "Events - Erfolge"
+L["options.event"] = "Screenshots"
+
+L["options.event.achievement"] = "Erfolge"
 L["options.event.achievement.personal"] = "persönlicher Erfolg"
 L["options.event.achievement.personal.exist.name"] = "Screenshot bei bereits erzieltem Erfolg erstellen"
 L["options.event.achievement.personal.exist.tooltip"] = "Aktiviere oder deaktiviere die Erstellung eines Screenhots, wenn ein Erfolg bereits von einem anderen Charakter erlangt wurde."
 L["options.event.achievement.criteria"] = "persönliches Erfolgskriterium"
 L["options.event.achievement.guild"] = "Gildenerfolg"
 
-L["options.event.pvp"] = "Events - Spieler vs. Spieler"
+L["options.event.encounter"] = "Bosskampf"
+L["options.event.encounter.victory"] = "Sieg"
+L["options.event.encounter.wipe"] = "Niederlage"
+L["options.event.encounter.party"] = "Dungeon"
+L["options.event.encounter.raid"] = "Raid"
+L["options.event.encounter.scenario"] = "Szenario / Tiefen"
+L["options.event.encounter.victory.first.name"] = "erster Sieg pro Schwierigkeit"
+L["options.event.encounter.victory.first.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn ein Boss bereits besiegt wurde. Diese Option gilt für jede Schwierigkeit getrennt."
+L["options.event.encounter.victory.party.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn ein Dungeon-Boss besiegt wurde."
+L["options.event.encounter.victory.raid.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn ein Raid-Boss besiegt wurde."
+L["options.event.encounter.victory.scenario.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn ein Szenario- oder Tiefen-Boss besiegt wurde."
+L["options.event.encounter.wipe.party.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn bei einem Dungeon-Boss eine Niederlage stattgefunden hat."
+L["options.event.encounter.wipe.raid.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn bei einem Raid-Boss eine Niederlage stattgefunden hat."
+L["options.event.encounter.wipe.scenario.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn bei einem Szenario- oder Tiefen-Boss eine Niederlage stattgefunden hat."
+
+L["options.event.pvp"] = "Spieler vs. Spieler"
 L["options.event.pvp.duel"] = " Duell beendet"
 L["options.event.pvp.arena"] = "Arena abgeschlossen"
 L["options.event.pvp.battleground"] = "Schlachtfeld abgeschlossen"
@@ -40,7 +56,14 @@ L["options.event.pvp.brawl"] = "Rauferei abgeschlossen"
 L["options.event.pvp.victory.name"] = "nur bei Sieg"
 L["options.event.pvp.victory.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenshots, wenn Du das PVP-Match gewonnen hast."
 
-L["options.event.other"] = "Events - Sonstige"
+L["options.event.warband-collection"] = "Kriegsmeutesammlungen"
+L["options.event.warband-collection.new-pet"] = "neues Haustier"
+L["options.event.warband-collection.new-mount"] = "neues Reittier"
+L["options.event.warband-collection.new-toy"] = "neues Spielzeug"
+L["options.event.warband-collection.new-recipe"] = "neues Rezept"
+L["options.event.warband-collection.new-housing-item"] = "neuer Behausungsgegenstand"
+
+L["options.event.other"] = "Sonstige"
 L["options.event.other.login"] = "Spielerlogin"
 L["options.event.other.level-up"] = "Stufenaufstieg"
 L["options.event.other.death"] = "Spielertod"
@@ -85,52 +108,26 @@ L["chat.event.achievement.personal.exist"] = "Screenshot erstellt - |cffF2E699pe
 L["chat.event.achievement.criteria.new"] = "Screenshot erstellt - |cffF2E699persönliches Erfolgskriterium|r - %s - %s"
 L["chat.event.achievement.guild.new"] = "Screenshot erstellt - |cffF2E699Gildenerfolg|r: %s"
 
+L["chat.event.encounter.victory.new"] = "Screenshot erstellt - |cffF2E699Bosskampf - Sieg|r - %s (%s)"
+L["chat.event.encounter.wipe.new"] = "Screenshot erstellt - |cffF2E699Bosskampf - Niederlage|r - %s (%s)"
+
+L["chat.event.pvp.duel.new"] = "Screenshot erstellt - |cffF2E699PvP - Duell beendet|r"
+L["chat.event.pvp.arena.new"] = "Screenshot erstellt - |cffF2E699PvP - Arena abgeschlossen|r"
+L["chat.event.pvp.battleground.new"] = "Screenshot erstellt - |cffF2E699PvP - Schlachtfeld abgeschlossen|r"
+L["chat.event.pvp.brawl.new"] = "Screenshot erstellt - |cffF2E699PvP - Rauferei abgeschlossen|r"
+
+L["chat.event.warband-collection.new-pet.new"] = "Screenshot erstellt - |cffF2E699neues Haustier|r"
+L["chat.event.warband-collection.new-mount.new"] = "Screenshot erstellt - |cffF2E699neues Reittier|r"
+L["chat.event.warband-collection.new-toy.new"] = "Screenshot erstellt - |cffF2E699neues Spielzeug|r"
+L["chat.event.warband-collection.new-recipe.new"] = "Screenshot erstellt - |cffF2E699neues Rezept|r"
+L["chat.event.warband-collection.new-housing-item.new"] = "Screenshot erstellt - |cffF2E699neuer Behausungsgegenstand|r"
+
 L["chat.event.login.new"] = "Screenshot erstellt - |cffF2E699Spielerlogin|r"
 L["chat.event.level-up.new"] = "Screenshot erstellt - |cffF2E699Stufenaufstieg|r - |cffFF4E00|Hlevelup:%1$s:LEVEL_UP_TYPE_CHARACTER|h[Stufe %1$s]|h|r"
+L["chat.event.death.new"] = "Screenshot erstellt - |cffF2E699Spielertod|r"
 L["chat.event.mythic.new"] = "Screenshot erstellt - |cffF2E699Mythic+ Dungeon|r"
 L["chat.event.interval.new"] = "Screenshot erstellt - |cffF2E699Reguläres Intervall|r"
 
 -- Capture
 
 L["capture.message"] = "Screenshot erstellt"
-
---- OLD ENTRIES - CAN BE DELETED IN THE FUTURE
-
-local eventColor = "ffF2E699"
-
-L["options.event.encounter"] = "Bosskampf"
-L["options.event.encounter.victory"] = "Bosskampf - Sieg"
-L["options.event.encounter.wipe"] = "Bosskampf - Niederlage"
-L["options.event.encounter.party.name"] = "Dungeon"
-L["options.event.encounter.raid.name"] = "Raid"
-L["options.event.encounter.scenario.name"] = "Szenario / Tiefen"
-
-L["options.event.encounter.victory.party.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn ein Dungeon-Boss besiegt wurde."
-L["options.event.encounter.victory.raid.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn ein Raid-Boss besiegt wurde."
-L["options.event.encounter.victory.scenario.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn ein Szenario- oder Tiefen-Boss besiegt wurde."
-L["options.event.encounter.victory.first.name"] = "nur der erste Sieg pro Schwierigkeit"
-L["options.event.encounter.victory.first.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn ein Boss bereits besiegt wurde. Diese Option gilt für jede Schwierigkeit getrennt."
-L["options.event.encounter.wipe.party.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn bei einem Dungeon-Boss eine Niederlage stattgefunden hat."
-L["options.event.encounter.wipe.raid.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn bei einem Raid-Boss eine Niederlage stattgefunden hat."
-L["options.event.encounter.wipe.scenario.desc"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn bei einem Szenario- oder Tiefen-Boss eine Niederlage stattgefunden hat."
-
-L["options.event.warbandCollection"] = "Kriegsmeutesammlungen"
-L["options.event.warbandCollection.newPet"] = "neues Haustier"
-L["options.event.warbandCollection.newMount"] = "neues Reittier"
-L["options.event.warbandCollection.newToy"] = "neues Spielzeug"
-L["options.event.warbandCollection.newRecipe"] = "neues Rezept"
-L["options.event.warbandCollection.newHousingItem"] = "neuer Behausungsgegenstand"
-
-L["chat.event.encounter.victory.new"] = "Screenshot erstellt - |c" .. eventColor .. "Bosskampf - Sieg|r - %s (%s)"
-L["chat.event.encounter.wipe.new"] = "Screenshot erstellt - |c" .. eventColor .. "Bosskampf - Niederlage|r - %s (%s)"
-L["chat.event.pvp.duel.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Duell beendet|r"
-L["chat.event.pvp.arena.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Arena abgeschlossen|r"
-L["chat.event.pvp.battleground.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Schlachtfeld abgeschlossen|r"
-L["chat.event.pvp.brawl.new"] = "Screenshot erstellt - |c" .. eventColor .. "PvP - Rauferei abgeschlossen|r"
-
-L["chat.event.death.new"] = "Screenshot erstellt - |c" .. eventColor .. "Spielertod|r"
-L["chat.event.warbandCollection.newPet.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Haustier|r"
-L["chat.event.warbandCollection.newMount.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Reittier|r"
-L["chat.event.warbandCollection.newToy.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Spielzeug|r"
-L["chat.event.warbandCollection.newRecipe.new"] = "Screenshot erstellt - |c" .. eventColor .. "neues Rezept|r"
-L["chat.event.warbandCollection.newHousingItem.new"] = "Screenshot erstellt - |c" .. eventColor .. "neuer Behausungsgegenstand|r"

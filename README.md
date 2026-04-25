@@ -1,43 +1,42 @@
 # Memento
 
-[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases)
-[![Static Badge](https://img.shields.io/badge/buy_me_a_coffe-donate-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/diomsg)
+[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases) [![Static Badge](https://img.shields.io/badge/buy_me_a_coffe-donate-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/diomsg)
 
-*Capture the moments that matter.*
+_Capture the moments that matter._
 
-Memento is an addon that automatically takes screenshots of meaningful gameplay events and personal milestones. The following events are currently supported (more events are planned):
+Memento is a World of Warcraft addon that automatically takes screenshots of meaningful gameplay events and personal milestones. It supports a wide variety of triggers, ensuring you never miss a great shot again.
 
-*   Achievements (personal achievements, reached achievement criteria & guild achievements)*
-*   Boss Fight (victory & wipe)
-*	Completion Mythic+ Dungeons**
-*   Player vs. Player (duel, arena, battleground & brawl)**
-*   Level-Up
-*   Player Death
-*   Player Login
-*   Warband Collections (new pet, new mount, new toy, new recipe or new housing item)
-*	Regular Interval
+**Key Feature**
 
-*\* These events are not supported in 'Classic'. \*\* These events are only supported in 'Retail'.*
+* **Automated Screenshots** - Automatically captures images based on customizable in-game events so you can focus entirely on your gameplay.
 
-### Features
+## Features
 
-*   Each event can be activated separately
-*   The user interface can be automatically hidden for the screenshot and a small success notification is displayed instead (Note: The user interface cannot be hidden automatically during a combat and in this case, the screenshot is taken with the user interface)
-*   After triggering an event, a delay can be set for creating the screenshot
-*   Boss killing will be saved and you can choose whether a screenshot should be taken again for a boss that has already been killed
-*   If another character has already earned an achievement, a screenshot can optionally be prevented
-*   Supported languages: English, German, Russian
-*   Supported versions: 'Classic', 'Burning Crusade - Classic Anniversary Edition', 'Mists of Pandaria - Classic' and 'Retail'
+* Supported Events
+    * Achievements (Personal, Guild, Criteria)*
+    * Boss Fights (Victory, Wipe)
+    * Mythic+ Dungeons (Completion)**
+    * PvP (Duels, Arena, Battlegrounds, Brawls)**
+    * Collections (Pets, Mounts, Toys, Recipes, Housing)**
+    * Character Milestones (Level-Up, Death, Login)
+    * Regular Intervals
+* Each event can be activated separately.
+* The user interface can be automatically hidden for the screenshot and a small success notification is displayed instead (Note: The user interface cannot be hidden automatically during combat).
+* After triggering an event, a delay can be set for creating the screenshot.
+* Boss killing will be saved and you can choose whether a screenshot should be taken again for a boss that has already been killed.
+* If another character has already earned an achievement, a screenshot can optionally be prevented.
+
+*\* These events are not supported in Classic.*
+*\*\* These events are only supported in Retail.*
 
 ## Supported Languages & Flavors
 
-* Languages: English, German, Russian
+* Languages: English, German
 * Flavors: Classic, Burning Crusade - Classic Anniversary Edition, Mists of Pandaria - Classic, Retail
 
 ## Installation & Quick Start
 
-> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Aurarium via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
+> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Memento via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
 
 To open the addon options menu, type `/mem` or `/memento` into your chat and press enter.
 

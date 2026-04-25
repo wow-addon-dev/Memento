@@ -1,3 +1,10 @@
+**v2.0-alpha.1 (2026-04-25)**
+- Added: Required dependency 'Arcane Wizard: Library'
+- Changed: License
+- Updated: Addon description
+- Removed: ruRU localization
+- Refactoring of the addon structure and source code
+
 **v1.86 (2026-03-26)**
 - Fixed: The options for the boss fight were no longer displayed [classic] [burning crusade - classic anniversary edition] [mist of pandaria - classic]
 

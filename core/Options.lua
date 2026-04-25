@@ -127,7 +127,7 @@ function Options:Initialize()
             sliderVariableName = "achievement-personal-delay",
             sliderName         = L["options.event.general.delay.name"],
             sliderTooltip      = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.personal"], 3),
-            sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+            sliderDefault      = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
             sliderFormatter    = FormatSeconds,
 
             shownPredicate     = isAchievementExpanded
@@ -160,7 +160,7 @@ function Options:Initialize()
                 sliderVariableName = "achievement-criteria-delay",
                 sliderName         = L["options.event.general.delay.name"],
                 sliderTooltip      = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.criteria"], 3),
-                sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+                sliderDefault      = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
                 sliderFormatter    = FormatSeconds,
 
                 shownPredicate     = isAchievementExpanded
@@ -180,7 +180,7 @@ function Options:Initialize()
             sliderVariableName = "achievement-guild-delay",
             sliderName         = L["options.event.general.delay.name"],
             sliderTooltip      = L["options.event.general.delay.tooltip"]:format(L["options.event.achievement.guild"], 3),
-            sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+            sliderDefault      = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
             sliderFormatter    = FormatSeconds,
 
             shownPredicate     = isAchievementExpanded

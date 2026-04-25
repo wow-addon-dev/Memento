@@ -221,7 +221,7 @@ function Options:Initialize()
         variableName    = "encounter-victory-party-first",
         name            = L["options.event.encounter.victory.first.name"],
         tooltip         = L["options.event.encounter.victory.first.tooltip"],
-        default         = true,
+        default         = false,
         parentInit      = initializerVictoryParty,
         parentCondition = function() return GetVal(settingVictoryParty) end,
         shownPredicate  = isEncounterExpanded
@@ -234,7 +234,7 @@ function Options:Initialize()
         checkboxVarName    = "encounter-wipe-party-active",
         checkboxName       = eventPartyWipe,
         checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventPartyWipe),
-        checkboxDefault    = true,
+        checkboxDefault    = false,
 
         sliderSettingKey   = addonName .. "_encounter-wipe-party-delay",
         sliderVariableName = "encounter-wipe-party-delay",
@@ -272,7 +272,7 @@ function Options:Initialize()
         variableName    = "encounter-victory-raid-first",
         name            = L["options.event.encounter.victory.first.name"],
         tooltip         = L["options.event.encounter.victory.first.tooltip"],
-        default         = true,
+        default         = false,
         parentInit      = initializerVictoryRaid,
         parentCondition = function() return GetVal(settingVictoryRaid) end,
         shownPredicate  = isEncounterExpanded
@@ -285,7 +285,7 @@ function Options:Initialize()
         checkboxVarName    = "encounter-wipe-raid-active",
         checkboxName       = eventRaidWipe,
         checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventRaidWipe),
-        checkboxDefault    = true,
+        checkboxDefault    = false,
 
         sliderSettingKey   = addonName .. "_encounter-wipe-raid-delay",
         sliderVariableName = "encounter-wipe-raid-delay",
@@ -324,7 +324,7 @@ function Options:Initialize()
             variableName    = "encounter-victory-scenario-first",
             name            = L["options.event.encounter.victory.first.name"],
             tooltip         = L["options.event.encounter.victory.first.tooltip"],
-            default         = true,
+            default         = false,
             parentInit      = initializerVictoryScenario,
             parentCondition = function() return GetVal(settingVictoryScenario) end,
             shownPredicate  = isEncounterExpanded
@@ -337,7 +337,7 @@ function Options:Initialize()
             checkboxVarName    = "encounter-wipe-scenario-active",
             checkboxName       = eventScenarioWipe,
             checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventScenarioWipe),
-            checkboxDefault    = true,
+            checkboxDefault    = false,
 
             sliderSettingKey   = addonName .. "_encounter-wipe-scenario-delay",
             sliderVariableName = "encounter-wipe-scenario-delay",

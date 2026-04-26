@@ -49,7 +49,7 @@ L["options.event.encounter.wipe.raid.tooltip"] = "Aktiviere oder deaktiviere die
 L["options.event.encounter.wipe.scenario.tooltip"] = "Aktiviere oder deaktiviere die automatische Erstellung eines Screenhots, wenn bei einem Szenario- oder Tiefen-Boss eine Niederlage stattgefunden hat."
 
 L["options.event.pvp"] = "Spieler vs. Spieler"
-L["options.event.pvp.duel"] = " Duell beendet"
+L["options.event.pvp.duel"] = "Duell beendet"
 L["options.event.pvp.arena"] = "Arena abgeschlossen"
 L["options.event.pvp.battleground"] = "Schlachtfeld abgeschlossen"
 L["options.event.pvp.brawl"] = "Rauferei abgeschlossen"
@@ -123,7 +123,8 @@ L["chat.event.warband-collection.new-recipe.new"] = "Screenshot erstellt - |cffF
 L["chat.event.warband-collection.new-housing-item.new"] = "Screenshot erstellt - |cffF2E699neuer Behausungsgegenstand|r"
 
 L["chat.event.login.new"] = "Screenshot erstellt - |cffF2E699Spielerlogin|r"
-L["chat.event.level-up.new"] = "Screenshot erstellt - |cffF2E699Stufenaufstieg|r - |cffFF4E00|Hlevelup:%1$s:LEVEL_UP_TYPE_CHARACTER|h[Stufe %1$s]|h|r"
+L["chat.event.level-up.retail.new"] = "Screenshot erstellt - |cffF2E699Stufenaufstieg|r - |cffFF4E00|Hlevelup:%1$s:LEVEL_UP_TYPE_CHARACTER|h[Stufe %1$s]|h|r"
+L["chat.event.level-up.classic.new"] = "Screenshot erstellt - |cffF2E699Stufenaufstieg|r - |cffFF4E00[Stufe %1$s]|r"
 L["chat.event.death.new"] = "Screenshot erstellt - |cffF2E699Spielertod|r"
 L["chat.event.mythic.new"] = "Screenshot erstellt - |cffF2E699Mythic+ Dungeon|r"
 L["chat.event.interval.new"] = "Screenshot erstellt - |cffF2E699Reguläres Intervall|r"

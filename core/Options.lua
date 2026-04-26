@@ -187,118 +187,118 @@ function Options:Initialize()
         })
     end
 
-    local _, isEncounterExpanded = AWL.Settings:CreateExpandableHeader(layout, L["options.event.encounter"])
-    local eventPartyVictory    = L["options.event.encounter.party"] .. " (" .. L["options.event.encounter.victory"] .. ")"
-    local eventPartyWipe       = L["options.event.encounter.party"] .. " (" .. L["options.event.encounter.wipe"] .. ")"
-    local eventRaidVictory     = L["options.event.encounter.raid"] .. " (" .. L["options.event.encounter.victory"] .. ")"
-    local eventRaidWipe        = L["options.event.encounter.raid"] .. " (" .. L["options.event.encounter.wipe"] .. ")"
-    local eventScenarioVictory = L["options.event.encounter.scenario"] .. " (" .. L["options.event.encounter.victory"] .. ")"
-    local eventScenarioWipe    = L["options.event.encounter.scenario"] .. " (" .. L["options.event.encounter.wipe"] .. ")"
+	if MEM.GAME_TYPE_MAINLINE then
+		local _, isEncounterExpanded = AWL.Settings:CreateExpandableHeader(layout, L["options.event.encounter"])
+		local eventPartyVictory    = L["options.event.encounter.party"] .. " (" .. L["options.event.encounter.victory"] .. ")"
+		local eventPartyWipe       = L["options.event.encounter.party"] .. " (" .. L["options.event.encounter.wipe"] .. ")"
+		local eventRaidVictory     = L["options.event.encounter.raid"] .. " (" .. L["options.event.encounter.victory"] .. ")"
+		local eventRaidWipe        = L["options.event.encounter.raid"] .. " (" .. L["options.event.encounter.wipe"] .. ")"
+		local eventScenarioVictory = L["options.event.encounter.scenario"] .. " (" .. L["options.event.encounter.victory"] .. ")"
+		local eventScenarioWipe    = L["options.event.encounter.scenario"] .. " (" .. L["options.event.encounter.wipe"] .. ")"
 
-    -- Dungeon
-    local initializerVictoryParty, settingVictoryParty = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-        variableTable      = MEM.options.event,
-        checkboxSettingKey = addonName .. "_encounter-victory-party-active",
-        checkboxVarName    = "encounter-victory-party-active",
-        checkboxName       = eventPartyVictory,
-        checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventPartyVictory),
-        checkboxDefault    = true,
+		-- Dungeon
+		local initializerVictoryParty, settingVictoryParty = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+			variableTable      = MEM.options.event,
+			checkboxSettingKey = addonName .. "_encounter-victory-party-active",
+			checkboxVarName    = "encounter-victory-party-active",
+			checkboxName       = eventPartyVictory,
+			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventPartyVictory),
+			checkboxDefault    = true,
 
-        sliderSettingKey   = addonName .. "_encounter-victory-party-delay",
-        sliderVariableName = "encounter-victory-party-delay",
-        sliderName         = L["options.event.general.delay.name"],
-        sliderTooltip      = L["options.event.general.delay.tooltip"]:format(eventPartyVictory, 2),
-        sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
-        sliderFormatter    = FormatSeconds,
+			sliderSettingKey   = addonName .. "_encounter-victory-party-delay",
+			sliderVariableName = "encounter-victory-party-delay",
+			sliderName         = L["options.event.general.delay.name"],
+			sliderTooltip      = L["options.event.general.delay.tooltip"]:format(eventPartyVictory, 2),
+			sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+			sliderFormatter    = FormatSeconds,
 
-        shownPredicate     = isEncounterExpanded
-    })
+			shownPredicate     = isEncounterExpanded
+		})
 
-    -- Dungeon: Only First Victory
-    AWL.Settings:AddCheckbox(category, {
-        variableTable   = MEM.options.event,
-        settingKey      = addonName .. "_encounter-victory-party-first",
-        variableName    = "encounter-victory-party-first",
-        name            = L["options.event.encounter.victory.first.name"],
-        tooltip         = L["options.event.encounter.victory.first.tooltip"],
-        default         = false,
-        parentInit      = initializerVictoryParty,
-        parentCondition = function() return GetVal(settingVictoryParty) end,
-        shownPredicate  = isEncounterExpanded
-    })
+		-- Dungeon: Only First Victory
+		AWL.Settings:AddCheckbox(category, {
+			variableTable   = MEM.options.event,
+			settingKey      = addonName .. "_encounter-victory-party-first",
+			variableName    = "encounter-victory-party-first",
+			name            = L["options.event.encounter.victory.first.name"],
+			tooltip         = L["options.event.encounter.victory.first.tooltip"],
+			default         = false,
+			parentInit      = initializerVictoryParty,
+			parentCondition = function() return GetVal(settingVictoryParty) end,
+			shownPredicate  = isEncounterExpanded
+		})
 
-    -- Dungeon: Wipe
-    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-        variableTable      = MEM.options.event,
-        checkboxSettingKey = addonName .. "_encounter-wipe-party-active",
-        checkboxVarName    = "encounter-wipe-party-active",
-        checkboxName       = eventPartyWipe,
-        checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventPartyWipe),
-        checkboxDefault    = false,
+		-- Dungeon: Wipe
+		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+			variableTable      = MEM.options.event,
+			checkboxSettingKey = addonName .. "_encounter-wipe-party-active",
+			checkboxVarName    = "encounter-wipe-party-active",
+			checkboxName       = eventPartyWipe,
+			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventPartyWipe),
+			checkboxDefault    = false,
 
-        sliderSettingKey   = addonName .. "_encounter-wipe-party-delay",
-        sliderVariableName = "encounter-wipe-party-delay",
-        sliderName         = L["options.event.general.delay.name"],
-        sliderTooltip      = L["options.event.general.delay.tooltip"]:format(eventPartyWipe, 2),
-        sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
-        sliderFormatter    = FormatSeconds,
+			sliderSettingKey   = addonName .. "_encounter-wipe-party-delay",
+			sliderVariableName = "encounter-wipe-party-delay",
+			sliderName         = L["options.event.general.delay.name"],
+			sliderTooltip      = L["options.event.general.delay.tooltip"]:format(eventPartyWipe, 2),
+			sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+			sliderFormatter    = FormatSeconds,
 
-        shownPredicate     = isEncounterExpanded
-    })
+			shownPredicate     = isEncounterExpanded
+		})
 
-    -- Raid
-    local initializerVictoryRaid, settingVictoryRaid = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-        variableTable      = MEM.options.event,
-        checkboxSettingKey = addonName .. "_encounter-victory-raid-active",
-        checkboxVarName    = "encounter-victory-raid-active",
-        checkboxName       = eventRaidVictory,
-        checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventRaidVictory),
-        checkboxDefault    = true,
+		-- Raid
+		local initializerVictoryRaid, settingVictoryRaid = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+			variableTable      = MEM.options.event,
+			checkboxSettingKey = addonName .. "_encounter-victory-raid-active",
+			checkboxVarName    = "encounter-victory-raid-active",
+			checkboxName       = eventRaidVictory,
+			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventRaidVictory),
+			checkboxDefault    = true,
 
-        sliderSettingKey   = addonName .. "_encounter-victory-raid-delay",
-        sliderVariableName = "encounter-victory-raid-delay",
-        sliderName         = L["options.event.general.delay.name"],
-        sliderTooltip      = L["options.event.general.delay.tooltip"]:format(eventRaidVictory, 2),
-        sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
-        sliderFormatter    = FormatSeconds,
+			sliderSettingKey   = addonName .. "_encounter-victory-raid-delay",
+			sliderVariableName = "encounter-victory-raid-delay",
+			sliderName         = L["options.event.general.delay.name"],
+			sliderTooltip      = L["options.event.general.delay.tooltip"]:format(eventRaidVictory, 2),
+			sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+			sliderFormatter    = FormatSeconds,
 
-        shownPredicate     = isEncounterExpanded
-    })
+			shownPredicate     = isEncounterExpanded
+		})
 
-    -- Raid: Only First Victory
-    AWL.Settings:AddCheckbox(category, {
-        variableTable   = MEM.options.event,
-        settingKey      = addonName .. "_encounter-victory-raid-first",
-        variableName    = "encounter-victory-raid-first",
-        name            = L["options.event.encounter.victory.first.name"],
-        tooltip         = L["options.event.encounter.victory.first.tooltip"],
-        default         = false,
-        parentInit      = initializerVictoryRaid,
-        parentCondition = function() return GetVal(settingVictoryRaid) end,
-        shownPredicate  = isEncounterExpanded
-    })
+		-- Raid: Only First Victory
+		AWL.Settings:AddCheckbox(category, {
+			variableTable   = MEM.options.event,
+			settingKey      = addonName .. "_encounter-victory-raid-first",
+			variableName    = "encounter-victory-raid-first",
+			name            = L["options.event.encounter.victory.first.name"],
+			tooltip         = L["options.event.encounter.victory.first.tooltip"],
+			default         = false,
+			parentInit      = initializerVictoryRaid,
+			parentCondition = function() return GetVal(settingVictoryRaid) end,
+			shownPredicate  = isEncounterExpanded
+		})
 
-    -- Raid: Wipe
-    AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-        variableTable      = MEM.options.event,
-        checkboxSettingKey = addonName .. "_encounter-wipe-raid-active",
-        checkboxVarName    = "encounter-wipe-raid-active",
-        checkboxName       = eventRaidWipe,
-        checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventRaidWipe),
-        checkboxDefault    = false,
+		-- Raid: Wipe
+		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+			variableTable      = MEM.options.event,
+			checkboxSettingKey = addonName .. "_encounter-wipe-raid-active",
+			checkboxVarName    = "encounter-wipe-raid-active",
+			checkboxName       = eventRaidWipe,
+			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventRaidWipe),
+			checkboxDefault    = false,
 
-        sliderSettingKey   = addonName .. "_encounter-wipe-raid-delay",
-        sliderVariableName = "encounter-wipe-raid-delay",
-        sliderName         = L["options.event.general.delay.name"],
-        sliderTooltip      = L["options.event.general.delay.tooltip"]:format(eventRaidWipe, 2),
-        sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
-        sliderFormatter    = FormatSeconds,
+			sliderSettingKey   = addonName .. "_encounter-wipe-raid-delay",
+			sliderVariableName = "encounter-wipe-raid-delay",
+			sliderName         = L["options.event.general.delay.name"],
+			sliderTooltip      = L["options.event.general.delay.tooltip"]:format(eventRaidWipe, 2),
+			sliderDefault      = 2, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+			sliderFormatter    = FormatSeconds,
 
-        shownPredicate     = isEncounterExpanded
-    })
+			shownPredicate     = isEncounterExpanded
+		})
 
-    -- Scenario
-    if MEM.GAME_TYPE_MAINLINE then
+		-- Scenario
         local initializerVictoryScenario, settingVictoryScenario = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
             variableTable      = MEM.options.event,
             checkboxSettingKey = addonName .. "_encounter-victory-scenario-active",

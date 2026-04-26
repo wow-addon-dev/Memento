@@ -126,7 +126,8 @@ L["chat.event.warband-collection.new-recipe.new"] = "Screenshot taken - |cffF2E6
 L["chat.event.warband-collection.new-housing-item.new"] = "Screenshot taken - |cffF2E699New Housing Item|r"
 
 L["chat.event.login.new"] = "Screenshot taken - |cffF2E699Player Login|r"
-L["chat.event.level-up.new"] = "Screenshot taken - |cffF2E699Level-Up|r - |cffFF4E00|Hlevelup:%1$s:LEVEL_UP_TYPE_CHARACTER|h[Level %1$s]|h|r"
+L["chat.event.level-up.retail.new"] = "Screenshot taken - |cffF2E699Level-Up|r - |cffFF4E00|Hlevelup:%1$s:LEVEL_UP_TYPE_CHARACTER|h[Level %1$s]|h|r"
+L["chat.event.level-up.classic.new"] = "Screenshot taken - |cffF2E699Level-Up|r - |cffFF4E00[Level %1$s]|r"
 L["chat.event.death.new"] = "Screenshot taken - |cffF2E699Player Death|r"
 L["chat.event.mythic.new"] = "Screenshot taken - |cffF2E699Mythic+ Dungeon|r"
 L["chat.event.interval.new"] = "Screenshot taken - |cffF2E699Regular Interval|r"

@@ -169,7 +169,12 @@ local function LoginEventHandler()
 end
 
 local function LevelUpEventHandler(level)
-    Utils:PrintMessage(L["chat.event.level-up.new"]:format(level))
+	if MEM.GAME_TYPE_VANILLA or  MEM.GAME_TYPE_TBC then
+		Utils:PrintMessage(L["chat.event.level-up.classic.new"]:format(tostring(level)))
+	elseif MEM.GAME_TYPE_MISTS or MEM.GAME_TYPE_MAINLINE then
+		Utils:PrintMessage(L["chat.event.level-up.retail.new"]:format(tostring(level)))
+	end
+
     TakeScreenshot()
 end
 

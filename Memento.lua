@@ -263,7 +263,7 @@ function MementoFrame:PLAYER_LEVEL_UP(_, level)
 
     if MEM.options.event["level-up-active"] then
         TimePlayed()
-        Capture:ScheduleTimer("LevelUpEventHandler", MEM.options.event["level-up-delay"] + fixDelay)
+        Capture:ScheduleTimer("LevelUpEventHandler", MEM.options.event["level-up-delay"] + fixDelay, level)
     else
         Utils:PrintDebug("Event 'PLAYER_LEVEL_UP' completed. No screenshot requested.")
     end
@@ -283,7 +283,7 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 
             local delay = (groupType == "party" and MEM.options.event["encounter-victory-party-delay"]) or
                           (groupType == "raid" and MEM.options.event["encounter-victory-raid-delay"]) or
-                          (groupType == "scenario" and MEM.options.event["encounter-victory-scenario-delay"]) or 3
+                          (groupType == "scenario" and MEM.options.event["encounter-victory-scenario-delay"])
 
             local firstOnly = (groupType == "party" and MEM.options.event["encounter-victory-party-first"]) or
                               (groupType == "raid" and MEM.options.event["encounter-victory-raid-first"]) or
@@ -308,7 +308,7 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 
             local delay = (groupType == "party" and MEM.options.event["encounter-wipe-party-delay"]) or
                           (groupType == "raid" and MEM.options.event["encounter-wipe-raid-delay"]) or
-                          (groupType == "scenario" and MEM.options.event["encounter-wipe-scenario-delay"]) or 3
+                          (groupType == "scenario" and MEM.options.event["encounter-wipe-scenario-delay"])
 
             if isActive then
                 TimePlayed()
@@ -363,6 +363,7 @@ elseif MEM.GAME_TYPE_MAINLINE then
     MementoFrame:RegisterEvent("CRITERIA_EARNED")
     MementoFrame:RegisterEvent("CHALLENGE_MODE_COMPLETED")
     MementoFrame:RegisterEvent("PVP_MATCH_COMPLETE")
+	MementoFrame:RegisterEvent("ENCOUNTER_END")
     MementoFrame:RegisterEvent("NEW_PET_ADDED")
     MementoFrame:RegisterEvent("NEW_MOUNT_ADDED")
     MementoFrame:RegisterEvent("NEW_TOY_ADDED")
@@ -372,7 +373,6 @@ end
 MementoFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 MementoFrame:RegisterEvent("PLAYER_DEAD")
 MementoFrame:RegisterEvent("PLAYER_LEVEL_UP")
-MementoFrame:RegisterEvent("ENCOUNTER_END")
 MementoFrame:RegisterEvent("DUEL_FINISHED")
 MementoFrame:RegisterEvent("NEW_RECIPE_LEARNED")
 

@@ -66,8 +66,10 @@ function Utils:InitializeDatabase()
     MEM.options.event = Memento_Options_v3["event"]
 	MEM.options.other = Memento_Options_v3["other"]
 
-	MEM.data = {}
-	MEM.data.bossKill = Memento_DataBossKill
+	if MEM.GAME_TYPE_MAINLINE then
+		MEM.data = {}
+		MEM.data.bossKill = Memento_DataBossKill
+	end
 end
 
 function Utils:InitializeMinimapButton()

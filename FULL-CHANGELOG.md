@@ -1,3 +1,10 @@
+**v2.0-alpha.2 (2026-04-26)**
+- Added: Required dependency 'Arcane Wizard: Library'
+- Changed: License
+- Updated: Addon description
+- Removed: ruRU localization
+- Refactoring of the addon structure and source code
+
 **v2.0-alpha.1 (2026-04-25)**
 - Added: Required dependency 'Arcane Wizard: Library'
 - Changed: License

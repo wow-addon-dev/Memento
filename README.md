@@ -27,6 +27,7 @@ Memento is a World of Warcraft addon that automatically takes screenshots of mea
 * If another character has already earned an achievement, a screenshot can optionally be prevented.
 
 *\* These events are not supported in Classic.*
+
 *\*\* These events are only supported in Retail.*
 
 ## Supported Languages & Flavors

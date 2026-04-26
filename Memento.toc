@@ -14,7 +14,7 @@
 ## Notes-ruRU: Аддон, который автоматически делает скриншоты значимых игровых событий и личных достижений.
 
 ## LoadSavedVariablesFirst: 1
-## SavedVariables: Memento_Options_v3
+## SavedVariables: Memento_Options_v4
 ## SavedVariablesPerCharacter: Memento_DataBossKill
 
 ## AddonCompartmentFuncOnEnter: Memento_CompartmentOnEnter

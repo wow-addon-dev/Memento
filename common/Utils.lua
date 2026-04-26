@@ -45,8 +45,8 @@ function Utils:PrintMessage(msg)
 end
 
 function Utils:InitializeDatabase()
-    if (not Memento_Options_v3) then
-        Memento_Options_v3 = {
+    if (not Memento_Options_v4) then
+        Memento_Options_v4 = {
 			["general"] = {
 				["minimap-button"] = {
 					["hide"] = false
@@ -62,9 +62,9 @@ function Utils:InitializeDatabase()
     end
 
     MEM.options = {}
-	MEM.options.general = Memento_Options_v3["general"]
-    MEM.options.event = Memento_Options_v3["event"]
-	MEM.options.other = Memento_Options_v3["other"]
+	MEM.options.general = Memento_Options_v4["general"]
+    MEM.options.event = Memento_Options_v4["event"]
+	MEM.options.other = Memento_Options_v4["other"]
 
 	if MEM.GAME_TYPE_MAINLINE then
 		MEM.data = {}

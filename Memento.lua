@@ -275,8 +275,6 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
     local difficultyName, groupType = GetDifficultyInfo(difficultyID)
     local difficulty = "D" .. tostring(difficultyID)
 
-    if not Memento_DataBossKill then Memento_DataBossKill = {} end
-
     if groupType == "party" or groupType == "raid" or groupType == "scenario" then
         if success == 1 then
             local isActive = (groupType == "party" and MEM.options.event["encounter-victory-party-active"]) or
@@ -292,9 +290,9 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
                               (groupType == "scenario" and MEM.options.event["encounter-victory-scenario-first"])
 
             if isActive then
-                if not Memento_DataBossKill[difficulty] then Memento_DataBossKill[difficulty] = {} end
+                if not MEM.data.bossKill[difficulty] then MEM.data.bossKill[difficulty] = {} end
 
-                if Memento_DataBossKill[difficulty][encounterID] and firstOnly then
+                if MEM.data.bossKill[difficulty][encounterID] and firstOnly then
                     Utils:PrintDebug("Encounter already killed. No screenshot requested.")
                 else
                     TimePlayed()
@@ -346,9 +344,9 @@ function MementoFrame:NEW_RECIPE_LEARNED(_, recipeID, recipeLevel, baseRecipeID)
     end
 end
 
--------------------------
---- Event Registration --
--------------------------
+--------------------------
+--- Event Registration ---
+--------------------------
 
 MementoFrame:RegisterEvent("ADDON_LOADED")
 MementoFrame:RegisterEvent("TIME_PLAYED_MSG")

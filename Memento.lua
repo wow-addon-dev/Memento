@@ -7,8 +7,8 @@ local Options = MEM.Options
 local Capture = MEM.Capture
 
 local fixDelay = 0.1
-local lastEventTime = 0
 local minutesPassed = 0
+local sessionStartTime = 0
 
 --------------
 --- Frames ---
@@ -22,12 +22,12 @@ local MementoFrame = CreateFrame("Frame", "Memento")
 
 local function TimePlayed()
     local currentTime = GetTime()
+   	local timeSinceLastCheck = currentTime - sessionStartTime
 
-    if currentTime - lastEventTime >= 5 and MEM.options.general["notification"] and (MEM.options.general["notification-class"] or MEM.options.general["notification-time-played"]) then
-        lastEventTime = currentTime
+	MEM.var.totalTimePlayed = MEM.var.totalTimePlayed + timeSinceLastCheck
+	MEM.var.timePlayedThisLevel = MEM.var.timePlayedThisLevel + timeSinceLastCheck
 
-        RequestTimePlayed()
-    end
+	sessionStartTime = currentTime
 end
 
 local function CheckInterval()
@@ -66,6 +66,8 @@ function MementoFrame:ADDON_LOADED(_, addOnName)
         Utils:InitializeMinimapButton()
         Options:Initialize()
 
+		RequestTimePlayed()
+
         local ticker = C_Timer.NewTicker(60, CheckInterval)
 
         Utils:PrintDebug("Addon fully loaded.")
@@ -77,6 +79,8 @@ function MementoFrame:TIME_PLAYED_MSG(_, totalTimePlayed, timePlayedThisLevel)
 
     MEM.var.totalTimePlayed = totalTimePlayed
     MEM.var.timePlayedThisLevel = timePlayedThisLevel
+
+	sessionStartTime = GetTime()
 
     Utils:PrintDebug("Event 'TIME_PLAYED_MSG' completed.")
 end

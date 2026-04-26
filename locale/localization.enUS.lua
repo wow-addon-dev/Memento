@@ -71,7 +71,7 @@ L["options.event.other.login"] = "Player Login"
 L["options.event.other.level-up"] = "Level-Up"
 L["options.event.other.death"] = "Player Death"
 L["options.event.other.death.instance.name"] = "Screenshot behavior in instances"
-L["options.event.other.death.instance.desc"] = "Screenshots are only created inside and / or outside an instance, depending on the following settings for player death.\n\nAn instance includes arenas, battlegrounds, raids or dungeons."
+L["options.event.other.death.instance.tooltip"] = "Screenshots are only created inside and / or outside an instance, depending on the following settings for player death.\n\nAn instance includes arenas, battlegrounds, raids or dungeons."
 L["options.event.other.death.instance.option.0"] = "inside and outside of instances"
 L["options.event.other.death.instance.option.1"] = "only inside of instances"
 L["options.event.other.death.instance.option.2"] = "only outside of instances"
@@ -104,7 +104,7 @@ L["general.minutes-short"] = "min"
 -- Chat
 
 L["chat.notification.class"] = "Class: %s"
-L["chat.notification.timePlayed"] = "Total time played: %d days, %d hours, %d minutes, %d seconds"
+L["chat.notification.time-played"] = "Total time played: %d days, %d hours, %d minutes, %d seconds"
 
 L["chat.event.achievement.personal.new"] = "Screenshot taken - |cffF2E699Personal Achievement|r - %s"
 L["chat.event.achievement.personal.exist"] = "Screenshot taken - |cffF2E699Personal Achievement|r - %s (has already been reached by another character)"

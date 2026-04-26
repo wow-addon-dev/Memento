@@ -58,8 +58,8 @@ function Options:Initialize()
         variableTable   = MEM.options.general,
         settingKey      = addonName .. "_notification-timestamp",
         variableName    = "notification-timestamp",
-        name            = L["options.general.notification-timestamp.name"],
-        tooltip         = L["options.general.notification-timestamp.tooltip"],
+        name            = L["options.general.notification.timestamp.name"],
+        tooltip         = L["options.general.notification.timestamp.tooltip"],
         default         = false,
         parentInit      = initializerNotification,
         parentCondition = IsNotificationEnabled
@@ -70,8 +70,8 @@ function Options:Initialize()
         variableTable   = MEM.options.general,
         settingKey      = addonName .. "_notification-class",
         variableName    = "notification-class",
-        name            = L["options.general.notification-class.name"],
-        tooltip         = L["options.general.notification-class.tooltip"],
+        name            = L["options.general.notification.class.name"],
+        tooltip         = L["options.general.notification.class.tooltip"],
         default         = false,
         parentInit      = initializerNotification,
         parentCondition = IsNotificationEnabled
@@ -82,8 +82,8 @@ function Options:Initialize()
         variableTable   = MEM.options.general,
         settingKey      = addonName .. "_notification-time-played",
         variableName    = "notification-time-played",
-        name            = L["options.general.notification-time-played.name"],
-        tooltip         = L["options.general.notification-time-played.tooltip"],
+        name            = L["options.general.notification.time-played.name"],
+        tooltip         = L["options.general.notification.time-played.tooltip"],
         default         = false,
         parentInit      = initializerNotification,
         parentCondition = IsNotificationEnabled

@@ -1,0 +1,96 @@
+name: Bug Report
+description: Report a bug to help improve this addon.
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for taking the time to fill out this bug report! Please provide as much info as possible."
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder: When I open the character panel, the addon frame overlaps with...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: wow-version
+    attributes:
+      label: WoW Version
+      description: Which version of World of Warcraft are you playing?
+      options:
+        - Retail
+        - Cataclysm Classic
+        - Season of Discovery
+        - Classic Era / Hardcore
+        - Beta / PTR
+    validations:
+      required: true
+
+  - type: input
+    id: addon-version
+    attributes:
+      label: Addon Version
+      description: What version of this addon are you using? (Check CurseForge/Wago or your Addon Manager)
+      placeholder: e.g., v1.4.2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client-language
+    attributes:
+      label: Game Client Language
+      description: Which language is your WoW client set to?
+      options:
+        - English (enUS/enGB)
+        - German (deDE)
+        - French (frFR)
+        - Spanish (esES/esMX)
+        - Russian (ruRU)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: conflict-test
+    attributes:
+      label: Addon Conflict Test
+      description: Does the error still occur when ALL other addons except this one are disabled?
+      options:
+        - "Yes, it still happens."
+        - "No, it works fine without other addons."
+        - "I haven't tested it yet."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How exactly can we trigger this bug?
+      value: |
+        1. Open the frame '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: lua-error
+    attributes:
+      label: Lua Error (Stacktrace)
+      description: If you received a Lua error (from the game or BugSack), paste it here.
+      render: lua
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context or Screenshots
+      description: Add any other context about the problem here. You can drag & drop screenshots directly into this box.
+    validations:
+      required: false

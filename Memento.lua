@@ -22,10 +22,10 @@ local MementoFrame = CreateFrame("Frame", "Memento")
 
 local function TimePlayed()
     local currentTime = GetTime()
-   	local timeSinceLastCheck = currentTime - sessionStartTime
+   	local timeLastCheck = currentTime - sessionStartTime
 
-	MEM.var.totalTimePlayed = MEM.var.totalTimePlayed + timeSinceLastCheck
-	MEM.var.timePlayedThisLevel = MEM.var.timePlayedThisLevel + timeSinceLastCheck
+	MEM.var.totalTimePlayed = MEM.var.totalTimePlayed + timeLastCheck
+	MEM.var.timePlayedThisLevel = MEM.var.timePlayedThisLevel + timesLastCheck
 
 	sessionStartTime = currentTime
 end
@@ -242,7 +242,7 @@ function MementoFrame:PLAYER_DEAD(_)
 
     if MEM.options.event["death-active"] then
         TimePlayed()
-        local inInstance, instanceType = IsInInstance()
+        local inInstance = IsInInstance()
 
         if MEM.options.event["death-instance"] == 0 then
             Capture:ScheduleTimer("DeathEventHandler", MEM.options.event["death-delay"] + fixDelay)

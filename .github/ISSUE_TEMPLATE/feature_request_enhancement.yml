@@ -6,6 +6,7 @@ body:
     attributes:
       label: Game Version (Flavor)
       options:
+        - All Versions
         - Retail
         - Mist of Pandaria - Classic
         - Burning Crusade - Classic Anniversary Edition

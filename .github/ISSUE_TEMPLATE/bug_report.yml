@@ -55,11 +55,11 @@ body:
     validations:
       required: true
 
-  - type: textarea
+- type: textarea
     id: description
     attributes:
-      label: Describe the Bug & Steps to Reproduce
-      description: What exactly is broken, and how can we trigger the error?
+      label: Describe the Bug, Steps to Reproduce & Screenshots
+      description: What exactly is broken, and how can we trigger the error? You can drag and drop screenshots directly into this text box.
     validations:
       required: true
 
@@ -67,15 +67,7 @@ body:
     id: lua-error
     attributes:
       label: Lua Error
-      description: If you received a Lua error, paste it here.
+      description: If you received a Lua error (from the game or BugSack), paste it here.
       render: lua
-    validations:
-      required: false
-
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: Screenshots
-      description: If applicable, drag and drop screenshots here to help explain the visual problem.
     validations:
       required: false

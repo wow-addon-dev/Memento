@@ -1,6 +1,5 @@
 name: Question or Feedback
 description: Ask a question about the addon or share your general feedback.
-labels: ["question"]
 body:
   - type: textarea
     id: message

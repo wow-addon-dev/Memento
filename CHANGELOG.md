@@ -10,4 +10,5 @@
 - Changed: License
 - Updated: Addon description
 - Removed: ruRU localization
+- Removed: Embedded library 'Ace3'
 - Refactoring of the addon structure and source code

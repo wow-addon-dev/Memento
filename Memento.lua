@@ -25,7 +25,7 @@ local function TimePlayed()
    	local timeLastCheck = currentTime - sessionStartTime
 
 	MEM.var.totalTimePlayed = MEM.var.totalTimePlayed + timeLastCheck
-	MEM.var.timePlayedThisLevel = MEM.var.timePlayedThisLevel + timesLastCheck
+	MEM.var.timePlayedThisLevel = MEM.var.timePlayedThisLevel + timeLastCheck
 
 	sessionStartTime = currentTime
 end

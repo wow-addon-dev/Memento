@@ -1,0 +1,12 @@
+name: Question or Feedback
+description: Ask a question about the addon or share your general feedback.
+labels: ["question"]
+body:
+  - type: textarea
+    id: message
+    attributes:
+      label: Your Message
+      description: What would you like to ask or share?
+      placeholder: Type your question or feedback here...
+    validations:
+      required: true

@@ -4,15 +4,14 @@ title: "[BUG] "
 labels: ["bug"]
 body:
   - type: dropdown
-    id: wow-version
+    id: game-version
     attributes:
-      label: WoW Version
+      label: Game Version (Flavor)
       options:
         - Retail
-        - Cataclysm Classic
-        - Season of Discovery
-        - Classic Era / Hardcore
-        - Beta / PTR
+        - Mist of Pandaria - Classic
+        - Burning Crusade - Classic Anniversary Edition
+        - Classic
     validations:
       required: true
 
@@ -20,7 +19,7 @@ body:
     id: addon-version
     attributes:
       label: Addon Version
-      placeholder: e.g., v1.4.2
+      placeholder: e.g., v2.4
     validations:
       required: true
 
@@ -32,9 +31,15 @@ body:
         - English (enUS / enGB)
         - German (deDE)
         - French (frFR)
-        - Spanish (esES / esMX)
+        - Spanish - Spain (esES)
+        - Spanish - Latin America (esMX)
+        - Portuguese - Brazil (ptBR)
+        - Italian (itIT)
         - Russian (ruRU)
-        - Other
+        - Korean (koKR)
+        - Chinese - Simplified (zhCN)
+        - Chinese - Traditional (zhTW)
+    validations:
     validations:
       required: true
 

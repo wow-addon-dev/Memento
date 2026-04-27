@@ -364,6 +364,7 @@ function Options:Initialize()
         sliderSettingKey   = addonName .. "_pvp-duel-delay",
         sliderVariableName = "pvp-duel-delay",
         sliderName         = L["options.event.general.delay.name"],
+		sliderTooltip      = L["options.event.general.delay.tooltip"]:format(L["options.event.pvp.duel"], 1),
         sliderDefault      = 1, sliderMin = 1, sliderMax = 10, sliderStep = 1,
         sliderFormatter    = FormatSeconds,
 
@@ -383,6 +384,7 @@ function Options:Initialize()
             sliderSettingKey   = addonName .. "_pvp-arena-delay",
             sliderVariableName = "pvp-arena-delay",
             sliderName         = L["options.event.general.delay.name"],
+			sliderTooltip      = L["options.event.general.delay.tooltip"]:format(L["options.event.pvp.arena"], 3),
             sliderDefault      = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
             sliderFormatter    = FormatSeconds,
 
@@ -401,6 +403,7 @@ function Options:Initialize()
             sliderSettingKey   = addonName .. "_pvp-battleground-delay",
             sliderVariableName = "pvp-battleground-delay",
             sliderName         = L["options.event.general.delay.name"],
+			sliderTooltip      = L["options.event.general.delay.tooltip"]:format(L["options.event.pvp.battleground"], 3),
             sliderDefault      = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
             sliderFormatter    = FormatSeconds,
 
@@ -432,6 +435,7 @@ function Options:Initialize()
             sliderSettingKey   = addonName .. "_pvp-brawl-delay",
             sliderVariableName = "pvp-brawl-delay",
             sliderName         = L["options.event.general.delay.name"],
+			sliderTooltip      = L["options.event.general.delay.tooltip"]:format(L["options.event.pvp.brawl"], 3),
             sliderDefault      = 3, sliderMin = 1, sliderMax = 10, sliderStep = 1,
             sliderFormatter    = FormatSeconds,
 

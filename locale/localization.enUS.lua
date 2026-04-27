@@ -108,7 +108,10 @@ L["chat.notification.time-played"] = "Total time played: %d days, %d hours, %d m
 
 L["chat.event.achievement.personal.new"] = "Screenshot taken - |cffF2E699Personal Achievement|r - %s"
 L["chat.event.achievement.personal.exist"] = "Screenshot taken - |cffF2E699Personal Achievement|r - %s (has already been reached by another character)"
-L["chat.event.achievement.criteria.new"] = "Screenshot taken - |cffF2E699Personal Achievement|r - %s - %s"
+L["chat.event.achievement.personal.no-link.new"] = "Screenshot taken - |cffF2E699Personal Achievement|r"
+L["chat.event.achievement.personal.no-link.exist"] = "Screenshot taken - |cffF2E699Personal Achievement|r (has already been reached by another character)"
+L["chat.event.achievement.criteria.new"] = "Screenshot taken - |cffF2E699Personal Achievement Criteria|r - %s - %s"
+L["chat.event.achievement.criteria.no-link.new"] = "Screenshot taken - |cffF2E699Personal Achievement Criteria|r"
 L["chat.event.achievement.guild.new"] = "Screenshot taken - |cffF2E699Guild achievement|r - %s"
 
 L["chat.event.encounter.victory.new"] = "Screenshot taken - |cffF2E699Boss Fight - Victory|r - %s (%s)"

@@ -81,15 +81,31 @@ local function TakeScreenshot()
 end
 
 local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
-    if not alreadyEarned then
-        Utils:PrintMessage(L["chat.event.achievement.personal.new"]:format(GetAchievementLink(achievementID)))
-        TakeScreenshot()
-    elseif MEM.options.event["achievement-personal-exist"] then
-        Utils:PrintMessage(L["chat.event.achievement.personal.exist"]:format(GetAchievementLink(achievementID)))
-        TakeScreenshot()
-    else
-        Utils:PrintDebug("The achievement ".. GetAchievementLink(achievementID) .. " has already been reached by another character. No screenshot requested.")
-    end
+	local achievementLink = GetAchievementLink(achievementID)
+
+	if achievementLink then
+		if not alreadyEarned then
+			Utils:PrintMessage(L["chat.event.achievement.personal.new"]:format(achievementLink))
+			TakeScreenshot()
+		elseif MEM.options.event["achievement-personal-exist"] then
+			Utils:PrintMessage(L["chat.event.achievement.personal.exist"]:format(achievementLink))
+			TakeScreenshot()
+		else
+			Utils:PrintDebug("The achievement ".. achievementLink .. " has already been reached by another character. No screenshot requested.")
+		end
+	else
+		Utils:PrintDebug("Unknown AchievementLink. (nil value / unknown ID)")
+
+		if not alreadyEarned then
+			Utils:PrintMessage(L["chat.event.achievement.personal.no-link.new"])
+			TakeScreenshot()
+		elseif MEM.options.event["achievement-personal-exist"] then
+			Utils:PrintMessage(L["chat.event.achievement.personal.no-link.exist"])
+			TakeScreenshot()
+		else
+			Utils:PrintDebug("The achievement has already been reached by another character. No screenshot requested.")
+		end
+	end
 end
 
 local function AchievementGuildEventHandler(achievementID)
@@ -100,7 +116,15 @@ local function AchievementGuildEventHandler(achievementID)
 end
 
 local function CriteriaEventHandler(achievementID, description)
-    Utils:PrintMessage(L["chat.event.achievement.criteria.new"]:format(GetAchievementLink(achievementID), description))
+	local achievementLink = GetAchievementLink(achievementID)
+
+	if achievementLink then
+		Utils:PrintMessage(L["chat.event.achievement.criteria.new"]:format(GetAchievementLink(achievementID), description))
+	else
+		Utils:PrintDebug("Unknown AchievementLink. (nil value / unknown ID)")
+		Utils:PrintMessage(L["chat.event.achievement.criteria.no-link.new"])
+	end
+
     TakeScreenshot()
 end
 

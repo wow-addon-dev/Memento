@@ -2,13 +2,4 @@
 ### [@project-version@](https://github.com/wow-addon-dev/Memento/tree/@project-version@) (@build-date@)
 [Full Changelog](@full-changelog@) - [Previous Releases](https://github.com/wow-addon-dev/Memento/releases)
 
-**This is version 2.0 of Aurarium. With this release, the software code for all addons is being harmonized so that development will be easier in the future.**
-
-**Important note: All settings have been reset to their defaults.**
-
-- Added: Required dependency 'Arcane Wizard: Library'
-- Changed: License
-- Updated: Addon description
-- Removed: ruRU localization
-- Removed: Embedded library 'Ace3'
-- Refactoring of the addon structure and source code
+- Fixed: If a achievement is made during the loading screen, an error message appears and the screenshot is not taken

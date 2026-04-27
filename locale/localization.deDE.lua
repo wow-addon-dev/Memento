@@ -105,7 +105,10 @@ L["chat.notification.time-played"] = "Gesamtspielzeit: %d Tage, %d Stunden, %d M
 
 L["chat.event.achievement.personal.new"] = "Screenshot erstellt - |cffF2E699persönlicher Erfolg|r - %s"
 L["chat.event.achievement.personal.exist"] = "Screenshot erstellt - |cffF2E699persönlicher Erfolg|r - %s (wurde bereits von einem anderen Charakter erzielt)"
+L["chat.event.achievement.personal.no-link.new"] = "Screenshot erstellt - |cffF2E699persönlicher Erfolg|r"
+L["chat.event.achievement.personal.no-link.exist"] = "Screenshot erstellt - |cffF2E699persönlicher Erfolg|r (wurde bereits von einem anderen Charakter erzielt)"
 L["chat.event.achievement.criteria.new"] = "Screenshot erstellt - |cffF2E699persönliches Erfolgskriterium|r - %s - %s"
+L["chat.event.achievement.criteria.no-link.new"] = "Screenshot erstellt - |cffF2E699persönliches Erfolgskriterium|r"
 L["chat.event.achievement.guild.new"] = "Screenshot erstellt - |cffF2E699Gildenerfolg|r: %s"
 
 L["chat.event.encounter.victory.new"] = "Screenshot erstellt - |cffF2E699Bosskampf - Sieg|r - %s (%s)"

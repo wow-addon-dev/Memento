@@ -4,13 +4,12 @@ body:
   - type: dropdown
     id: wow-version
     attributes:
-      label: Target WoW Version
+      label: Game Version (Flavor)
       options:
-        - All Versions
         - Retail
-        - Cataclysm Classic
-        - Season of Discovery
-        - Classic Era / Hardcore
+        - Mist of Pandaria - Classic
+        - Burning Crusade - Classic Anniversary Edition
+        - Classic
     validations:
       required: true
 

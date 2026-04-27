@@ -1,8 +1,1 @@
 blank_issues_enabled: false
-contact_links:
-  - name: Addon Support & Fragen
-    url: https://discord.gg/DEIN_DISCORD_LINK
-    about: Du hast keinen Bug gefunden, sondern brauchst einfach nur Hilfe beim Einstellen des Addons? Komm in den Discord!
-  - name: CurseForge Seite
-    url: https://www.curseforge.com/wow/addons/DEIN_ADDON_NAME
-    about: Hier findest du immer die aktuellste Version des Addons.

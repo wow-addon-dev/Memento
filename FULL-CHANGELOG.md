@@ -1,3 +1,6 @@
+**v2.1 (2026-04-28)**
+- Fixed: If a achievement is made during the loading screen, an error message appears and the screenshot is not taken
+
 **v2.0 (2026-04-27)**
 - Added: Required dependency 'Arcane Wizard: Library'
 - Changed: License

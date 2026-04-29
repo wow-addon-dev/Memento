@@ -2,6 +2,8 @@ local addonName, MEM = ...
 
 local L = MEM.Localization
 
+local Utils = MEM.Utils
+
 -----------------------
 --- Global Funtions ---
 -----------------------
@@ -22,8 +24,12 @@ function Memento_CompartmentOnLeave()
     GameTooltip:Hide()
 end
 
-function HMemento_CompartmentOnClick(_, button)
+function Memento_CompartmentOnClick(_, button)
     if button == "RightButton" then
-        Settings.OpenToCategory(MEM.MAIN_CATEGORY_ID)
+		if not InCombatLockdown() then
+			Settings.OpenToCategory(MEM.MAIN_CATEGORY_ID)
+		else
+			Utils:PrintDebug("In combat. The options menu cannot be opened.")
+		end
     end
 end

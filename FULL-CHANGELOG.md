@@ -1,3 +1,7 @@
+**v2.2 (2026-04-29)**
+- Updated: deDE, enUS localization
+- Minor code adjustments
+
 **v2.1 (2026-04-28)**
 - Fixed: If a achievement is made during the loading screen, an error message appears and the screenshot is not taken
 

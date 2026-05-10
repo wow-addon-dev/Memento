@@ -1,3 +1,7 @@
+**v2.3 (2026-05-10)**
+- Added: TOC version for patch 5.5.4 [mist of pandaria - classic]
+- Removed: TOC version for patch 12.0.1 [retail]
+
 **v2.2 (2026-04-29)**
 - Updated: deDE, enUS localization
 - Minor code adjustments

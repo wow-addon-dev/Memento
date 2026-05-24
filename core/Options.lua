@@ -112,7 +112,7 @@ function Options:Initialize()
     layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.event"]))
 
     if MEM.GAME_TYPE_MAINLINE or MEM.GAME_TYPE_MISTS then
-        local _, isAchievementExpanded = AWL.Settings:CreateExpandableHeader(layout, L["options.event.achievement"])
+        local _, isAchievementExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.event.achievement"])
 
         -- Personal Achievement
         local initializerAchievementPersonal, settingAchievementPersonal = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
@@ -188,7 +188,7 @@ function Options:Initialize()
     end
 
 	if MEM.GAME_TYPE_MAINLINE then
-		local _, isEncounterExpanded = AWL.Settings:CreateExpandableHeader(layout, L["options.event.encounter"])
+		local _, isEncounterExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.event.encounter"])
 		local eventPartyVictory    = L["options.event.encounter.party"] .. " (" .. L["options.event.encounter.victory"] .. ")"
 		local eventPartyWipe       = L["options.event.encounter.party"] .. " (" .. L["options.event.encounter.wipe"] .. ")"
 		local eventRaidVictory     = L["options.event.encounter.raid"] .. " (" .. L["options.event.encounter.victory"] .. ")"
@@ -350,7 +350,7 @@ function Options:Initialize()
         })
     end
 
-    local _, isPvPExpanded = AWL.Settings:CreateExpandableHeader(layout, L["options.event.pvp"])
+    local _, isPvPExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.event.pvp"])
 
     -- Duel (Global)
     AWL.Settings:AddCheckboxSliderCombo(category, layout, {
@@ -456,7 +456,7 @@ function Options:Initialize()
         })
     end
 
-    local _, isWarbandCollectionExpanded = AWL.Settings:CreateExpandableHeader(layout, L["options.event.warband-collection"])
+    local _, isWarbandCollectionExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.event.warband-collection"])
 
     local function AddWarbandEntry(key, nameString, condition)
         if condition then
@@ -486,7 +486,7 @@ function Options:Initialize()
     AddWarbandEntry("recipe", L["options.event.warband-collection.new-recipe"], true)
     AddWarbandEntry("housing", L["options.event.warband-collection.new-housing-item"], MEM.GAME_TYPE_MAINLINE)
 
-    local _, isOtherExpanded = AWL.Settings:CreateExpandableHeader(layout, L["options.event.other"])
+    local _, isOtherExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.event.other"])
 
     -- Login
     AWL.Settings:AddCheckboxSliderCombo(category, layout, {
@@ -620,26 +620,28 @@ function Options:Initialize()
     -- Game Version
     AWL.Settings:AddInfoText(layout, {
         leftText  = L["options.about.game-version"],
-        rightText = MEM.GAME_VERSION .. " (" .. MEM.GAME_FLAVOR .. ")"
+        rightText = MEM.GAME_VERSION .. " (" .. MEM.GAME_FLAVOR .. ")",
+        height    = "compact"
     })
 
     -- Addon Version
     AWL.Settings:AddInfoText(layout, {
         leftText  = L["options.about.addon-version"],
-        rightText = MEM.ADDON_VERSION .. " (" .. MEM.ADDON_BUILD_DATE .. ")"
+        rightText = MEM.ADDON_VERSION .. " (" .. MEM.ADDON_BUILD_DATE .. ")",
+        height    = "compact"
     })
 
     -- Library Version
     AWL.Settings:AddInfoText(layout, {
         leftText  = L["options.about.lib-version"],
-        rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")"
+        rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")",
+        height    = "compact"
     })
 
     -- Author
     AWL.Settings:AddInfoText(layout, {
         leftText  = L["options.about.author"],
-        rightText = MEM.ADDON_AUTHOR,
-        height    = 30
+        rightText = MEM.ADDON_AUTHOR
     })
 
     -- GitHub Link

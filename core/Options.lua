@@ -13,10 +13,16 @@ local Options = {}
 
 local minimapButtonProxy = setmetatable({}, {
     __index = function(_, key)
-        return not MEM.options.general["minimap-button"]["hide"]
+		if key == "hide" then
+			return not MEM.settings.general["minimap-button"]["hide"]
+		end
     end,
     __newindex = function(_, key, value)
-        MEM.options.general["minimap-button"]["hide"] = not value
+		if key ~= "hide" then
+			return
+		end
+
+        MEM.settings.general["minimap-button"]["hide"] = not value
 
         if value then
             Utils.minimapButton:Show(addonName)

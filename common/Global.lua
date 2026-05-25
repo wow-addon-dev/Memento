@@ -21,15 +21,15 @@ function Memento_CompartmentOnEnter(self, button)
 end
 
 function Memento_CompartmentOnLeave()
-    GameTooltip:Hide()
+	GameTooltip:Hide()
 end
 
 function Memento_CompartmentOnClick(_, button)
-    if button == "RightButton" then
+	if button == "RightButton" then
 		if not InCombatLockdown() then
 			Settings.OpenToCategory(MEM.MAIN_CATEGORY_ID)
 		else
 			Utils:PrintDebug("In combat. The options menu cannot be opened.")
 		end
-    end
+	end
 end

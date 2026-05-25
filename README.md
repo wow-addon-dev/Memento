@@ -13,13 +13,13 @@ Memento is a World of Warcraft addon that automatically takes screenshots of mea
 ## Features
 
 * Supported Events
-    * Character Milestones (Level-Up, Death, Login)
-    * Achievements (Personal, Guild, Criteria)*
-    * Boss Fights (Victory, Wipe)**
-    * Mythic+ Dungeons (Completion)**
-    * PvP (Duels, Arena, Battlegrounds, Brawls)**
-    * Collections (Pets, Mounts, Toys, Recipes, Housing)**
-    * Regular Intervals
+	* Character Milestones (Level-Up, Death, Login)
+	* Achievements (Personal, Guild, Criteria)*
+	* Boss Fights (Victory, Wipe)**
+	* Mythic+ Dungeons (Completion)**
+	* PvP (Duels, Arena, Battlegrounds, Brawls)**
+	* Collections (Pets, Mounts, Toys, Recipes, Housing)**
+	* Regular Intervals
 * Each event can be activated separately.
 * The user interface can be automatically hidden for the screenshot and a small success notification is displayed instead (Note: The user interface cannot be hidden automatically during combat).
 * After triggering an event, a delay can be set for creating the screenshot.

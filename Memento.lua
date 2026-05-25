@@ -1,10 +1,8 @@
 local addonName, MEM = ...
 
-local L = MEM.Localization
-
 local Utils = MEM.Utils
-local Options = MEM.Options
 local Capture = MEM.Capture
+local Options = MEM.Options
 
 local fixDelay = 0.1
 local minutesPassed = 0

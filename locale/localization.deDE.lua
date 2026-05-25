@@ -88,7 +88,7 @@ L["options.about.lib-version"] = "Bibliotheksversion"
 L["options.about.author"] = "Autor"
 
 L["options.about.button-github.name"] = "Feedback & Hilfe"
-L["options.about.button-github.tooltip"] = "Öffnet ein Popup-Fenster mit einem Link nach GitHub."
+L["options.about.button-github.tooltip"] = "Öffnet ein Popup-Fenster mit einem Link zu GitHub."
 L["options.about.button-github.button"] = "GitHub"
 
 -- General

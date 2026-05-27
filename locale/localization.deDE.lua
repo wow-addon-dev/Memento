@@ -8,7 +8,7 @@ local L = MEM.Localization
 
 L["options.general"] = "Allgemeine Einstellungen"
 L["options.general.notification.name"] = "Chatbenachrichtigung"
-L["options.general.notification.tooltip"] = "Aktiviere oder deaktiviere die Benachrichtung im Chat, wenn ein Screenshot erstellt wurde."
+L["options.general.notification.tooltip"] = "Aktiviere oder deaktiviere die Benachrichtigung im Chat, wenn ein Screenshot erstellt wurde."
 L["options.general.notification.timestamp.name"] = "Chatausgabe mit Zeitstempel"
 L["options.general.notification.timestamp.tooltip"] = "Aktiviere oder deaktiviere die Chatausgabe mit Zeitstempel, wenn ein Screenshot erstellt wurde."
 L["options.general.notification.class.name"] = "Chatausgabe der Klasse"

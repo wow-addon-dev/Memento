@@ -31,7 +31,7 @@ local function CreateMessageFrame()
 	frame.textBottom:ClearAllPoints()
 	frame.textBottom:SetPoint("CENTER", 0, -6)
 	frame.textBottom:SetFont(tostring(frame.textBottom:GetFont()), 7)
-	frame.textBottom:SetText(tostring(date("%d/%m/%y %H:%M:%S", GetServerTime())))
+	frame.textBottom:SetText(tostring(date("%d.%m.%y - %H:%M:%S", GetServerTime())))
 
 	return frame
 end

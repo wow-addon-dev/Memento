@@ -8,3 +8,4 @@
 - Changed: Brawls are checked before battlegrounds when handling PvP match completion [retail]
 - Updated: deDE, enUS localization
 - Fixed: Removed a misleading debug message when screenshots without UI are blocked during combat
+- Minor code adjustments

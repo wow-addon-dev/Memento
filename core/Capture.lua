@@ -5,6 +5,7 @@ local L = MEM.Localization
 local Utils = MEM.modules.Utils
 
 local Capture = {}
+local messageFrame
 
 -----------------------
 --- Local Functions ---
@@ -36,6 +37,16 @@ local function CreateMessageFrame()
 	return frame
 end
 
+local function UpdateMessageFrame()
+	if not messageFrame then
+		messageFrame = CreateMessageFrame()
+	end
+
+	messageFrame.textBottom:SetText(tostring(date("%d.%m.%y - %H:%M:%S", GetServerTime())))
+
+	return messageFrame
+end
+
 local function TakeScreenshot()
 	if MEM.settings.general["hide-ui"] then
 		if not InCombatLockdown() then
@@ -44,7 +55,7 @@ local function TakeScreenshot()
 			local status, err = pcall(function ()
 				UIParent:Hide()
 
-				frame = CreateMessageFrame()
+				frame = UpdateMessageFrame()
 				frame:Show()
 
 				C_Timer.After(0.1, function()
@@ -53,7 +64,10 @@ local function TakeScreenshot()
 
 				C_Timer.After(0.2, function()
 					UIParent:Show()
-					frame:Hide()
+
+					if frame then
+						frame:Hide()
+					end
 				end)
 
 				Utils:PrintDebug("Screenshot without UI taken.")
@@ -61,7 +75,10 @@ local function TakeScreenshot()
 
 			if not status then
 				UIParent:Show()
-				frame:Hide()
+
+				if frame then
+					frame:Hide()
+				end
 
 				Utils:PrintDebug(string.format(
 					"Method TakeScreenshot() (without UI) aborted with exception: %s",

@@ -70,6 +70,8 @@ end
 
 function MementoFrame:ADDON_LOADED(_, addOnName)
 	if addOnName == addonName then
+		sessionStartTime = GetTime()
+
 		Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()

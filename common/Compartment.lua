@@ -2,11 +2,11 @@ local addonName, MEM = ...
 
 local L = MEM.Localization
 
-local Utils = MEM.Utils
+local Utils = MEM.modules.Utils
 
------------------------
---- Global Funtions ---
------------------------
+------------------------
+--- Public Functions ---
+------------------------
 
 function Memento_CompartmentOnEnter(self, button)
 	GameTooltip:ClearAllPoints()

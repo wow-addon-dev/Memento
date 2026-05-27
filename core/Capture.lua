@@ -2,7 +2,7 @@ local addonName, MEM = ...
 
 local L = MEM.Localization
 
-local Utils = MEM.Utils
+local Utils = MEM.modules.Utils
 
 local Capture = {}
 
@@ -37,7 +37,7 @@ local function CreateMessageFrame()
 end
 
 local function TakeScreenshot()
-	if MEM.options.general["hide-ui"] then
+	if MEM.settings.general["hide-ui"] then
 		if not InCombatLockdown() then
 			local frame
 
@@ -63,7 +63,10 @@ local function TakeScreenshot()
 				UIParent:Show()
 				frame:Hide()
 
-				Utils:PrintDebug("Method TakeScreenshot() (without UI) aborted with exception: " .. err)
+				Utils:PrintDebug(string.format(
+					"Method TakeScreenshot() (without UI) aborted with exception: %s",
+					tostring(err)
+				))
 
 				Screenshot()
 
@@ -71,6 +74,9 @@ local function TakeScreenshot()
 			end
 		else
 			Utils:PrintDebug("No screenshot is possible in combat without ui.")
+
+			Screenshot()
+
 			Utils:PrintDebug("Screenshot taken.")
 		end
 	else
@@ -87,11 +93,14 @@ local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
 		if not alreadyEarned then
 			Utils:PrintMessage(L["chat.event.achievement.personal.new"]:format(achievementLink))
 			TakeScreenshot()
-		elseif MEM.options.event["achievement-personal-exist"] then
+		elseif MEM.settings.event["achievement-personal-exist"] then
 			Utils:PrintMessage(L["chat.event.achievement.personal.exist"]:format(achievementLink))
 			TakeScreenshot()
 		else
-			Utils:PrintDebug("The achievement ".. achievementLink .. " has already been reached by another character. No screenshot requested.")
+			Utils:PrintDebug(string.format(
+				"The achievement %s has already been reached by another character. No screenshot requested.",
+				tostring(achievementLink)
+			))
 		end
 	else
 		Utils:PrintDebug("Unknown AchievementLink. (nil value / unknown ID)")
@@ -99,7 +108,7 @@ local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
 		if not alreadyEarned then
 			Utils:PrintMessage(L["chat.event.achievement.personal.no-link.new"])
 			TakeScreenshot()
-		elseif MEM.options.event["achievement-personal-exist"] then
+		elseif MEM.settings.event["achievement-personal-exist"] then
 			Utils:PrintMessage(L["chat.event.achievement.personal.no-link.exist"])
 			TakeScreenshot()
 		else
@@ -119,7 +128,7 @@ local function CriteriaEventHandler(achievementID, description)
 	local achievementLink = GetAchievementLink(achievementID)
 
 	if achievementLink then
-		Utils:PrintMessage(L["chat.event.achievement.criteria.new"]:format(GetAchievementLink(achievementID), description))
+		Utils:PrintMessage(L["chat.event.achievement.criteria.new"]:format(achievementLink, description))
 	else
 		Utils:PrintDebug("Unknown AchievementLink. (nil value / unknown ID)")
 		Utils:PrintMessage(L["chat.event.achievement.criteria.no-link.new"])
@@ -193,7 +202,7 @@ local function LoginEventHandler()
 end
 
 local function LevelUpEventHandler(level)
-	if MEM.GAME_TYPE_VANILLA or  MEM.GAME_TYPE_TBC then
+	if MEM.GAME_TYPE_VANILLA or MEM.GAME_TYPE_TBC then
 		Utils:PrintMessage(L["chat.event.level-up.classic.new"]:format(tostring(level)))
 	elseif MEM.GAME_TYPE_MISTS or MEM.GAME_TYPE_MAINLINE then
 		Utils:PrintMessage(L["chat.event.level-up.retail.new"]:format(tostring(level)))
@@ -239,9 +248,9 @@ local HandlerTable = {
 	["IntervalEventHandler"]            = IntervalEventHandler
 }
 
----------------------
---- Main Funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
 function Capture:ScheduleTimer(handler, delay, ...)
 	local args = {...}
@@ -250,9 +259,12 @@ function Capture:ScheduleTimer(handler, delay, ...)
 		if HandlerTable[handler] then
 			HandlerTable[handler](unpack(args))
 		else
-			Utils:PrintDebug("Handler '" .. tostring(handler) .. "' not found.")
+			Utils:PrintDebug(string.format(
+				"Handler '%s' not found.",
+				tostring(handler)
+			))
 		end
 	end)
 end
 
-MEM.Capture = Capture
+MEM.modules.Capture = Capture

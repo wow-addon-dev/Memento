@@ -1,6 +1,6 @@
 # Memento
 
-[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases) [![Static Badge](https://img.shields.io/badge/buy_me_a_coffe-donate-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/diomsg)
+[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Memento?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Memento/releases) [![Static Badge](https://img.shields.io/badge/buy_me_a_coffee-donate-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/diomsg)
 
 _Capture the moments that matter._
 
@@ -25,6 +25,7 @@ Memento is a World of Warcraft addon that automatically takes screenshots of mea
 * After triggering an event, a delay can be set for creating the screenshot.
 * Boss killing will be saved and you can choose whether a screenshot should be taken again for a boss that has already been killed.
 * If another character has already earned an achievement, a screenshot can optionally be prevented.
+* Supports an account profile and character profiles.
 
 *\* These events are not supported in Classic and Burning Crusade - Classic Anniversary Edition.*
 

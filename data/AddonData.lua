@@ -1,11 +1,5 @@
 local addonName, MEM = ...
 
-MEM.var = {}
-MEM.var.totalTimePlayed = 0
-MEM.var.timePlayedThisLevel = 0
-
-MEM.obj = {}
-
 MEM.ADDON_AUTHOR = C_AddOns.GetAddOnMetadata(addonName, "Author")
 MEM.ADDON_VERSION = C_AddOns.GetAddOnMetadata(addonName, "Version")
 MEM.ADDON_BUILD_DATE = C_AddOns.GetAddOnMetadata(addonName, "X-BuildDate")
@@ -30,7 +24,7 @@ if MEM.GAME_TYPE_VANILLA then
 elseif MEM.GAME_TYPE_TBC then
 	MEM.GAME_FLAVOR = "Burning Crusade - Classic Anniversary Edition"
 elseif MEM.GAME_TYPE_MISTS then
-	MEM.GAME_FLAVOR = "Mist of Pandaria - Classic"
+	MEM.GAME_FLAVOR = "Mists of Pandaria - Classic"
 elseif MEM.GAME_TYPE_MAINLINE then
 	MEM.GAME_FLAVOR = "Retail"
 end

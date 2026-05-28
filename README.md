@@ -21,7 +21,7 @@ Memento is a World of Warcraft addon that automatically takes screenshots of mea
 	* Collections (Pets, Mounts, Toys, Recipes, Housing)**
 	* Regular Intervals
 * Each event can be activated separately.
-* The user interface can be automatically hidden for the screenshot and a small success notification is displayed instead (Note: The user interface cannot be hidden automatically during combat) (optional).
+* The user interface can be automatically hidden for the screenshot and a small success notification is displayed instead (Note: The user interface cannot be hidden automatically during combat).
 * After triggering an event, a delay can be set for creating the screenshot.
 * Boss killing will be saved and you can choose whether a screenshot should be taken again for a boss that has already been killed.
 * If another character has already earned an achievement, a screenshot can optionally be prevented.

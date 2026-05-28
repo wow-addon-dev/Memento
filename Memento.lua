@@ -249,9 +249,7 @@ end
 function MementoFrame:NEW_HOUSING_ITEM_ACQUIRED(_, itemType, itemName, icon)
 	Utils:PrintDebug(string.format(
 		"Event 'NEW_HOUSING_ITEM_ACQUIRED' fired. Payload: itemType=%s, itemName=%s, icon=%s",
-		tostring(itemType),
-		tostring(itemName),
-		tostring(icon)
+		tostring(itemType),	tostring(itemName),	tostring(icon)
 	))
 
 	if MEM.settings.event["collection-housing-active"] then
@@ -314,11 +312,7 @@ end
 function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID, groupSize, success)
 	Utils:PrintDebug(string.format(
 		"Event 'ENCOUNTER_END' fired. Payload: encounterID=%s, encounterName=%s, difficultyID=%s, groupSize=%s, success=%s",
-		tostring(encounterID),
-		tostring(encounterName),
-		tostring(difficultyID),
-		tostring(groupSize),
-		tostring(success)
+		tostring(encounterID), tostring(encounterName),	tostring(difficultyID),	tostring(groupSize), tostring(success)
 	))
 
 	local difficultyName, groupType = GetDifficultyInfo(difficultyID)
@@ -388,9 +382,7 @@ end
 function MementoFrame:NEW_RECIPE_LEARNED(_, recipeID, recipeLevel, baseRecipeID)
 	Utils:PrintDebug(string.format(
 		"Event 'NEW_RECIPE_LEARNED' fired. Payload: recipeID=%s, recipeLevel=%s, baseRecipeID=%s",
-		tostring(recipeID),
-		tostring(recipeLevel),
-		tostring(baseRecipeID)
+		tostring(recipeID),	tostring(recipeLevel), tostring(baseRecipeID)
 	))
 
 	if MEM.settings.event["collection-recipe-active"] then

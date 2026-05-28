@@ -33,7 +33,9 @@ end
 ------------------------
 
 function Utils:PrintDebug(msg)
-	if MEM.settings.general["debug-mode"] then
+	local debugMode = MEM.settings and MEM.settings.general and MEM.settings.general["debug-mode"]
+
+	if debugMode ~= false then
 		DEFAULT_CHAT_FRAME:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ") .. msg)
 	end
 end
@@ -107,6 +109,11 @@ end
 function Utils:InitializeDatabase()
 	local characterRealmKey = GetCharacterRealmKey()
 
+	local hadDb = Memento_Options_v5 ~= nil
+	local createdDb = false
+	local createdProfile = false
+	local createdProfileKey = false
+
 	local defaults = {
 		["general"] = {
 			["minimap-button"] = {
@@ -122,10 +129,12 @@ function Utils:InitializeDatabase()
 			["profiles"] = {},
 			["profileKeys"] = {}
 		}
+		createdDb = true
 	end
 
 	if not Memento_Options_v5.profiles[characterRealmKey] then
 		Memento_Options_v5.profiles[characterRealmKey] = CopyTable(defaults)
+		createdProfile = true
 	end
 
 	if not Memento_Options_v5.profileKeys[characterRealmKey] then
@@ -133,9 +142,12 @@ function Utils:InitializeDatabase()
 			["use-account"] = true,
 			["open-settings"] = false
 		}
+		createdProfileKey = true
 	end
 
-	if Memento_Options_v5.profileKeys[characterRealmKey]["use-account"] then
+	local useAccountProfile = Memento_Options_v5.profileKeys[characterRealmKey]["use-account"]
+
+	if useAccountProfile then
 		MEM.settings.general = Memento_Options_v5.account["general"]
 		MEM.settings.event = Memento_Options_v5.account["event"]
 	else
@@ -150,6 +162,11 @@ function Utils:InitializeDatabase()
 	if MEM.GAME_TYPE_MAINLINE then
 		MEM.data.bossKill = Memento_DataBossKill
 	end
+
+	self:PrintDebug(string.format(
+		"InitializeDatabase: key=%s, hadDb=%s, createdDb=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
+		characterRealmKey, tostring(hadDb), tostring(createdDb), tostring(createdProfile), tostring(createdProfileKey), useAccountProfile and "account" or "character"
+	))
 end
 
 function Utils:InitializeMinimapButton()

@@ -72,7 +72,7 @@ function MementoFrame:ADDON_LOADED(_, addOnName)
 	if addOnName == addonName then
 		sessionStartTime = GetTime()
 
-		Utils:InitializeDatabase()
+		local dbInit = Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
 
@@ -81,6 +81,10 @@ function MementoFrame:ADDON_LOADED(_, addOnName)
 
 		C_Timer.NewTicker(60, CheckInterval)
 
+		Utils:PrintDebug(string.format(
+			"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
+			tostring(dbInit.characterRealmKey), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
+		))
 		Utils:PrintDebug("Addon fully loaded.")
 	end
 end

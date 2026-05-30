@@ -11,7 +11,7 @@
 - Added: TOC version for patch 12.0.7 [retail]
 
 **v2.3 (2026-05-10)**
-- Added: TOC version for patch 5.5.4 [mist of pandaria - classic]
+- Added: TOC version for patch 5.5.4 [mists of pandaria - classic]
 - Removed: TOC version for patch 12.0.1 [retail]
 
 **v2.2 (2026-04-29)**
@@ -59,7 +59,7 @@
 - Refactoring of the addon structure and source code
 
 **v1.86 (2026-03-26)**
-- Fixed: The options for the boss fight were no longer displayed [classic] [burning crusade - classic anniversary edition] [mist of pandaria - classic]
+- Fixed: The options for the boss fight were no longer displayed [classic] [burning crusade - classic anniversary edition] [mists of pandaria - classic]
 
 **v1.85 (2026-03-15)**
 - Added: TOC version for patch 12.0.5 [retail]
@@ -86,9 +86,9 @@
 - Added: New event 'Completion Mythic+ Dungeons' - A screenshot can now be taken automatically when you complete a Mythic+ Dungeon [retail]
 
 **v1.78 (2026-02-08)**
-- Added: New event 'New Pet' - A screenshot can now be taken automatically when you get a new or owned pet [mist of pandaria - classic] [retail]
-- Added: New event 'New Mount' - A screenshot can now be taken automatically when you get a new mount [mist of pandaria - classic] [retail]
-- Added: New event 'New Toy' - A screenshot can now be taken automatically when you get a new toy [mist of pandaria - classic] [retail]
+- Added: New event 'New Pet' - A screenshot can now be taken automatically when you get a new or owned pet [mists of pandaria - classic] [retail]
+- Added: New event 'New Mount' - A screenshot can now be taken automatically when you get a new mount [mists of pandaria - classic] [retail]
+- Added: New event 'New Toy' - A screenshot can now be taken automatically when you get a new toy [mists of pandaria - classic] [retail]
 - Added: New event 'New Recipe' - A screenshot can now be taken automatically when you get a new recipe
 - Added: New event 'Regular Interval' - A screenshot can now be taken automatically after a specified time interval
 
@@ -118,18 +118,18 @@
 - Added: TOC version for patch 12.0.1 [retail]
 - Updated: Embedded library 'Ace3' (r1377)
 - Updated: Embedded library 'AceGUI-3.0: SFX Widgets' (1.3.20)
-- Removed: TOC version for patch 5.5.2 [mist of pandaria - classic]
+- Removed: TOC version for patch 5.5.2 [mists of pandaria - classic]
 - Removed: TOC version for patch 11.2.5 [retail]
 
 **v1.69 (2025-11-23)**
-- Added: TOC version for patch 5.5.3 [mist of pandaria - classic]
+- Added: TOC version for patch 5.5.3 [mists of pandaria - classic]
 - Added: TOC version for patch 12.0.0 [retail]
-- Removed: TOC version for patch 5.5.1 [mist of pandaria - classic]
+- Removed: TOC version for patch 5.5.1 [mists of pandaria - classic]
 - Minor code adjustments
 
 **v1.68 (2025-10-28)**
 - Added: TOC version for patch 1.15.8 [classic]
-- Added: TOC version for patch 5.5.2 [mist of pandaria - classic]
+- Added: TOC version for patch 5.5.2 [mists of pandaria - classic]
 - Added: TOC version for patch 11.2.7 [retail]
 - Removed: TOC version for patch 1.15.7 [classic]
 
@@ -137,7 +137,7 @@
 - Removed: TOC version for patch 11.2.0 [retail]
 
 **v1.66 (2025-10-04)**
-- Removed: TOC version for patch 5.5.0 [mist of pandaria - classic]
+- Removed: TOC version for patch 5.5.0 [mists of pandaria - classic]
 
 **v1.65 (2025-09-21)**
 - Minor code adjustments
@@ -146,7 +146,7 @@
 - Changed: Output of debug messages
 
 **v1.63 (2025-09-02)**
-- Added: TOC version for patch 5.5.1 [mist of pandaria - classic]
+- Added: TOC version for patch 5.5.1 [mists of pandaria - classic]
 
 **v1.62 (2025-08-26)**
 - Minor code adjustments

@@ -1,3 +1,9 @@
+**v2.6 (2026-05-30)**
+- Added: Profile settings with account profile and character profile selection
+- Changed: Brawls are checked before battlegrounds when handling PvP match completion [retail]
+- Updated: deDE, enUS localization
+- Minor code adjustments
+
 **v2.5 (2026-05-26)**
 - Minor code adjustments
 

@@ -2,6 +2,8 @@ local addonName, MEM = ...
 
 local L = MEM.Localization
 
+local AWL = ArcaneWizardLibrary
+
 local Utils = MEM.modules.Utils
 
 local Capture = {}
@@ -219,9 +221,9 @@ local function LoginEventHandler()
 end
 
 local function LevelUpEventHandler(level)
-	if MEM.GAME_TYPE_VANILLA or MEM.GAME_TYPE_TBC then
+	if AWL.GAME_TYPE_VANILLA or AWL.GAME_TYPE_TBC then
 		Utils:PrintMessage(L["chat.event.level-up.classic.new"]:format(tostring(level)))
-	elseif MEM.GAME_TYPE_MISTS or MEM.GAME_TYPE_MAINLINE then
+	elseif AWL.GAME_TYPE_MISTS or AWL.GAME_TYPE_MAINLINE then
 		Utils:PrintMessage(L["chat.event.level-up.retail.new"]:format(tostring(level)))
 	end
 

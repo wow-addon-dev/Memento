@@ -1,9 +1,11 @@
 local addonName, MEM = ...
 
 local L = MEM.Localization
-local Utils = MEM.modules.Utils
 
 local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
+local Utils = MEM.modules.Utils
 
 local Options = {}
 
@@ -127,7 +129,7 @@ function Options:Initialize()
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.event"]))
 
-	if MEM.GAME_TYPE_MAINLINE or MEM.GAME_TYPE_MISTS then
+	if AWL.GAME_TYPE_MAINLINE or AWL.GAME_TYPE_MISTS then
 		local _, isAchievementExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.event.achievement"])
 
 		-- Personal Achievement
@@ -163,7 +165,7 @@ function Options:Initialize()
 		})
 
 		-- Criteria Achievement
-		if MEM.GAME_TYPE_MAINLINE then
+		if AWL.GAME_TYPE_MAINLINE then
 			AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 				variableTable      = MEM.settings.event,
 				checkboxSettingKey = addonName .. "_achievement-criteria-active",
@@ -203,7 +205,7 @@ function Options:Initialize()
 		})
 	end
 
-	if MEM.GAME_TYPE_MAINLINE then
+	if AWL.GAME_TYPE_MAINLINE then
 		local _, isEncounterExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.event.encounter"])
 		local eventPartyVictory    = L["options.event.encounter.party"] .. " (" .. L["options.event.encounter.victory"] .. ")"
 		local eventPartyWipe       = L["options.event.encounter.party"] .. " (" .. L["options.event.encounter.wipe"] .. ")"
@@ -387,7 +389,7 @@ function Options:Initialize()
 		shownPredicate     = isPvPExpanded
 	})
 
-	if MEM.GAME_TYPE_MAINLINE then
+	if AWL.GAME_TYPE_MAINLINE then
 		-- Arena
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
@@ -496,11 +498,11 @@ function Options:Initialize()
 		end
 	end
 
-	AddWarbandEntry("pet", L["options.event.warband-collection.new-pet"], MEM.GAME_TYPE_MAINLINE or MEM.GAME_TYPE_MISTS)
-	AddWarbandEntry("mount", L["options.event.warband-collection.new-mount"], MEM.GAME_TYPE_MAINLINE or MEM.GAME_TYPE_MISTS)
-	AddWarbandEntry("toy", L["options.event.warband-collection.new-toy"], MEM.GAME_TYPE_MAINLINE or MEM.GAME_TYPE_MISTS)
+	AddWarbandEntry("pet", L["options.event.warband-collection.new-pet"], AWL.GAME_TYPE_MAINLINE or AWL.GAME_TYPE_MISTS)
+	AddWarbandEntry("mount", L["options.event.warband-collection.new-mount"], AWL.GAME_TYPE_MAINLINE or AWL.GAME_TYPE_MISTS)
+	AddWarbandEntry("toy", L["options.event.warband-collection.new-toy"], AWL.GAME_TYPE_MAINLINE or AWL.GAME_TYPE_MISTS)
 	AddWarbandEntry("recipe", L["options.event.warband-collection.new-recipe"], true)
-	AddWarbandEntry("housing", L["options.event.warband-collection.new-housing-item"], MEM.GAME_TYPE_MAINLINE)
+	AddWarbandEntry("housing", L["options.event.warband-collection.new-housing-item"], AWL.GAME_TYPE_MAINLINE)
 
 	local _, isOtherExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.event.other"])
 
@@ -580,7 +582,7 @@ function Options:Initialize()
 	})
 
 	-- Mythic+
-	if MEM.GAME_TYPE_MAINLINE then
+	if AWL.GAME_TYPE_MAINLINE then
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_mythic-active",
@@ -633,17 +635,11 @@ function Options:Initialize()
 	})
 
 	-- About Section
-	AWL.Settings:AddAboutSection(layout, {
-		addonVersion   = MEM.ADDON_VERSION,
-		addonBuildDate = MEM.ADDON_BUILD_DATE,
-		addonAuthor    = MEM.ADDON_AUTHOR,
-		curseforgeLink = MEM.LINK_CURSEFORGE,
-		githubLink     = MEM.LINK_GITHUB
-	})
+	AWL.Settings:AddAboutSection(layout, addonName)
 
 	Settings.RegisterAddOnCategory(category)
 
-	MEM.MAIN_CATEGORY_ID = category:GetID()
+	Addon:SetMainCategoryId(category:GetID())
 end
 
 MEM.modules.Options = Options

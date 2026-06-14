@@ -4,6 +4,9 @@ local Capture = MEM.modules.Capture
 local Options = MEM.modules.Options
 local Utils = MEM.modules.Utils
 
+local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
 local fixDelay = 0.1
 local minutesPassed = 0
 local sessionStartTime = 0
@@ -50,11 +53,7 @@ end
 
 local function SlashCommand(msg, editbox)
 	if not msg or strtrim(msg) == "" then
-		if not InCombatLockdown() then
-			Settings.OpenToCategory(MEM.MAIN_CATEGORY_ID)
-		else
-			Utils:PrintDebug("In combat. The options menu cannot be opened.")
-		end
+		Addon:OpenCategory()
 	else
 		Utils:PrintDebug("These arguments are not accepted.")
 	end
@@ -404,14 +403,14 @@ end
 MementoFrame:RegisterEvent("ADDON_LOADED")
 MementoFrame:RegisterEvent("TIME_PLAYED_MSG")
 
-if MEM.GAME_TYPE_VANILLA then
-elseif MEM.GAME_TYPE_TBC then
-elseif MEM.GAME_TYPE_MISTS then
+if AWL.GAME_TYPE_VANILLA then
+elseif AWL.GAME_TYPE_TBC then
+elseif AWL.GAME_TYPE_MISTS then
 	MementoFrame:RegisterEvent("ACHIEVEMENT_EARNED")
 	MementoFrame:RegisterEvent("NEW_PET_ADDED")
 	MementoFrame:RegisterEvent("NEW_MOUNT_ADDED")
 	MementoFrame:RegisterEvent("NEW_TOY_ADDED")
-elseif MEM.GAME_TYPE_MAINLINE then
+elseif AWL.GAME_TYPE_MAINLINE then
 	MementoFrame:RegisterEvent("ACHIEVEMENT_EARNED")
 	MementoFrame:RegisterEvent("CRITERIA_EARNED")
 	MementoFrame:RegisterEvent("CHALLENGE_MODE_COMPLETED")

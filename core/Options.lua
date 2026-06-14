@@ -136,7 +136,7 @@ function Options:Initialize()
 		local initializerAchievementPersonal, settingAchievementPersonal = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_achievement-personal-active",
-			checkboxVarName    = "achievement-personal-active",
+			checkboxVariableName    = "achievement-personal-active",
 			checkboxName       = L["options.event.achievement.personal"],
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.personal"]),
 			checkboxDefault    = true,
@@ -169,7 +169,7 @@ function Options:Initialize()
 			AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 				variableTable      = MEM.settings.event,
 				checkboxSettingKey = addonName .. "_achievement-criteria-active",
-				checkboxVarName    = "achievement-criteria-active",
+				checkboxVariableName    = "achievement-criteria-active",
 				checkboxName       = L["options.event.achievement.criteria"],
 				checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.criteria"]),
 				checkboxDefault    = false,
@@ -189,7 +189,7 @@ function Options:Initialize()
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_achievement-guild-active",
-			checkboxVarName    = "achievement-guild-active",
+			checkboxVariableName    = "achievement-guild-active",
 			checkboxName       = L["options.event.achievement.guild"],
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.achievement.guild"]),
 			checkboxDefault    = true,
@@ -218,7 +218,7 @@ function Options:Initialize()
 		local initializerVictoryParty, settingVictoryParty = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_encounter-victory-party-active",
-			checkboxVarName    = "encounter-victory-party-active",
+			checkboxVariableName    = "encounter-victory-party-active",
 			checkboxName       = eventPartyVictory,
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventPartyVictory),
 			checkboxDefault    = true,
@@ -250,7 +250,7 @@ function Options:Initialize()
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_encounter-wipe-party-active",
-			checkboxVarName    = "encounter-wipe-party-active",
+			checkboxVariableName    = "encounter-wipe-party-active",
 			checkboxName       = eventPartyWipe,
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventPartyWipe),
 			checkboxDefault    = false,
@@ -269,7 +269,7 @@ function Options:Initialize()
 		local initializerVictoryRaid, settingVictoryRaid = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_encounter-victory-raid-active",
-			checkboxVarName    = "encounter-victory-raid-active",
+			checkboxVariableName    = "encounter-victory-raid-active",
 			checkboxName       = eventRaidVictory,
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventRaidVictory),
 			checkboxDefault    = true,
@@ -301,7 +301,7 @@ function Options:Initialize()
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_encounter-wipe-raid-active",
-			checkboxVarName    = "encounter-wipe-raid-active",
+			checkboxVariableName    = "encounter-wipe-raid-active",
 			checkboxName       = eventRaidWipe,
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventRaidWipe),
 			checkboxDefault    = false,
@@ -320,7 +320,7 @@ function Options:Initialize()
 		local initializerVictoryScenario, settingVictoryScenario = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_encounter-victory-scenario-active",
-			checkboxVarName    = "encounter-victory-scenario-active",
+			checkboxVariableName    = "encounter-victory-scenario-active",
 			checkboxName       = eventScenarioVictory,
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventScenarioVictory),
 			checkboxDefault    = true,
@@ -352,7 +352,7 @@ function Options:Initialize()
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_encounter-wipe-scenario-active",
-			checkboxVarName    = "encounter-wipe-scenario-active",
+			checkboxVariableName    = "encounter-wipe-scenario-active",
 			checkboxName       = eventScenarioWipe,
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(eventScenarioWipe),
 			checkboxDefault    = false,
@@ -374,7 +374,7 @@ function Options:Initialize()
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 		variableTable      = MEM.settings.event,
 		checkboxSettingKey = addonName .. "_pvp-duel-active",
-		checkboxVarName    = "pvp-duel-active",
+		checkboxVariableName    = "pvp-duel-active",
 		checkboxName       = L["options.event.pvp.duel"],
 		checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.pvp.duel"]),
 		checkboxDefault    = true,
@@ -394,7 +394,7 @@ function Options:Initialize()
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_pvp-arena-active",
-			checkboxVarName    = "pvp-arena-active",
+			checkboxVariableName    = "pvp-arena-active",
 			checkboxName       = L["options.event.pvp.arena"],
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.pvp.arena"]),
 			checkboxDefault    = true,
@@ -413,7 +413,7 @@ function Options:Initialize()
 		local initializerBattleground, settingBattleground = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_pvp-battleground-active",
-			checkboxVarName    = "pvp-battleground-active",
+			checkboxVariableName    = "pvp-battleground-active",
 			checkboxName       = L["options.event.pvp.battleground"],
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.pvp.battleground"]),
 			checkboxDefault    = true,
@@ -445,7 +445,7 @@ function Options:Initialize()
 		local initializerBrawl, settingBrawl = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_pvp-brawl-active",
-			checkboxVarName    = "pvp-brawl-active",
+			checkboxVariableName    = "pvp-brawl-active",
 			checkboxName       = L["options.event.pvp.brawl"],
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.pvp.brawl"]),
 			checkboxDefault    = true,
@@ -481,7 +481,7 @@ function Options:Initialize()
 			AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 				variableTable      = MEM.settings.event,
 				checkboxSettingKey = addonName .. "_collection-" .. key .. "-active",
-				checkboxVarName    = "collection-" .. key .. "-active",
+				checkboxVariableName    = "collection-" .. key .. "-active",
 				checkboxName       = nameString,
 				checkboxTooltip    = L["options.event.general.active.tooltip"]:format(nameString),
 				checkboxDefault    = false,
@@ -510,7 +510,7 @@ function Options:Initialize()
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 		variableTable      = MEM.settings.event,
 		checkboxSettingKey = addonName .. "_login-active",
-		checkboxVarName    = "login-active",
+		checkboxVariableName    = "login-active",
 		checkboxName       = L["options.event.other.login"],
 		checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.other.login"]),
 		checkboxDefault    = false,
@@ -529,7 +529,7 @@ function Options:Initialize()
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 		variableTable      = MEM.settings.event,
 		checkboxSettingKey = addonName .. "_level-up-active",
-		checkboxVarName    = "level-up-active",
+		checkboxVariableName    = "level-up-active",
 		checkboxName       = L["options.event.other.level-up"],
 		checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.other.level-up"]),
 		checkboxDefault    = true,
@@ -548,7 +548,7 @@ function Options:Initialize()
 	local initializerDeath, settingDeath = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 		variableTable      = MEM.settings.event,
 		checkboxSettingKey = addonName .. "_death-active",
-		checkboxVarName    = "death-active",
+		checkboxVariableName    = "death-active",
 		checkboxName       = L["options.event.other.death"],
 		checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.other.death"]),
 		checkboxDefault    = true,
@@ -586,7 +586,7 @@ function Options:Initialize()
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 			variableTable      = MEM.settings.event,
 			checkboxSettingKey = addonName .. "_mythic-active",
-			checkboxVarName    = "mythic-active",
+			checkboxVariableName    = "mythic-active",
 			checkboxName       = L["options.event.other.mythic"],
 			checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.other.mythic"]),
 			checkboxDefault    = false,
@@ -606,7 +606,7 @@ function Options:Initialize()
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 		variableTable      = MEM.settings.event,
 		checkboxSettingKey = addonName .. "_interval-active",
-		checkboxVarName    = "interval-active",
+		checkboxVariableName    = "interval-active",
 		checkboxName       = L["options.event.other.interval"],
 		checkboxTooltip    = L["options.event.general.active.tooltip"]:format(L["options.event.other.interval"]),
 		checkboxDefault    = false,

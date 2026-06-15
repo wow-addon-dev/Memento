@@ -3,9 +3,9 @@ local addonName, MEM = ...
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
-local Capture = MEM.modules.Capture
-local Options = MEM.modules.Options
-local Utils = MEM.modules.Utils
+local Capture = MEM.Modules.Capture
+local Options = MEM.Modules.Options
+local Utils = MEM.Modules.Utils
 
 local fixDelay = 0.1
 local minutesPassed = 0
@@ -25,8 +25,8 @@ local function TimePlayed()
 	local currentTime = GetTime()
 	local timeLastCheck = currentTime - sessionStartTime
 
-	MEM.state.totalTimePlayed = MEM.state.totalTimePlayed + timeLastCheck
-	MEM.state.timePlayedThisLevel = MEM.state.timePlayedThisLevel + timeLastCheck
+	MEM.State.totalTimePlayed = MEM.State.totalTimePlayed + timeLastCheck
+	MEM.State.timePlayedThisLevel = MEM.State.timePlayedThisLevel + timeLastCheck
 
 	sessionStartTime = currentTime
 end
@@ -36,7 +36,7 @@ local function CheckInterval()
 
 	minutesPassed = minutesPassed + 1
 
-	if MEM.settings.event["interval-active"] and minutesPassed >= MEM.settings.event["interval-timer"] then
+	if MEM.Settings.event["interval-active"] and minutesPassed >= MEM.Settings.event["interval-timer"] then
 		TimePlayed()
 
 		Capture:ScheduleTimer("IntervalEventHandler", fixDelay)
@@ -94,8 +94,8 @@ function MementoFrame:TIME_PLAYED_MSG(_, totalTimePlayed, timePlayedThisLevel)
 		tostring(totalTimePlayed), tostring(timePlayedThisLevel)
 	))
 
-	MEM.state.totalTimePlayed = totalTimePlayed
-	MEM.state.timePlayedThisLevel = timePlayedThisLevel
+	MEM.State.totalTimePlayed = totalTimePlayed
+	MEM.State.timePlayedThisLevel = timePlayedThisLevel
 
 	sessionStartTime = GetTime()
 
@@ -111,16 +111,16 @@ function MementoFrame:ACHIEVEMENT_EARNED(_, achievementID, alreadyEarned)
 	local isGuildAchievement = select(12, GetAchievementInfo(achievementID))
 
 	if not isGuildAchievement then
-		if MEM.settings.event["achievement-personal-active"] then
+		if MEM.Settings.event["achievement-personal-active"] then
 			TimePlayed()
-			Capture:ScheduleTimer("AchievementPersonalEventHandler", MEM.settings.event["achievement-personal-delay"] + fixDelay, achievementID, alreadyEarned)
+			Capture:ScheduleTimer("AchievementPersonalEventHandler", MEM.Settings.event["achievement-personal-delay"] + fixDelay, achievementID, alreadyEarned)
 		else
 			Utils:PrintDebug("Event 'ACHIEVEMENT_EARNED' (Personal) completed. No screenshot requested.")
 		end
 	else
-		if MEM.settings.event["achievement-guild-active"] then
+		if MEM.Settings.event["achievement-guild-active"] then
 			TimePlayed()
-			Capture:ScheduleTimer("AchievementGuildEventHandler", MEM.settings.event["achievement-guild-delay"] + fixDelay, achievementID)
+			Capture:ScheduleTimer("AchievementGuildEventHandler", MEM.Settings.event["achievement-guild-delay"] + fixDelay, achievementID)
 		else
 			Utils:PrintDebug("Event 'ACHIEVEMENT_EARNED' (Guild) completed. No screenshot requested.")
 		end
@@ -133,9 +133,9 @@ function MementoFrame:CRITERIA_EARNED(_, achievementID, description)
 		tostring(achievementID), tostring(description)
 	))
 
-	if MEM.settings.event["achievement-criteria-active"] then
+	if MEM.Settings.event["achievement-criteria-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("CriteriaEventHandler", MEM.settings.event["achievement-criteria-delay"] + fixDelay, achievementID, description)
+		Capture:ScheduleTimer("CriteriaEventHandler", MEM.Settings.event["achievement-criteria-delay"] + fixDelay, achievementID, description)
 	else
 		Utils:PrintDebug("Event 'CRITERIA_EARNED' completed. No screenshot requested.")
 	end
@@ -144,9 +144,9 @@ end
 function MementoFrame:CHALLENGE_MODE_COMPLETED(_)
 	Utils:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' fired. No payload.")
 
-	if MEM.settings.event["mythic-active"] then
+	if MEM.Settings.event["mythic-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("MythicEventHandler", MEM.settings.event["mythic-delay"] + fixDelay)
+		Capture:ScheduleTimer("MythicEventHandler", MEM.Settings.event["mythic-delay"] + fixDelay)
 	else
 		Utils:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' completed. No screenshot requested.")
 	end
@@ -164,40 +164,40 @@ function MementoFrame:PVP_MATCH_COMPLETE(_, winner, duration)
 	local isInBrawl = C_PvP.IsInBrawl()
 
 	if isArena then
-		if MEM.settings.event["pvp-arena-active"] then
+		if MEM.Settings.event["pvp-arena-active"] then
 			TimePlayed()
-			Capture:ScheduleTimer("PvPArenaEventHandler", MEM.settings.event["pvp-arena-delay"] + fixDelay)
+			Capture:ScheduleTimer("PvPArenaEventHandler", MEM.Settings.event["pvp-arena-delay"] + fixDelay)
 		else
 			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Arena) completed. No screenshot requested.")
 		end
 	elseif isInBrawl then
-		if MEM.settings.event["pvp-brawl-active"] then
-			if MEM.settings.event["pvp-brawl-victory-only"] then
+		if MEM.Settings.event["pvp-brawl-active"] then
+			if MEM.Settings.event["pvp-brawl-victory-only"] then
 				if IsPlayerWinner(winner) then
 					TimePlayed()
-					Capture:ScheduleTimer("PvPBrawlEventHandler", MEM.settings.event["pvp-brawl-delay"] + fixDelay)
+					Capture:ScheduleTimer("PvPBrawlEventHandler", MEM.Settings.event["pvp-brawl-delay"] + fixDelay)
 				else
 					Utils:PrintDebug("Player faction has lost the brawl. No screenshot requested.")
 				end
 			else
 				TimePlayed()
-				Capture:ScheduleTimer("PvPBrawlEventHandler", MEM.settings.event["pvp-brawl-delay"] + fixDelay)
+				Capture:ScheduleTimer("PvPBrawlEventHandler", MEM.Settings.event["pvp-brawl-delay"] + fixDelay)
 			end
 		else
 			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Brawl) completed. No screenshot requested.")
 		end
 	elseif isBattleground or isSoloRBG then
-		if MEM.settings.event["pvp-battleground-active"] then
-			if MEM.settings.event["pvp-battleground-victory-only"] then
+		if MEM.Settings.event["pvp-battleground-active"] then
+			if MEM.Settings.event["pvp-battleground-victory-only"] then
 				if IsPlayerWinner(winner) then
 					TimePlayed()
-					Capture:ScheduleTimer("PvPBattlegroundEventHandler", MEM.settings.event["pvp-battleground-delay"] + fixDelay)
+					Capture:ScheduleTimer("PvPBattlegroundEventHandler", MEM.Settings.event["pvp-battleground-delay"] + fixDelay)
 				else
 					Utils:PrintDebug("Player faction has lost the battleground. No screenshot requested.")
 				end
 			else
 				TimePlayed()
-				Capture:ScheduleTimer("PvPBattlegroundEventHandler", MEM.settings.event["pvp-battleground-delay"] + fixDelay)
+				Capture:ScheduleTimer("PvPBattlegroundEventHandler", MEM.Settings.event["pvp-battleground-delay"] + fixDelay)
 			end
 		else
 			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Battleground) completed. No screenshot requested.")
@@ -213,9 +213,9 @@ function MementoFrame:NEW_PET_ADDED(_, battlePetGUID)
 		tostring(battlePetGUID)
 	))
 
-	if MEM.settings.event["collection-pet-active"] then
+	if MEM.Settings.event["collection-pet-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("NewPetEventHandler", MEM.settings.event["collection-pet-delay"] + fixDelay)
+		Capture:ScheduleTimer("NewPetEventHandler", MEM.Settings.event["collection-pet-delay"] + fixDelay)
 	else
 		Utils:PrintDebug("Event 'NEW_PET_ADDED' completed. No screenshot requested.")
 	end
@@ -227,9 +227,9 @@ function MementoFrame:NEW_MOUNT_ADDED(_, mountID)
 		tostring(mountID)
 	))
 
-	if MEM.settings.event["collection-mount-active"] then
+	if MEM.Settings.event["collection-mount-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("NewMountEventHandler", MEM.settings.event["collection-mount-delay"] + fixDelay)
+		Capture:ScheduleTimer("NewMountEventHandler", MEM.Settings.event["collection-mount-delay"] + fixDelay)
 	else
 		Utils:PrintDebug("Event 'NEW_MOUNT_ADDED' completed. No screenshot requested.")
 	end
@@ -241,9 +241,9 @@ function MementoFrame:NEW_TOY_ADDED(_, itemID)
 		tostring(itemID)
 	))
 
-	if MEM.settings.event["collection-toy-active"] then
+	if MEM.Settings.event["collection-toy-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("NewToyEventHandler", MEM.settings.event["collection-toy-delay"] + fixDelay)
+		Capture:ScheduleTimer("NewToyEventHandler", MEM.Settings.event["collection-toy-delay"] + fixDelay)
 	else
 		Utils:PrintDebug("Event 'NEW_TOY_ADDED' completed. No screenshot requested.")
 	end
@@ -255,9 +255,9 @@ function MementoFrame:NEW_HOUSING_ITEM_ACQUIRED(_, itemType, itemName, icon)
 		tostring(itemType),	tostring(itemName),	tostring(icon)
 	))
 
-	if MEM.settings.event["collection-housing-active"] then
+	if MEM.Settings.event["collection-housing-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("NewHousingItemEventHandler", MEM.settings.event["collection-housing-delay"] + fixDelay)
+		Capture:ScheduleTimer("NewHousingItemEventHandler", MEM.Settings.event["collection-housing-delay"] + fixDelay)
 	else
 		Utils:PrintDebug("Event 'NEW_HOUSING_ITEM_ACQUIRED' completed. No screenshot requested.")
 	end
@@ -269,9 +269,9 @@ function MementoFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
 		tostring(isInitialLogin), tostring(isReloadingUi)
 	))
 
-	if MEM.settings.event["login-active"] and isInitialLogin then
+	if MEM.Settings.event["login-active"] and isInitialLogin then
 		TimePlayed()
-		Capture:ScheduleTimer("LoginEventHandler", MEM.settings.event["login-delay"] + fixDelay)
+		Capture:ScheduleTimer("LoginEventHandler", MEM.Settings.event["login-delay"] + fixDelay)
 	else
 		Utils:PrintDebug("Event 'PLAYER_ENTERING_WORLD' completed. No screenshot requested.")
 	end
@@ -280,16 +280,16 @@ end
 function MementoFrame:PLAYER_DEAD(_)
 	Utils:PrintDebug("Event 'PLAYER_DEAD' fired. No payload.")
 
-	if MEM.settings.event["death-active"] then
+	if MEM.Settings.event["death-active"] then
 		TimePlayed()
 		local inInstance = IsInInstance()
 
-		if MEM.settings.event["death-instance"] == 0 then
-			Capture:ScheduleTimer("DeathEventHandler", MEM.settings.event["death-delay"] + fixDelay)
-		elseif inInstance and MEM.settings.event["death-instance"] == 1 then
-			Capture:ScheduleTimer("DeathEventHandler", MEM.settings.event["death-delay"] + fixDelay)
-		elseif not inInstance and MEM.settings.event["death-instance"] == 2 then
-			Capture:ScheduleTimer("DeathEventHandler", MEM.settings.event["death-delay"] + fixDelay)
+		if MEM.Settings.event["death-instance"] == 0 then
+			Capture:ScheduleTimer("DeathEventHandler", MEM.Settings.event["death-delay"] + fixDelay)
+		elseif inInstance and MEM.Settings.event["death-instance"] == 1 then
+			Capture:ScheduleTimer("DeathEventHandler", MEM.Settings.event["death-delay"] + fixDelay)
+		elseif not inInstance and MEM.Settings.event["death-instance"] == 2 then
+			Capture:ScheduleTimer("DeathEventHandler", MEM.Settings.event["death-delay"] + fixDelay)
 		else
 			Utils:PrintDebug("Player died in the wrong area. No screenshot requested.")
 		end
@@ -304,9 +304,9 @@ function MementoFrame:PLAYER_LEVEL_UP(_, level)
 		tostring(level)
 	))
 
-	if MEM.settings.event["level-up-active"] then
+	if MEM.Settings.event["level-up-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("LevelUpEventHandler", MEM.settings.event["level-up-delay"] + fixDelay, level)
+		Capture:ScheduleTimer("LevelUpEventHandler", MEM.Settings.event["level-up-delay"] + fixDelay, level)
 	else
 		Utils:PrintDebug("Event 'PLAYER_LEVEL_UP' completed. No screenshot requested.")
 	end
@@ -323,22 +323,22 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 
 	if groupType == "party" or groupType == "raid" or groupType == "scenario" then
 		if success == 1 then
-			local isActive = (groupType == "party" and MEM.settings.event["encounter-victory-party-active"]) or
-								(groupType == "raid" and MEM.settings.event["encounter-victory-raid-active"]) or
-								(groupType == "scenario" and MEM.settings.event["encounter-victory-scenario-active"])
+			local isActive = (groupType == "party" and MEM.Settings.event["encounter-victory-party-active"]) or
+								(groupType == "raid" and MEM.Settings.event["encounter-victory-raid-active"]) or
+								(groupType == "scenario" and MEM.Settings.event["encounter-victory-scenario-active"])
 
-			local delay = (groupType == "party" and MEM.settings.event["encounter-victory-party-delay"]) or
-							(groupType == "raid" and MEM.settings.event["encounter-victory-raid-delay"]) or
-							(groupType == "scenario" and MEM.settings.event["encounter-victory-scenario-delay"])
+			local delay = (groupType == "party" and MEM.Settings.event["encounter-victory-party-delay"]) or
+							(groupType == "raid" and MEM.Settings.event["encounter-victory-raid-delay"]) or
+							(groupType == "scenario" and MEM.Settings.event["encounter-victory-scenario-delay"])
 
-			local firstOnly = (groupType == "party" and MEM.settings.event["encounter-victory-party-first"]) or
-								(groupType == "raid" and MEM.settings.event["encounter-victory-raid-first"]) or
-								(groupType == "scenario" and MEM.settings.event["encounter-victory-scenario-first"])
+			local firstOnly = (groupType == "party" and MEM.Settings.event["encounter-victory-party-first"]) or
+								(groupType == "raid" and MEM.Settings.event["encounter-victory-raid-first"]) or
+								(groupType == "scenario" and MEM.Settings.event["encounter-victory-scenario-first"])
 
 			if isActive then
-				if not MEM.data.bossKill[difficulty] then MEM.data.bossKill[difficulty] = {} end
+				if not MEM.Data.bossKill[difficulty] then MEM.Data.bossKill[difficulty] = {} end
 
-				if MEM.data.bossKill[difficulty][encounterID] and firstOnly then
+				if MEM.Data.bossKill[difficulty][encounterID] and firstOnly then
 					Utils:PrintDebug("Encounter already killed. No screenshot requested.")
 				else
 					TimePlayed()
@@ -348,13 +348,13 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 				Utils:PrintDebug("Event 'ENCOUNTER_END' (Victory) completed. No screenshot requested.")
 			end
 		else
-			local isActive = (groupType == "party" and MEM.settings.event["encounter-wipe-party-active"]) or
-								(groupType == "raid" and MEM.settings.event["encounter-wipe-raid-active"]) or
-								(groupType == "scenario" and MEM.settings.event["encounter-wipe-scenario-active"])
+			local isActive = (groupType == "party" and MEM.Settings.event["encounter-wipe-party-active"]) or
+								(groupType == "raid" and MEM.Settings.event["encounter-wipe-raid-active"]) or
+								(groupType == "scenario" and MEM.Settings.event["encounter-wipe-scenario-active"])
 
-			local delay = (groupType == "party" and MEM.settings.event["encounter-wipe-party-delay"]) or
-							(groupType == "raid" and MEM.settings.event["encounter-wipe-raid-delay"]) or
-							(groupType == "scenario" and MEM.settings.event["encounter-wipe-scenario-delay"])
+			local delay = (groupType == "party" and MEM.Settings.event["encounter-wipe-party-delay"]) or
+							(groupType == "raid" and MEM.Settings.event["encounter-wipe-raid-delay"]) or
+							(groupType == "scenario" and MEM.Settings.event["encounter-wipe-scenario-delay"])
 
 			if isActive then
 				TimePlayed()
@@ -374,9 +374,9 @@ end
 function MementoFrame:DUEL_FINISHED(_)
 	Utils:PrintDebug("Event 'DUEL_FINISHED' fired. No payload.")
 
-	if MEM.settings.event["pvp-duel-active"] then
+	if MEM.Settings.event["pvp-duel-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("PvPDuelEventHandler", MEM.settings.event["pvp-duel-delay"] + fixDelay)
+		Capture:ScheduleTimer("PvPDuelEventHandler", MEM.Settings.event["pvp-duel-delay"] + fixDelay)
 	else
 		Utils:PrintDebug("Event 'DUEL_FINISHED' completed. No screenshot requested.")
 	end
@@ -388,9 +388,9 @@ function MementoFrame:NEW_RECIPE_LEARNED(_, recipeID, recipeLevel, baseRecipeID)
 		tostring(recipeID),	tostring(recipeLevel), tostring(baseRecipeID)
 	))
 
-	if MEM.settings.event["collection-recipe-active"] then
+	if MEM.Settings.event["collection-recipe-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("NewRecipeEventHandler", MEM.settings.event["collection-recipe-delay"] + fixDelay)
+		Capture:ScheduleTimer("NewRecipeEventHandler", MEM.Settings.event["collection-recipe-delay"] + fixDelay)
 	else
 		Utils:PrintDebug("Event 'NEW_RECIPE_LEARNED' completed. No screenshot requested.")
 	end

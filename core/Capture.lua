@@ -3,7 +3,7 @@ local addonName, MEM = ...
 local AWL = ArcaneWizardLibrary
 
 local L = MEM.Localization
-local Utils = MEM.modules.Utils
+local Utils = MEM.Modules.Utils
 
 local Capture = {}
 local messageFrame
@@ -49,7 +49,7 @@ local function UpdateMessageFrame()
 end
 
 local function TakeScreenshot()
-	if MEM.settings.general["hide-ui"] then
+	if MEM.Settings.general["hide-ui"] then
 		if not InCombatLockdown() then
 			local frame
 
@@ -111,7 +111,7 @@ local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
 		if not alreadyEarned then
 			Utils:PrintMessage(L["chat.event.achievement.personal.new"]:format(achievementLink))
 			TakeScreenshot()
-		elseif MEM.settings.event["achievement-personal-exist"] then
+		elseif MEM.Settings.event["achievement-personal-exist"] then
 			Utils:PrintMessage(L["chat.event.achievement.personal.exist"]:format(achievementLink))
 			TakeScreenshot()
 		else
@@ -126,7 +126,7 @@ local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
 		if not alreadyEarned then
 			Utils:PrintMessage(L["chat.event.achievement.personal.no-link.new"])
 			TakeScreenshot()
-		elseif MEM.settings.event["achievement-personal-exist"] then
+		elseif MEM.Settings.event["achievement-personal-exist"] then
 			Utils:PrintMessage(L["chat.event.achievement.personal.no-link.exist"])
 			TakeScreenshot()
 		else
@@ -159,9 +159,9 @@ local function EncounterVictoryEventHandler(encounterName, difficultyName, diffi
 	Utils:PrintMessage(L["chat.event.encounter.victory.new"]:format(encounterName, difficultyName))
 	TakeScreenshot()
 
-	if not MEM.data.bossKill[difficulty] then MEM.data.bossKill[difficulty] = {} end
+	if not MEM.Data.bossKill[difficulty] then MEM.Data.bossKill[difficulty] = {} end
 
-	MEM.data.bossKill[difficulty][encounterID] = true
+	MEM.Data.bossKill[difficulty][encounterID] = true
 end
 
 local function EncounterWipeEventHandler(encounterName, difficultyName)
@@ -285,4 +285,4 @@ function Capture:ScheduleTimer(handler, delay, ...)
 	end)
 end
 
-MEM.modules.Capture = Capture
+MEM.Modules.Capture = Capture

@@ -28,21 +28,21 @@ function Utils:PrintDebug(msg)
 end
 
 function Utils:PrintMessage(msg)
-	if MEM.settings.general["notification"] then
-		if MEM.settings.general["notification-timestamp"] then
+	if MEM.Settings.general["notification"] then
+		if MEM.Settings.general["notification-timestamp"] then
 			local formattedTime = date("%d.%m.%y - %H:%M:%S")
 			Addon:PrintMessage(msg .. " [" .. formattedTime .. "]")
 		else
 			Addon:PrintMessage(msg)
 		end
 
-		if MEM.settings.general["notification-class"] then
+		if MEM.Settings.general["notification-class"] then
 			local className = UnitClass("player")
 			Addon:PrintMessage(L["chat.notification.class"]:format(className))
 		end
 
-		if MEM.settings.general["notification-time-played"] then
-			local seconds = MEM.state.totalTimePlayed
+		if MEM.Settings.general["notification-time-played"] then
+			local seconds = MEM.State.totalTimePlayed
 			local days = math.floor(seconds / 86400)
 			seconds = seconds % 86400
 
@@ -132,11 +132,11 @@ function Utils:InitializeDatabase()
 	local useAccountProfile = Memento_Options_v5.profileKeys[characterRealmKey]["use-account"]
 
 	if useAccountProfile then
-		MEM.settings.general = Memento_Options_v5.account["general"]
-		MEM.settings.event = Memento_Options_v5.account["event"]
+		MEM.Settings.general = Memento_Options_v5.account["general"]
+		MEM.Settings.event = Memento_Options_v5.account["event"]
 	else
-		MEM.settings.general = Memento_Options_v5.profiles[characterRealmKey]["general"]
-		MEM.settings.event = Memento_Options_v5.profiles[characterRealmKey]["event"]
+		MEM.Settings.general = Memento_Options_v5.profiles[characterRealmKey]["general"]
+		MEM.Settings.event = Memento_Options_v5.profiles[characterRealmKey]["event"]
 	end
 
 	if not Memento_DataBossKill then
@@ -144,7 +144,7 @@ function Utils:InitializeDatabase()
 	end
 
 	if AWL.GAME_TYPE_MAINLINE then
-		MEM.data.bossKill = Memento_DataBossKill
+		MEM.Data.bossKill = Memento_DataBossKill
 	end
 
 	return {
@@ -157,9 +157,9 @@ end
 
 function Utils:InitializeMinimapButton()
 	self.minimapButton = Addon:RegisterMinimapButton({
-		db = MEM.settings.general["minimap-button"],
+		db = MEM.Settings.general["minimap-button"],
 		tooltip = L["minimap-button.tooltip"]
 	})
 end
 
-MEM.modules.Utils = Utils
+MEM.Modules.Utils = Utils

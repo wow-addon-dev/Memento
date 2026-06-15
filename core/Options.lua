@@ -4,7 +4,7 @@ local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
 local L = MEM.Localization
-local Utils = MEM.modules.Utils
+local Utils = MEM.Modules.Utils
 
 local Options = {}
 
@@ -15,7 +15,7 @@ local Options = {}
 local minimapButtonProxy = setmetatable({}, {
 	__index = function(_, key)
 		if key == "hide" then
-			return not MEM.settings.general["minimap-button"]["hide"]
+			return not MEM.Settings.general["minimap-button"]["hide"]
 		end
 	end,
 	__newindex = function(_, key, value)
@@ -23,7 +23,7 @@ local minimapButtonProxy = setmetatable({}, {
 			return
 		end
 
-		MEM.settings.general["minimap-button"]["hide"] = not value
+		MEM.Settings.general["minimap-button"]["hide"] = not value
 
 		if value then
 			Utils.minimapButton:Show(addonName)
@@ -48,7 +48,7 @@ function Options:Initialize()
 
 	-- Notification
 	local initializerNotification = AWL.Settings:AddCheckbox(category, {
-		variableTable = MEM.settings.general,
+		variableTable = MEM.Settings.general,
 		settingKey    = addonName .. "_notification",
 		variableName  = "notification",
 		name          = L["options.general.notification.name"],
@@ -57,12 +57,12 @@ function Options:Initialize()
 	})
 
 	local function IsNotificationEnabled()
-		return MEM.settings.general["notification"]
+		return MEM.Settings.general["notification"]
 	end
 
 	-- Notification: Show Timestamp
 	AWL.Settings:AddCheckbox(category, {
-		variableTable   = MEM.settings.general,
+		variableTable   = MEM.Settings.general,
 		settingKey      = addonName .. "_notification-timestamp",
 		variableName    = "notification-timestamp",
 		name            = L["options.general.notification.timestamp.name"],
@@ -74,7 +74,7 @@ function Options:Initialize()
 
 	-- Notification: Show Class
 	AWL.Settings:AddCheckbox(category, {
-		variableTable   = MEM.settings.general,
+		variableTable   = MEM.Settings.general,
 		settingKey      = addonName .. "_notification-class",
 		variableName    = "notification-class",
 		name            = L["options.general.notification.class.name"],
@@ -86,7 +86,7 @@ function Options:Initialize()
 
 	-- Notification: Show Time Played
 	AWL.Settings:AddCheckbox(category, {
-		variableTable   = MEM.settings.general,
+		variableTable   = MEM.Settings.general,
 		settingKey      = addonName .. "_notification-time-played",
 		variableName    = "notification-time-played",
 		name            = L["options.general.notification.time-played.name"],
@@ -98,7 +98,7 @@ function Options:Initialize()
 
 	-- Hide UI
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = MEM.settings.general,
+		variableTable = MEM.Settings.general,
 		settingKey    = addonName .. "_hide-ui",
 		variableName  = "hide-ui",
 		name          = L["options.general.hide-ui.name"],
@@ -118,7 +118,7 @@ function Options:Initialize()
 
 	-- Debug Mode
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = MEM.settings.general,
+		variableTable = MEM.Settings.general,
 		settingKey    = addonName .. "_debug-mode",
 		variableName  = "debug-mode",
 		name          = L["options.general.debug-mode.name"],
@@ -133,7 +133,7 @@ function Options:Initialize()
 
 		-- Personal Achievement
 		local initializerAchievementPersonal, settingAchievementPersonal = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_achievement-personal-active",
 			checkboxVariableName    = "achievement-personal-active",
 			checkboxName       = L["options.event.achievement.personal"],
@@ -152,7 +152,7 @@ function Options:Initialize()
 
 		-- Personal Achievement: Exist Check
 		AWL.Settings:AddCheckbox(category, {
-			variableTable   = MEM.settings.event,
+			variableTable   = MEM.Settings.event,
 			settingKey      = addonName .. "_achievement-personal-exist",
 			variableName    = "achievement-personal-exist",
 			name            = L["options.event.achievement.personal.exist.name"],
@@ -166,7 +166,7 @@ function Options:Initialize()
 		-- Criteria Achievement
 		if AWL.GAME_TYPE_MAINLINE then
 			AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-				variableTable      = MEM.settings.event,
+				variableTable      = MEM.Settings.event,
 				checkboxSettingKey = addonName .. "_achievement-criteria-active",
 				checkboxVariableName    = "achievement-criteria-active",
 				checkboxName       = L["options.event.achievement.criteria"],
@@ -186,7 +186,7 @@ function Options:Initialize()
 
 		-- Guild Achievement
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_achievement-guild-active",
 			checkboxVariableName    = "achievement-guild-active",
 			checkboxName       = L["options.event.achievement.guild"],
@@ -215,7 +215,7 @@ function Options:Initialize()
 
 		-- Dungeon
 		local initializerVictoryParty, settingVictoryParty = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_encounter-victory-party-active",
 			checkboxVariableName    = "encounter-victory-party-active",
 			checkboxName       = eventPartyVictory,
@@ -234,7 +234,7 @@ function Options:Initialize()
 
 		-- Dungeon: Only First Victory
 		AWL.Settings:AddCheckbox(category, {
-			variableTable   = MEM.settings.event,
+			variableTable   = MEM.Settings.event,
 			settingKey      = addonName .. "_encounter-victory-party-first",
 			variableName    = "encounter-victory-party-first",
 			name            = L["options.event.encounter.victory.first.name"],
@@ -247,7 +247,7 @@ function Options:Initialize()
 
 		-- Dungeon: Wipe
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_encounter-wipe-party-active",
 			checkboxVariableName    = "encounter-wipe-party-active",
 			checkboxName       = eventPartyWipe,
@@ -266,7 +266,7 @@ function Options:Initialize()
 
 		-- Raid
 		local initializerVictoryRaid, settingVictoryRaid = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_encounter-victory-raid-active",
 			checkboxVariableName    = "encounter-victory-raid-active",
 			checkboxName       = eventRaidVictory,
@@ -285,7 +285,7 @@ function Options:Initialize()
 
 		-- Raid: Only First Victory
 		AWL.Settings:AddCheckbox(category, {
-			variableTable   = MEM.settings.event,
+			variableTable   = MEM.Settings.event,
 			settingKey      = addonName .. "_encounter-victory-raid-first",
 			variableName    = "encounter-victory-raid-first",
 			name            = L["options.event.encounter.victory.first.name"],
@@ -298,7 +298,7 @@ function Options:Initialize()
 
 		-- Raid: Wipe
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_encounter-wipe-raid-active",
 			checkboxVariableName    = "encounter-wipe-raid-active",
 			checkboxName       = eventRaidWipe,
@@ -317,7 +317,7 @@ function Options:Initialize()
 
 		-- Scenario
 		local initializerVictoryScenario, settingVictoryScenario = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_encounter-victory-scenario-active",
 			checkboxVariableName    = "encounter-victory-scenario-active",
 			checkboxName       = eventScenarioVictory,
@@ -336,7 +336,7 @@ function Options:Initialize()
 
 		-- Scenario: Only First Victory
 		AWL.Settings:AddCheckbox(category, {
-			variableTable   = MEM.settings.event,
+			variableTable   = MEM.Settings.event,
 			settingKey      = addonName .. "_encounter-victory-scenario-first",
 			variableName    = "encounter-victory-scenario-first",
 			name            = L["options.event.encounter.victory.first.name"],
@@ -349,7 +349,7 @@ function Options:Initialize()
 
 		-- Scenario: Wipe
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_encounter-wipe-scenario-active",
 			checkboxVariableName    = "encounter-wipe-scenario-active",
 			checkboxName       = eventScenarioWipe,
@@ -371,7 +371,7 @@ function Options:Initialize()
 
 	-- Duel (Global)
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-		variableTable      = MEM.settings.event,
+		variableTable      = MEM.Settings.event,
 		checkboxSettingKey = addonName .. "_pvp-duel-active",
 		checkboxVariableName    = "pvp-duel-active",
 		checkboxName       = L["options.event.pvp.duel"],
@@ -391,7 +391,7 @@ function Options:Initialize()
 	if AWL.GAME_TYPE_MAINLINE then
 		-- Arena
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_pvp-arena-active",
 			checkboxVariableName    = "pvp-arena-active",
 			checkboxName       = L["options.event.pvp.arena"],
@@ -410,7 +410,7 @@ function Options:Initialize()
 
 		-- Battleground
 		local initializerBattleground, settingBattleground = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_pvp-battleground-active",
 			checkboxVariableName    = "pvp-battleground-active",
 			checkboxName       = L["options.event.pvp.battleground"],
@@ -429,7 +429,7 @@ function Options:Initialize()
 
 		-- Battleground: Only Victory
 		AWL.Settings:AddCheckbox(category, {
-			variableTable   = MEM.settings.event,
+			variableTable   = MEM.Settings.event,
 			settingKey      = addonName .. "_pvp-battleground-victory-only",
 			variableName    = "pvp-battleground-victory-only",
 			name            = L["options.event.pvp.victory.name"],
@@ -442,7 +442,7 @@ function Options:Initialize()
 
 		-- Brawl
 		local initializerBrawl, settingBrawl = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_pvp-brawl-active",
 			checkboxVariableName    = "pvp-brawl-active",
 			checkboxName       = L["options.event.pvp.brawl"],
@@ -461,7 +461,7 @@ function Options:Initialize()
 
 		-- Brawl: Only Victory
 		AWL.Settings:AddCheckbox(category, {
-			variableTable   = MEM.settings.event,
+			variableTable   = MEM.Settings.event,
 			settingKey      = addonName .. "_pvp-brawl-victory-only",
 			variableName    = "pvp-brawl-victory-only",
 			name            = L["options.event.pvp.victory.name"],
@@ -478,7 +478,7 @@ function Options:Initialize()
 	local function AddWarbandEntry(key, nameString, condition)
 		if condition then
 			AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-				variableTable      = MEM.settings.event,
+				variableTable      = MEM.Settings.event,
 				checkboxSettingKey = addonName .. "_collection-" .. key .. "-active",
 				checkboxVariableName    = "collection-" .. key .. "-active",
 				checkboxName       = nameString,
@@ -507,7 +507,7 @@ function Options:Initialize()
 
 	-- Login
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-		variableTable      = MEM.settings.event,
+		variableTable      = MEM.Settings.event,
 		checkboxSettingKey = addonName .. "_login-active",
 		checkboxVariableName    = "login-active",
 		checkboxName       = L["options.event.other.login"],
@@ -526,7 +526,7 @@ function Options:Initialize()
 
 	-- Level-Up
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-		variableTable      = MEM.settings.event,
+		variableTable      = MEM.Settings.event,
 		checkboxSettingKey = addonName .. "_level-up-active",
 		checkboxVariableName    = "level-up-active",
 		checkboxName       = L["options.event.other.level-up"],
@@ -545,7 +545,7 @@ function Options:Initialize()
 
 	-- Death
 	local initializerDeath, settingDeath = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-		variableTable      = MEM.settings.event,
+		variableTable      = MEM.Settings.event,
 		checkboxSettingKey = addonName .. "_death-active",
 		checkboxVariableName    = "death-active",
 		checkboxName       = L["options.event.other.death"],
@@ -564,7 +564,7 @@ function Options:Initialize()
 
 	-- Death: Instance
 	AWL.Settings:AddDropdown(category, {
-		variableTable   = MEM.settings.event,
+		variableTable   = MEM.Settings.event,
 		settingKey      = addonName .. "_death-instance",
 		variableName    = "death-instance",
 		name            = L["options.event.other.death.instance.name"],
@@ -583,7 +583,7 @@ function Options:Initialize()
 	-- Mythic+
 	if AWL.GAME_TYPE_MAINLINE then
 		AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-			variableTable      = MEM.settings.event,
+			variableTable      = MEM.Settings.event,
 			checkboxSettingKey = addonName .. "_mythic-active",
 			checkboxVariableName    = "mythic-active",
 			checkboxName       = L["options.event.other.mythic"],
@@ -603,7 +603,7 @@ function Options:Initialize()
 
 	-- Interval
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-		variableTable      = MEM.settings.event,
+		variableTable      = MEM.Settings.event,
 		checkboxSettingKey = addonName .. "_interval-active",
 		checkboxVariableName    = "interval-active",
 		checkboxName       = L["options.event.other.interval"],
@@ -641,4 +641,4 @@ function Options:Initialize()
 	Addon:SetMainCategoryId(category:GetID())
 end
 
-MEM.modules.Options = Options
+MEM.Modules.Options = Options

@@ -1,9 +1,8 @@
 local addonName, MEM = ...
 
-local L = MEM.Localization
-
 local AWL = ArcaneWizardLibrary
 
+local L = MEM.Localization
 local Utils = MEM.modules.Utils
 
 local Capture = {}

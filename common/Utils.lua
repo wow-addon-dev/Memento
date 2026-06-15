@@ -1,9 +1,9 @@
 local addonName, MEM = ...
 
-local L = MEM.Localization
-
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
+
+local L = MEM.Localization
 
 local Utils = {}
 

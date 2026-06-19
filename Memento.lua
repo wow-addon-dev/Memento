@@ -32,7 +32,7 @@ local function TimePlayed()
 end
 
 local function CheckInterval()
-	Utils:PrintDebug("Timer triggered.")
+	Addon:PrintDebug("Timer triggered.")
 
 	minutesPassed = minutesPassed + 1
 
@@ -55,7 +55,7 @@ local function SlashCommand(msg, editbox)
 	if not msg or strtrim(msg) == "" then
 		Addon:OpenCategory()
 	else
-		Utils:PrintDebug("These arguments are not accepted.")
+		Addon:PrintDebug("These arguments are not accepted.")
 	end
 end
 
@@ -80,16 +80,16 @@ function MementoFrame:ADDON_LOADED(_, addOnName)
 
 		C_Timer.NewTicker(60, CheckInterval)
 
-		Utils:PrintDebug(string.format(
+		Addon:PrintDebug(string.format(
 			"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
 			tostring(dbInit.characterRealmKey), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
 		))
-		Utils:PrintDebug("Addon fully loaded.")
+		Addon:PrintDebug("Addon fully loaded.")
 	end
 end
 
 function MementoFrame:TIME_PLAYED_MSG(_, totalTimePlayed, timePlayedThisLevel)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'TIME_PLAYED_MSG' fired. Payload: totalTimePlayed=%s, timePlayedThisLevel=%s",
 		tostring(totalTimePlayed), tostring(timePlayedThisLevel)
 	))
@@ -99,11 +99,11 @@ function MementoFrame:TIME_PLAYED_MSG(_, totalTimePlayed, timePlayedThisLevel)
 
 	sessionStartTime = GetTime()
 
-	Utils:PrintDebug("Event 'TIME_PLAYED_MSG' completed.")
+	Addon:PrintDebug("Event 'TIME_PLAYED_MSG' completed.")
 end
 
 function MementoFrame:ACHIEVEMENT_EARNED(_, achievementID, alreadyEarned)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'ACHIEVEMENT_EARNED' fired. Payload: achievementID=%s, alreadyEarned=%s",
 		tostring(achievementID), tostring(alreadyEarned)
 	))
@@ -115,20 +115,20 @@ function MementoFrame:ACHIEVEMENT_EARNED(_, achievementID, alreadyEarned)
 			TimePlayed()
 			Capture:ScheduleTimer("AchievementPersonalEventHandler", MEM.Settings.event["achievement-personal-delay"] + fixDelay, achievementID, alreadyEarned)
 		else
-			Utils:PrintDebug("Event 'ACHIEVEMENT_EARNED' (Personal) completed. No screenshot requested.")
+			Addon:PrintDebug("Event 'ACHIEVEMENT_EARNED' (Personal) completed. No screenshot requested.")
 		end
 	else
 		if MEM.Settings.event["achievement-guild-active"] then
 			TimePlayed()
 			Capture:ScheduleTimer("AchievementGuildEventHandler", MEM.Settings.event["achievement-guild-delay"] + fixDelay, achievementID)
 		else
-			Utils:PrintDebug("Event 'ACHIEVEMENT_EARNED' (Guild) completed. No screenshot requested.")
+			Addon:PrintDebug("Event 'ACHIEVEMENT_EARNED' (Guild) completed. No screenshot requested.")
 		end
 	end
 end
 
 function MementoFrame:CRITERIA_EARNED(_, achievementID, description)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'CRITERIA_EARNED' fired. Payload: achievementID=%s, description=%s",
 		tostring(achievementID), tostring(description)
 	))
@@ -137,23 +137,23 @@ function MementoFrame:CRITERIA_EARNED(_, achievementID, description)
 		TimePlayed()
 		Capture:ScheduleTimer("CriteriaEventHandler", MEM.Settings.event["achievement-criteria-delay"] + fixDelay, achievementID, description)
 	else
-		Utils:PrintDebug("Event 'CRITERIA_EARNED' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'CRITERIA_EARNED' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:CHALLENGE_MODE_COMPLETED(_)
-	Utils:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' fired. No payload.")
+	Addon:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' fired. No payload.")
 
 	if MEM.Settings.event["mythic-active"] then
 		TimePlayed()
 		Capture:ScheduleTimer("MythicEventHandler", MEM.Settings.event["mythic-delay"] + fixDelay)
 	else
-		Utils:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:PVP_MATCH_COMPLETE(_, winner, duration)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'PVP_MATCH_COMPLETE' fired. Payload: winner=%s, duration=%s",
 		tostring(winner), tostring(duration)
 	))
@@ -168,7 +168,7 @@ function MementoFrame:PVP_MATCH_COMPLETE(_, winner, duration)
 			TimePlayed()
 			Capture:ScheduleTimer("PvPArenaEventHandler", MEM.Settings.event["pvp-arena-delay"] + fixDelay)
 		else
-			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Arena) completed. No screenshot requested.")
+			Addon:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Arena) completed. No screenshot requested.")
 		end
 	elseif isInBrawl then
 		if MEM.Settings.event["pvp-brawl-active"] then
@@ -177,14 +177,14 @@ function MementoFrame:PVP_MATCH_COMPLETE(_, winner, duration)
 					TimePlayed()
 					Capture:ScheduleTimer("PvPBrawlEventHandler", MEM.Settings.event["pvp-brawl-delay"] + fixDelay)
 				else
-					Utils:PrintDebug("Player faction has lost the brawl. No screenshot requested.")
+					Addon:PrintDebug("Player faction has lost the brawl. No screenshot requested.")
 				end
 			else
 				TimePlayed()
 				Capture:ScheduleTimer("PvPBrawlEventHandler", MEM.Settings.event["pvp-brawl-delay"] + fixDelay)
 			end
 		else
-			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Brawl) completed. No screenshot requested.")
+			Addon:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Brawl) completed. No screenshot requested.")
 		end
 	elseif isBattleground or isSoloRBG then
 		if MEM.Settings.event["pvp-battleground-active"] then
@@ -193,22 +193,22 @@ function MementoFrame:PVP_MATCH_COMPLETE(_, winner, duration)
 					TimePlayed()
 					Capture:ScheduleTimer("PvPBattlegroundEventHandler", MEM.Settings.event["pvp-battleground-delay"] + fixDelay)
 				else
-					Utils:PrintDebug("Player faction has lost the battleground. No screenshot requested.")
+					Addon:PrintDebug("Player faction has lost the battleground. No screenshot requested.")
 				end
 			else
 				TimePlayed()
 				Capture:ScheduleTimer("PvPBattlegroundEventHandler", MEM.Settings.event["pvp-battleground-delay"] + fixDelay)
 			end
 		else
-			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Battleground) completed. No screenshot requested.")
+			Addon:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Battleground) completed. No screenshot requested.")
 		end
 	else
-		Utils:PrintDebug("Unknown PvP Event. No screenshot requested.")
+		Addon:PrintDebug("Unknown PvP Event. No screenshot requested.")
 	end
 end
 
 function MementoFrame:NEW_PET_ADDED(_, battlePetGUID)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'NEW_PET_ADDED' fired. Payload: battlePetGUID=%s",
 		tostring(battlePetGUID)
 	))
@@ -217,12 +217,12 @@ function MementoFrame:NEW_PET_ADDED(_, battlePetGUID)
 		TimePlayed()
 		Capture:ScheduleTimer("NewPetEventHandler", MEM.Settings.event["collection-pet-delay"] + fixDelay)
 	else
-		Utils:PrintDebug("Event 'NEW_PET_ADDED' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'NEW_PET_ADDED' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:NEW_MOUNT_ADDED(_, mountID)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'NEW_MOUNT_ADDED' fired. Payload: mountID=%s",
 		tostring(mountID)
 	))
@@ -231,12 +231,12 @@ function MementoFrame:NEW_MOUNT_ADDED(_, mountID)
 		TimePlayed()
 		Capture:ScheduleTimer("NewMountEventHandler", MEM.Settings.event["collection-mount-delay"] + fixDelay)
 	else
-		Utils:PrintDebug("Event 'NEW_MOUNT_ADDED' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'NEW_MOUNT_ADDED' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:NEW_TOY_ADDED(_, itemID)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'NEW_TOY_ADDED' fired. Payload: itemID=%s",
 		tostring(itemID)
 	))
@@ -245,12 +245,12 @@ function MementoFrame:NEW_TOY_ADDED(_, itemID)
 		TimePlayed()
 		Capture:ScheduleTimer("NewToyEventHandler", MEM.Settings.event["collection-toy-delay"] + fixDelay)
 	else
-		Utils:PrintDebug("Event 'NEW_TOY_ADDED' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'NEW_TOY_ADDED' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:NEW_HOUSING_ITEM_ACQUIRED(_, itemType, itemName, icon)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'NEW_HOUSING_ITEM_ACQUIRED' fired. Payload: itemType=%s, itemName=%s, icon=%s",
 		tostring(itemType),	tostring(itemName),	tostring(icon)
 	))
@@ -259,12 +259,12 @@ function MementoFrame:NEW_HOUSING_ITEM_ACQUIRED(_, itemType, itemName, icon)
 		TimePlayed()
 		Capture:ScheduleTimer("NewHousingItemEventHandler", MEM.Settings.event["collection-housing-delay"] + fixDelay)
 	else
-		Utils:PrintDebug("Event 'NEW_HOUSING_ITEM_ACQUIRED' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'NEW_HOUSING_ITEM_ACQUIRED' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'PLAYER_ENTERING_WORLD' fired. Payload: isInitialLogin=%s, isReloadingUi=%s",
 		tostring(isInitialLogin), tostring(isReloadingUi)
 	))
@@ -273,12 +273,12 @@ function MementoFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
 		TimePlayed()
 		Capture:ScheduleTimer("LoginEventHandler", MEM.Settings.event["login-delay"] + fixDelay)
 	else
-		Utils:PrintDebug("Event 'PLAYER_ENTERING_WORLD' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'PLAYER_ENTERING_WORLD' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:PLAYER_DEAD(_)
-	Utils:PrintDebug("Event 'PLAYER_DEAD' fired. No payload.")
+	Addon:PrintDebug("Event 'PLAYER_DEAD' fired. No payload.")
 
 	if MEM.Settings.event["death-active"] then
 		TimePlayed()
@@ -291,15 +291,15 @@ function MementoFrame:PLAYER_DEAD(_)
 		elseif not inInstance and MEM.Settings.event["death-instance"] == 2 then
 			Capture:ScheduleTimer("DeathEventHandler", MEM.Settings.event["death-delay"] + fixDelay)
 		else
-			Utils:PrintDebug("Player died in the wrong area. No screenshot requested.")
+			Addon:PrintDebug("Player died in the wrong area. No screenshot requested.")
 		end
 	else
-		Utils:PrintDebug("Event 'PLAYER_DEAD' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'PLAYER_DEAD' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:PLAYER_LEVEL_UP(_, level)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'PLAYER_LEVEL_UP' fired. Payload: level=%s",
 		tostring(level)
 	))
@@ -308,12 +308,12 @@ function MementoFrame:PLAYER_LEVEL_UP(_, level)
 		TimePlayed()
 		Capture:ScheduleTimer("LevelUpEventHandler", MEM.Settings.event["level-up-delay"] + fixDelay, level)
 	else
-		Utils:PrintDebug("Event 'PLAYER_LEVEL_UP' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'PLAYER_LEVEL_UP' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID, groupSize, success)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'ENCOUNTER_END' fired. Payload: encounterID=%s, encounterName=%s, difficultyID=%s, groupSize=%s, success=%s",
 		tostring(encounterID), tostring(encounterName),	tostring(difficultyID),	tostring(groupSize), tostring(success)
 	))
@@ -339,13 +339,13 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 				if not MEM.Data.bossKill[difficulty] then MEM.Data.bossKill[difficulty] = {} end
 
 				if MEM.Data.bossKill[difficulty][encounterID] and firstOnly then
-					Utils:PrintDebug("Encounter already killed. No screenshot requested.")
+					Addon:PrintDebug("Encounter already killed. No screenshot requested.")
 				else
 					TimePlayed()
 					Capture:ScheduleTimer("EncounterVictoryEventHandler", delay + fixDelay, encounterName, difficultyName, difficulty, encounterID)
 				end
 			else
-				Utils:PrintDebug("Event 'ENCOUNTER_END' (Victory) completed. No screenshot requested.")
+				Addon:PrintDebug("Event 'ENCOUNTER_END' (Victory) completed. No screenshot requested.")
 			end
 		else
 			local isActive = (groupType == "party" and MEM.Settings.event["encounter-wipe-party-active"]) or
@@ -360,11 +360,11 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 				TimePlayed()
 				Capture:ScheduleTimer("EncounterWipeEventHandler", delay + fixDelay, encounterName, difficultyName)
 			else
-				Utils:PrintDebug("Event 'ENCOUNTER_END' (Wipe) completed. No screenshot requested.")
+				Addon:PrintDebug("Event 'ENCOUNTER_END' (Wipe) completed. No screenshot requested.")
 			end
 		end
 	else
-		Utils:PrintDebug(string.format(
+		Addon:PrintDebug(string.format(
 			"Unknown groupType '%s'. No screenshot requested.",
 			tostring(groupType)
 		))
@@ -372,18 +372,18 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 end
 
 function MementoFrame:DUEL_FINISHED(_)
-	Utils:PrintDebug("Event 'DUEL_FINISHED' fired. No payload.")
+	Addon:PrintDebug("Event 'DUEL_FINISHED' fired. No payload.")
 
 	if MEM.Settings.event["pvp-duel-active"] then
 		TimePlayed()
 		Capture:ScheduleTimer("PvPDuelEventHandler", MEM.Settings.event["pvp-duel-delay"] + fixDelay)
 	else
-		Utils:PrintDebug("Event 'DUEL_FINISHED' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'DUEL_FINISHED' completed. No screenshot requested.")
 	end
 end
 
 function MementoFrame:NEW_RECIPE_LEARNED(_, recipeID, recipeLevel, baseRecipeID)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'NEW_RECIPE_LEARNED' fired. Payload: recipeID=%s, recipeLevel=%s, baseRecipeID=%s",
 		tostring(recipeID),	tostring(recipeLevel), tostring(baseRecipeID)
 	))
@@ -392,7 +392,7 @@ function MementoFrame:NEW_RECIPE_LEARNED(_, recipeID, recipeLevel, baseRecipeID)
 		TimePlayed()
 		Capture:ScheduleTimer("NewRecipeEventHandler", MEM.Settings.event["collection-recipe-delay"] + fixDelay)
 	else
-		Utils:PrintDebug("Event 'NEW_RECIPE_LEARNED' completed. No screenshot requested.")
+		Addon:PrintDebug("Event 'NEW_RECIPE_LEARNED' completed. No screenshot requested.")
 	end
 end
 

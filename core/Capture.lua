@@ -1,6 +1,7 @@
 local addonName, MEM = ...
 
 local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
 
 local L = MEM.Localization
 local Utils = MEM.Modules.Utils
@@ -71,7 +72,7 @@ local function TakeScreenshot()
 					end
 				end)
 
-				Utils:PrintDebug("Screenshot without UI taken.")
+				Addon:PrintDebug("Screenshot without UI taken.")
 			end)
 
 			if not status then
@@ -81,26 +82,26 @@ local function TakeScreenshot()
 					frame:Hide()
 				end
 
-				Utils:PrintDebug(string.format(
+				Addon:PrintDebug(string.format(
 					"Method TakeScreenshot() (without UI) aborted with exception: %s",
 					tostring(err)
 				))
 
 				Screenshot()
 
-				Utils:PrintDebug("Screenshot taken.")
+				Addon:PrintDebug("Screenshot taken.")
 			end
 		else
-			Utils:PrintDebug("No screenshot is possible in combat without ui.")
+			Addon:PrintDebug("No screenshot is possible in combat without ui.")
 
 			Screenshot()
 
-			Utils:PrintDebug("Screenshot taken.")
+			Addon:PrintDebug("Screenshot taken.")
 		end
 	else
 		Screenshot()
 
-		Utils:PrintDebug("Screenshot taken.")
+		Addon:PrintDebug("Screenshot taken.")
 	end
 end
 
@@ -115,13 +116,13 @@ local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
 			Utils:PrintMessage(L["chat.event.achievement.personal.exist"]:format(achievementLink))
 			TakeScreenshot()
 		else
-			Utils:PrintDebug(string.format(
+			Addon:PrintDebug(string.format(
 				"The achievement %s has already been reached by another character. No screenshot requested.",
 				tostring(achievementLink)
 			))
 		end
 	else
-		Utils:PrintDebug("Unknown AchievementLink. (nil value / unknown ID)")
+		Addon:PrintDebug("Unknown AchievementLink. (nil value / unknown ID)")
 
 		if not alreadyEarned then
 			Utils:PrintMessage(L["chat.event.achievement.personal.no-link.new"])
@@ -130,7 +131,7 @@ local function AchievementPersonalEventHandler(achievementID, alreadyEarned)
 			Utils:PrintMessage(L["chat.event.achievement.personal.no-link.exist"])
 			TakeScreenshot()
 		else
-			Utils:PrintDebug("The achievement has already been reached by another character. No screenshot requested.")
+			Addon:PrintDebug("The achievement has already been reached by another character. No screenshot requested.")
 		end
 	end
 end
@@ -148,7 +149,7 @@ local function CriteriaEventHandler(achievementID, description)
 	if achievementLink then
 		Utils:PrintMessage(L["chat.event.achievement.criteria.new"]:format(achievementLink, description))
 	else
-		Utils:PrintDebug("Unknown AchievementLink. (nil value / unknown ID)")
+		Addon:PrintDebug("Unknown AchievementLink. (nil value / unknown ID)")
 		Utils:PrintMessage(L["chat.event.achievement.criteria.no-link.new"])
 	end
 
@@ -277,7 +278,7 @@ function Capture:ScheduleTimer(handler, delay, ...)
 		if HandlerTable[handler] then
 			HandlerTable[handler](unpack(args))
 		else
-			Utils:PrintDebug(string.format(
+			Addon:PrintDebug(string.format(
 				"Handler '%s' not found.",
 				tostring(handler)
 			))

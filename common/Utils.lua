@@ -1,14 +1,17 @@
 local addonName, MEM = ...
 
+-- Library
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
+-- Localization
 local L = MEM.Localization
 
-local Utils = {}
+-- Current module
+local Utils = MEM.Modules.Utils
 
 ------------------------
---- Public Functions ---
+--- Module Functions ---
 ------------------------
 
 function Utils:PrintMessage(msg)
@@ -145,5 +148,3 @@ function Utils:InitializeMinimapButton()
 		tooltip = L["minimap-button.tooltip"]
 	})
 end
-
-MEM.Modules.Utils = Utils

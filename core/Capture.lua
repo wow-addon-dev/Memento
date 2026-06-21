@@ -1,13 +1,23 @@
 local addonName, MEM = ...
 
+-- Library
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
+-- Localization
 local L = MEM.Localization
+
+-- Current module
+local Capture = MEM.Modules.Capture
+
+-- Module imports
 local Utils = MEM.Modules.Utils
 
-local Capture = {}
-local messageFrame
+--------------
+--- Frames ---
+--------------
+
+local MessageFrame
 
 -----------------------
 --- Local Functions ---
@@ -40,13 +50,13 @@ local function CreateMessageFrame()
 end
 
 local function UpdateMessageFrame()
-	if not messageFrame then
-		messageFrame = CreateMessageFrame()
+	if not MessageFrame then
+		MessageFrame = CreateMessageFrame()
 	end
 
-	messageFrame.textBottom:SetText(tostring(date("%d.%m.%y - %H:%M:%S", GetServerTime())))
+	MessageFrame.textBottom:SetText(tostring(date("%d.%m.%y - %H:%M:%S", GetServerTime())))
 
-	return messageFrame
+	return MessageFrame
 end
 
 local function TakeScreenshot()
@@ -268,7 +278,7 @@ local HandlerTable = {
 }
 
 ------------------------
---- Public Functions ---
+--- Module Functions ---
 ------------------------
 
 function Capture:ScheduleTimer(handler, delay, ...)
@@ -285,5 +295,3 @@ function Capture:ScheduleTimer(handler, delay, ...)
 		end
 	end)
 end
-
-MEM.Modules.Capture = Capture

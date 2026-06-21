@@ -1,17 +1,19 @@
 local addonName, MEM = ...
 
+-- Library
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
+-- Localization
 local L = MEM.Localization
+
+-- Current module
+local Options = MEM.Modules.Options
+
+-- Module imports
 local Utils = MEM.Modules.Utils
 
-local Options = {}
-
-----------------------
---- Local Functions --
-----------------------
-
+-- Variables
 local minimapButtonProxy = setmetatable({}, {
 	__index = function(_, key)
 		if key == "hide" then
@@ -33,12 +35,16 @@ local minimapButtonProxy = setmetatable({}, {
 	end,
 })
 
+-----------------------
+--- Local Functions ---
+-----------------------
+
 local function GetVal(setting) return setting:GetValue() end
 local function FormatSeconds(value) return value .. " " .. L["general.seconds-short"] end
 local function FormatMinutes(value) return value .. " " .. L["general.minutes-short"] end
 
 ------------------------
---- Public Functions ---
+--- Module Functions ---
 ------------------------
 
 function Options:Initialize()
@@ -640,5 +646,3 @@ function Options:Initialize()
 
 	Addon:SetMainCategoryId(category:GetID())
 end
-
-MEM.Modules.Options = Options

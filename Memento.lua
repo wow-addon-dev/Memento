@@ -1,12 +1,15 @@
 local addonName, MEM = ...
 
+-- Library
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
+-- Module imports
 local Capture = MEM.Modules.Capture
 local Options = MEM.Modules.Options
 local Utils = MEM.Modules.Utils
 
+-- Variables
 local fixDelay = 0.1
 local minutesPassed = 0
 local sessionStartTime = 0

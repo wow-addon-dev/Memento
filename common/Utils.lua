@@ -10,6 +10,14 @@ local L = MEM.Localization
 -- Current module
 local Utils = MEM.Modules.Utils
 
+-----------------------
+--- Local Functions ---
+-----------------------
+
+local function PrintChatMessage(color, prefix, msg)
+	DEFAULT_CHAT_FRAME:AddMessage(color:WrapTextInColorCode(prefix .. ": ") .. tostring(msg))
+end
+
 ------------------------
 --- Module Functions ---
 ------------------------
@@ -18,14 +26,14 @@ function Utils:PrintMessage(msg)
 	if MEM.Settings.general["notification"] then
 		if MEM.Settings.general["notification-timestamp"] then
 			local formattedTime = date("%d.%m.%y - %H:%M:%S")
-			Addon:PrintMessage(msg .. " [" .. formattedTime .. "]")
+			PrintChatMessage(NORMAL_FONT_COLOR, addonName, msg .. " [" .. formattedTime .. "]")
 		else
-			Addon:PrintMessage(msg)
+			PrintChatMessage(NORMAL_FONT_COLOR, addonName, msg)
 		end
 
 		if MEM.Settings.general["notification-class"] then
 			local className = UnitClass("player")
-			Addon:PrintMessage(L["chat.notification.class"]:format(className))
+			PrintChatMessage(NORMAL_FONT_COLOR, addonName, L["chat.notification.class"]:format(className))
 		end
 
 		if MEM.Settings.general["notification-time-played"] then
@@ -39,8 +47,14 @@ function Utils:PrintMessage(msg)
 			local minutes = math.floor(seconds / 60)
 			seconds = seconds % 60
 
-			Addon:PrintMessage(L["chat.notification.time-played"]:format(days, hours, minutes, seconds))
+			PrintChatMessage(NORMAL_FONT_COLOR, addonName, L["chat.notification.time-played"]:format(days, hours, minutes, seconds))
 		end
+	end
+end
+
+function Utils:PrintDebug(msg)
+	if MEM.Settings.general["debug-mode"] then
+		PrintChatMessage(ORANGE_FONT_COLOR, addonName .. " (Debug)", msg)
 	end
 end
 
@@ -54,7 +68,9 @@ function Utils:OpenSettingsOnLoading()
 	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
 
 	if Memento_Options_v5.profileKeys[characterRealmKey]["open-settings"] then
-		Addon:OpenCategory()
+		if not Addon:OpenCategory() then
+			self:PrintDebug("In combat. The options menu cannot be opened.")
+		end
 
 		Memento_Options_v5.profileKeys[characterRealmKey]["open-settings"] = false
 	end

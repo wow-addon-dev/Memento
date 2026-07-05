@@ -14,8 +14,4 @@ MEM.State.timePlayedThisLevel = 0
 
 local AWL = ArcaneWizardLibrary
 
-AWL:NewAddon(addonName, {
-	debugEnabled = function()
-		return MEM.Settings.general and MEM.Settings.general["debug-mode"]
-	end
-})
+AWL:NewAddon(addonName)

@@ -22,6 +22,20 @@ end
 --- Module Functions ---
 ------------------------
 
+function Utils:GetDurationParts(totalSeconds)
+	local seconds = math.max(0, math.floor(totalSeconds or 0))
+	local days = math.floor(seconds / 86400)
+	seconds = seconds % 86400
+
+	local hours = math.floor(seconds / 3600)
+	seconds = seconds % 3600
+
+	local minutes = math.floor(seconds / 60)
+	seconds = seconds % 60
+
+	return days, hours, minutes, seconds
+end
+
 function Utils:PrintMessage(msg)
 	if MEM.Settings.general["notification"] then
 		if MEM.Settings.general["notification-timestamp"] then
@@ -37,17 +51,15 @@ function Utils:PrintMessage(msg)
 		end
 
 		if MEM.Settings.general["notification-time-played"] then
-			local seconds = MEM.State.totalTimePlayed
-			local days = math.floor(seconds / 86400)
-			seconds = seconds % 86400
-
-			local hours = math.floor(seconds / 3600)
-			seconds = seconds % 3600
-
-			local minutes = math.floor(seconds / 60)
-			seconds = seconds % 60
+			local days, hours, minutes, seconds = self:GetDurationParts(MEM.State.totalTimePlayed)
 
 			PrintChatMessage(NORMAL_FONT_COLOR, addonName, L["chat.notification.time-played"]:format(days, hours, minutes, seconds))
+		end
+
+		if MEM.Settings.general["notification-level-time-played"] then
+			local days, hours, minutes, seconds = self:GetDurationParts(MEM.State.timePlayedThisLevel)
+
+			PrintChatMessage(NORMAL_FONT_COLOR, addonName, L["chat.notification.level-time-played"]:format(days, hours, minutes, seconds))
 		end
 	end
 end

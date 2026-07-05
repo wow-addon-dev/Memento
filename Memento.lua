@@ -311,7 +311,11 @@ function MementoFrame:PLAYER_LEVEL_UP(_, level)
 
 	if MEM.Settings.event["level-up-active"] then
 		TimePlayed()
-		Capture:ScheduleTimer("LevelUpEventHandler", MEM.Settings.event["level-up-delay"] + fixDelay, level)
+
+		local timePlayedOnPreviousLevel = MEM.State.timePlayedThisLevel
+		MEM.State.timePlayedThisLevel = 0
+
+		Capture:ScheduleTimer("LevelUpEventHandler", MEM.Settings.event["level-up-delay"] + fixDelay, level, timePlayedOnPreviousLevel)
 	else
 		Utils:PrintDebug("Event 'PLAYER_LEVEL_UP' completed. No screenshot requested.")
 	end

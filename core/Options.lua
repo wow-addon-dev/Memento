@@ -102,6 +102,18 @@ function Options:Initialize()
 		parentCondition	= IsNotificationEnabled
 	})
 
+	-- Notification: Show Level Time Played
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= MEM.Settings.general,
+		settingKey		= addonName .. "_notification-level-time-played",
+		variableName	= "notification-level-time-played",
+		name			= L["options.general.notification.level-time-played.name"],
+		tooltip			= L["options.general.notification.level-time-played.tooltip"],
+		default			= false,
+		parentInit		= initializerNotification,
+		parentCondition	= IsNotificationEnabled
+	})
+
 	-- Hide UI
 	AWL.Settings:AddCheckbox(category, {
 		variableTable	= MEM.Settings.general,
@@ -531,7 +543,7 @@ function Options:Initialize()
 	})
 
 	-- Level-Up
-	AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+	local initializerLevelUp, settingLevelUp = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
 		variableTable			= MEM.Settings.event,
 		checkboxSettingKey		= addonName .. "_level-up-active",
 		checkboxVariableName	= "level-up-active",
@@ -547,6 +559,19 @@ function Options:Initialize()
 		sliderFormatter			= FormatSeconds,
 
 		shownPredicate			= isOtherExpanded
+	})
+
+	-- Level-Up: Show Time Played
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= MEM.Settings.event,
+		settingKey		= addonName .. "_level-up-time-played",
+		variableName	= "level-up-time-played",
+		name			= L["options.event.other.level-up.time-played.name"],
+		tooltip			= L["options.event.other.level-up.time-played.tooltip"],
+		default			= false,
+		parentInit		= initializerLevelUp,
+		parentCondition	= function() return GetVal(settingLevelUp) end,
+		shownPredicate	= isOtherExpanded
 	})
 
 	-- Death

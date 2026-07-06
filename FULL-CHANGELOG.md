@@ -1,3 +1,8 @@
+**v2.14 (2026-07-06)**
+- Added: The time played on the current level can now be shown for all screenshot events
+- Added: The time played on the previous level can now be shown in level-up screenshot notifications
+- Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
+
 **v2.13 (2026-07-04)**
 - Added: TOC version for patch 12.1.0 [retail]
 - Added: TOC version for patch 2.5.6 [burning crusade - classic anniversary edition]

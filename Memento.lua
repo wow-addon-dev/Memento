@@ -2,7 +2,6 @@ local addonName, MEM = ...
 
 -- Library
 local AWL = ArcaneWizardLibrary
-local Addon = AWL:GetAddon(addonName)
 
 -- Module imports
 local Capture = MEM.Modules.Capture
@@ -56,9 +55,7 @@ end
 
 local function SlashCommand(msg, editbox)
 	if not msg or strtrim(msg) == "" then
-		if not Addon:OpenCategory() then
-			Utils:PrintDebug("In combat. The options menu cannot be opened.")
-		end
+		Utils:OpenSettings()
 	else
 		Utils:PrintDebug("These arguments are not accepted.")
 	end

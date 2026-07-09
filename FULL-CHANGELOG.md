@@ -1,3 +1,6 @@
+**v2.15 (2026-07-09)**
+- Minor code adjustments
+
 **v2.14 (2026-07-06)**
 - Added: The time played on the current level can now be shown for all screenshot events
 - Added: The time played on the previous level can now be shown in level-up screenshot notifications

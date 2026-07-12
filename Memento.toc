@@ -1,4 +1,4 @@
-## Interface: 120100, 120007, 50504, 50503, 20506, 20505, 11508
+## Interface: 120100, 120007, 50504, 20506, 20505, 11508
 ## Title: Memento
 ## Author: Arcane Wizard | created by diomsg
 
@@ -24,6 +24,7 @@
 ## X-E-Mail: feedback@wow-addon.dev
 ## X-Github: https://github.com/wow-addon-dev/Memento
 ## X-Curseforge: https://www.curseforge.com/wow/addons/memento
+## X-Wago: https://addons.wago.io/addons/memento
 
 Memento.xml
 Memento.lua

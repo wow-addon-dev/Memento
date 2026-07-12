@@ -10,6 +10,12 @@ Memento is a World of Warcraft addon that automatically takes screenshots of mea
 
 * **Automated Screenshots** - Automatically captures images based on customizable in-game events so you can focus entirely on your gameplay.
 
+## Installation & Quick Start
+
+> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Memento via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
+
+To open the addon options menu, type `/mem` or `/memento` into your chat and press enter.
+
 ## Features
 
 * Supported Events
@@ -35,12 +41,6 @@ Memento is a World of Warcraft addon that automatically takes screenshots of mea
 
 * Languages: English, German
 * Flavors: Classic, Burning Crusade - Classic Anniversary Edition, Mists of Pandaria - Classic, Retail
-
-## Installation & Quick Start
-
-> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Memento via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
-
-To open the addon options menu, type `/mem` or `/memento` into your chat and press enter.
 
 ## Bugs & Feedback
 

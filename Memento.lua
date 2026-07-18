@@ -53,8 +53,10 @@ local function IsPlayerWinner(winner)
 	return (playerFaction == "Alliance" and winner == 1) or (playerFaction == "Horde" and winner == 0)
 end
 
-local function SlashCommand(msg, editbox)
-	if not msg or strtrim(msg) == "" then
+local function SlashCommand(msg)
+	local command = strtrim(msg or "")
+
+	if command == "" then
 		Utils:OpenSettings()
 	else
 		Utils:PrintDebug("These arguments are not accepted.")

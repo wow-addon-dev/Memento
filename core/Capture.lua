@@ -71,6 +71,7 @@ local function TakeScreenshot()
 
 				C_Timer.After(0.1, function()
 					Screenshot()
+					Utils:PrintDebug("Screenshot without UI taken.")
 				end)
 
 				C_Timer.After(0.2, function()
@@ -81,7 +82,6 @@ local function TakeScreenshot()
 					end
 				end)
 
-				Utils:PrintDebug("Screenshot without UI taken.")
 			end)
 
 			if not status then

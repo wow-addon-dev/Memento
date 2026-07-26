@@ -36,6 +36,15 @@ local minimapButtonProxy = setmetatable({}, {
 	end,
 })
 
+local screenshotSoundOptions = {}
+
+for _, soundData in ipairs(MEM.SCREENSHOT_SOUNDS) do
+	screenshotSoundOptions[#screenshotSoundOptions + 1] = {
+		value = soundData.key,
+		label = L[soundData.labelKey]
+	}
+end
+
 -----------------------
 --- Local Functions ---
 -----------------------
@@ -135,12 +144,6 @@ function Options:Initialize()
 		default			= false
 	})
 
-	if MEM.Settings.general["screenshot-sound-style"] == "ui-click"
-		or MEM.Settings.general["screenshot-sound-style"] == "epic-loot"
-		or MEM.Settings.general["screenshot-sound-style"] == "camera"
-		or MEM.Settings.general["screenshot-sound-style"] == "map-ping" then
-		MEM.Settings.general["screenshot-sound-style"] = "memento-camera"
-	end
 
 	AWL.Settings:AddDropdown(category, {
 		variableTable	= MEM.Settings.general,
@@ -148,15 +151,8 @@ function Options:Initialize()
 		variableName	= "screenshot-sound-style",
 		name			= L["options.general.screenshot-sound-style.name"],
 		tooltip			= L["options.general.screenshot-sound-style.tooltip"],
-		default			= "memento-camera",
-		options			= {
-			{value = "memento-camera", label = L["options.general.screenshot-sound-style.option.memento-camera"]},
-			{value = "notification", label = L["options.general.screenshot-sound-style.option.notification"]},
-			{value = "melody", label = L["options.general.screenshot-sound-style.option.melody"]},
-			{value = "quest-complete", label = L["options.general.screenshot-sound-style.option.quest-complete"]},
-			{value = "ready-check", label = L["options.general.screenshot-sound-style.option.ready-check"]},
-			{value = "raid-warning", label = L["options.general.screenshot-sound-style.option.raid-warning"]}
-		},
+		default			= MEM.SCREENSHOT_SOUND_DEFAULT,
+		options			= screenshotSoundOptions,
 		parentInit		= initializerScreenshotSound,
 		parentCondition	= function() return GetVal(settingScreenshotSound) end,
 		onClick			= function(_, value) Capture:PreviewScreenshotSound(value) end
@@ -669,6 +665,87 @@ function Options:Initialize()
 			shownPredicate			= isOtherExpanded
 		})
 	end
+
+	-- Special Loot
+	local initializerLootToast, settingLootToast = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+		variableTable			= MEM.Settings.event,
+		checkboxSettingKey		= addonName .. "_loot-toast-active",
+		checkboxVariableName	= "loot-toast-active",
+		checkboxName			= L["options.event.other.loot-toast"],
+		checkboxTooltip			= L["options.event.other.loot-toast.tooltip"],
+		checkboxDefault			= false,
+
+		sliderSettingKey		= addonName .. "_loot-toast-delay",
+		sliderVariableName		= "loot-toast-delay",
+		sliderName				= L["options.event.general.delay.name"],
+		sliderTooltip			= L["options.event.general.delay.tooltip"]:format(L["options.event.other.loot-toast"], 1),
+		sliderDefault			= 1, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+		sliderFormatter			= FormatSeconds,
+
+		shownPredicate			= isOtherExpanded
+	})
+
+	local function IsLootToastEnabled()
+		return GetVal(settingLootToast)
+	end
+
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= MEM.Settings.event,
+		settingKey		= addonName .. "_loot-toast-item",
+		variableName	= "loot-toast-item",
+		name			= L["options.event.other.loot-toast.item.name"],
+		tooltip			= L["options.event.other.loot-toast.item.tooltip"],
+		default			= true,
+		parentInit		= initializerLootToast,
+		parentCondition	= IsLootToastEnabled,
+		shownPredicate	= isOtherExpanded
+	})
+
+	local lootToastQualityOptions = {}
+
+	for _, quality in ipairs(MEM.LOOT_TOAST_QUALITIES) do
+		lootToastQualityOptions[#lootToastQualityOptions + 1] = {
+			value = quality,
+			label = _G["ITEM_QUALITY" .. quality .. "_DESC"]
+		}
+	end
+
+	AWL.Settings:AddDropdown(category, {
+		variableTable	= MEM.Settings.event,
+		settingKey		= addonName .. "_loot-toast-quality",
+		variableName	= "loot-toast-quality",
+		name			= L["options.event.other.loot-toast.quality.name"],
+		tooltip			= L["options.event.other.loot-toast.quality.tooltip"],
+		default			= MEM.LOOT_TOAST_QUALITY_DEFAULT,
+		options			= lootToastQualityOptions,
+		parentInit		= initializerLootToast,
+		parentCondition	= IsLootToastEnabled,
+		shownPredicate	= isOtherExpanded
+	})
+
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= MEM.Settings.event,
+		settingKey		= addonName .. "_loot-toast-money",
+		variableName	= "loot-toast-money",
+		name			= L["options.event.other.loot-toast.money.name"],
+		tooltip			= L["options.event.other.loot-toast.money.tooltip"],
+		default			= false,
+		parentInit		= initializerLootToast,
+		parentCondition	= IsLootToastEnabled,
+		shownPredicate	= isOtherExpanded
+	})
+
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= MEM.Settings.event,
+		settingKey		= addonName .. "_loot-toast-currency",
+		variableName	= "loot-toast-currency",
+		name			= L["options.event.other.loot-toast.currency.name"],
+		tooltip			= L["options.event.other.loot-toast.currency.tooltip"],
+		default			= false,
+		parentInit		= initializerLootToast,
+		parentCondition	= IsLootToastEnabled,
+		shownPredicate	= isOtherExpanded
+	})
 
 	-- Interval
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {

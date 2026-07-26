@@ -1,4 +1,4 @@
-local addonName, MEM = ...
+local _, MEM = ...
 
 -- Library
 local AWL = ArcaneWizardLibrary
@@ -17,16 +17,6 @@ local Utils = MEM.Modules.Utils
 --------------
 
 local MessageFrame
-local ScreenshotSoundFiles = {
-	["memento-camera"] = "Interface\\AddOns\\" .. addonName .. "\\assets\\screenshot-camera.mp3",
-	["notification"] = "Interface\\AddOns\\" .. addonName .. "\\assets\\screenshot-notification.mp3",
-	["melody"] = "Interface\\AddOns\\" .. addonName .. "\\assets\\screenshot-melody.mp3"
-}
-local ScreenshotSounds = {
-	["quest-complete"] = {"IG_QUEST_LIST_COMPLETE"},
-	["ready-check"] = {"READY_CHECK"},
-	["raid-warning"] = {"RAID_WARNING", "READY_CHECK"}
-}
 
 -----------------------
 --- Local Functions ---
@@ -75,26 +65,28 @@ end
 local function PlayScreenshotSound(ignoreSetting, soundKey)
 	if not ignoreSetting and not MEM.Settings.general["screenshot-sound"] then return end
 
-	soundKey = soundKey or MEM.Settings.general["screenshot-sound-style"] or "memento-camera"
-	local soundFile = ScreenshotSoundFiles[soundKey]
+	soundKey = soundKey or MEM.Settings.general["screenshot-sound-style"] or MEM.SCREENSHOT_SOUND_DEFAULT
+	local soundData = MEM.SCREENSHOT_SOUND_BY_KEY[soundKey]
 
-	if soundFile then
-		local status, willPlay = pcall(PlaySoundFile, soundFile, "SFX")
+	if not soundData then return end
+
+	if soundData.filePath then
+		local status, willPlay = pcall(PlaySoundFile, soundData.filePath, MEM.SCREENSHOT_SOUND_CHANNEL)
 
 		if status and willPlay ~= false then
 			return
 		end
 	end
 
-	local sounds = ScreenshotSounds[soundKey]
+	local soundKitNames = soundData.soundKitNames
 
-	if not sounds then return end
+	if not soundKitNames then return end
 
-	for _, sound in ipairs(sounds) do
-		local soundKitID = GetSoundKitID(sound)
+	for _, soundKitName in ipairs(soundKitNames) do
+		local soundKitID = GetSoundKitID(soundKitName)
 
 		if soundKitID then
-			local status, willPlay = pcall(PlaySound, soundKitID, "SFX")
+			local status, willPlay = pcall(PlaySound, soundKitID, MEM.SCREENSHOT_SOUND_CHANNEL)
 
 			if status and willPlay then
 				return
@@ -309,6 +301,18 @@ local function MythicEventHandler()
 	TakeScreenshot()
 end
 
+local function LootToastEventHandler(typeIdentifier, itemLink, quantity)
+	if typeIdentifier == MEM.LOOT_TOAST_TYPE.ITEM then
+		Utils:PrintMessage(L["chat.event.loot-toast.item.new"]:format(itemLink or UNKNOWN))
+	elseif typeIdentifier == MEM.LOOT_TOAST_TYPE.MONEY then
+		Utils:PrintMessage(L["chat.event.loot-toast.money.new"]:format(GetMoneyString(quantity or 0, true)))
+	elseif typeIdentifier == MEM.LOOT_TOAST_TYPE.CURRENCY then
+		Utils:PrintMessage(L["chat.event.loot-toast.currency.new"]:format(itemLink or UNKNOWN, quantity or 0))
+	end
+
+	TakeScreenshot()
+end
+
 local function IntervalEventHandler()
 	Utils:PrintMessage(L["chat.event.interval.new"])
 	TakeScreenshot()
@@ -333,6 +337,7 @@ local HandlerTable = {
 	["LevelUpEventHandler"]             = LevelUpEventHandler,
 	["DeathEventHandler"]               = DeathEventHandler,
 	["MythicEventHandler"]              = MythicEventHandler,
+	["LootToastEventHandler"]           = LootToastEventHandler,
 	["IntervalEventHandler"]            = IntervalEventHandler
 }
 

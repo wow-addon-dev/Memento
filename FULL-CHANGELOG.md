@@ -1,3 +1,6 @@
+**v2.19 (2026-07-26)**
+- Added: Configurable sound effects can now be played after a screenshot has been taken
+
 **v2.18 (2026-07-21)**
 - Updated: deDE, enUS localizations
 

@@ -17,6 +17,16 @@ local Utils = MEM.Modules.Utils
 --------------
 
 local MessageFrame
+local ScreenshotSoundFiles = {
+	["memento-camera"] = "Interface\\AddOns\\" .. addonName .. "\\assets\\screenshot-camera.mp3",
+	["notification"] = "Interface\\AddOns\\" .. addonName .. "\\assets\\screenshot-notification.mp3",
+	["melody"] = "Interface\\AddOns\\" .. addonName .. "\\assets\\screenshot-melody.mp3"
+}
+local ScreenshotSounds = {
+	["quest-complete"] = {"IG_QUEST_LIST_COMPLETE"},
+	["ready-check"] = {"READY_CHECK"},
+	["raid-warning"] = {"RAID_WARNING", "READY_CHECK"}
+}
 
 -----------------------
 --- Local Functions ---
@@ -58,6 +68,41 @@ local function UpdateMessageFrame()
 	return MessageFrame
 end
 
+local function GetSoundKitID(sound)
+	return SOUNDKIT and SOUNDKIT[sound] or nil
+end
+
+local function PlayScreenshotSound(ignoreSetting, soundKey)
+	if not ignoreSetting and not MEM.Settings.general["screenshot-sound"] then return end
+
+	soundKey = soundKey or MEM.Settings.general["screenshot-sound-style"] or "memento-camera"
+	local soundFile = ScreenshotSoundFiles[soundKey]
+
+	if soundFile then
+		local status, willPlay = pcall(PlaySoundFile, soundFile, "SFX")
+
+		if status and willPlay ~= false then
+			return
+		end
+	end
+
+	local sounds = ScreenshotSounds[soundKey]
+
+	if not sounds then return end
+
+	for _, sound in ipairs(sounds) do
+		local soundKitID = GetSoundKitID(sound)
+
+		if soundKitID then
+			local status, willPlay = pcall(PlaySound, soundKitID, "SFX")
+
+			if status and willPlay then
+				return
+			end
+		end
+	end
+end
+
 local function TakeScreenshot()
 	if MEM.Settings.general["hide-ui"] then
 		if not InCombatLockdown() then
@@ -71,6 +116,7 @@ local function TakeScreenshot()
 
 				C_Timer.After(0.1, function()
 					Screenshot()
+					PlayScreenshotSound()
 					Utils:PrintDebug("Screenshot without UI taken.")
 				end)
 
@@ -97,6 +143,7 @@ local function TakeScreenshot()
 				))
 
 				Screenshot()
+				PlayScreenshotSound()
 
 				Utils:PrintDebug("Screenshot taken.")
 			end
@@ -104,11 +151,13 @@ local function TakeScreenshot()
 			Utils:PrintDebug("No screenshot is possible in combat without ui.")
 
 			Screenshot()
+			PlayScreenshotSound()
 
 			Utils:PrintDebug("Screenshot taken.")
 		end
 	else
 		Screenshot()
+		PlayScreenshotSound()
 
 		Utils:PrintDebug("Screenshot taken.")
 	end
@@ -290,6 +339,10 @@ local HandlerTable = {
 ------------------------
 --- Module Functions ---
 ------------------------
+
+function Capture:PreviewScreenshotSound(soundKey)
+	PlayScreenshotSound(true, soundKey)
+end
 
 function Capture:ScheduleTimer(handler, delay, ...)
 	local args = {...}

@@ -2,4 +2,4 @@
 ### [@project-version@](https://github.com/wow-addon-dev/Memento/tree/@project-version@) (@build-date@)
 [Full Changelog](@full-changelog@) - [Previous Releases](https://github.com/wow-addon-dev/Memento/releases)
 
-- Updated: deDE, enUS localizations
+- Added: Configurable sound effects can now be played after a screenshot has been taken

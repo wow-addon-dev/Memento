@@ -11,6 +11,7 @@ local L = MEM.Localization
 local Options = MEM.Modules.Options
 
 -- Module imports
+local Capture = MEM.Modules.Capture
 local Utils = MEM.Modules.Utils
 
 -- Variables
@@ -122,6 +123,43 @@ function Options:Initialize()
 		name			= L["options.general.hide-ui.name"],
 		tooltip			= L["options.general.hide-ui.tooltip"],
 		default			= false
+	})
+
+	-- Screenshot Sound
+	local initializerScreenshotSound, settingScreenshotSound = AWL.Settings:AddCheckbox(category, {
+		variableTable	= MEM.Settings.general,
+		settingKey		= addonName .. "_screenshot-sound",
+		variableName	= "screenshot-sound",
+		name			= L["options.general.screenshot-sound.name"],
+		tooltip			= L["options.general.screenshot-sound.tooltip"],
+		default			= false
+	})
+
+	if MEM.Settings.general["screenshot-sound-style"] == "ui-click"
+		or MEM.Settings.general["screenshot-sound-style"] == "epic-loot"
+		or MEM.Settings.general["screenshot-sound-style"] == "camera"
+		or MEM.Settings.general["screenshot-sound-style"] == "map-ping" then
+		MEM.Settings.general["screenshot-sound-style"] = "memento-camera"
+	end
+
+	AWL.Settings:AddDropdown(category, {
+		variableTable	= MEM.Settings.general,
+		settingKey		= addonName .. "_screenshot-sound-style",
+		variableName	= "screenshot-sound-style",
+		name			= L["options.general.screenshot-sound-style.name"],
+		tooltip			= L["options.general.screenshot-sound-style.tooltip"],
+		default			= "memento-camera",
+		options			= {
+			{value = "memento-camera", label = L["options.general.screenshot-sound-style.option.memento-camera"]},
+			{value = "notification", label = L["options.general.screenshot-sound-style.option.notification"]},
+			{value = "melody", label = L["options.general.screenshot-sound-style.option.melody"]},
+			{value = "quest-complete", label = L["options.general.screenshot-sound-style.option.quest-complete"]},
+			{value = "ready-check", label = L["options.general.screenshot-sound-style.option.ready-check"]},
+			{value = "raid-warning", label = L["options.general.screenshot-sound-style.option.raid-warning"]}
+		},
+		parentInit		= initializerScreenshotSound,
+		parentCondition	= function() return GetVal(settingScreenshotSound) end,
+		onClick			= function(_, value) Capture:PreviewScreenshotSound(value) end
 	})
 
 	-- Minimap Button Visibility

@@ -667,85 +667,87 @@ function Options:Initialize()
 	end
 
 	-- Special Loot
-	local initializerLootToast, settingLootToast = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
-		variableTable			= MEM.Settings.event,
-		checkboxSettingKey		= addonName .. "_loot-toast-active",
-		checkboxVariableName	= "loot-toast-active",
-		checkboxName			= L["options.event.other.loot-toast"],
-		checkboxTooltip			= L["options.event.other.loot-toast.tooltip"],
-		checkboxDefault			= false,
+	if AWL.GAME_TYPE_MAINLINE then
+		local initializerLootToast, settingLootToast = AWL.Settings:AddCheckboxSliderCombo(category, layout, {
+			variableTable			= MEM.Settings.event,
+			checkboxSettingKey		= addonName .. "_loot-toast-active",
+			checkboxVariableName	= "loot-toast-active",
+			checkboxName			= L["options.event.other.loot-toast"],
+			checkboxTooltip			= L["options.event.other.loot-toast.tooltip"],
+			checkboxDefault			= false,
 
-		sliderSettingKey		= addonName .. "_loot-toast-delay",
-		sliderVariableName		= "loot-toast-delay",
-		sliderName				= L["options.event.general.delay.name"],
-		sliderTooltip			= L["options.event.general.delay.tooltip"]:format(L["options.event.other.loot-toast"], 1),
-		sliderDefault			= 1, sliderMin = 1, sliderMax = 10, sliderStep = 1,
-		sliderFormatter			= FormatSeconds,
+			sliderSettingKey		= addonName .. "_loot-toast-delay",
+			sliderVariableName		= "loot-toast-delay",
+			sliderName				= L["options.event.general.delay.name"],
+			sliderTooltip			= L["options.event.general.delay.tooltip"]:format(L["options.event.other.loot-toast"], 1),
+			sliderDefault			= 1, sliderMin = 1, sliderMax = 10, sliderStep = 1,
+			sliderFormatter			= FormatSeconds,
 
-		shownPredicate			= isOtherExpanded
-	})
+			shownPredicate			= isOtherExpanded
+		})
 
-	local function IsLootToastEnabled()
-		return GetVal(settingLootToast)
+		local function IsLootToastEnabled()
+			return GetVal(settingLootToast)
+		end
+
+		AWL.Settings:AddCheckbox(category, {
+			variableTable	= MEM.Settings.event,
+			settingKey		= addonName .. "_loot-toast-item",
+			variableName	= "loot-toast-item",
+			name			= L["options.event.other.loot-toast.item.name"],
+			tooltip			= L["options.event.other.loot-toast.item.tooltip"],
+			default			= true,
+			parentInit		= initializerLootToast,
+			parentCondition	= IsLootToastEnabled,
+			shownPredicate	= isOtherExpanded
+		})
+
+		local lootToastQualityOptions = {}
+
+		for _, quality in ipairs(MEM.LOOT_TOAST_QUALITIES) do
+			lootToastQualityOptions[#lootToastQualityOptions + 1] = {
+				value = quality,
+				label = _G["ITEM_QUALITY" .. quality .. "_DESC"]
+			}
+		end
+
+		AWL.Settings:AddDropdown(category, {
+			variableTable	= MEM.Settings.event,
+			settingKey		= addonName .. "_loot-toast-quality",
+			variableName	= "loot-toast-quality",
+			name			= L["options.event.other.loot-toast.quality.name"],
+			tooltip			= L["options.event.other.loot-toast.quality.tooltip"],
+			default			= MEM.LOOT_TOAST_QUALITY_DEFAULT,
+			options			= lootToastQualityOptions,
+			parentInit		= initializerLootToast,
+			parentCondition	= IsLootToastEnabled,
+			shownPredicate	= isOtherExpanded
+		})
+
+		AWL.Settings:AddCheckbox(category, {
+			variableTable	= MEM.Settings.event,
+			settingKey		= addonName .. "_loot-toast-money",
+			variableName	= "loot-toast-money",
+			name			= L["options.event.other.loot-toast.money.name"],
+			tooltip			= L["options.event.other.loot-toast.money.tooltip"],
+			default			= false,
+			parentInit		= initializerLootToast,
+			parentCondition	= IsLootToastEnabled,
+			shownPredicate	= isOtherExpanded
+		})
+
+		AWL.Settings:AddCheckbox(category, {
+			variableTable	= MEM.Settings.event,
+			settingKey		= addonName .. "_loot-toast-currency",
+			variableName	= "loot-toast-currency",
+			name			= L["options.event.other.loot-toast.currency.name"],
+			tooltip			= L["options.event.other.loot-toast.currency.tooltip"],
+			default			= false,
+			parentInit		= initializerLootToast,
+			parentCondition	= IsLootToastEnabled,
+			shownPredicate	= isOtherExpanded
+		})
 	end
-
-	AWL.Settings:AddCheckbox(category, {
-		variableTable	= MEM.Settings.event,
-		settingKey		= addonName .. "_loot-toast-item",
-		variableName	= "loot-toast-item",
-		name			= L["options.event.other.loot-toast.item.name"],
-		tooltip			= L["options.event.other.loot-toast.item.tooltip"],
-		default			= true,
-		parentInit		= initializerLootToast,
-		parentCondition	= IsLootToastEnabled,
-		shownPredicate	= isOtherExpanded
-	})
-
-	local lootToastQualityOptions = {}
-
-	for _, quality in ipairs(MEM.LOOT_TOAST_QUALITIES) do
-		lootToastQualityOptions[#lootToastQualityOptions + 1] = {
-			value = quality,
-			label = _G["ITEM_QUALITY" .. quality .. "_DESC"]
-		}
-	end
-
-	AWL.Settings:AddDropdown(category, {
-		variableTable	= MEM.Settings.event,
-		settingKey		= addonName .. "_loot-toast-quality",
-		variableName	= "loot-toast-quality",
-		name			= L["options.event.other.loot-toast.quality.name"],
-		tooltip			= L["options.event.other.loot-toast.quality.tooltip"],
-		default			= MEM.LOOT_TOAST_QUALITY_DEFAULT,
-		options			= lootToastQualityOptions,
-		parentInit		= initializerLootToast,
-		parentCondition	= IsLootToastEnabled,
-		shownPredicate	= isOtherExpanded
-	})
-
-	AWL.Settings:AddCheckbox(category, {
-		variableTable	= MEM.Settings.event,
-		settingKey		= addonName .. "_loot-toast-money",
-		variableName	= "loot-toast-money",
-		name			= L["options.event.other.loot-toast.money.name"],
-		tooltip			= L["options.event.other.loot-toast.money.tooltip"],
-		default			= false,
-		parentInit		= initializerLootToast,
-		parentCondition	= IsLootToastEnabled,
-		shownPredicate	= isOtherExpanded
-	})
-
-	AWL.Settings:AddCheckbox(category, {
-		variableTable	= MEM.Settings.event,
-		settingKey		= addonName .. "_loot-toast-currency",
-		variableName	= "loot-toast-currency",
-		name			= L["options.event.other.loot-toast.currency.name"],
-		tooltip			= L["options.event.other.loot-toast.currency.tooltip"],
-		default			= false,
-		parentInit		= initializerLootToast,
-		parentCondition	= IsLootToastEnabled,
-		shownPredicate	= isOtherExpanded
-	})
 
 	-- Interval
 	AWL.Settings:AddCheckboxSliderCombo(category, layout, {

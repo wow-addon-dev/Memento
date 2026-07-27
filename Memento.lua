@@ -495,7 +495,6 @@ end
 
 MementoFrame:RegisterEvent("ADDON_LOADED")
 MementoFrame:RegisterEvent("TIME_PLAYED_MSG")
-MementoFrame:RegisterEvent("SHOW_LOOT_TOAST")
 
 if AWL.GAME_TYPE_VANILLA then
 elseif AWL.GAME_TYPE_TBC then
@@ -514,6 +513,7 @@ elseif AWL.GAME_TYPE_MAINLINE then
 	MementoFrame:RegisterEvent("NEW_MOUNT_ADDED")
 	MementoFrame:RegisterEvent("NEW_TOY_ADDED")
 	MementoFrame:RegisterEvent("NEW_HOUSING_ITEM_ACQUIRED")
+	MementoFrame:RegisterEvent("SHOW_LOOT_TOAST")
 end
 
 MementoFrame:RegisterEvent("PLAYER_ENTERING_WORLD")

@@ -6,7 +6,7 @@ _Capture the moments that matter._
 
 Memento is a World of Warcraft addon that automatically takes screenshots of meaningful gameplay events and personal milestones. It supports a wide variety of triggers, ensuring you never miss a great shot again.
 
-> ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See [Installation & Quick Start](#installation--quick-start) for installation details.
+> ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See Installation & Quick Start for installation details.
 
 **Key Feature**
 
@@ -21,7 +21,7 @@ Memento is a World of Warcraft addon that automatically takes screenshots of mea
 	* Mythic+ Dungeons (Completion)**
 	* PvP (Duels, Arena, Battlegrounds, Brawls)**
 	* Collections (Pets, Mounts, Toys, Recipes, Housing)**
-	* ![New](https://raw.githubusercontent.com/wow-addon-dev/.github/main/assets/badges/new.png) Special Loot (Items, Money, Currencies)**
+	* <sup>✨ NEW</sup> Special Loot (Items, Money, Currencies)**
 	* Regular Intervals
 * Each event can be activated separately.
 * The user interface can be automatically hidden for the screenshot and a small success notification is displayed instead (Note: The user interface cannot be hidden automatically during combat).

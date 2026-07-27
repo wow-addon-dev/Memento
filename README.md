@@ -6,15 +6,11 @@ _Capture the moments that matter._
 
 Memento is a World of Warcraft addon that automatically takes screenshots of meaningful gameplay events and personal milestones. It supports a wide variety of triggers, ensuring you never miss a great shot again.
 
+> ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See [Installation & Quick Start](#installation--quick-start) for installation details.
+
 **Key Feature**
 
 * **Automated Screenshots** - Automatically captures images based on customizable in-game events so you can focus entirely on your gameplay.
-
-## Installation & Quick Start
-
-> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Memento via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
-
-To open the addon options menu, type `/mem` or `/memento` into your chat and press enter.
 
 ## Features
 
@@ -25,7 +21,7 @@ To open the addon options menu, type `/mem` or `/memento` into your chat and pre
 	* Mythic+ Dungeons (Completion)**
 	* PvP (Duels, Arena, Battlegrounds, Brawls)**
 	* Collections (Pets, Mounts, Toys, Recipes, Housing)**
-	* Special Loot (Items, Money, Currencies)**
+	* ![New](https://raw.githubusercontent.com/wow-addon-dev/.github/main/assets/badges/new.png) Special Loot (Items, Money, Currencies)**
 	* Regular Intervals
 * Each event can be activated separately.
 * The user interface can be automatically hidden for the screenshot and a small success notification is displayed instead (Note: The user interface cannot be hidden automatically during combat).
@@ -43,6 +39,12 @@ To open the addon options menu, type `/mem` or `/memento` into your chat and pre
 
 * Languages: English, German
 * Flavors: Classic, Burning Crusade - Classic Anniversary Edition, Mists of Pandaria - Classic, Retail
+
+## Installation & Quick Start
+
+> **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Memento via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
+
+To open the addon options menu, type `/mem` or `/memento` into your chat and press enter.
 
 ## Bugs & Feedback
 

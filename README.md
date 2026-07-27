@@ -25,7 +25,7 @@ To open the addon options menu, type `/mem` or `/memento` into your chat and pre
 	* Mythic+ Dungeons (Completion)**
 	* PvP (Duels, Arena, Battlegrounds, Brawls)**
 	* Collections (Pets, Mounts, Toys, Recipes, Housing)**
-	* Special Loot (Items, Money, Currencies)
+	* Special Loot (Items, Money, Currencies)**
 	* Regular Intervals
 * Each event can be activated separately.
 * The user interface can be automatically hidden for the screenshot and a small success notification is displayed instead (Note: The user interface cannot be hidden automatically during combat).

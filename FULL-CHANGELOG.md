@@ -1,3 +1,10 @@
+**v2.20 (2026-07-28)**
+- Added: TOC version for patch 1.15.9 [classic]
+- Added: New event 'Special Loot' - A screenshot can now be taken automatically when selected types of special loot are received
+- Removed: TOC version for patch 1.15.8 [classic]
+- Minor code adjustments
+- Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
+
 **v2.19 (2026-07-26)**
 - Added: Configurable sound effects can now be played after a screenshot has been taken
 

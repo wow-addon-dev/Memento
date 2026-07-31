@@ -1,3 +1,8 @@
+**v2.21 (2026-07-31)**
+- Changed: Playtime data is now requested only when at least one playtime output is enabled
+- Updated: deDE, enUS localizations
+- Minor code adjustments
+
 **v2.20 (2026-07-28)**
 - Added: TOC version for patch 1.15.9 [classic]
 - Added: New event 'Special Loot' - A screenshot can now be taken automatically when selected types of special loot are received

@@ -1,7 +1,7 @@
 local addonName, MEM = ...
 
 -- Enable only for releases with new features or important changes.
-MEM.SHOW_UPDATE_NOTICE = true
+MEM.SHOW_UPDATE_NOTICE = false
 
 -- Capture
 MEM.CAPTURE_DELAY_OFFSET = 0.1

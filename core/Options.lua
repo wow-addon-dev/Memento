@@ -53,6 +53,12 @@ local function GetVal(setting) return setting:GetValue() end
 local function FormatSeconds(value) return value .. " " .. L["general.seconds-short"] end
 local function FormatMinutes(value) return value .. " " .. L["general.minutes-short"] end
 
+local function TimePlayedOptionChanged(_, value)
+	if value then
+		Utils:RequestTimePlayed()
+	end
+end
+
 ------------------------
 --- Module Functions ---
 ------------------------
@@ -109,7 +115,8 @@ function Options:Initialize()
 		tooltip			= L["options.general.notification.time-played.tooltip"],
 		default			= false,
 		parentInit		= initializerNotification,
-		parentCondition	= IsNotificationEnabled
+		parentCondition	= IsNotificationEnabled,
+		onClick			= TimePlayedOptionChanged
 	})
 
 	-- Notification: Show Level Time Played
@@ -121,7 +128,8 @@ function Options:Initialize()
 		tooltip			= L["options.general.notification.level-time-played.tooltip"],
 		default			= false,
 		parentInit		= initializerNotification,
-		parentCondition	= IsNotificationEnabled
+		parentCondition	= IsNotificationEnabled,
+		onClick			= TimePlayedOptionChanged
 	})
 
 	-- Hide UI
@@ -605,6 +613,7 @@ function Options:Initialize()
 		default			= false,
 		parentInit		= initializerLevelUp,
 		parentCondition	= function() return GetVal(settingLevelUp) end,
+		onClick			= TimePlayedOptionChanged,
 		shownPredicate	= isOtherExpanded
 	})
 

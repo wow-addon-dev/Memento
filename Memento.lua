@@ -32,9 +32,9 @@ local function TimePlayed()
 	sessionStartTime = currentTime
 end
 
-local function ScheduleLootToastScreenshot(typeIdentifier, itemLink, quantity, delay)
+local function ScheduleScreenshot(handler, delay, ...)
 	TimePlayed()
-	Capture:ScheduleTimer("LootToastEventHandler", delay + MEM.CAPTURE_DELAY_OFFSET, typeIdentifier, itemLink, quantity)
+	Capture:ScheduleTimer(handler, delay, ...)
 end
 
 local function ProcessLootToast(itemLink, minimumQuality, delay, retriesRemaining)
@@ -66,7 +66,7 @@ local function ProcessLootToast(itemLink, minimumQuality, delay, retriesRemainin
 		return
 	end
 
-	ScheduleLootToastScreenshot(MEM.LOOT_TOAST_TYPE.ITEM, itemLink, nil, delay)
+	ScheduleScreenshot("LootToastEventHandler", delay + MEM.CAPTURE_DELAY_OFFSET, MEM.LOOT_TOAST_TYPE.ITEM, itemLink, nil)
 end
 
 local function CheckInterval()
@@ -75,9 +75,7 @@ local function CheckInterval()
 	minutesPassed = minutesPassed + 1
 
 	if MEM.Settings.event["interval-active"] and minutesPassed >= MEM.Settings.event["interval-timer"] then
-		TimePlayed()
-
-		Capture:ScheduleTimer("IntervalEventHandler", MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("IntervalEventHandler", MEM.CAPTURE_DELAY_OFFSET)
 
 		minutesPassed = 0
 	end
@@ -116,7 +114,7 @@ function MementoFrame:ADDON_LOADED(_, addOnName)
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
 
-		RequestTimePlayed()
+		Utils:RequestTimePlayed()
 		Utils:OpenSettingsOnLoading()
 
 		C_Timer.NewTicker(60, CheckInterval)
@@ -137,6 +135,7 @@ function MementoFrame:TIME_PLAYED_MSG(_, totalTimePlayed, timePlayedThisLevel)
 
 	MEM.State.totalTimePlayed = totalTimePlayed
 	MEM.State.timePlayedThisLevel = timePlayedThisLevel
+	MEM.State.timePlayedInitialized = true
 
 	sessionStartTime = GetTime()
 
@@ -187,7 +186,7 @@ function MementoFrame:SHOW_LOOT_TOAST(_, typeIdentifier, itemLink, quantity, spe
 
 		ProcessLootToast(itemLink, minimumQuality, delay, MEM.LOOT_TOAST_ITEM_LOAD_RETRY_COUNT)
 	else
-		ScheduleLootToastScreenshot(typeIdentifier, itemLink, quantity, delay)
+		ScheduleScreenshot("LootToastEventHandler", delay + MEM.CAPTURE_DELAY_OFFSET, typeIdentifier, itemLink, quantity)
 	end
 end
 
@@ -201,15 +200,13 @@ function MementoFrame:ACHIEVEMENT_EARNED(_, achievementID, alreadyEarned)
 
 	if not isGuildAchievement then
 		if MEM.Settings.event["achievement-personal-active"] then
-			TimePlayed()
-			Capture:ScheduleTimer("AchievementPersonalEventHandler", MEM.Settings.event["achievement-personal-delay"] + MEM.CAPTURE_DELAY_OFFSET, achievementID, alreadyEarned)
+			ScheduleScreenshot("AchievementPersonalEventHandler", MEM.Settings.event["achievement-personal-delay"] + MEM.CAPTURE_DELAY_OFFSET, achievementID, alreadyEarned)
 		else
 			Utils:PrintDebug("Event 'ACHIEVEMENT_EARNED' (Personal) completed. No screenshot requested.")
 		end
 	else
 		if MEM.Settings.event["achievement-guild-active"] then
-			TimePlayed()
-			Capture:ScheduleTimer("AchievementGuildEventHandler", MEM.Settings.event["achievement-guild-delay"] + MEM.CAPTURE_DELAY_OFFSET, achievementID)
+			ScheduleScreenshot("AchievementGuildEventHandler", MEM.Settings.event["achievement-guild-delay"] + MEM.CAPTURE_DELAY_OFFSET, achievementID)
 		else
 			Utils:PrintDebug("Event 'ACHIEVEMENT_EARNED' (Guild) completed. No screenshot requested.")
 		end
@@ -223,8 +220,7 @@ function MementoFrame:CRITERIA_EARNED(_, achievementID, description)
 	))
 
 	if MEM.Settings.event["achievement-criteria-active"] then
-		TimePlayed()
-		Capture:ScheduleTimer("CriteriaEventHandler", MEM.Settings.event["achievement-criteria-delay"] + MEM.CAPTURE_DELAY_OFFSET, achievementID, description)
+		ScheduleScreenshot("CriteriaEventHandler", MEM.Settings.event["achievement-criteria-delay"] + MEM.CAPTURE_DELAY_OFFSET, achievementID, description)
 	else
 		Utils:PrintDebug("Event 'CRITERIA_EARNED' completed. No screenshot requested.")
 	end
@@ -234,8 +230,7 @@ function MementoFrame:CHALLENGE_MODE_COMPLETED(_)
 	Utils:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' fired. No payload.")
 
 	if MEM.Settings.event["mythic-active"] then
-		TimePlayed()
-		Capture:ScheduleTimer("MythicEventHandler", MEM.Settings.event["mythic-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("MythicEventHandler", MEM.Settings.event["mythic-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 	else
 		Utils:PrintDebug("Event 'CHALLENGE_MODE_COMPLETED' completed. No screenshot requested.")
 	end
@@ -254,8 +249,7 @@ function MementoFrame:PVP_MATCH_COMPLETE(_, winner, duration)
 
 	if isArena then
 		if MEM.Settings.event["pvp-arena-active"] then
-			TimePlayed()
-			Capture:ScheduleTimer("PvPArenaEventHandler", MEM.Settings.event["pvp-arena-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+			ScheduleScreenshot("PvPArenaEventHandler", MEM.Settings.event["pvp-arena-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 		else
 			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Arena) completed. No screenshot requested.")
 		end
@@ -263,14 +257,12 @@ function MementoFrame:PVP_MATCH_COMPLETE(_, winner, duration)
 		if MEM.Settings.event["pvp-brawl-active"] then
 			if MEM.Settings.event["pvp-brawl-victory-only"] then
 				if IsPlayerWinner(winner) then
-					TimePlayed()
-					Capture:ScheduleTimer("PvPBrawlEventHandler", MEM.Settings.event["pvp-brawl-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+					ScheduleScreenshot("PvPBrawlEventHandler", MEM.Settings.event["pvp-brawl-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 				else
 					Utils:PrintDebug("Player faction has lost the brawl. No screenshot requested.")
 				end
 			else
-				TimePlayed()
-				Capture:ScheduleTimer("PvPBrawlEventHandler", MEM.Settings.event["pvp-brawl-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+				ScheduleScreenshot("PvPBrawlEventHandler", MEM.Settings.event["pvp-brawl-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 			end
 		else
 			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Brawl) completed. No screenshot requested.")
@@ -279,14 +271,12 @@ function MementoFrame:PVP_MATCH_COMPLETE(_, winner, duration)
 		if MEM.Settings.event["pvp-battleground-active"] then
 			if MEM.Settings.event["pvp-battleground-victory-only"] then
 				if IsPlayerWinner(winner) then
-					TimePlayed()
-					Capture:ScheduleTimer("PvPBattlegroundEventHandler", MEM.Settings.event["pvp-battleground-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+					ScheduleScreenshot("PvPBattlegroundEventHandler", MEM.Settings.event["pvp-battleground-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 				else
 					Utils:PrintDebug("Player faction has lost the battleground. No screenshot requested.")
 				end
 			else
-				TimePlayed()
-				Capture:ScheduleTimer("PvPBattlegroundEventHandler", MEM.Settings.event["pvp-battleground-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+				ScheduleScreenshot("PvPBattlegroundEventHandler", MEM.Settings.event["pvp-battleground-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 			end
 		else
 			Utils:PrintDebug("Event 'PVP_MATCH_COMPLETE' (Battleground) completed. No screenshot requested.")
@@ -303,8 +293,7 @@ function MementoFrame:NEW_PET_ADDED(_, battlePetGUID)
 	))
 
 	if MEM.Settings.event["collection-pet-active"] then
-		TimePlayed()
-		Capture:ScheduleTimer("NewPetEventHandler", MEM.Settings.event["collection-pet-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("NewPetEventHandler", MEM.Settings.event["collection-pet-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 	else
 		Utils:PrintDebug("Event 'NEW_PET_ADDED' completed. No screenshot requested.")
 	end
@@ -317,8 +306,7 @@ function MementoFrame:NEW_MOUNT_ADDED(_, mountID)
 	))
 
 	if MEM.Settings.event["collection-mount-active"] then
-		TimePlayed()
-		Capture:ScheduleTimer("NewMountEventHandler", MEM.Settings.event["collection-mount-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("NewMountEventHandler", MEM.Settings.event["collection-mount-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 	else
 		Utils:PrintDebug("Event 'NEW_MOUNT_ADDED' completed. No screenshot requested.")
 	end
@@ -331,8 +319,7 @@ function MementoFrame:NEW_TOY_ADDED(_, itemID)
 	))
 
 	if MEM.Settings.event["collection-toy-active"] then
-		TimePlayed()
-		Capture:ScheduleTimer("NewToyEventHandler", MEM.Settings.event["collection-toy-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("NewToyEventHandler", MEM.Settings.event["collection-toy-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 	else
 		Utils:PrintDebug("Event 'NEW_TOY_ADDED' completed. No screenshot requested.")
 	end
@@ -345,8 +332,7 @@ function MementoFrame:NEW_HOUSING_ITEM_ACQUIRED(_, itemType, itemName, icon)
 	))
 
 	if MEM.Settings.event["collection-housing-active"] then
-		TimePlayed()
-		Capture:ScheduleTimer("NewHousingItemEventHandler", MEM.Settings.event["collection-housing-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("NewHousingItemEventHandler", MEM.Settings.event["collection-housing-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 	else
 		Utils:PrintDebug("Event 'NEW_HOUSING_ITEM_ACQUIRED' completed. No screenshot requested.")
 	end
@@ -359,8 +345,7 @@ function MementoFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
 	))
 
 	if MEM.Settings.event["login-active"] and isInitialLogin then
-		TimePlayed()
-		Capture:ScheduleTimer("LoginEventHandler", MEM.Settings.event["login-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("LoginEventHandler", MEM.Settings.event["login-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 	else
 		Utils:PrintDebug("Event 'PLAYER_ENTERING_WORLD' completed. No screenshot requested.")
 	end
@@ -370,15 +355,14 @@ function MementoFrame:PLAYER_DEAD(_)
 	Utils:PrintDebug("Event 'PLAYER_DEAD' fired. No payload.")
 
 	if MEM.Settings.event["death-active"] then
-		TimePlayed()
 		local inInstance = IsInInstance()
 
 		if MEM.Settings.event["death-instance"] == 0 then
-			Capture:ScheduleTimer("DeathEventHandler", MEM.Settings.event["death-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+			ScheduleScreenshot("DeathEventHandler", MEM.Settings.event["death-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 		elseif inInstance and MEM.Settings.event["death-instance"] == 1 then
-			Capture:ScheduleTimer("DeathEventHandler", MEM.Settings.event["death-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+			ScheduleScreenshot("DeathEventHandler", MEM.Settings.event["death-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 		elseif not inInstance and MEM.Settings.event["death-instance"] == 2 then
-			Capture:ScheduleTimer("DeathEventHandler", MEM.Settings.event["death-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+			ScheduleScreenshot("DeathEventHandler", MEM.Settings.event["death-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 		else
 			Utils:PrintDebug("Player died in the wrong area. No screenshot requested.")
 		end
@@ -434,8 +418,7 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 				if MEM.Data.bossKill[difficulty][encounterID] and firstOnly then
 					Utils:PrintDebug("Encounter already killed. No screenshot requested.")
 				else
-					TimePlayed()
-					Capture:ScheduleTimer("EncounterVictoryEventHandler", delay + MEM.CAPTURE_DELAY_OFFSET, encounterName, difficultyName, difficulty, encounterID)
+					ScheduleScreenshot("EncounterVictoryEventHandler", delay + MEM.CAPTURE_DELAY_OFFSET, encounterName, difficultyName, difficulty, encounterID)
 				end
 			else
 				Utils:PrintDebug("Event 'ENCOUNTER_END' (Victory) completed. No screenshot requested.")
@@ -450,8 +433,7 @@ function MementoFrame:ENCOUNTER_END(_, encounterID, encounterName, difficultyID,
 							(groupType == "scenario" and MEM.Settings.event["encounter-wipe-scenario-delay"])
 
 			if isActive then
-				TimePlayed()
-				Capture:ScheduleTimer("EncounterWipeEventHandler", delay + MEM.CAPTURE_DELAY_OFFSET, encounterName, difficultyName)
+				ScheduleScreenshot("EncounterWipeEventHandler", delay + MEM.CAPTURE_DELAY_OFFSET, encounterName, difficultyName)
 			else
 				Utils:PrintDebug("Event 'ENCOUNTER_END' (Wipe) completed. No screenshot requested.")
 			end
@@ -468,8 +450,7 @@ function MementoFrame:DUEL_FINISHED(_)
 	Utils:PrintDebug("Event 'DUEL_FINISHED' fired. No payload.")
 
 	if MEM.Settings.event["pvp-duel-active"] then
-		TimePlayed()
-		Capture:ScheduleTimer("PvPDuelEventHandler", MEM.Settings.event["pvp-duel-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("PvPDuelEventHandler", MEM.Settings.event["pvp-duel-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 	else
 		Utils:PrintDebug("Event 'DUEL_FINISHED' completed. No screenshot requested.")
 	end
@@ -482,8 +463,7 @@ function MementoFrame:NEW_RECIPE_LEARNED(_, recipeID, recipeLevel, baseRecipeID)
 	))
 
 	if MEM.Settings.event["collection-recipe-active"] then
-		TimePlayed()
-		Capture:ScheduleTimer("NewRecipeEventHandler", MEM.Settings.event["collection-recipe-delay"] + MEM.CAPTURE_DELAY_OFFSET)
+		ScheduleScreenshot("NewRecipeEventHandler", MEM.Settings.event["collection-recipe-delay"] + MEM.CAPTURE_DELAY_OFFSET)
 	else
 		Utils:PrintDebug("Event 'NEW_RECIPE_LEARNED' completed. No screenshot requested.")
 	end

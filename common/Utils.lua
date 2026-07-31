@@ -36,6 +36,18 @@ function Utils:GetDurationParts(totalSeconds)
 	return days, hours, minutes, seconds
 end
 
+function Utils:RequestTimePlayed()
+	if not (MEM.Settings.general["notification-time-played"] or MEM.Settings.general["notification-level-time-played"] or MEM.Settings.event["level-up-time-played"]) or MEM.State.timePlayedInitialized then
+		self:PrintDebug("RequestTimePlayed() skipped.")
+
+		return
+	end
+
+	self:PrintDebug("RequestTimePlayed() scheduled.")
+
+	RequestTimePlayed()
+end
+
 function Utils:PrintMessage(msg)
 	if MEM.Settings.general["notification"] then
 		if MEM.Settings.general["notification-timestamp"] then

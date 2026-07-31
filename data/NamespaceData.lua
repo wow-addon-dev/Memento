@@ -11,6 +11,7 @@ MEM.Modules.Utils = MEM.Modules.Utils or {}
 
 MEM.State.totalTimePlayed = 0
 MEM.State.timePlayedThisLevel = 0
+MEM.State.timePlayedInitialized = false
 
 local AWL = ArcaneWizardLibrary
 

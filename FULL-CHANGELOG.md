@@ -1,3 +1,6 @@
+**v2.22 (2026-08-04)**
+- Minor code adjustments
+
 **v2.21 (2026-07-31)**
 - Changed: Playtime data is now requested only when at least one playtime output is enabled
 - Updated: deDE, enUS localizations

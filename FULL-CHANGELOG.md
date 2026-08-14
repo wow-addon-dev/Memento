@@ -1,3 +1,6 @@
+**v2.23 (2026-08-14)**
+- Removed: TOC version for patch 12.0.7 [retail]
+
 **v2.22 (2026-08-04)**
 - Minor code adjustments
 

@@ -110,7 +110,6 @@ function MementoFrame:ADDON_LOADED(_, addOnName)
 		sessionStartTime = GetTime()
 
 		local dbInit = Utils:InitializeDatabase()
-		Utils:InitializeUpdateNotice()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
 

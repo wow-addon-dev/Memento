@@ -183,31 +183,12 @@ function Utils:InitializeDatabase()
 		MEM.Data.bossKill = Memento_DataBossKill
 	end
 
-	if not Memento_Options_v5["update-notice"] then
-		Memento_Options_v5["update-notice"] = {}
-	end
-
-	MEM.Data.updateNotice = Memento_Options_v5["update-notice"]
-
 	return {
 		characterRealmKey = characterRealmKey,
 		createdProfile = createdProfile,
 		createdProfileKey = createdProfileKey,
 		activeProfile = useAccountProfile and "account" or "character"
 	}
-end
-
-function Utils:InitializeUpdateNotice()
-	local data = MEM.Data.updateNotice
-
-	if data.lastVersion ~= Addon.version then
-		data.lastVersion = Addon.version
-		data.show = MEM.SHOW_UPDATE_NOTICE
-	end
-
-	if Addon:ShowUpdateNotice(data.show == true) then
-		data.show = false
-	end
 end
 
 function Utils:InitializeMinimapButton()

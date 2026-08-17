@@ -65,7 +65,7 @@ end
 
 function Options:Initialize()
 	local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
-	Addon:SetChangelog(MEM.CHANGELOG_TEXT)
+	Addon:SetChangelog(MEM.CHANGELOG)
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
 

@@ -92,6 +92,8 @@ local function SlashCommand(msg)
 
 	if command == "" then
 		Utils:OpenSettings()
+	elseif command == "changelog" then
+		AWL.Frames:OpenChangelog(addonName, MEM.CHANGELOG)
 	else
 		Utils:PrintDebug("These arguments are not accepted.")
 	end

@@ -1,3 +1,9 @@
+**v2.24 (2026-08-18)**
+- Added: Changelog window available from the options menu
+- Added: Changelog window available through the 'changelog' slash command
+- Removed: Version notice chat messages
+- Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
+
 **v2.23 (2026-08-14)**
 - Removed: TOC version for patch 12.0.7 [retail]
 

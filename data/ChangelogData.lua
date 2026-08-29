@@ -8,7 +8,7 @@ MEM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
-			"No changes available"
+			"Undocumented changes available"
 		}
 	},
 	{

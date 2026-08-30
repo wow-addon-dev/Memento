@@ -1,3 +1,6 @@
+**v2.25 (2026-08-30)**
+- Minor code adjustments
+
 **v2.24 (2026-08-18)**
 - Added: Changelog window available from the options menu
 - Added: Changelog window available through the 'changelog' slash command

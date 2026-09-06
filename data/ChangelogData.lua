@@ -8,6 +8,13 @@ MEM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Added: TOC version for patch 12.1.5 [retail]"
+		}
+	},
+	{
+		version = "v2.25",
+		date = "2026-08-30",
+		entries = {
 			"Minor code adjustments"
 		}
 	},
@@ -74,15 +81,6 @@ MEM.CHANGELOG = {
 		date = "2026-07-18",
 		entries = {
 			"Minor code adjustments"
-		}
-	},
-	{
-		version = "v2.16",
-		date = "2026-07-12",
-		entries = {
-			"Added: Wago project page button",
-			"Removed: TOC version for patch 5.5.3 [mists of pandaria - classic]",
-			"Removed: TOC version for patch 2.5.5 [burning crusade - classic anniversary edition]"
 		}
 	}
 }

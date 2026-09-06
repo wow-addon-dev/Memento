@@ -1,3 +1,6 @@
+**v2.26 (2026-09-06)**
+- Added: TOC version for patch 12.1.5 [retail]
+
 **v2.25 (2026-08-30)**
 - Minor code adjustments
 

@@ -8,7 +8,7 @@ Memento is a World of Warcraft addon that automatically takes screenshots of mea
 
 > ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See Installation & Quick Start for installation details.
 
-**Key Feature**
+## Key Feature
 
 **Automated Screenshots** - Automatically captures images based on customizable in-game events so you can focus entirely on your gameplay.
 
